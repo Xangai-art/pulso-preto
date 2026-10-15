@@ -17,9 +17,8 @@
 //
 // FASE 3.2 — Conteúdo bilíngue (PT/ES): a estrutura foi promovida de um único
 // objeto `anemiaFalciformeContent` para um dicionário por idioma
-// `anemiaFalciformeContent: Record<LocaleId, DiseaseDeepContent>`, espelhando
-// o padrão já usado em shared/data/variantContent.ts (VARIANT_CONTENT +
-// getVariantContent). A tradução em espanhol foi revisada para manter a
+// `anemiaFalciformeContent: Record<LocaleId, DiseaseDeepContent>`. A tradução
+// em espanhol foi revisada para manter a
 // terminologia clínica correta (ex.: "drepanocito" em vez de tradução literal
 // de "hemácia em foice", "rasgo falciforme" para o traço heterozigoto HbAS)
 // e preserva a mesma estrutura de seções/parágrafos do conteúdo em português,

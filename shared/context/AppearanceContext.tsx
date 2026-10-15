@@ -1,47 +1,35 @@
 /**
- * APPEARANCE CONTEXT — Mecanismo de troca em runtime (Variante × Idioma)
+ * APPEARANCE CONTEXT — Identidade única (Pulso Preto / PP3) × Idioma
  *
- * Implementa a camada "Z (Presentation)" da arquitetura CEOS: consome o Canon
- * (brand-canon.ts) + Variants (variants.ts) + Locales (locales.ts) e expõe um
- * único hook `useAppearance()` para toda a árvore React, tanto no site/ quanto
- * no app/.
+ * HISTÓRICO (arquitetura CEOS, Fase 3):
+ * Durante o teste mínimo da arquitetura CEOS este contexto expunha também um
+ * `variantId` (GP0/PP1/PP2) trocável em runtime. Esse teste foi ENCERRADO.
  *
- * CARACTERÍSTICAS:
- * - Troca 100% em runtime (sem rebuild/redeploy) — como um seletor de idioma.
- * - Persiste a escolha do usuário em localStorage (chave compartilhada entre
- *   site e app quando no mesmo domínio: ver docs/DEPLOY — Opção A).
- * - Anticipates i18n futuro: `t(key)` já funciona para EN/ES/PT sem mudança de API.
- * - Independente do admin panel futuro: aqui é um botão de usuário final,
- *   análogo a um seletor de idioma — não um painel administrativo.
+ * A partir de PP3 (identidade única de produção, SSOT):
+ * - Existe UMA única identidade visual de produção: "Pulso Preto". GP0/PP1/PP2
+ *   somem da UI — não há mais `variantId` nem troca de marca em runtime.
+ * - A marca vem exclusivamente do Canon (brand-canon.ts → CURRENT_BRAND_VERSION).
+ * - Permanece apenas a camada de IDIOMA (PT/ES), trocável em runtime sem
+ *   rebuild/redeploy, persistida em localStorage (chave compartilhada entre
+ *   site e app no mesmo domínio).
+ * - `t(key)` continua sendo o helper de i18n de interface.
  */
 
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import type { ReactNode } from 'react';
-import { getBrandVersion, type BrandIdentity } from '../data/brand-canon';
-import { VARIANTS, DEFAULT_VARIANT, type VariantId, type VariantIdentity } from '../data/variants';
+import { getCurrentBrand, type BrandIdentity } from '../data/brand-canon';
 import { DEFAULT_LOCALE, translate, type LocaleId } from '../data/locales';
 
-const STORAGE_KEY_VARIANT = 'pulsopreto:variant';
 const STORAGE_KEY_LOCALE = 'pulsopreto:locale';
 
 interface AppearanceContextValue {
-  variantId: VariantId;
-  variant: VariantIdentity;
   brand: BrandIdentity;
   localeId: LocaleId;
-  setVariantId: (id: VariantId) => void;
   setLocaleId: (id: LocaleId) => void;
   t: (key: string, vars?: Record<string, string>) => string;
 }
 
 const AppearanceContext = createContext<AppearanceContextValue | null>(null);
-
-function readStoredVariant(): VariantId {
-  if (typeof window === 'undefined') return DEFAULT_VARIANT;
-  const stored = window.localStorage.getItem(STORAGE_KEY_VARIANT);
-  if (stored && stored in VARIANTS) return stored as VariantId;
-  return DEFAULT_VARIANT;
-}
 
 function readStoredLocale(): LocaleId {
   if (typeof window === 'undefined') return DEFAULT_LOCALE;
@@ -51,33 +39,22 @@ function readStoredLocale(): LocaleId {
 }
 
 export function AppearanceProvider({ children }: { children: ReactNode }) {
-  const [variantId, setVariantIdState] = useState<VariantId>(readStoredVariant);
   const [localeId, setLocaleIdState] = useState<LocaleId>(readStoredLocale);
-
-  useEffect(() => {
-    window.localStorage.setItem(STORAGE_KEY_VARIANT, variantId);
-  }, [variantId]);
 
   useEffect(() => {
     window.localStorage.setItem(STORAGE_KEY_LOCALE, localeId);
   }, [localeId]);
 
-  const setVariantId = (id: VariantId) => setVariantIdState(id);
   const setLocaleId = (id: LocaleId) => setLocaleIdState(id);
 
   const value = useMemo<AppearanceContextValue>(() => {
-    const variant = VARIANTS[variantId];
-    const brand = getBrandVersion(variant.brandVersionId);
     return {
-      variantId,
-      variant,
-      brand,
+      brand: getCurrentBrand(),
       localeId,
-      setVariantId,
       setLocaleId,
       t: (key: string, vars?: Record<string, string>) => translate(localeId, key, vars),
     };
-  }, [variantId, localeId]);
+  }, [localeId]);
 
   return <AppearanceContext.Provider value={value}>{children}</AppearanceContext.Provider>;
 }

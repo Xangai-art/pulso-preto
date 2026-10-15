@@ -11,3 +11,4 @@ app/dist/
 # diretamente a partir do snapshot do Git (não roda `npm run build` no servidor).
 # Sempre rode `npm run build` na raiz antes de commitar mudanças de site/ ou app/.
 !/dist/
+.identity-work/

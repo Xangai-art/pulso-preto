@@ -4,7 +4,7 @@
 // construídos em traço único (stroke), coerentes com a identidade "pulso" —
 // uma linha de ECG estilizada atravessa o ícone de "Conheça sua saúde"/coração.
 import type React from 'react';
-import type { FeatureIconId } from '../../../shared/data/variantContent';
+import type { FeatureIconId } from '../../../shared/data/pulsoContent';
 
 function BookIcon({ size, color }: { size: number; color: string }) {
   return (
