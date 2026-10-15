@@ -5,7 +5,7 @@
 **Finalidade:** inventariar todos os **módulos master** da plataforma e mostrar, de forma rastreável, **como cada um foi aproveitado em cada versão** — se de forma *original* (intacta) ou *com variante* (adaptada). O foco é **conteúdo**, não pixels.
 **Método:** leitura direta do código-fonte em `site/`, `app/`, `shared/`, `worker/`, `database/` e `docs/`, cruzada com o acervo do Hub (`PROJ NEGROS - IDEIAS ABA SITE.pdf`, `ANEXO 2`, etc.). Nenhum número aqui é estimado: todos foram contados nos arquivos.
 **Status:** documento de **diagnóstico + registro de decisões** da sessão de requisitos do PP3. Não implementa nada — serve de base para decidirmos, caso a caso, o que popula o site e o app.
-**Atualização (15/10/2026):** decisões de direção registradas na **Parte 5.2** e **Parte 5.4**; lista de pendências em aberto na **Parte 6**.
+**Atualização (15/10/2026):** decisões de direção na **Parte 5.2**, mitigações na **Parte 5.4**, decisões de navegação (menu superior/inferior) na **Parte 5.5**; lista de pendências em aberto na **Parte 6**.
 
 > **Convenção de leitura.** "Versão" tem, neste projeto, **três significados empilhados**. Antes de mapear módulos, é obrigatório separá-los (Parte 0) — senão a própria pergunta "o que mudou entre GP0/PP1/PP2" fica ambígua.
 
@@ -345,6 +345,85 @@ Marca "Pulso"    —          ███████    ███████  (i
 | **R2** | **App desatualizado** — popular o site e esquecer o app recria a assimetria atual | **Testar a arquitetura CEOS e refatorar o app simultaneamente.** Site e app evoluem **juntos**, sob o mesmo Canon/SSOT. |
 | **R3** | **Placeholder virar produção** — histórias "A definir", imagens CC (`isPlaceholder:true`), Conselho "A definir" | **Substituição categoria a categoria nesta fase.** Nenhum placeholder entra no PP3: cada categoria é trocada por conteúdo real antes de publicar. |
 | **R4** | **Contradição de números** — publicar `45+` / `47` / `48+` simultaneamente | **Número auto-derivado.** O valor publicado deve **beber da base de dados CEOS** via **função/variável que atualiza automaticamente** — zero número hardcoded. |
+
+### 5.5 Decisões de navegação — menu superior / inferior (Áudio 1_PP3)
+
+> **Versão avaliada:** **PP3** (fonte única de verdade; nova "máscara" de apresentação sobre o conteúdo existente).
+> **Princípio do Áudio 1:** o site **deixa de ser "institucional-primeiro"** e passa a ser **público-primeiro**. Fica dividido em **duas camadas**: **superior = serviços hard (uso)** e **inferior = institucional (quem somos / governança)**.
+> **Termo em aberto:** "máscara" não existe como arquivo no Hub (confirmado pelo usuário) — tratado como a **camada de apresentação** (o "Z" da CEOS).
+
+#### Decisões registradas (D6–D10)
+
+| # | Decisão |
+|---|---|
+| **D6** | **Menu superior = SÓ hard services.** "Saúde" **sai do menu** e vira **os primeiros cards da Home**. |
+| **D7** | **Ouvidoria** e **Encontre um profissional** (ex-"Encontre uma médica preta") **promovidos a rota/âncora**. |
+| **D8** | **Comunidade e Memória → área pública ("gente")**; **Medicina Tradicional → dentro de "Saúde"**. |
+| **D9** | **Site = hard services + saúde + treinamento.** Quase **nada de institucional** (o institucional mínimo fica no menu inferior). |
+| **D10** | **"Revista virtual" fica FORA do menu** — é **formato de apresentação** do conteúdo (evolução visual futura de cada tema), não item de navegação. |
+
+#### A) MENU SUPERIOR — hard services (clean, foco no usuário)
+
+```
+[ Logo ]   Rede SUS    Encontre um profissional    Ensaios Clínicos    Ouvidoria      [ Baixar o App ]
+```
+
+- **4 itens + 1 CTA.** Sem "Saúde" (virou cards da Home), sem institucional.
+- **Rede SUS** absorve o "Guia do SUS Preto" (mesma navegação territorial).
+- **Ouvidoria** absorve a aba "Direito à saúde" (denúncia + direitos + PNSIPN).
+- **Encontre um profissional** = Find-a-Doctor (rede SUS + privada, atendimento humanizado).
+
+#### B) HOME — hub público (onde vive a descoberta)
+
+```
+Linha 1 — SAÚDE          Saúde da Mulher Preta · Saúde do Homem Preto · Saúde Materna ·
+                         Saúde Mental · Doenças Prevalentes · [ Ver todos → /saude ]
+Linha 2 — GENTE          Comunidade · Memória e Herança
+Linha 3 — TREINAMENTO    Formação / AVA  (pendente — ver P1)
+Linha 4 — SERVIÇOS HARD  Rede SUS · Encontre um profissional · Ensaios · Ouvidoria
+```
+
+#### C) MENU INFERIOR — institucional mínimo (rodapé)
+
+```
+QUEM SOMOS                 TRANSPARÊNCIA                 COMUNICAÇÃO
+• Sobre / Quem somos       • Transparência e governança  • Notícias
+• Parceiros                • Relatório de Arquitetura     • Fale Conosco
+```
+
+#### D) Reorganização completa das páginas (nada órfão)
+
+| Página atual | Rota | Destino no PP3 | Camada |
+|---|---|---|---|
+| Home | `/` | Home (hub de cards) | Home |
+| Biblioteca de Saúde | `/saude` | Cards de saúde → lista completa | Home |
+| Detalhe de Doença | `/saude/:cat/:id` | Sub-página | Home |
+| Medicina Tradicional | `/medicina-tradicional-brasileira` | **Dentro de Saúde** | Home |
+| Rede SUS | `/rede-sus` | **Rede SUS** (+ Guia do SUS Preto) | Superior |
+| Ensaios Clínicos | `/ensaios-clinicos` | **Ensaios Clínicos** | Superior |
+| *(novo)* | `/profissionais` | **Encontre um profissional** | Superior |
+| *(novo)* | `/ouvidoria` | **Ouvidoria** (absorve Direito à saúde) | Superior |
+| Baixar / Acessar App | `/baixar` | **CTA Baixar o App** | Superior |
+| Comunidade | `/comunidade` | Card "Gente" na Home | Home |
+| Memória e Herança | `/memoria` | Card "Gente" na Home | Home |
+| *(novo)* | `/formacao` | Card "Treinamento" (pendente) | Home |
+| Sobre | `/sobre` | **Quem somos** | Inferior |
+| Parceiros | `/sobre#parceiros` | **Parceiros** | Inferior |
+| Transparência | `/transparencia` | **Transparência e governança** | Inferior |
+| Arquitetura | `/arquitetura` | **Relatório de Arquitetura** | Inferior |
+| Notícias | `/noticias` | **Notícias** | Inferior |
+| Fale Conosco | `/#fale-conosco` | **Fale Conosco** | Inferior |
+| 404 | `*` | fallback | — |
+
+#### E) Promoção de Ouvidoria e Encontre um profissional — recomendação
+
+Ambos viram **rota dedicada** (são hard services clicáveis — a pessoa clica para *fazer*, não para ler):
+- **`/ouvidoria`** — rota própria (fluxo de relato de discriminação; espelha `/relato-discriminacao` do app) + conteúdos de direitos.
+- **`/profissionais`** — rota própria (busca/filtro). **Conteúdo pendente:** hoje só existe a intenção; a base de profissionais é a pendência **P3**.
+
+#### F) Ponto a confirmar (registrado como aberto)
+
+D8 manda **Comunidade e Memória "para o topo"**, mas D6 diz **"menu superior só hard services"**. Resolvido na proposta como **cards "Gente" na Home** (área pública), mantendo o menu superior enxuto. **Confirmação pendente** do usuário: cards na Home (proposto) **ou** itens do próprio menu superior.
 
 ---
 
