@@ -4,9 +4,12 @@
 **Projeto:** Pulso Preto (ex-Gente Preta)
 **Finalidade:** inventariar todos os **módulos master** da plataforma e mostrar, de forma rastreável, **como cada um foi aproveitado em cada versão** — se de forma *original* (intacta) ou *com variante* (adaptada). O foco é **conteúdo**, não pixels.
 **Método:** leitura direta do código-fonte em `site/`, `app/`, `shared/`, `worker/`, `database/` e `docs/`, cruzada com o acervo do Hub (`PROJ NEGROS - IDEIAS ABA SITE.pdf`, `ANEXO 2`, etc.). Nenhum número aqui é estimado: todos foram contados nos arquivos.
-**Status:** documento de **diagnóstico para a sessão de requisitos do PP3**. Não implementa nada — serve de base para decidirmos, caso a caso, o que popula o site e o app.
+**Status:** documento de **diagnóstico + registro de decisões** da sessão de requisitos do PP3. Não implementa nada — serve de base para decidirmos, caso a caso, o que popula o site e o app.
+**Atualização (15/10/2026):** decisões de direção registradas na **Parte 5.2** e **Parte 5.4**; lista de pendências em aberto na **Parte 6**.
 
 > **Convenção de leitura.** "Versão" tem, neste projeto, **três significados empilhados**. Antes de mapear módulos, é obrigatório separá-los (Parte 0) — senão a própria pergunta "o que mudou entre GP0/PP1/PP2" fica ambígua.
+
+> **Rito de trabalho (acordado).** Trabalhamos **um áudio por vez**, devagar ("com o andor que o santo é de barro"). Para cada áudio: (1) **checar exatamente qual versão** está sendo avaliada (GP0/PP1/PP2 — e qual camada, ver Parte 0); (2) **pedir esclarecimento** sobre qualquer referência citada que **não exista no Hub**; (3) só então registrar a decisão. Nenhuma implementação sem validação crítica.
 
 ---
 
@@ -304,15 +307,23 @@ Marca "Pulso"    —          ███████    ███████  (i
 - **PP1/PP2** são os mais **ricos em copy institucional e marca** (a identidade "Pulso Preto" oficial).
 - Nenhum dos dois lados sozinho representa "o melhor do projeto".
 
-### 5.2 As 5 decisões que o PP3 precisa tomar (propostas para validação — NÃO implementadas)
+### 5.2 Decisões registradas (sessão de requisitos PP3 — 15/10/2026)
 
-> Estas são **propostas de discussão**, para a sessão de requisitos. Nada será implementado sem o "ok" do usuário.
+> Registro das decisões de direção. Cada item partiu de uma proposta deste mapeamento e foi **confirmado ou ajustado** pelo responsável do projeto. **Nada abaixo foi implementado ainda** — é o **registro de direção**, para orientar a colagem do PP3.
 
-1. **Fusão de conteúdo, não escolha de variante.** O PP3 deve **somar** o melhor de cada recorte: os *serviços-duros* + *fitoterapia* + *problema×solução* do GP0 **e** a *copy/marca Pulso Preto* do PP1/PP2. A "colagem" pedida é literalmente isso.
-2. **Uma só fonte de verdade para a Home.** Hoje há `Home.tsx` (GP0) + `PulsoHome` + `variantContent.ts`. O PP3 deve **colapsar** isso numa Home única, sem `if (variantId===...)`.
-3. **Corrigir a dívida editorial** antes de popular: unificar a contagem (47), alinhar categorias (10), temas (7 ou 8 — decidir), e sincronizar app↔site (40 vs 47).
-4. **Decidir o destino de GP0 e do Canon.** GP0 vira *memória histórica* (preservada no Canon) ou é **removido** do código? O Canon já preserva `gente-preta-v1` — a variante `gp0` pode sair da produção sem perder história.
-5. **Resolver o que ainda falta** (não é "abandono", é "pendência"): AVA/Formação (C8), Find-a-Doctor real (aba nº 2), histórias reais em Memória (aba nº 9), calendário de eventos contínuo (aba nº 6).
+| # | Proposta do mapeamento | Decisão registrada |
+|---|---|---|
+| **D1** | Fusão de conteúdo, não escolha de variante | ✅ **Confirmada.** *"PP3 deve reconciliar e consolidar, **somando**"* — a colagem é literalmente **soma do único + subtração do repetido**. |
+| **D2** | Uma só fonte de verdade para a Home | ✅ **Reforçada para SSOT.** *"exatamente **uma única SSOT**"* — não só para a Home: **uma única fonte de verdade para o sistema todo**. |
+| **D3** | Corrigir a dívida editorial | ✅ **Com mecanismo.** *"tudo que for **variável à medida** deve beber o dado **diretamente da base de dados**"* — nenhum número/título fixo no código. |
+| **D4** | Destino de GP0 e do Canon | ✅ **Decidido.** GP0 preservado como **memória histórica dentro do CANON**; **PP1 e PP2 terão o mesmo destino** (também viram memória no Canon); **foco total em produzir o PP3**. |
+| **D5** | Resolver o que ainda falta | ✅ **Encaminhada.** Será produzida uma **lista de tudo que está pendente/faltando**, item a item, para decisão (ver **Parte 6**). |
+
+**Consequências diretas das decisões:**
+
+- **SSOT única (D2 + D3):** toda a plataforma (site **e** app) lê de **uma só fonte canônica** (o Canon + um banco master — ver R1). Não há mais conteúdo "vivo" duplicado em `variantContent.ts`, `project.ts`, `news.ts`, `heroSlides.ts`.
+- **Número auto-derivado (D3):** a contagem de condições, de categorias, de temas — tudo que é "medida" — passa a ser **calculado a partir da base**, nunca digitado. Isso **elimina na raiz** a contradição `45+/47/48+` (ver R4).
+- **Memória histórica (D4):** `gente-preta-v1` (GP0) já está no Canon; `pulso-preto-v1` cobre PP1/PP2. As variantes de apresentação saem da **produção**, mas **permanecem registradas** como memória — sem perda de histórico.
 
 ### 5.3 Mapa de aproveitamento sugerido para a "colagem" do PP3
 
@@ -324,18 +335,65 @@ Marca "Pulso"    —          ███████    ███████  (i
 | PP2 | Bloco de notícias na Home | Seção de notícias PP3 |
 | Ambos | `news.ts` (8) unificado com notícias da Home | Fonte única de notícias |
 | Compartilhado | 10 categorias · 47 condições · 7 deep · rede SUS · transparência | Mantém intacto |
-| App | Temas + estrutura; **elevar** para paridade com o site | Paridade de conteúdo |
+| App | Temas + estrutura; **elevar** para paridade com o site (R2: refatorar em conjunto) | Paridade de conteúdo |
 
-### 5.4 Riscos de "colagem sem retrabalho"
+### 5.4 Riscos da "colagem" e mitigações acordadas
 
-- **Risco 1 — Duplicação oculta.** Se o PP3 somar GP0+PP1/PP2 sem remover os ramos antigos, teremos **4 Homes** em vez de 2. A colagem precisa de **subtração**, não só soma.
-- **Risco 2 — App desatualizado.** Popular o site e esquecer o app recria a assimetria atual (app = "GP0 com pele Pulso").
-- **Risco 3 — Conteúdo placeholder virar produção.** Memória (histórias "A definir"), imagens CC (`isPlaceholder:true`), Conselho Consultivo ("A definir") — popular com isso **agrava** o problema de credibilidade (C3).
-- **Risco 4 — Contradição de números.** Publicar "45+", "47" e "48+" simultaneamente é um erro factual visível ao público.
+| # | Risco | Mitigação acordada |
+|---|---|---|
+| **R1** | **Duplicação oculta** — somar GP0+PP1/PP2 sem remover ramos antigos criaria 4 Homes | **Subtrações + "banco de dados" master.** Consolidar **todo o conteúdo similar e seus versionamentos** em um **banco de dados master** — a colagem **soma o único, subtrai o repetido**. |
+| **R2** | **App desatualizado** — popular o site e esquecer o app recria a assimetria atual | **Testar a arquitetura CEOS e refatorar o app simultaneamente.** Site e app evoluem **juntos**, sob o mesmo Canon/SSOT. |
+| **R3** | **Placeholder virar produção** — histórias "A definir", imagens CC (`isPlaceholder:true`), Conselho "A definir" | **Substituição categoria a categoria nesta fase.** Nenhum placeholder entra no PP3: cada categoria é trocada por conteúdo real antes de publicar. |
+| **R4** | **Contradição de números** — publicar `45+` / `47` / `48+` simultaneamente | **Número auto-derivado.** O valor publicado deve **beber da base de dados CEOS** via **função/variável que atualiza automaticamente** — zero número hardcoded. |
 
 ---
 
-## PARTE 6 — Ficha resumida (para consulta rápida)
+## PARTE 6 — Pendências em aberto (lista para decisão)
+
+> Conforme **D5**: lista de **tudo que está pendente/faltando** no projeto, extraída do cruzamento das 9 abas originais (Parte 4.1) + contradições C1–C8 + dívida editorial (Parte 4.4). Cada item precisa de uma **decisão** (fazer agora / adiar / descartar) na sessão do PP3. **Nada aqui está decidido** — é a pauta.
+
+### 6.1 Conteúdo faltante (diluído/abandonado do acervo original)
+
+| # | Pendência | Origem | Tipo |
+|---|---|---|---|
+| P1 | **AVA / Formação** — 10 vídeos + 5 podcasts + certificação digital | AECID, Anexo 2 (C8) | Entregável **contratual** |
+| P2 | **Cartilha impressa** (1.000 un.) | AECID, Anexo 2 (C1) | Entregável **contratual** |
+| P3 | **Find-a-Doctor real** — rede privada + filtro "atendimento humanizado" | Aba nº 2 (só texto hoje) | Produto |
+| P4 | **Quiz de bem-estar** (autocuidado interativo) | Aba nº 1 | Produto |
+| P5 | **Histórias reais** em Memória (hoje só "A definir") | Aba nº 9 | Conteúdo (R3) |
+| P6 | **Saúde geracional + Lideranças negras + Hall da Fama** | Aba nº 5 | Conteúdo |
+| P7 | **Calendário de eventos contínuo** (além do Seminário) | Aba nº 6 | Conteúdo/Operação |
+| P8 | **Busca global** (doença/serviço/localização/conteúdo) | Estrutura complementar | Produto |
+| P9 | **Área do usuário** (salvar conteúdo, seguir eventos, inscrever em pesquisa) | Estrutura complementar | Produto |
+
+### 6.2 Pendências de marca/governança
+
+| # | Pendência | Origem | Tipo |
+|---|---|---|---|
+| P10 | **Conselho Consultivo nomeado** (hoje "A definir") | C3 | Governança |
+| P11 | **Remover assinatura fictícia "CASIO v10.0"** de docs institucionais | C3 | Governança |
+| P12 | **Fotografia própria** substituindo imagens CC (`isPlaceholder:true`) | R3 | Conteúdo/Design |
+| P13 | **Vídeo `NefFu175V0A`** em `/memoria` (recomendação de substituir) | Docs v4.2 | Conteúdo |
+| P14 | **Canal oficial no YouTube** | Docs v4.2 | Operação |
+
+### 6.3 Pendências técnicas (dívida a sanear na colagem)
+
+| # | Pendência | Evidência |
+|---|---|---|
+| P15 | **Unificar contagem de condições** (auto-derivada — R4) | `45+` / `47` / `48+` |
+| P16 | **Paridade app↔site** (40 vs 47 condições) | `diseases.ts` (app) vs (site) |
+| P17 | **Definir "7 ou 8 temas prioritários"** | `diseases.ts:420` (7) vs flags (8) |
+| P18 | **`project.ts` hardcoda `name:'Gente Preta'`** → usar Canon/SSOT | site **e** app |
+| P19 | **Unificar as 2 fontes de notícia** (`news.ts` 8 × `variantContent.news` 3) | SSOT (D2) |
+| P20 | **Colapsar as Homes** (GP0 + PulsoHome) numa Home única | R1 |
+| P21 | **Destino do app "profissional"** (triagem CPF/CNS) × app usuário | C6 |
+| P22 | **Banco de dados master** (conteúdo + versionamentos consolidados) | R1 |
+
+> **Observação de método (D5):** esta lista é o **ponto de partida**. Na sessão, cada pendência recebe uma decisão e, quando aplicável, é vinculada a uma **versão específica** que está sendo avaliada (ver rito na abertura do documento).
+
+---
+
+## PARTE 7 — Ficha resumida (para consulta rápida)
 
 | Pergunta | Resposta |
 |---|---|
@@ -355,4 +413,4 @@ Marca "Pulso"    —          ███████    ███████  (i
 
 ---
 
-*Documento de diagnóstico gerado por leitura direta do repositório (site/, app/, shared/, worker/, database/, docs/) e do acervo do Hub. Todos os números foram contados nos arquivos-fonte. Destina-se à sessão de requisitos do PP3 — nenhuma alteração de código foi feita.*
+*Documento de diagnóstico + registro de decisões, gerado por leitura direta do repositório (site/, app/, shared/, worker/, database/, docs/) e do acervo do Hub. Todos os números foram contados nos arquivos-fonte. Destina-se à sessão de requisitos do PP3 — **nenhuma alteração de código foi feita**; as Partes 5.2, 5.4 e 7 registram apenas **direção e pauta**.*
