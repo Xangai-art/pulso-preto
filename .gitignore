@@ -1,0 +1,13 @@
+node_modules/
+site/dist/
+app/dist/
+.wrangler/
+.env.local
+.env
+*.log
+
+# O diretório /dist na raiz É COMMITADO de propósito: é a saída de build combinada
+# (Site na raiz + App Sentinela em /app/) que o pipeline de Hosted Deploy publica
+# diretamente a partir do snapshot do Git (não roda `npm run build` no servidor).
+# Sempre rode `npm run build` na raiz antes de commitar mudanças de site/ ou app/.
+!/dist/

@@ -1,0 +1,252 @@
+{
+  "route": "/baixar",
+  "meta": {
+    "title": "Baixe o App Sentinela — Gente Preta",
+    "description": "App Sentinela — escuta longitudinal, navegação SUS e radar comunitário. Beta em construção com validação ética (CEP/FEPECS). Cadastre-se para acesso antecipado."
+  },
+  "hero": {
+    "kicker": "Escuta longitudinal · Navegação SUS · Radar comunitário",
+    "title": "App Sentinela",
+    "subtitle": "Sua saúde, sua voz, sua comunidade — no bolso. Check-ins de 1–3 minutos, mapa de UBS do DF, biblioteca de saúde offline e radar epidemiológico devolvido à comunidade com transparência.",
+    "status_badge": {
+      "color": "yellow",
+      "icon": "🟡",
+      "text": "Beta em construção — Piloto DF · Q4 2026",
+      "detail": "Aguardando aprovação final de CEP/FEPECS e onboarding das 10 UBS piloto. Cadastre-se abaixo para receber acesso antecipado."
+    },
+    "ctas": [
+      { "label": "📱 Quero acesso antecipado", "action": "scroll", "target": "#formulario" },
+      { "label": "📖 Ver como funciona", "action": "scroll", "target": "#como-funciona" },
+      { "label": "⚖️ Ler Política de Privacidade", "action": "link", "href": "/transparencia" }
+    ]
+  },
+  "sections": [
+    {
+      "id": "status",
+      "title": "Status atual (transparência radical)",
+      "panels": [
+        {
+          "status": "🟢 Concluído",
+          "items": [
+            "Arquitetura técnica V4.1 publicada",
+            "Base científica com 40+ condições curada",
+            "Modelo de dados LGPD (3 domínios separados)",
+            "Site institucional público",
+            "Parceria com 9 instituições formalizada"
+          ]
+        },
+        {
+          "status": "🟡 Em andamento",
+          "items": [
+            "Aprovação CEP/FEPECS da pesquisa populacional",
+            "Desenvolvimento do App Sentinela (Beta)",
+            "Onboarding das 10 UBS piloto no DF",
+            "Ambiente Virtual de Aprendizagem (AVA) para FEPECS",
+            "Nomeação final do Conselho Consultivo"
+          ]
+        },
+        {
+          "status": "🔴 Pendente",
+          "items": [
+            "Publicação nas lojas (App Store / Google Play)",
+            "Lançamento público para usuários finais",
+            "Integração com e-SUS",
+            "Push notifications",
+            "Certificação digital (AVA)"
+          ]
+        }
+      ],
+      "timeline_title": "📅 Cronograma público",
+      "timeline": [
+        { "period": "Q3 2026", "milestone": "Aprovação ética e Beta fechado (equipe + parceiros)" },
+        { "period": "Q4 2026", "milestone": "Beta aberto (100 usuários piloto convidados)" },
+        { "period": "Q1 2027", "milestone": "Lançamento público nas 10 UBS" },
+        { "period": "Q2–Q4 2027", "milestone": "Expansão para 50 UBS" }
+      ]
+    },
+    {
+      "id": "como-funciona",
+      "title": "Como o app funciona",
+      "steps": [
+        {
+          "step": 1,
+          "title": "Você baixa e faz cadastro",
+          "text": "Onboarding com consentimento LGPD granular em 4 níveis — você escolhe o que compartilha. Nenhum dado é obrigatório além do mínimo para uso."
+        },
+        {
+          "step": 2,
+          "title": "Questionário linha de base (5–10 min)",
+          "text": "Uma vez só, no início. Perguntas sobre sua saúde, contexto socioeconômico, experiências no atendimento em saúde. Todas anônimas."
+        },
+        {
+          "step": 3,
+          "title": "Check-ins recorrentes (1–3 min)",
+          "text": "A cada 1–2 semanas. Como você está? Teve alguma consulta? Alguma dificuldade de acesso? Alguma discriminação percebida?"
+        },
+        {
+          "step": 4,
+          "title": "Mapa de UBS + Rede SUS",
+          "text": "Encontre a UBS mais próxima com geolocalização. Veja horários, especialidades disponíveis, e (em breve) rede privada com atendimento culturalmente competente."
+        },
+        {
+          "step": 5,
+          "title": "Biblioteca de Saúde offline",
+          "text": "Todo o conteúdo da Biblioteca disponível sem internet. Leia no ônibus, na sala de espera, onde precisar."
+        },
+        {
+          "step": 6,
+          "title": "Radar Comunitário (opt-in)",
+          "text": "Sinais devolvidos à comunidade: 'X pessoas na sua região relataram Y sintomas nas últimas 48h — veja o que fazer'. Nunca vigilância silenciosa. Sempre com seu consentimento explícito."
+        }
+      ]
+    },
+    {
+      "id": "direitos",
+      "title": "Seus direitos no app",
+      "consent_title": "Consentimento granular (4 níveis)",
+      "consent_levels": [
+        {
+          "level": 1,
+          "name": "Uso do App",
+          "type": "Obrigatório",
+          "text": "Necessário apenas para o app funcionar. Nada mais."
+        },
+        {
+          "level": 2,
+          "name": "Participação em pesquisas",
+          "type": "Opcional",
+          "text": "Dados pseudonimizados para estudos aprovados por CEP. Você pode retirar a qualquer momento."
+        },
+        {
+          "level": 3,
+          "name": "Dados agregados para políticas públicas",
+          "type": "Opcional",
+          "text": "Agregação sem identificação individual. Impacta política pública, não expõe você."
+        },
+        {
+          "level": 4,
+          "name": "Geolocalização precisa",
+          "type": "Opcional",
+          "text": "Apenas para encontrar a UBS mais próxima. Nunca compartilhada com terceiros."
+        }
+      ],
+      "rights_title": "Seus direitos garantidos (LGPD Art. 18)",
+      "rights": [
+        { "icon": "✅", "name": "Acesso", "text": "Ver todos os dados que temos sobre você" },
+        { "icon": "✅", "name": "Correção", "text": "Corrigir informações incorretas" },
+        { "icon": "✅", "name": "Eliminação (anonimização)", "text": "Pedir que dados sejam removidos" },
+        { "icon": "✅", "name": "Portabilidade", "text": "Receber seus dados em formato aberto" },
+        { "icon": "✅", "name": "Revogação", "text": "Mudar de ideia sobre qualquer consentimento, a qualquer momento" }
+      ],
+      "security_title": "Segurança técnica",
+      "security": [
+        "TLS 1.3 em trânsito",
+        "AES-256 em repouso para dados sensíveis",
+        "Raça/cor e dados de saúde criptografados (Art. 5º, II, LGPD)",
+        "Pseudonimização SHA-256 para identificadores de pesquisa",
+        "Logs de auditoria imutáveis"
+      ]
+    },
+    {
+      "id": "formulario",
+      "title": "Formulário de acesso antecipado",
+      "header": "Cadastre-se para receber acesso antecipado quando o Beta abrir (Q4 2026). Prioridade para moradores das regiões das 10 UBS piloto.",
+      "fields": [
+        { "type": "text", "name": "nome", "label": "Nome (opcional — pode usar apelido)", "required": false },
+        { "type": "email", "name": "email", "label": "E-mail", "required": true, "help": "para envio do convite" },
+        { "type": "tel", "name": "telefone", "label": "Telefone / WhatsApp (opcional)", "required": false },
+        {
+          "type": "select",
+          "name": "regiao_df",
+          "label": "Região do DF onde você mora",
+          "required": true,
+          "options": [
+            "Central", "Centro-Sul", "Norte", "Sul", "Leste", "Oeste", "Sudoeste",
+            "Não moro no DF (fica em lista de espera para expansão)"
+          ]
+        },
+        {
+          "type": "select",
+          "name": "perfil",
+          "label": "Você é",
+          "required": true,
+          "options": [
+            "Morador da comunidade / paciente do SUS",
+            "Profissional de saúde",
+            "Estudante FEPECS (capacitação AVA)",
+            "Pesquisador / acadêmico",
+            "Representante de organização parceira",
+            "Outro"
+          ]
+        },
+        { "type": "checkbox", "name": "aceita_email", "label": "Receber e-mail de convite quando o Beta abrir", "required": true },
+        { "type": "checkbox", "name": "aceita_privacidade", "label": "Li e aceito a Política de Privacidade", "required": true, "link": "/transparencia" }
+      ],
+      "legal_notice": "Este cadastro é apenas para lista de espera. Nenhum dado de saúde é coletado neste formulário. Base legal LGPD: legítimo interesse (comunicação sobre projeto de interesse público).",
+      "submit_label": "Cadastrar-se para acesso antecipado"
+    },
+    {
+      "id": "faq",
+      "title": "Perguntas frequentes",
+      "questions": [
+        {
+          "q": "Por que ainda não posso baixar?",
+          "a": "Porque estamos fazendo do jeito certo: aprovação ética (CEP/FEPECS) + validação com 10 UBS piloto + onboarding com profissionais da rede + testes de acessibilidade. Preferimos atrasar 3 meses do que lançar um produto que trata dados sensíveis sem os cuidados necessários."
+        },
+        {
+          "q": "O app é gratuito?",
+          "a": "Sim, integralmente gratuito para usuários finais. Financiamento vem da AECID (24 meses) e da contrapartida institucional SEJUS/DF. Nenhum dado é vendido a terceiros — jamais."
+        },
+        {
+          "q": "Vai funcionar em celular simples?",
+          "a": "Sim. O app é otimizado para Android 8+ e iOS 13+, com modo offline para as funções principais (biblioteca, mapa de UBS, check-ins)."
+        },
+        {
+          "q": "Preciso ser negro para usar?",
+          "a": "Não. O app é aberto a qualquer pessoa. Mas o conteúdo, a curadoria e o recorte de análise são focados na população negra — porque é isso que a AECID financia, e é essa a inequidade que precisamos endereçar."
+        },
+        {
+          "q": "Meus dados vão para o SUS?",
+          "a": "Apenas em duas situações, ambas com seu consentimento explícito: Nível 2 (pesquisa) — dados pseudonimizados, sem identificação; Nível 3 (políticas públicas) — dados agregados, sem identificação individual. Dados individuais identificáveis nunca são compartilhados sem TCLE específico."
+        },
+        {
+          "q": "E se eu quiser sair depois?",
+          "a": "Direito garantido. No app, em 'Configurações → Privacidade → Excluir minha conta'. Todos os dados identificáveis são anonimizados em até 30 dias."
+        },
+        {
+          "q": "Quem fiscaliza o app?",
+          "a": "Conselho Consultivo do projeto (FEPECS, UnB, FIOCRUZ, DPO); Comitê de Ética em Pesquisa (CEP/FEPECS); Autoridade Nacional de Proteção de Dados (ANPD); Comitê de Gestão (AECID, SEJUS/DF, APRECIA)."
+        }
+      ]
+    },
+    {
+      "id": "profissionais",
+      "title": "Para profissionais de saúde",
+      "text": "Você é profissional de saúde na rede SUS-DF? O App Sentinela também tem uma versão para profissionais (Beta Fase 1), com: Triagem clínico-social identificável (CPF/CNS); Classificação de risco de enfermagem; Encaminhamentos rastreáveis; Integração futura com e-SUS.",
+      "cta": { "label": "Sou profissional de saúde — quero saber mais", "action": "form" }
+    },
+    {
+      "id": "academico",
+      "title": "Para a comunidade acadêmica e de pesquisa",
+      "text": "Você é pesquisador(a) ou estudante FEPECS? O projeto inclui um AVA (Ambiente Virtual de Aprendizagem) com: 10 vídeo-aulas + 5 podcasts sobre saúde da população negra; Simulações clínicas com casos reais; Certificação digital para 100 estudantes FEPECS.",
+      "cta": { "label": "Saber mais sobre a formação", "action": "form" }
+    }
+  ],
+  "footer_ctas": [
+    {
+      "title": "Ainda não é hora, mas quer acompanhar?",
+      "text": "Assine nossa newsletter mensal com atualizações do projeto.",
+      "cta": { "label": "Assinar newsletter", "action": "form" }
+    },
+    {
+      "title": "Quer apoiar o projeto?",
+      "text": "Somos financiados pela AECID + SEJUS/DF, mas parcerias institucionais são bem-vindas.",
+      "cta": { "label": "Falar com Coordenação", "action": "form" }
+    },
+    {
+      "title": "Já leu nossa arquitetura?",
+      "text": "Todo o desenho técnico, ético e institucional é público.",
+      "cta": { "label": "Ver /arquitetura", "action": "link", "href": "/arquitetura" }
+    }
+  ]
+}

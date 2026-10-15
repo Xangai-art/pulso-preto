@@ -1,0 +1,289 @@
+{
+  "version": 1,
+  "engine": "sqlite",
+  "name": "pulso-preto-content",
+  "comment": "Provisiona o único banco D1 gerenciado do worker no deploy hospedado do Genspark. Derivado de database/schema.sql (fonte da verdade).",
+  "tables": [
+    {
+      "name": "diseases",
+      "primary_key": "id",
+      "columns": [
+        {
+          "name": "id",
+          "type": "TEXT",
+          "primary_key": true,
+          "not_null": true
+        },
+        {
+          "name": "name",
+          "type": "TEXT",
+          "not_null": true
+        },
+        {
+          "name": "category_id",
+          "type": "TEXT",
+          "not_null": true
+        },
+        {
+          "name": "category_title",
+          "type": "TEXT",
+          "not_null": true
+        },
+        {
+          "name": "is_priority_theme",
+          "type": "INTEGER",
+          "not_null": true,
+          "default": 0
+        },
+        {
+          "name": "has_deep_content",
+          "type": "INTEGER",
+          "not_null": true,
+          "default": 0
+        },
+        {
+          "name": "study",
+          "type": "TEXT"
+        },
+        {
+          "name": "finding",
+          "type": "TEXT"
+        },
+        {
+          "name": "local_value",
+          "type": "TEXT"
+        },
+        {
+          "name": "local_finding",
+          "type": "TEXT"
+        },
+        {
+          "name": "local_source",
+          "type": "TEXT"
+        },
+        {
+          "name": "updated_at",
+          "type": "TEXT",
+          "not_null": true,
+          "default": "datetime('now')"
+        }
+      ],
+      "indexes": [
+        {
+          "name": "idx_diseases_priority",
+          "columns": [
+            "is_priority_theme",
+            "has_deep_content"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "disease_content",
+      "primary_key": "id",
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "primary_key": true
+        },
+        {
+          "name": "disease_id",
+          "type": "TEXT",
+          "not_null": true,
+          "references": "diseases(id)"
+        },
+        {
+          "name": "locale_id",
+          "type": "TEXT",
+          "not_null": true,
+          "check": "locale_id IN ('pt','es')"
+        },
+        {
+          "name": "audience",
+          "type": "TEXT",
+          "not_null": true,
+          "check": "audience IN ('medico','enfermeiro','usuario')"
+        },
+        {
+          "name": "summary",
+          "type": "TEXT",
+          "not_null": true
+        },
+        {
+          "name": "hero_image_url",
+          "type": "TEXT"
+        },
+        {
+          "name": "hero_image_alt",
+          "type": "TEXT"
+        },
+        {
+          "name": "hero_image_credit",
+          "type": "TEXT"
+        },
+        {
+          "name": "hero_is_placeholder",
+          "type": "INTEGER",
+          "not_null": true,
+          "default": 1
+        }
+      ],
+      "unique": [
+        [
+          "disease_id",
+          "locale_id",
+          "audience"
+        ]
+      ],
+      "indexes": [
+        {
+          "name": "idx_content_disease_locale",
+          "columns": [
+            "disease_id",
+            "locale_id"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "disease_sections",
+      "primary_key": "id",
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "primary_key": true
+        },
+        {
+          "name": "content_id",
+          "type": "INTEGER",
+          "not_null": true,
+          "references": "disease_content(id)"
+        },
+        {
+          "name": "position",
+          "type": "INTEGER",
+          "not_null": true
+        },
+        {
+          "name": "heading",
+          "type": "TEXT",
+          "not_null": true
+        }
+      ],
+      "unique": [
+        [
+          "content_id",
+          "position"
+        ]
+      ],
+      "indexes": [
+        {
+          "name": "idx_sections_content",
+          "columns": [
+            "content_id",
+            "position"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "disease_paragraphs",
+      "primary_key": "id",
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "primary_key": true
+        },
+        {
+          "name": "section_id",
+          "type": "INTEGER",
+          "not_null": true,
+          "references": "disease_sections(id)"
+        },
+        {
+          "name": "position",
+          "type": "INTEGER",
+          "not_null": true
+        },
+        {
+          "name": "body",
+          "type": "TEXT",
+          "not_null": true
+        }
+      ],
+      "unique": [
+        [
+          "section_id",
+          "position"
+        ]
+      ],
+      "indexes": [
+        {
+          "name": "idx_paragraphs_section",
+          "columns": [
+            "section_id",
+            "position"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "disease_sources",
+      "primary_key": "id",
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "primary_key": true
+        },
+        {
+          "name": "disease_id",
+          "type": "TEXT",
+          "not_null": true,
+          "references": "diseases(id)"
+        },
+        {
+          "name": "locale_id",
+          "type": "TEXT",
+          "not_null": true,
+          "check": "locale_id IN ('pt','es')"
+        },
+        {
+          "name": "position",
+          "type": "INTEGER",
+          "not_null": true
+        },
+        {
+          "name": "label",
+          "type": "TEXT",
+          "not_null": true
+        },
+        {
+          "name": "detail",
+          "type": "TEXT",
+          "not_null": true
+        }
+      ],
+      "unique": [
+        [
+          "disease_id",
+          "locale_id",
+          "position"
+        ]
+      ],
+      "indexes": [
+        {
+          "name": "idx_sources_disease_locale",
+          "columns": [
+            "disease_id",
+            "locale_id",
+            "position"
+          ]
+        }
+      ]
+    }
+  ]
+}

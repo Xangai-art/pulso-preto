@@ -1,0 +1,371 @@
+{
+  "route": "/biblioteca-saude",
+  "meta": {
+    "title": "Biblioteca de Saúde — Gente Preta",
+    "description": "Base científica de 40+ condições de saúde com maior impacto na população negra. Estudo, achado e implicação para o SUS — sem misticismo, com evidência."
+  },
+  "hero": {
+    "kicker": "Base científica com recorte racial",
+    "title": "Biblioteca de Saúde",
+    "subtitle": "40+ condições organizadas em 10 categorias temáticas. Cada condição traz estudo de referência, achado científico e implicação prática — para você entender o que está em jogo e para o profissional de saúde ter dado auditável na mão.",
+    "notice": {
+      "icon": "ℹ️",
+      "text": "Conteúdo educativo, com base em literatura científica revisada por pares. Não substitui avaliação médica. As referências são majoritariamente internacionais (NEJM, CDC, JAMA) porque apenas 1,5% das pesquisas em saúde no Brasil incluem recorte racial — parte do problema que o Gente Preta existe para corrigir."
+    },
+    "ctas": [
+      { "label": "Buscar por condição", "action": "search" },
+      { "label": "Explorar por categoria", "action": "scroll", "target": "#categorias" }
+    ]
+  },
+  "filters": {
+    "primary": [
+      { "id": "cardio", "icon": "❤️", "label": "Cardiovasculares" },
+      { "id": "mental", "icon": "🧠", "label": "Saúde Mental" },
+      { "id": "resp", "icon": "🫁", "label": "Respiratórias" },
+      { "id": "meta", "icon": "🩸", "label": "Metabólicas" },
+      { "id": "renal", "icon": "🧬", "label": "Renais e Genéticas" },
+      { "id": "autoimune", "icon": "👩🦱", "label": "Autoimunes" },
+      { "id": "mulher", "icon": "👶", "label": "Saúde da Mulher Negra" },
+      { "id": "cancer", "icon": "🎗️", "label": "Câncer" },
+      { "id": "hiv", "icon": "🦠", "label": "HIV e Prevenção" },
+      { "id": "contemp", "icon": "📱", "label": "Contemporâneas" }
+    ],
+    "secondary": [
+      { "id": "genetica", "icon": "🔬", "label": "Evidência genética" },
+      { "id": "epidem", "icon": "📊", "label": "Evidência epidemiológica" },
+      { "id": "clinica", "icon": "🏥", "label": "Evidência clínica" },
+      { "id": "estrutural", "icon": "🌍", "label": "Evidência estrutural" }
+    ]
+  },
+  "categories": [
+    {
+      "id": "cardio",
+      "icon": "❤️",
+      "title": "Doenças Cardiovasculares",
+      "intro": "A população negra brasileira tem 2,3x mais risco de hipertensão em relação à população branca. Não é biologia isolada — é a interação entre variantes genéticas (como APOL1) e determinantes sociais (estresse crônico do racismo, acesso desigual a serviços, alimentação disponível no território).",
+      "conditions": [
+        {
+          "name": "Hipertensão",
+          "study": "NEJM — Parsa et al. (2013)",
+          "evidence": "Genética e clínica",
+          "finding": "Associação do gene APOL1 com progressão renal mais rápida em hipertensos negros.",
+          "implication": "Hipertensão em pessoa negra exige avaliação de função renal mais cedo e mais frequente."
+        },
+        {
+          "name": "Acidente Vascular Cerebral (AVC)",
+          "study": "Stroke (AHA) — Howard et al. (2018)",
+          "evidence": "Epidemiológica",
+          "finding": "Maior incidência associada a hipertensão precoce + desigualdade social.",
+          "implication": "Prevenção primária deve começar na adolescência em territórios de maior vulnerabilidade."
+        },
+        {
+          "name": "Doença Coronariana",
+          "study": "ATVB Journal (2015)",
+          "evidence": "Genética e populacional",
+          "finding": "Maior risco cardiovascular em populações afrodescendentes.",
+          "implication": "Estratificação de risco tradicional (Framingham) pode subestimar risco real."
+        }
+      ]
+    },
+    {
+      "id": "mental",
+      "icon": "🧠",
+      "title": "Saúde Mental",
+      "intro": "Saúde mental na população negra carrega uma dupla invisibilidade: menor diagnóstico E menor acesso a tratamento contínuo. O sofrimento existe — a documentação clínica, não.",
+      "conditions": [
+        {
+          "name": "Depressão",
+          "study": "JAMA Psychiatry — Williams et al. (2022)",
+          "evidence": "Social e estrutural",
+          "finding": "Subdiagnóstico e menor acesso ao tratamento.",
+          "implication": "O sintoma 'aguentar calado' não é força cultural — é barreira de acesso a ser ativamente combatida."
+        },
+        {
+          "name": "Saúde Mental Geral (acesso a cuidado contínuo)",
+          "study": "SAMHSA Survey (2021)",
+          "evidence": "Epidemiológica",
+          "finding": "Menor acesso a cuidado contínuo.",
+          "implication": "Encaminhamentos precisam ser acompanhados, não apenas emitidos."
+        }
+      ]
+    },
+    {
+      "id": "resp",
+      "icon": "🫁",
+      "title": "Doenças Respiratórias",
+      "intro": "Doenças respiratórias em pessoas negras têm maior gravidade e mais hospitalizações — não por biologia isolada, mas pela combinação de poluição em territórios periféricos, acesso desigual a medicação e menor suspeição diagnóstica.",
+      "conditions": [
+        {
+          "name": "Asma (pediátrica e adulto)",
+          "study": "CDC Asthma Report (2020)",
+          "evidence": "Epidemiológica",
+          "finding": "Maior gravidade e hospitalização em crianças negras.",
+          "implication": "Crise asmática em criança negra deve ser tratada com maior grau de suspeição de gravidade."
+        },
+        {
+          "name": "Asma — Controle Clínico",
+          "study": "NEJM Review (2023)",
+          "evidence": "Clínica",
+          "finding": "Diferenças no controle associadas ao acesso à medicação.",
+          "implication": "Verificar se a medicação prescrita está disponível na farmácia da UBS de referência."
+        },
+        {
+          "name": "COVID-19",
+          "study": "CDC Reports (2021)",
+          "evidence": "Populacional",
+          "finding": "Maior impacto relacionado a desigualdades sociais.",
+          "implication": "Vacinação e busca ativa devem priorizar territórios de maior vulnerabilidade."
+        }
+      ]
+    },
+    {
+      "id": "meta",
+      "icon": "🩸",
+      "title": "Doenças Metabólicas",
+      "intro": "Diabetes e obesidade em populações negras têm mais complicações precoces — reflexo de acesso desigual a rastreamento, alimentação adequada e cuidado contínuo.",
+      "conditions": [
+        {
+          "name": "Diabetes",
+          "study": "ADA Standards (2023)",
+          "evidence": "Clínica",
+          "finding": "Maior prevalência e complicações mais precoces.",
+          "implication": "Rastreamento com hemoglobina glicada deve começar mais cedo."
+        },
+        {
+          "name": "Diabetes Juvenil (Tipo 1 e 2 em jovens)",
+          "study": "SEARCH Study (2021)",
+          "evidence": "Epidemiológica",
+          "finding": "Diagnóstico mais tardio e pior controle glicêmico.",
+          "implication": "Sintomas atípicos em jovens negros exigem investigação ativa."
+        },
+        {
+          "name": "Obesidade",
+          "study": "CDC Report (2024)",
+          "evidence": "Populacional",
+          "finding": "Maior prevalência associada a fatores sociais (não biológicos isolados).",
+          "implication": "Intervenção sem enfrentar acesso a alimentação adequada é ineficaz."
+        }
+      ]
+    },
+    {
+      "id": "renal",
+      "icon": "🧬",
+      "title": "Doenças Renais e Genéticas",
+      "intro": "O gene APOL1 (variantes G1 e G2), mais frequente em afrodescendentes, altera a progressão da doença renal. Combine isso com hipertensão mal controlada e menor acesso a nefrologia — e o resultado é maior taxa de diálise precoce.",
+      "conditions": [
+        {
+          "name": "Doença Renal Crônica",
+          "study": "Science — Genovese et al. (2010)",
+          "evidence": "Genética",
+          "finding": "Identificação do gene APOL1 (variantes G1/G2) como fator de risco.",
+          "implication": "Rastreamento renal em hipertensos e diabéticos negros deve ser mais frequente."
+        },
+        {
+          "name": "Progressão da Doença Renal",
+          "study": "JCI — Friedman & Pollak (2011)",
+          "evidence": "Genética",
+          "finding": "APOL1 associado ao aumento do risco de progressão para diálise.",
+          "implication": "Encaminhamento precoce a nefrologista muda desfecho."
+        },
+        {
+          "name": "Insuficiência Renal",
+          "study": "NEJM — Parsa et al. (2013)",
+          "evidence": "Genético-clínica",
+          "finding": "Confirmação da associação APOL1 ↔ doença renal terminal.",
+          "implication": "Fila para transplante tem viés racial — advocacy institucional é parte do cuidado."
+        },
+        {
+          "name": "Anemia Falciforme",
+          "study": "Ministério da Saúde — PNAF; parceria técnica ABRADFAL",
+          "evidence": "Genética + clínica",
+          "finding": "Doença genética mais prevalente no Brasil, com concentração histórica na população negra. Triagem neonatal ('Teste do Pezinho') permite diagnóstico precoce.",
+          "implication": "Crise falcêmica é emergência — não pode ser confundida com 'queixa exagerada de dor' (viés racial documentado em atendimento de dor)."
+        }
+      ]
+    },
+    {
+      "id": "autoimune",
+      "icon": "👩🦱",
+      "title": "Doenças Autoimunes",
+      "intro": "O lúpus (LES) é 3–4 vezes mais frequente em mulheres negras — e com pior prognóstico renal. Diagnóstico tardio é frequente por sintomas serem atribuídos a 'estresse' ou 'psicossomático'.",
+      "conditions": [
+        {
+          "name": "Lúpus (LES) — Incidência",
+          "study": "CDC Lupus Report (2015)",
+          "evidence": "Epidemiológica",
+          "finding": "Maior incidência em mulheres negras.",
+          "implication": "Suspeição clínica precoce em mulher negra com sintomas compatíveis."
+        },
+        {
+          "name": "Lúpus (LES) — Comprometimento Renal",
+          "study": "JAMA Rheumatology (2020)",
+          "evidence": "Clínica",
+          "finding": "Maior comprometimento renal (nefrite lúpica).",
+          "implication": "Avaliação renal precoce em toda paciente com LES."
+        },
+        {
+          "name": "Lúpus (LES) — Prognóstico Renal",
+          "study": "Arthritis & Rheumatology (2022)",
+          "evidence": "Clínica",
+          "finding": "Pior prognóstico renal em mulheres negras.",
+          "implication": "Mulher negra com quadro compatível (fadiga + dores articulares + manchas) merece FAN e complemento antes de 'aguardar evolução'."
+        }
+      ]
+    },
+    {
+      "id": "mulher",
+      "icon": "👶",
+      "title": "Saúde da Mulher Negra",
+      "intro": "A mortalidade materna em mulheres negras é 2 a 3 vezes maior que em mulheres brancas — mesma renda, mesma escolaridade, mesmo pré-natal. O fator é racismo institucional no atendimento, documentado em literatura peer-reviewed.",
+      "conditions": [
+        {
+          "name": "Mortalidade Materna",
+          "study": "CDC Report (2021)",
+          "evidence": "Epidemiológica",
+          "finding": "Risco 2 a 3 vezes maior em mulheres negras.",
+          "implication": "Sinal de alerta (sangramento, dor de cabeça persistente, edema) em gestante negra deve ser tratado com maior suspeição."
+        },
+        {
+          "name": "Parto Prematuro",
+          "study": "AJOG (2022)",
+          "evidence": "Clínica",
+          "finding": "Maior risco associado a estresse e acesso ao cuidado.",
+          "implication": "Pré-natal completo é fator protetor comprovado — busca ativa de faltosas salva vidas."
+        },
+        {
+          "name": "Saúde Materna — Visão Estrutural",
+          "study": "NIH Report (2023)",
+          "evidence": "Estrutural",
+          "finding": "Desigualdade sistêmica como fator principal (não biologia isolada).",
+          "implication": "Nenhum protocolo isolado resolve — é preciso mudar o SISTEMA de atendimento."
+        }
+      ]
+    },
+    {
+      "id": "cancer",
+      "icon": "🎗️",
+      "title": "Câncer",
+      "intro": "Homens negros morrem mais de câncer de próstata. Mulheres negras têm mais câncer de mama triplo negativo (mais agressivo). Diagnóstico tardio é padrão — não por acaso.",
+      "conditions": [
+        {
+          "name": "Câncer de Próstata",
+          "study": "SEER (NIH) (2020)",
+          "evidence": "Populacional",
+          "finding": "Maior mortalidade em homens negros.",
+          "implication": "Rastreamento com PSA deve ser considerado a partir dos 45 anos (não 50)."
+        },
+        {
+          "name": "Câncer de Mama",
+          "study": "JAMA Oncology (2021)",
+          "evidence": "Clínica",
+          "finding": "Maior frequência do subtipo triplo negativo (mais agressivo).",
+          "implication": "Nódulo palpável em mulher negra jovem exige biópsia, não 'reavaliar em 6 meses'."
+        },
+        {
+          "name": "Câncer Colorretal",
+          "study": "NEJM Study (2022)",
+          "evidence": "Clínica",
+          "finding": "Diagnóstico mais tardio.",
+          "implication": "Colonoscopia de rastreio deve começar aos 45 anos."
+        },
+        {
+          "name": "Câncer (visão geral)",
+          "study": "ACS Report (2024)",
+          "evidence": "Epidemiológica",
+          "finding": "Disparidades persistentes na sobrevivência.",
+          "implication": "Fila de tratamento oncológico tem viés — advocacy é cuidado."
+        }
+      ]
+    },
+    {
+      "id": "hiv",
+      "icon": "🦠",
+      "title": "HIV e Prevenção",
+      "intro": "Populações negras têm maior incidência de HIV — resultado de acesso desigual a prevenção, testagem e tratamento. PrEP no SUS é direito garantido.",
+      "conditions": [
+        {
+          "name": "HIV",
+          "study": "CDC Report (2020)",
+          "evidence": "Epidemiológica",
+          "finding": "Maior incidência em populações negras.",
+          "implication": "Testagem regular deve ser rotina, sem estigma."
+        },
+        {
+          "name": "Prevenção do HIV (PrEP)",
+          "study": "Lancet HIV (2022)",
+          "evidence": "Clínica",
+          "finding": "Redução de desigualdades quando o acesso é ampliado.",
+          "implication": "PrEP no SUS é direito — pergunte na UBS."
+        },
+        {
+          "name": "HIV Global (OMS)",
+          "study": "WHO Report (2023)",
+          "evidence": "Global",
+          "finding": "Desigualdades associadas ao acesso à prevenção e tratamento.",
+          "implication": "Política pública global exige compromisso local."
+        }
+      ]
+    },
+    {
+      "id": "contemp",
+      "icon": "📱",
+      "title": "Saúde Mental e Socioeconômica Contemporânea",
+      "intro": "A 7ª categoria da Base Científica (adenda v4.1) captura condições específicas da realidade brasileira contemporânea (2024–2026) que afetam desproporcionalmente a juventude negra periférica.",
+      "conditions": [
+        {
+          "name": "Ansiedade crônica por uso irresponsável de redes sociais",
+          "study": "UNICEF Brasil (2024); Jornal da USP; The Conversation Brasil",
+          "evidence": "Populacional e clínica",
+          "finding": "Uso excessivo associado a ansiedade, comparação social e distúrbios do sono — descrito como 'epidemia' por especialistas.",
+          "implication": "Diversos estados regulamentaram celular em escolas — pressão social é fator clínico."
+        },
+        {
+          "name": "Vício em jogos de apostas online (bets)",
+          "study": "Datafolha/Folha de S.Paulo (2024); Banco Central do Brasil",
+          "evidence": "Populacional",
+          "finding": "Expansão massiva pós-regulamentação, com impacto financeiro e psíquico documentado em famílias vulneráveis.",
+          "implication": "Pergunta sobre apostas deve entrar na anamnese social."
+        },
+        {
+          "name": "Abuso de substâncias — disparidade de qualidade/pureza por classe e raça",
+          "study": "SENAD; Fiocruz; gov.br/MJ-OBID",
+          "evidence": "Estrutural",
+          "finding": "Adulteração e menor pureza em substâncias vendidas em territórios periféricos aumentam risco de overdose e complicações clínicas.",
+          "implication": "Redução de danos > proibicionismo."
+        },
+        {
+          "name": "Violência como resposta reativa (déficit de educação emocional)",
+          "study": "Atlas da Violência IPEA/FBSP (2024)",
+          "evidence": "Estrutural e epidemiológica",
+          "finding": "Homicídio é a principal causa de morte entre jovens negros de 15–29 anos. Componente educacional (autorregulação emocional) é subinvestido nas políticas atuais.",
+          "implication": "Prevenção primária inclui escola, não apenas polícia."
+        },
+        {
+          "name": "Falta de educação financeira",
+          "study": "Banco Central do Brasil — Educação Financeira; imprensa especializada",
+          "evidence": "Estrutural",
+          "finding": "Endividamento crônico é determinante social de saúde mental — associado a ansiedade, depressão, hipertensão.",
+          "implication": "Encaminhamento a orientação financeira é intervenção de saúde."
+        }
+      ]
+    }
+  ],
+  "footer_ctas": [
+    {
+      "title": "Contribua com a Base",
+      "text": "Encontrou estudo relevante que não está aqui? A Base Científica é viva. Envie sua sugestão ao Conselho Consultivo.",
+      "cta": { "label": "Sugerir estudo", "action": "form" }
+    },
+    {
+      "title": "Baixe o App Sentinela",
+      "text": "Todo esse conteúdo, offline, no seu bolso — com navegação SUS e check-in longitudinal.",
+      "cta": { "label": "Baixar App", "action": "link", "href": "/baixar" }
+    },
+    {
+      "title": "Rede SUS por região",
+      "text": "Encontre a UBS mais próxima para levar este conhecimento à consulta.",
+      "cta": { "label": "Ver Rede SUS", "action": "link", "href": "/rede-sus" }
+    }
+  ],
+  "disclaimer": "Todo o conteúdo desta biblioteca é educativo e revisado pelo Conselho Consultivo do projeto (FEPECS, UnB, FIOCRUZ). Não substitui avaliação médica presencial. As referências científicas foram selecionadas por relevância epidemiológica para a população negra — para bibliografia completa, consulte o Relatório de Arquitetura."
+}

@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Tipografia oficial "Pulso Preto" (ver site/src/index.css para contexto
+   completo) - scoped via utilitarios font-pulso-display e font-pulso-body,
+   usados apenas quando variante ativa é PP1/PP2 (App Sentinela ainda não
+   possui layout Pulso dedicado nesta fase, mas as fontes já ficam
+   disponíveis para o próximo passo de replicação do padrão de marca). */
+@font-face {
+  font-family: 'Hurme Geometric Sans 3';
+  src: url('/static/fonts/hurme/HurmeGeometricSans3-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Hurme Geometric Sans 3';
+  src: url('/static/fonts/hurme/HurmeGeometricSans3-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Hurme Geometric Sans 3';
+  src: url('/static/fonts/hurme/HurmeGeometricSans3-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Hurme Geometric Sans 3';
+  src: url('/static/fonts/hurme/HurmeGeometricSans3-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Sans Serif Collection';
+  src: url('/static/fonts/sans-serif-collection/SansSerifCollection-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
+}
+
+.prose-project p, .prose-project li {
+  line-height: 1.6;
+}

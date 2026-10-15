@@ -1,0 +1,14 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "gente-preta",
+  "compatibility_date": "2026-07-30",
+  "main": "worker/index.js",
+  // Saída estática combinada: Site Institucional na raiz + App Sentinela em /app/.
+  // Gerada por `npm run build` (ver package.json na raiz) — nunca editar dist/ manualmente.
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "html_handling": "none",
+    "not_found_handling": "none"
+  }
+}
