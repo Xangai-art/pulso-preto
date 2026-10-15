@@ -5,7 +5,7 @@
 **Finalidade:** inventariar todos os **módulos master** da plataforma e mostrar, de forma rastreável, **como cada um foi aproveitado em cada versão** — se de forma *original* (intacta) ou *com variante* (adaptada). O foco é **conteúdo**, não pixels.
 **Método:** leitura direta do código-fonte em `site/`, `app/`, `shared/`, `worker/`, `database/` e `docs/`, cruzada com o acervo do Hub (`PROJ NEGROS - IDEIAS ABA SITE.pdf`, `ANEXO 2`, etc.). Nenhum número aqui é estimado: todos foram contados nos arquivos.
 **Status:** documento de **diagnóstico + registro de decisões** da sessão de requisitos do PP3. Não implementa nada — serve de base para decidirmos, caso a caso, o que popula o site e o app.
-**Atualização (15/10/2026):** decisões de direção na **Parte 5.2**, mitigações na **Parte 5.4**, decisões de navegação (menu superior/inferior) na **Parte 5.5**; lista de pendências em aberto na **Parte 6**.
+**Atualização (15/10/2026):** decisões de direção na **Parte 5.2**, mitigações na **Parte 5.4**, decisões de navegação (menu superior/inferior) na **Parte 5.5**, decisões dos **Áudios 2/3/4** (formato interno, rótulos e ativos) na **Parte 5.6**; lista de pendências em aberto na **Parte 6**.
 
 > **Convenção de leitura.** "Versão" tem, neste projeto, **três significados empilhados**. Antes de mapear módulos, é obrigatório separá-los (Parte 0) — senão a própria pergunta "o que mudou entre GP0/PP1/PP2" fica ambígua.
 
@@ -343,7 +343,7 @@ Marca "Pulso"    —          ███████    ███████  (i
 |---|---|---|
 | **R1** | **Duplicação oculta** — somar GP0+PP1/PP2 sem remover ramos antigos criaria 4 Homes | **Subtrações + "banco de dados" master.** Consolidar **todo o conteúdo similar e seus versionamentos** em um **banco de dados master** — a colagem **soma o único, subtrai o repetido**. |
 | **R2** | **App desatualizado** — popular o site e esquecer o app recria a assimetria atual | **Testar a arquitetura CEOS e refatorar o app simultaneamente.** Site e app evoluem **juntos**, sob o mesmo Canon/SSOT. |
-| **R3** | **Placeholder virar produção** — histórias "A definir", imagens CC (`isPlaceholder:true`), Conselho "A definir" | **Substituição categoria a categoria nesta fase.** Nenhum placeholder entra no PP3: cada categoria é trocada por conteúdo real antes de publicar. |
+| **R3** | **Placeholder virar produção** — histórias "A definir", imagens CC (`isPlaceholder:true`), Conselho "A definir" | **Substituição categoria a categoria nesta fase.** Nenhum placeholder entra no PP3. **Atualização (Áudio 4):** usar **exclusivamente os ativos já produzidos para GP0/PP1/PP2** (logos, ícones, `hero.png`) e **remover toda menção a "placeholder"** na interface e nos créditos; **não gerar novas imagens nem buscar fotos** (ver **D15**, Parte 5.6). |
 | **R4** | **Contradição de números** — publicar `45+` / `47` / `48+` simultaneamente | **Número auto-derivado.** O valor publicado deve **beber da base de dados CEOS** via **função/variável que atualiza automaticamente** — zero número hardcoded. |
 
 ### 5.5 Decisões de navegação — menu superior / inferior (Áudio 1_PP3)
@@ -425,6 +425,46 @@ Ambos viram **rota dedicada** (são hard services clicáveis — a pessoa clica 
 
 D8 manda **Comunidade e Memória "para o topo"**, mas D6 diz **"menu superior só hard services"**. Resolvido na proposta como **cards "Gente" na Home** (área pública), mantendo o menu superior enxuto. **Confirmação pendente** do usuário: cards na Home (proposto) **ou** itens do próprio menu superior.
 
+### 5.6 Decisões dos Áudios 2, 3 e 4 (formato interno, rótulos e ativos)
+
+> **Versão avaliada:** **PP3** (consolidação). Os três áudios comentam os **legados GP0/PP1/PP2** com referência a **mockups antigos** (ver nota de esclarecimento em **D**).
+
+| # | Decisão |
+|---|---|
+| **D11** | **Remover o jargão técnico da apresentação** (página "Saúde"/Biblioteca) e falar a língua do público: usar **"comprovação científica" / "estudos com literatura, com base científica"**. Saem da camada do público os rótulos *"Estudo + Achado"*, *"recorte racial"* e *"tendências populacionais, não diagnósticos individuais"*. |
+| **D12** | **"Estudo + Achado" é PRESERVADO — mas como camada profissional.** A segmentação por audiência **já existe** no código (`AudienceContentTabs` + `DiseaseDeepContent.audiences` = **médico / enfermeiro / usuário**). O público vê a versão **leiga** (aba `usuario`); profissionais veem o **formato técnico** (abas `medico`/`enfermeiro`). Nada é descartado: o rigor **migra de camada**. |
+| **D13** | **Página "Saúde" reorganizada** — o "organograma" (hoje 10 categorias × 47 condições despejadas de uma vez no site) deve ficar **"mais tranquilo aos olhos"**: agrupar/colapsar por categoria (o app já usa acordeão) e **ordenar por relevância** em vez da ordem de declaração no array. |
+| **D14** | **Zero abreviaturas.** "Hipertensão" sempre **por extenso**. O "abreviado" percebido no áudio **não existe no código atual** (`name: 'Hipertensão'`, site e app) — veio de **legado/mockup**; na consolidação, **revisar todo o legado para que não haja nenhuma abreviatura**. |
+| **D15** | **Ativos visuais:** usar **exclusivamente o que já foi produzido para GP0/PP1/PP2** (ex.: `static/brand/*`, `hero.png`); **remover toda menção a "placeholder"** na interface e nos créditos; **não gerar novas imagens nem buscar fotos**. |
+
+#### A) Áudio 2 — validação (sem mudança)
+
+Card de atalho **"Conheça sua saúde" / "Encontre cuidado"** (Home PP1/PP2) **aprovado**: *"ficou pequeno, não gritou mais do que o que é mais importante, que são as fotos, as imagens"*. **Nenhuma alteração** — registrado como **padrão a herdar no PP3**.
+
+#### B) Áudio 3 — remover jargão: mapa exato (implementar só após validação)
+
+| # | Trecho | Arquivo | Ação (D11) |
+|---|---|---|---|
+| 1 | *"47+ condições organizadas em 10 categorias temáticas, com evidência científica no formato **Estudo + Achado**. Os dados descrevem **tendências populacionais**, não diagnósticos individuais."* | site `HealthLibrary.tsx` (L41–43) | **remover** o parágrafo do topo |
+| 2 | *"Base científica com **recorte racial**"* (eyebrow) | site `HealthLibrary.tsx` (L38) | **remover** |
+| 3 | *"{n}+ condições mapeadas · mostrando {n} resultado(s)"* | site `HealthLibrary.tsx` (L85) | **revisar** (ligado a R4/P15 — contagem auto-derivada) |
+| 4 | *"{n}+ condições mapeadas. **Tendências populacionais, não diagnósticos individuais**."* | app `HealthLibrary.tsx` (L18) | **remover** o disclaimer |
+| 5 | *"os dados descrevem **tendências populacionais**, não diagnósticos individuais"* | site `DiseaseDetail.tsx` (L106) | **revisar** (mesmo jargão) |
+| 6 | selo *"Placeholder (CC) — {credit}"* sobre a hero image | site/app `DiseaseDetail.tsx` | **remover** (D15) |
+
+> **Substituição sugerida (leiga):** *"Informação de saúde com comprovação científica, organizada por tema."* — **a validar**.
+
+#### C) Áudio 4 — organograma e abreviaturas (implementar só após validação)
+
+- **D13:** agrupar/colapsar categorias + reordenar por relevância (hoje a ordem é a de declaração: `cardiovasculares → metabolicas → …`).
+- **D14:** garantir **"Hipertensão"** (e todas as condições) por extenso; **caça a abreviaturas em todo o legado**.
+
+#### D) Nota obrigatória — "mockups antigos"
+
+Os **"mockups antigos"** citados **não existem como arquivo nomeado no Hub** (os 22 arquivos são propostas, contratos, NF, PDFs científicos e questionários). No código há referência a **"mockup nº1 = PP1/família"** e **"nº2 = PP2/mulher"** (comentários em `variantContent.ts`, `Header.tsx`, `Footer.tsx`, `Home.tsx`). **Ponto em aberto:** confirmar se são esses e **reenviá-los** para comparação 1:1 (necessário para localizar itens como o "Hipertensão abreviado").
+
+> **Posição do usuário:** *"o importante é que o PP3 tenha o espírito"* — os mockups servem de **referência de espírito**, não de pixel-alvo.
+
 ---
 
 ## PARTE 6 — Pendências em aberto (lista para decisão)
@@ -451,7 +491,7 @@ D8 manda **Comunidade e Memória "para o topo"**, mas D6 diz **"menu superior s�
 |---|---|---|---|
 | P10 | **Conselho Consultivo nomeado** (hoje "A definir") | C3 | Governança |
 | P11 | **Remover assinatura fictícia "CASIO v10.0"** de docs institucionais | C3 | Governança |
-| P12 | **Fotografia própria** substituindo imagens CC (`isPlaceholder:true`) | R3 | Conteúdo/Design |
+| P12 | **Ativos visuais finais** — usar só o que foi produzido p/ GP0/PP1/PP2; remover menções a "placeholder" (`isPlaceholder:true`, créditos CC) | R3 / **D15** | Conteúdo/Design |
 | P13 | **Vídeo `NefFu175V0A`** em `/memoria` (recomendação de substituir) | Docs v4.2 | Conteúdo |
 | P14 | **Canal oficial no YouTube** | Docs v4.2 | Operação |
 
