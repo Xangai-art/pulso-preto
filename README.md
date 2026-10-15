@@ -169,7 +169,7 @@ estrutura de 2 dias, 300 participantes) e Relatório de Planejamento Técnico
 
 ---
 
-## Arquitetura de deploy (Cloudflare Pages — domínio único)
+## Arquitetura de deploy (Cloudflare Workers — domínio único)
 
 Monorepo com dois SPAs React/Vite compartilhando um único Worker:
 
@@ -233,12 +233,20 @@ curl http://localhost:3000/comunidade
 ```
 
 ## Deploy
-- **Plataforma**: Cloudflare Pages (projeto `gente-preta`), `_worker.js`
-  customizado para fallback de SPA duplo (site + app).
-- **URL de produção**: https://gente-preta.pages.dev
-- **Conta Cloudflare**: BYOK (token do próprio usuário via Deploy panel).
-- **Comando de deploy**: `npm run build && npx wrangler pages deploy dist --project-name gente-preta --branch main`
-- **Repositório**: `github.com/fratozsistemas-art/gente-preta`, branch `genspark_ai_developer` (Git-integration auto-deploy).
+- **Plataforma**: Cloudflare Workers (`pulso-preto`), com Cloudflare **Workers
+  Builds** conectado ao repositório (build + `npx wrangler deploy` a cada push
+  na branch de produção `main`).
+- **Worker**: `worker/index.js` (declarado em `wrangler.jsonc` como `main`),
+  responsável pelo fallback de SPA duplo (site + app) e pela API `/api/content`.
+- **Assets**: `dist/` é publicado como assets estáticos do Worker (binding
+  `ASSETS`). O build (`npm run assemble`) gera também `dist/.assetsignore` com
+  `_worker.js`, para que o artefato legado de Pages (`dist/_worker.js`, mantido
+  para o preview local via `wrangler pages dev`) **não** seja publicado como
+  asset — o que o wrangler bloqueia por padrão (evita expor código server-side).
+- **Conta Cloudflare**: do próprio usuário (BYOK), via Workers Builds.
+- **Comando de build/deploy**: `npm run build` + `npx wrangler deploy`.
+- **Repositório**: `github.com/Xangai-art/pulso-preto`, branch `main`
+  (Workers Builds — auto-deploy a cada push).
 
 ## Não implementado / próximos passos
 - Layout `Pulso*` dedicado para o App Sentinela (hoje só Logo/paleta).

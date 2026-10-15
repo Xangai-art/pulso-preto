@@ -1,10 +1,19 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "gente-preta",
+  // Nome do Worker na conta Cloudflare do usuário (Workers Builds conectado ao
+  // repo pulso-preto). Deve coincidir com o nome esperado pela CI, senão o
+  // wrangler avisa e o Workers Builds tenta abrir um PR de correção.
+  "name": "pulso-preto",
   "compatibility_date": "2026-07-30",
   "main": "worker/index.js",
   // Saída estática combinada: Site Institucional na raiz + App Sentinela em /app/.
   // Gerada por `npm run build` (ver package.json na raiz) — nunca editar dist/ manualmente.
+  //
+  // OBS.: `npm run assemble` também gera `dist/.assetsignore` com `_worker.js`.
+  // O worker é servido via `main` (acima), e `dist/_worker.js` existe apenas como
+  // convenção de compatibilidade com Cloudflare Pages — o `.assetsignore` impede
+  // que ele seja publicado como asset estático (o que o wrangler bloqueia por
+  // padrão, para não expor código server-side).
   "assets": {
     "directory": "./dist",
     "binding": "ASSETS",

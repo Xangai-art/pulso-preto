@@ -10,7 +10,7 @@
     "build:site": "cd site && npm run build",
     "build:app": "cd app && npm run build",
     "db:export": "node --experimental-strip-types scripts/db/export-content.mjs",
-    "assemble": "rm -rf dist && mkdir -p dist && cp -r site/dist/. dist/ && mkdir -p dist/app && cp -r app/dist/. dist/app/ && mkdir -p dist/api && cp database/content.json dist/api/content.json && cp worker/index.js dist/_worker.js",
+    "assemble": "rm -rf dist && mkdir -p dist && cp -r site/dist/. dist/ && mkdir -p dist/app && cp -r app/dist/. dist/app/ && mkdir -p dist/api && cp database/content.json dist/api/content.json && cp worker/index.js dist/_worker.js && printf '_worker.js\\n' > dist/.assetsignore",
     "build": "npm run db:export && npm run install:all && npm run build:site && npm run build:app && npm run assemble"
   }
 }
