@@ -56,13 +56,13 @@ export default function DiseaseDetail() {
           <div className="space-y-4">
             <div className="rounded-xl border border-pulso-dourado/25 p-4">
               <h2 className="text-xs font-bold uppercase mb-1.5 text-pulso-verde font-pulso-display">
-                Estudo
+                O que a ciência mostra
               </h2>
               <p className="text-sm text-pulso-marrom/85">{disease.study}</p>
             </div>
             <div className="rounded-xl border border-pulso-dourado/30 bg-pulso-dourado/10 p-4">
               <h2 className="text-xs font-bold uppercase mb-1.5 text-pulso-terracota font-pulso-display">
-                Achado
+                Por que isso importa
               </h2>
               <p className="text-sm leading-relaxed text-pulso-marrom/90">{disease.finding}</p>
             </div>

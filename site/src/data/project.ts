@@ -38,7 +38,7 @@ export const hardServices = [
 ];
 
 // "Folhas com Ciência" — coluna de fitoterapia popular com evidência científica,
-// no mesmo formato "Estudo + Achado" usado na Base Científica (diseases.ts).
+// no mesmo formato de evidência usado na Base Científica (diseases.ts).
 // Sem misticismo: cada planta traz nome popular, nome científico, achado
 // farmacológico com fonte real e um alerta de segurança quando relevante.
 // Referência editorial: coluna "Folhas com Ciência" — nomenclatura adaptada

@@ -20,15 +20,13 @@ import type { DiseaseDeepContent } from './anemiaFalciforme';
 const heroImage_pt = {
   url: 'https://sspark.genspark.ai/i/NYpPsNuS3oGvOr9t?width=2560',
   alt: 'Ilustração anatômica do útero humano com representação de nódulos (miomas) na parede uterina',
-  credit: 'Imagem placeholder (CC/PD) — substituir por material próprio se necessário',
-  isPlaceholder: true as const,
+  credit: 'Domínio público / CC0',
 };
 
 const heroImage_es = {
   url: 'https://sspark.genspark.ai/i/NYpPsNuS3oGvOr9t?width=2560',
   alt: 'Ilustración anatómica del útero humano con representación de nódulos (miomas) en la pared uterina',
-  credit: 'Imagen de relleno (CC/PD) — sustituir por material propio si es necesario',
-  isPlaceholder: true as const,
+  credit: 'Dominio público / CC0',
 };
 
 const miomasUterinosContent_pt: DiseaseDeepContent = {

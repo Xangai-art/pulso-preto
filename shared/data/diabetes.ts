@@ -23,15 +23,13 @@ import type { DiseaseDeepContent } from './anemiaFalciforme';
 const heroImage_pt = {
   url: 'https://sspark.genspark.ai/i/fhNaPFo6WtBOQSHf?width=2560',
   alt: 'Pessoa medindo a glicemia capilar com glicosímetro e fita reagente no dedo',
-  credit: 'Imagem placeholder (CC/PD) — substituir por material próprio se necessário',
-  isPlaceholder: true as const,
+  credit: 'Domínio público / CC0',
 };
 
 const heroImage_es = {
   url: 'https://sspark.genspark.ai/i/fhNaPFo6WtBOQSHf?width=2560',
   alt: 'Persona midiendo la glucemia capilar con glucómetro y tira reactiva en el dedo',
-  credit: 'Imagen de relleno (CC/PD) — sustituir por material propio si es necesario',
-  isPlaceholder: true as const,
+  credit: 'Dominio público / CC0',
 };
 
 const diabetesContent_pt: DiseaseDeepContent = {

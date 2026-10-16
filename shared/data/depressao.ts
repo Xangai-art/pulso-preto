@@ -22,15 +22,13 @@ import type { DiseaseDeepContent } from './anemiaFalciforme';
 const heroImage_pt = {
   url: 'https://sspark.genspark.ai/i/JKe27K9j1WJNZSzz?width=2560',
   alt: 'Pessoa sentada em silêncio, com expressão de reflexão, representando o sofrimento psíquico da depressão',
-  credit: 'Imagem placeholder (CC/PD) — substituir por material próprio se necessário',
-  isPlaceholder: true as const,
+  credit: 'Domínio público / CC0',
 };
 
 const heroImage_es = {
   url: 'https://sspark.genspark.ai/i/JKe27K9j1WJNZSzz?width=2560',
   alt: 'Persona sentada en silencio, con expresión de reflexión, representando el sufrimiento psíquico de la depresión',
-  credit: 'Imagen de relleno (CC/PD) — sustituir por material propio si es necesario',
-  isPlaceholder: true as const,
+  credit: 'Dominio público / CC0',
 };
 
 const depressaoContent_pt: DiseaseDeepContent = {

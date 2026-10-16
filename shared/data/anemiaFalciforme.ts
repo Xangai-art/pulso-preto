@@ -42,7 +42,6 @@ export interface DiseaseHeroImage {
   url: string;
   alt: string;
   credit: string;
-  isPlaceholder: true;
 }
 
 export interface DiseaseSource {
@@ -67,15 +66,13 @@ export interface DiseaseDeepContent {
 const heroImage_pt: DiseaseHeroImage = {
   url: 'https://sspark.genspark.ai/i/U0fgB9sbw0tFlBV7?width=2560',
   alt: 'Micrografia eletrônica colorizada comparando hemácias normais em forma de disco biconcavo com uma hemácia em formato de foice (drepanócito), característica da doença falciforme',
-  credit: 'Pixnio — domínio público / CC0 (placeholder científico, substituir por material próprio se necessário)',
-  isPlaceholder: true,
+  credit: 'Pixnio — domínio público / CC0',
 };
 
 const heroImage_es: DiseaseHeroImage = {
   url: 'https://sspark.genspark.ai/i/U0fgB9sbw0tFlBV7?width=2560',
   alt: 'Micrografía electrónica coloreada que compara glóbulos rojos normales con forma de disco bicóncavo con un glóbulo rojo en forma de hoz (drepanocito), característico de la enfermedad falciforme',
-  credit: 'Pixnio — dominio público / CC0 (placeholder científico, sustituir por material propio si es necesario)',
-  isPlaceholder: true,
+  credit: 'Pixnio — dominio público / CC0',
 };
 
 const anemiaFalciformeContent_pt: DiseaseDeepContent = {

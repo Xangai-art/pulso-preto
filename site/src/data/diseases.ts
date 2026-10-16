@@ -1,5 +1,5 @@
 // Base Científica — Gente Preta
-// 9 categorias temáticas · 45+ condições mapeadas · formato Estudo + Achado
+// 9 categorias temáticas · 45+ condições mapeadas · evidência com comprovação científica
 
 export interface LocalStudyFinding {
   value: string;
@@ -23,7 +23,7 @@ export interface Disease {
   // audiência (médicos/enfermeiros/usuários) em um arquivo dedicado — ver
   // site/src/data/anemiaFalciforme.ts e o registro em deepContentRegistry.ts.
   // Quando true, DiseaseDetail.tsx renderiza as abas de audiência além do
-  // bloco padrão Estudo + Achado.
+  // bloco padrão de evidência científica.
   hasDeepContent?: boolean;
 }
 
@@ -63,7 +63,7 @@ export const diseaseCategories: DiseaseCategory[] = [
       },
       {
         id: 'avc',
-        name: 'AVC (Acidente Vascular Cerebral)',
+        name: 'Acidente Vascular Cerebral (AVC)',
         study: 'Stroke Journal / AHA — Howard et al. 2018',
         finding:
           'Incidência de AVC entre adultos negros é quase o dobro da população branca, com eventos ocorrendo em idades mais jovens.',
@@ -159,7 +159,7 @@ export const diseaseCategories: DiseaseCategory[] = [
         hasDeepContent: true,
       },
       { id: 'ansiedade', name: 'Ansiedade' },
-      { id: 'tept', name: 'TEPT (Transtorno de Estresse Pós-Traumático)' },
+      { id: 'tept', name: 'Transtorno de Estresse Pós-Traumático (TEPT)' },
       {
         id: 'uso-substancias',
         name: 'Uso de Substâncias',
@@ -188,7 +188,7 @@ export const diseaseCategories: DiseaseCategory[] = [
       },
       {
         id: 'covid-19',
-        name: 'COVID-19',
+        name: 'Doença por Coronavírus 2019 (COVID-19)',
         study: 'NEJM Review 2023',
         finding:
           'Populações negras tiveram taxas de hospitalização e mortalidade por COVID-19 desproporcionalmente mais altas, refletindo comorbidades prévias e desigualdade de acesso a cuidados críticos.',
@@ -278,8 +278,8 @@ export const diseaseCategories: DiseaseCategory[] = [
           'Mulheres negras têm incidência de lúpus 2 a 3 vezes maior e desenvolvem a doença de forma mais grave e mais precoce do que mulheres brancas.',
         hasDeepContent: true,
       },
-      { id: 'nmosd', name: 'NMOSD (Doença do Espectro da Neuromielite Óptica)' },
-      { id: 'attr-cm', name: 'ATTR-CM (Amiloidose Cardíaca)' },
+      { id: 'nmosd', name: 'Doença do Espectro da Neuromielite Óptica (NMOSD)' },
+      { id: 'attr-cm', name: 'Amiloidose Cardíaca (ATTR-CM)' },
     ],
   },
   {
@@ -320,10 +320,10 @@ export const diseaseCategories: DiseaseCategory[] = [
     subtitle: 'Acesso Desigual',
     icon: '🩹',
     diseases: [
-      { id: 'hepatites', name: 'Hepatites B/C' },
+      { id: 'hepatites', name: 'Hepatites B e C' },
       {
         id: 'hiv',
-        name: 'HIV/AIDS',
+        name: 'Vírus da Imunodeficiência Humana (HIV) e Síndrome da Imunodeficiência Adquirida (AIDS)',
         study: 'Literatura epidemiológica nacional',
         finding:
           'População negra apresenta maior incidência de novos diagnósticos de HIV e menor acesso contínuo a tratamento antirretroviral, refletindo barreiras estruturais de acesso à saúde.',
@@ -336,7 +336,7 @@ export const diseaseCategories: DiseaseCategory[] = [
       },
       {
         id: 'prevencao-hiv-prep',
-        name: 'Prevenção do HIV (PrEP)',
+        name: 'Prevenção do HIV (Profilaxia Pré-Exposição)',
         study: 'Lancet HIV 2022',
         finding:
           'Redução de desigualdades na incidência de HIV quando o acesso à Profilaxia Pré-Exposição (PrEP) é ampliado. PrEP é direito garantido pelo SUS — disponível gratuitamente na rede pública.',

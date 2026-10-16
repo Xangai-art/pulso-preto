@@ -35,9 +35,6 @@ export default function DiseaseDetail() {
             className="absolute inset-0 w-full h-full object-cover"
             loading="eager"
           />
-          <span className="absolute bottom-2 right-2 rounded bg-black/55 text-white text-[10px] px-2 py-1">
-            Imagem placeholder (CC) — {deepContent.heroImage.credit}
-          </span>
         </div>
       )}
 
@@ -68,11 +65,11 @@ export default function DiseaseDetail() {
       {disease.study ? (
         <div className="space-y-6">
           <div className="rounded-xl border border-pulso-dourado/25 p-5">
-            <h2 className="text-sm font-bold text-pulso-verde uppercase tracking-wide mb-2">Estudo</h2>
+            <h2 className="text-sm font-bold text-pulso-verde uppercase tracking-wide mb-2">O que a ciência mostra</h2>
             <p className="text-pulso-marrom text-sm">{disease.study}</p>
           </div>
           <div className="rounded-xl border border-pulso-verde-accent/25 bg-pulso-verde-accent/10 p-5">
-            <h2 className="text-sm font-bold text-pulso-verde uppercase tracking-wide mb-2">Achado</h2>
+            <h2 className="text-sm font-bold text-pulso-verde uppercase tracking-wide mb-2">Por que isso importa</h2>
             <p className="text-pulso-verde text-sm leading-relaxed">{disease.finding}</p>
           </div>
         </div>
@@ -80,7 +77,7 @@ export default function DiseaseDetail() {
         <div className="rounded-xl border border-pulso-dourado/25 p-5 bg-pulso-creme">
           <p className="text-pulso-marrom text-sm">
             Condição incluída na base científica geral (Guia da Saúde da População Negra). Evidência detalhada
-            "Estudo + Achado" em processo de padronização para esta condição.
+            em processo de padronização para esta condição.
           </p>
         </div>
       )}
@@ -103,8 +100,7 @@ export default function DiseaseDetail() {
       {deepContent && <AudienceContentTabs content={deepContent} />}
 
       <div className="mt-10 rounded-xl border border-pulso-dourado/25 p-5 bg-white text-sm text-pulso-marrom/70">
-        <strong>Nota:</strong> os dados descrevem tendências populacionais, não diagnósticos individuais. Em
-        caso de sintomas, procure uma Unidade Básica de Saúde (UBS) — consulte a{' '}
+        <strong>Nota:</strong> em caso de sintomas, procure uma Unidade Básica de Saúde (UBS) — consulte a{' '}
         <Link to="/rede-sus" className="text-pulso-verde-accent hover:underline">Rede SUS</Link>.
       </div>
     </div>

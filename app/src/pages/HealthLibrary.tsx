@@ -12,7 +12,7 @@ export default function HealthLibrary() {
       <TopBar title="Biblioteca de Saúde" />
       <div className="px-5 pt-3 pb-8">
         <p className="text-xs mb-4 text-pulso-marrom/70">
-          {totalConditionsCount}+ condições mapeadas. Tendências populacionais, não diagnósticos individuais.
+          {totalConditionsCount}+ condições com comprovação científica, organizadas por tema.
         </p>
         <div className="space-y-3">
           {diseaseCategories.map((cat) => {

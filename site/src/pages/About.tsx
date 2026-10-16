@@ -23,8 +23,8 @@ export default function About() {
       <p className="text-pulso-marrom mb-4">
         No Brasil, a população negra enfrenta inequidades sistêmicas em saúde: maior risco de doenças crônicas,
         subdiagnóstico por racismo institucional, menor acesso a serviços de qualidade no SUS e invisibilidade
-        epidemiológica — 56% da população brasileira é negra, mas apenas 1,5% das pesquisas em saúde incluem
-        recorte racial.
+        epidemiológica — 56% da população brasileira é negra, mas apenas 1,5% das pesquisas em saúde consideram
+        a raça.
       </p>
       <p className="text-pulso-marrom mb-4">
         {projectInfo.name} é uma <strong>plataforma de inteligência comunitária</strong> construída sobre uma
