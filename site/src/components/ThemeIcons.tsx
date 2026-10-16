@@ -1,20 +1,22 @@
 import type React from 'react';
+import { PULSO_PALETTE } from '@shared/data/pulsoPalette';
 
 // Ícones autorais para os "Temas emergentes" (realidade brasileira contemporânea).
 // Substituem os emojis herdados da categoria-mãe por grafismos geométricos e
 // abstratos, na mesma linguagem visual dos ornamentos (Ornaments.tsx) — nunca
-// figurativos, sempre construídos a partir da paleta folha/ouro/barro/palha.
+// figurativos, sempre construídos a partir da paleta OFICIAL Pulso Preto.
 interface ThemeIconProps {
   id: string;
   size?: number;
   className?: string;
 }
 
-const FOLHA = '#3d6e51';
-const OURO = '#c9a04b';
-const OURO_DEEP = '#957237';
-const BARRO = '#94533a';
-const PALHA = '#e5dcc9';
+// Cores vêm da FONTE ÚNICA (shared/data/pulsoPalette.ts) — nunca hex solto.
+const FOLHA = PULSO_PALETTE.verdeAccent;
+const OURO = PULSO_PALETTE.dourado;
+const OURO_DEEP = PULSO_PALETTE.douradoClaro;
+const BARRO = PULSO_PALETTE.marrom;
+const PALHA = PULSO_PALETTE.creme;
 
 function OndasIcon({ size, className }: { size: number; className: string }) {
   // Ansiedade por uso irresponsável de redes sociais — sinal/onda que se

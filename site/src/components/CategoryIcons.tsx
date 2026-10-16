@@ -1,8 +1,9 @@
 import type React from 'react';
+import { PULSO_PALETTE } from '@shared/data/pulsoPalette';
 
 // Ícones autorais para as 9 categorias-mãe da Biblioteca de Saúde / DiseaseDetail.
 // Mesma linguagem visual de ThemeIcons.tsx (disco de fundo + 1-3 traços/formas
-// geométricas na paleta folha/ouro/barro/palha) — nunca figurativos: nenhum órgão,
+// geométricas na paleta OFICIAL Pulso Preto) — nunca figurativos: nenhum órgão,
 // símbolo médico literal (coração, DNA, fita, pulmão) ou representação direta de
 // orixá. Substituem os emojis herdados em HealthLibrary.tsx e DiseaseDetail.tsx.
 interface CategoryIconProps {
@@ -11,12 +12,15 @@ interface CategoryIconProps {
   className?: string;
 }
 
-const FOLHA = '#3d6e51';
-const FOLHA_SOFT = '#a4c3af';
-const OURO = '#c9a04b';
-const OURO_DEEP = '#957237';
-const BARRO = '#94533a';
-const PALHA = '#e5dcc9';
+// Cores vêm da FONTE ÚNICA (shared/data/pulsoPalette.ts) — nunca hex solto.
+// Papel semântico herdado mapeado para a paleta oficial: folha=avanço,
+// barro=risco, ouro=meta, palha=base.
+const FOLHA = PULSO_PALETTE.verdeAccent;
+const FOLHA_SOFT = PULSO_PALETTE.verdeAccent;
+const OURO = PULSO_PALETTE.dourado;
+const OURO_DEEP = PULSO_PALETTE.douradoClaro;
+const BARRO = PULSO_PALETTE.marrom;
+const PALHA = PULSO_PALETTE.creme;
 
 type IconProps = { size: number; className: string };
 

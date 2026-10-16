@@ -8,9 +8,8 @@ import QRLink from './QRLink';
 // Footer "Pulso Preto" — identidade ÚNICA de produção (PP3).
 //
 // HISTÓRICO: durante o teste da arquitetura CEOS o rodapé ramificava por
-// variante (GP0 → rodapé "Gente Preta"; PP1 → verde-escuro 3 colunas +
-// newsletter; PP2 → creme com barra inferior). Esse teste foi encerrado. Em PP3
-// há apenas este rodapé, fiel à identidade oficial: fundo verde-escuro, marca +
+// variante (GP0/PP1/PP2). Esse teste foi encerrado. Em PP3 há apenas este
+// rodapé, fiel à identidade oficial: fundo verde-escuro, marca +
 // slogan + tagline, Links, Redes Sociais + newsletter, e QR do App.
 export default function Footer() {
   const { brand, localeId } = useAppearance();
