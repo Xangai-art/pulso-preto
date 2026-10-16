@@ -1,14 +1,15 @@
 import { localStudyMeta, localStudyHighlights, localStudyAxes } from '../data/localStudy';
 import { PalhaLine, LeafMark } from './Ornaments';
+import { PULSO_PALETTE } from '@shared/data/pulsoPalette';
 
 // Semântica de cor reaproveitada da Home (Stat / statTypeClasses), com shades
-// mais claras adaptadas ao fundo escuro folha-900 deste bloco: barro=risco/
+// mais claras adaptadas ao fundo escuro pulso-verde deste bloco: barro=risco/
 // disparidade, folha=avanço, ouro=meta/marco, palha=contexto.
 const highlightTypeClasses: Record<string, string> = {
-  critical: 'text-barro-300',
-  progress: 'text-folha-300',
-  goal: 'text-ouro-300',
-  info: 'text-palha-100',
+  critical: 'text-pulso-marrom/40',
+  progress: 'text-pulso-verde-accent/40',
+  goal: 'text-pulso-dourado-claro',
+  info: 'text-pulso-creme',
 };
 
 const axisStatusLabel: Record<string, string> = {
@@ -18,9 +19,9 @@ const axisStatusLabel: Record<string, string> = {
 };
 
 const axisStatusClasses: Record<string, string> = {
-  pronto: 'text-folha-700 bg-folha-50 border-folha-300',
-  parcial: 'text-ouro-700 bg-palha-50 border-ouro-300',
-  pendente: 'text-barro-500 bg-barro-100/60 border-barro-300',
+  pronto: 'text-pulso-verde-medio bg-pulso-verde-medio/10 border-pulso-verde-accent/40',
+  parcial: 'text-pulso-dourado bg-pulso-creme border-pulso-dourado-claro',
+  pendente: 'text-pulso-marrom bg-pulso-marrom/10 border-pulso-marrom/40',
 };
 
 // Bloco de destaque para o estudo epidemiológico local (DF) contratado, exibido
@@ -31,30 +32,30 @@ export default function LocalStudyFeature() {
   return (
     <section
       id="estudo-df"
-      className="rounded-2xl border-2 border-ouro-300 bg-folha-900 text-palha-100 overflow-hidden mb-14 relative scroll-mt-24"
+      className="rounded-2xl border-2 border-pulso-dourado-claro bg-pulso-verde text-pulso-creme overflow-hidden mb-14 relative scroll-mt-24"
     >
       <div
         className="h-[3px] w-full"
         style={{
-          backgroundImage: 'repeating-linear-gradient(90deg, #c9a04b 0 12px, transparent 12px 20px)',
+          backgroundImage: `repeating-linear-gradient(90deg, ${PULSO_PALETTE.dourado} 0 12px, transparent 12px 20px)`,
         }}
       />
       <div className="p-6 sm:p-8">
         <div className="flex flex-wrap items-start justify-between gap-4 mb-6">
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <LeafMark size={20} color="#c9a04b" />
-              <span className="eyebrow text-ouro-300">Estudo em destaque · Evidência local (DF)</span>
+              <LeafMark size={20} color={PULSO_PALETTE.dourado} />
+              <span className="eyebrow text-pulso-dourado-claro">Estudo em destaque · Evidência local (DF)</span>
             </div>
             <h2 className="font-editorial italic text-2xl sm:text-3xl leading-snug mb-2">
               {localStudyMeta.title}
             </h2>
-            <p className="text-sm text-folha-100/90 max-w-2xl">
+            <p className="text-sm text-pulso-creme/90 max-w-2xl">
               Período {localStudyMeta.period} · {localStudyMeta.phaseLabel}. Primeiro estudo epidemiológico local
               que estratifica sistematicamente indicadores de saúde por raça/cor no Distrito Federal.
             </p>
           </div>
-          <span className="shrink-0 text-[10px] uppercase font-bold text-earth-900 bg-ouro-300 px-2.5 py-1 rounded">
+          <span className="shrink-0 text-[10px] uppercase font-bold text-pulso-verde bg-pulso-dourado-claro px-2.5 py-1 rounded">
             Fase 1 · dados preliminares
           </span>
         </div>
@@ -70,18 +71,18 @@ export default function LocalStudyFeature() {
         <div className="mb-2">
           <PalhaLine width={64} />
         </div>
-        <h3 className="text-sm font-bold uppercase tracking-wide text-ouro-300 mb-4">Principais achados</h3>
+        <h3 className="text-sm font-bold uppercase tracking-wide text-pulso-dourado-claro mb-4">Principais achados</h3>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
           {localStudyHighlights.map((h) => (
-            <div key={h.label} className="border-t border-ouro-500/50 pt-3">
+            <div key={h.label} className="border-t border-pulso-dourado/50 pt-3">
               <div className={`text-2xl font-bold ${highlightTypeClasses[h.type]}`}>{h.value}</div>
-              <div className="text-sm text-palha-100 mt-0.5 mb-1.5">{h.label}</div>
-              <p className="text-[11px] text-folha-100/70 leading-relaxed">{h.detail}</p>
+              <div className="text-sm text-pulso-creme mt-0.5 mb-1.5">{h.label}</div>
+              <p className="text-[11px] text-pulso-creme/70 leading-relaxed">{h.detail}</p>
             </div>
           ))}
         </div>
 
-        <h3 className="text-sm font-bold uppercase tracking-wide text-ouro-300 mb-3">
+        <h3 className="text-sm font-bold uppercase tracking-wide text-pulso-dourado-claro mb-3">
           Status dos 8 eixos de análise
         </h3>
         <div className="flex flex-wrap gap-2 mb-8">
@@ -98,21 +99,21 @@ export default function LocalStudyFeature() {
         <div className="flex flex-wrap items-center gap-3">
           <a
             href={localStudyMeta.downloadDocx}
-            className="rounded-md bg-ouro-500 text-earth-900 px-4 py-2.5 text-sm font-semibold hover:bg-ouro-300"
+            className="rounded-md bg-pulso-dourado text-pulso-verde px-4 py-2.5 text-sm font-semibold hover:bg-pulso-dourado-claro"
           >
             Baixar estudo completo (.docx) →
           </a>
           <a
             href={localStudyMeta.downloadXlsx}
-            className="rounded-md border border-ouro-300 text-ouro-300 px-4 py-2.5 text-sm font-semibold hover:bg-ouro-500/10"
+            className="rounded-md border border-pulso-dourado-claro text-pulso-dourado-claro px-4 py-2.5 text-sm font-semibold hover:bg-pulso-dourado/10"
           >
             Baixar planilha mestre (.xlsx) →
           </a>
         </div>
-        <p className="text-[11px] text-folha-100/60 mt-4 max-w-2xl">
+        <p className="text-[11px] text-pulso-creme/60 mt-4 max-w-2xl">
           Dados de Fase 1: estruturação metodológica completa, coleta secundária em andamento, cálculos
           epidemiológicos parciais. Consulte a nota de cautela editorial e a política de métricas em{' '}
-          <a href="/transparencia" className="underline hover:text-ouro-300">Transparência</a>.
+          <a href="/transparencia" className="underline hover:text-pulso-dourado-claro">Transparência</a>.
         </p>
       </div>
     </section>
@@ -122,8 +123,8 @@ export default function LocalStudyFeature() {
 function MetaItem({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <div className="text-[10px] uppercase tracking-wide text-ouro-300/80 font-semibold mb-0.5">{label}</div>
-      <div className="text-palha-100/90">{value}</div>
+      <div className="text-[10px] uppercase tracking-wide text-pulso-dourado-claro/80 font-semibold mb-0.5">{label}</div>
+      <div className="text-pulso-creme/90">{value}</div>
     </div>
   );
 }

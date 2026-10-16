@@ -50,7 +50,6 @@ CREATE TABLE IF NOT EXISTS disease_content (
   hero_image_url TEXT,
   hero_image_alt TEXT,
   hero_image_credit TEXT,
-  hero_is_placeholder INTEGER NOT NULL DEFAULT 1 CHECK (hero_is_placeholder IN (0,1)),
   UNIQUE (disease_id, locale_id, audience)
 );
 

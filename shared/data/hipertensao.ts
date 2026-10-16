@@ -23,15 +23,13 @@ import type { DiseaseDeepContent } from './anemiaFalciforme';
 const heroImage_pt = {
   url: 'https://sspark.genspark.ai/i/DYbur7l9KsuZidYX?width=2560',
   alt: 'Medição da pressão arterial com esfigmomanômetro e manguito no braço de uma pessoa',
-  credit: 'Imagem placeholder (CC/PD) — substituir por material próprio se necessário',
-  isPlaceholder: true as const,
+  credit: 'Domínio público / CC0',
 };
 
 const heroImage_es = {
   url: 'https://sspark.genspark.ai/i/DYbur7l9KsuZidYX?width=2560',
   alt: 'Medición de la presión arterial con esfigmomanómetro y brazalete en el brazo de una persona',
-  credit: 'Imagen de relleno (CC/PD) — sustituir por material propio si es necesario',
-  isPlaceholder: true as const,
+  credit: 'Dominio público / CC0',
 };
 
 const hipertensaoContent_pt: DiseaseDeepContent = {

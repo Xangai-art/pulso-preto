@@ -48,7 +48,7 @@
     },
     {
       "id": "avc",
-      "name": "AVC (Acidente Vascular Cerebral)",
+      "name": "Acidente Vascular Cerebral (AVC)",
       "category_id": "cardiovasculares",
       "category_title": "Cardiovasculares",
       "is_priority_theme": 0,
@@ -217,7 +217,7 @@
     },
     {
       "id": "tept",
-      "name": "TEPT (Transtorno de Estresse Pós-Traumático)",
+      "name": "Transtorno de Estresse Pós-Traumático (TEPT)",
       "category_id": "saude-mental",
       "category_title": "Saúde Mental",
       "is_priority_theme": 0,
@@ -256,7 +256,7 @@
     },
     {
       "id": "covid-19",
-      "name": "COVID-19",
+      "name": "Doença por Coronavírus 2019 (COVID-19)",
       "category_id": "respiratorias",
       "category_title": "Respiratórias",
       "is_priority_theme": 0,
@@ -373,7 +373,7 @@
     },
     {
       "id": "nmosd",
-      "name": "NMOSD (Doença do Espectro da Neuromielite Óptica)",
+      "name": "Doença do Espectro da Neuromielite Óptica (NMOSD)",
       "category_id": "raras-autoimunes",
       "category_title": "Raras e Autoimunes",
       "is_priority_theme": 0,
@@ -386,7 +386,7 @@
     },
     {
       "id": "attr-cm",
-      "name": "ATTR-CM (Amiloidose Cardíaca)",
+      "name": "Amiloidose Cardíaca (ATTR-CM)",
       "category_id": "raras-autoimunes",
       "category_title": "Raras e Autoimunes",
       "is_priority_theme": 0,
@@ -477,7 +477,7 @@
     },
     {
       "id": "hepatites",
-      "name": "Hepatites B/C",
+      "name": "Hepatites B e C",
       "category_id": "outras",
       "category_title": "Outras",
       "is_priority_theme": 0,
@@ -490,7 +490,7 @@
     },
     {
       "id": "hiv",
-      "name": "HIV/AIDS",
+      "name": "Vírus da Imunodeficiência Humana (HIV) e Síndrome da Imunodeficiência Adquirida (AIDS)",
       "category_id": "outras",
       "category_title": "Outras",
       "is_priority_theme": 0,
@@ -503,7 +503,7 @@
     },
     {
       "id": "prevencao-hiv-prep",
-      "name": "Prevenção do HIV (PrEP)",
+      "name": "Prevenção do HIV (Profilaxia Pré-Exposição)",
       "category_id": "outras",
       "category_title": "Outras",
       "is_priority_theme": 0,
@@ -638,8 +638,7 @@
         "heroImage": {
           "url": "https://sspark.genspark.ai/i/U0fgB9sbw0tFlBV7?width=2560",
           "alt": "Micrografia eletrônica colorizada comparando hemácias normais em forma de disco biconcavo com uma hemácia em formato de foice (drepanócito), característica da doença falciforme",
-          "credit": "Pixnio — domínio público / CC0 (placeholder científico, substituir por material próprio se necessário)",
-          "isPlaceholder": true
+          "credit": "Pixnio — domínio público / CC0"
         },
         "audiences": {
           "medico": {
@@ -819,8 +818,7 @@
         "heroImage": {
           "url": "https://sspark.genspark.ai/i/U0fgB9sbw0tFlBV7?width=2560",
           "alt": "Micrografía electrónica coloreada que compara glóbulos rojos normales con forma de disco bicóncavo con un glóbulo rojo en forma de hoz (drepanocito), característico de la enfermedad falciforme",
-          "credit": "Pixnio — dominio público / CC0 (placeholder científico, sustituir por material propio si es necesario)",
-          "isPlaceholder": true
+          "credit": "Pixnio — dominio público / CC0"
         },
         "audiences": {
           "medico": {
@@ -1002,8 +1000,7 @@
         "heroImage": {
           "url": "https://sspark.genspark.ai/i/DYbur7l9KsuZidYX?width=2560",
           "alt": "Medição da pressão arterial com esfigmomanômetro e manguito no braço de uma pessoa",
-          "credit": "Imagem placeholder (CC/PD) — substituir por material próprio se necessário",
-          "isPlaceholder": true
+          "credit": "Domínio público / CC0"
         },
         "audiences": {
           "medico": {
@@ -1173,8 +1170,7 @@
         "heroImage": {
           "url": "https://sspark.genspark.ai/i/DYbur7l9KsuZidYX?width=2560",
           "alt": "Medición de la presión arterial con esfigmomanómetro y brazalete en el brazo de una persona",
-          "credit": "Imagen de relleno (CC/PD) — sustituir por material propio si es necesario",
-          "isPlaceholder": true
+          "credit": "Dominio público / CC0"
         },
         "audiences": {
           "medico": {
@@ -1346,8 +1342,7 @@
         "heroImage": {
           "url": "https://sspark.genspark.ai/i/fhNaPFo6WtBOQSHf?width=2560",
           "alt": "Pessoa medindo a glicemia capilar com glicosímetro e fita reagente no dedo",
-          "credit": "Imagem placeholder (CC/PD) — substituir por material próprio se necessário",
-          "isPlaceholder": true
+          "credit": "Domínio público / CC0"
         },
         "audiences": {
           "medico": {
@@ -1518,8 +1513,7 @@
         "heroImage": {
           "url": "https://sspark.genspark.ai/i/fhNaPFo6WtBOQSHf?width=2560",
           "alt": "Persona midiendo la glucemia capilar con glucómetro y tira reactiva en el dedo",
-          "credit": "Imagen de relleno (CC/PD) — sustituir por material propio si es necesario",
-          "isPlaceholder": true
+          "credit": "Dominio público / CC0"
         },
         "audiences": {
           "medico": {
@@ -1692,8 +1686,7 @@
         "heroImage": {
           "url": "https://sspark.genspark.ai/i/NYpPsNuS3oGvOr9t?width=2560",
           "alt": "Ilustração anatômica do útero humano com representação de nódulos (miomas) na parede uterina",
-          "credit": "Imagem placeholder (CC/PD) — substituir por material próprio se necessário",
-          "isPlaceholder": true
+          "credit": "Domínio público / CC0"
         },
         "audiences": {
           "medico": {
@@ -1863,8 +1856,7 @@
         "heroImage": {
           "url": "https://sspark.genspark.ai/i/NYpPsNuS3oGvOr9t?width=2560",
           "alt": "Ilustración anatómica del útero humano con representación de nódulos (miomas) en la pared uterina",
-          "credit": "Imagen de relleno (CC/PD) — sustituir por material propio si es necesario",
-          "isPlaceholder": true
+          "credit": "Dominio público / CC0"
         },
         "audiences": {
           "medico": {
@@ -2036,8 +2028,7 @@
         "heroImage": {
           "url": "https://sspark.genspark.ai/i/2ZrbjwRPCOIjnBSA?width=2560",
           "alt": "Ilustração médica representando inflamação autoimune multissistêmica do lúpus, com destaque para articulações e pele",
-          "credit": "Imagem placeholder (CC/PD) — substituir por material próprio se necessário",
-          "isPlaceholder": true
+          "credit": "Domínio público / CC0"
         },
         "audiences": {
           "medico": {
@@ -2207,8 +2198,7 @@
         "heroImage": {
           "url": "https://sspark.genspark.ai/i/2ZrbjwRPCOIjnBSA?width=2560",
           "alt": "Ilustración médica que representa la inflamación autoinmune multisistémica del lupus, con énfasis en articulaciones y piel",
-          "credit": "Imagen de relleno (CC/PD) — sustituir por material propio si es necesario",
-          "isPlaceholder": true
+          "credit": "Dominio público / CC0"
         },
         "audiences": {
           "medico": {
@@ -2380,8 +2370,7 @@
         "heroImage": {
           "url": "https://sspark.genspark.ai/i/JKe27K9j1WJNZSzz?width=2560",
           "alt": "Pessoa sentada em silêncio, com expressão de reflexão, representando o sofrimento psíquico da depressão",
-          "credit": "Imagem placeholder (CC/PD) — substituir por material próprio se necessário",
-          "isPlaceholder": true
+          "credit": "Domínio público / CC0"
         },
         "audiences": {
           "medico": {
@@ -2551,8 +2540,7 @@
         "heroImage": {
           "url": "https://sspark.genspark.ai/i/JKe27K9j1WJNZSzz?width=2560",
           "alt": "Persona sentada en silencio, con expresión de reflexión, representando el sufrimiento psíquico de la depresión",
-          "credit": "Imagen de relleno (CC/PD) — sustituir por material propio si es necesario",
-          "isPlaceholder": true
+          "credit": "Dominio público / CC0"
         },
         "audiences": {
           "medico": {
@@ -2724,8 +2712,7 @@
         "heroImage": {
           "url": "https://sspark.genspark.ai/i/Xg1kmnIK4FSMzzip?width=2560",
           "alt": "Pessoa utilizando inalador (bombinha) para controle da asma, com via aérea ilustrada ao fundo",
-          "credit": "Imagem placeholder (CC/PD) — substituir por material próprio se necessário",
-          "isPlaceholder": true
+          "credit": "Domínio público / CC0"
         },
         "audiences": {
           "medico": {
@@ -2895,8 +2882,7 @@
         "heroImage": {
           "url": "https://sspark.genspark.ai/i/Xg1kmnIK4FSMzzip?width=2560",
           "alt": "Persona utilizando un inhalador para el control del asma, con la vía aérea ilustrada al fondo",
-          "credit": "Imagen de relleno (CC/PD) — sustituir por material propio si es necesario",
-          "isPlaceholder": true
+          "credit": "Dominio público / CC0"
         },
         "audiences": {
           "medico": {

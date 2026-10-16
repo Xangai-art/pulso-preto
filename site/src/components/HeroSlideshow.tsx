@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { heroSlides } from '../data/heroSlides';
 import { LeafMark } from './Ornaments';
+import { PULSO_PALETTE } from '@shared/data/pulsoPalette';
 import { useAppearance } from '@shared/context/AppearanceContext';
 
 // Apresentação de slides dinâmica para a hero da Home — substitui o vídeo
@@ -12,24 +13,24 @@ import { useAppearance } from '@shared/context/AppearanceContext';
 const AUTO_ADVANCE_MS = 6000;
 
 const toneBg: Record<string, string> = {
-  folha: 'from-folha-700 via-folha-900 to-earth-900',
-  ouro: 'from-ouro-700 via-folha-900 to-earth-900',
-  barro: 'from-barro-700 via-folha-900 to-earth-900',
-  brand: 'from-brand-700 via-folha-900 to-earth-900',
+  folha: 'from-pulso-verde-medio via-pulso-verde to-pulso-verde',
+  ouro: 'from-pulso-dourado via-pulso-verde to-pulso-verde',
+  barro: 'from-pulso-marrom via-pulso-verde to-pulso-verde',
+  brand: 'from-pulso-verde via-pulso-verde to-pulso-verde',
 };
 
 const toneAccent: Record<string, string> = {
-  folha: 'text-folha-300',
-  ouro: 'text-ouro-300',
-  barro: 'text-barro-300',
-  brand: 'text-brand-300',
+  folha: 'text-pulso-verde-accent/40',
+  ouro: 'text-pulso-dourado-claro',
+  barro: 'text-pulso-marrom/40',
+  brand: 'text-pulso-verde-accent/40',
 };
 
 const toneDot: Record<string, string> = {
-  folha: 'bg-folha-300',
-  ouro: 'bg-ouro-300',
-  barro: 'bg-barro-300',
-  brand: 'bg-brand-300',
+  folha: 'bg-pulso-verde-accent/40',
+  ouro: 'bg-pulso-dourado-claro',
+  barro: 'bg-pulso-marrom/40',
+  brand: 'bg-pulso-verde-accent/40',
 };
 
 export default function HeroSlideshow() {
@@ -56,7 +57,7 @@ export default function HeroSlideshow() {
 
   return (
     <div
-      className="relative w-full overflow-hidden rounded-2xl border border-earth-200 shadow-sm"
+      className="relative w-full overflow-hidden rounded-2xl border border-pulso-dourado/25 shadow-sm"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocus={() => setPaused(true)}
@@ -79,16 +80,16 @@ export default function HeroSlideshow() {
             className="flex-1 flex flex-col hero-slide-enter"
           >
             <div className="flex items-center gap-2 mb-4">
-              <LeafMark size={20} color="#f4f0e6" />
+              <LeafMark size={20} color={PULSO_PALETTE.creme} />
               <span className={`eyebrow ${toneAccent[slide.tone]}`}>{slide.eyebrow}</span>
             </div>
             <h2 className="font-editorial italic text-2xl sm:text-3xl leading-snug mb-4 max-w-xl">
               {slide.title}
             </h2>
-            <p className="text-sm sm:text-base text-palha-100/90 max-w-lg mb-6">{slide.description}</p>
+            <p className="text-sm sm:text-base text-pulso-creme/90 max-w-lg mb-6">{slide.description}</p>
             <div className="mt-auto flex items-end gap-3">
               <span className={`text-4xl sm:text-5xl font-bold ${toneAccent[slide.tone]}`}>{slide.stat}</span>
-              <span className="text-xs sm:text-sm text-palha-100/80 pb-1.5 max-w-[10rem]">{slide.statLabel}</span>
+              <span className="text-xs sm:text-sm text-pulso-creme/80 pb-1.5 max-w-[10rem]">{slide.statLabel}</span>
             </div>
           </div>
 

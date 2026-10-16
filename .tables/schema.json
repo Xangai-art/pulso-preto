@@ -121,12 +121,6 @@
         {
           "name": "hero_image_credit",
           "type": "TEXT"
-        },
-        {
-          "name": "hero_is_placeholder",
-          "type": "INTEGER",
-          "not_null": true,
-          "default": 1
         }
       ],
       "unique": [

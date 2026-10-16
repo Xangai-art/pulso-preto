@@ -1,10 +1,11 @@
 // Ícones autorais para a faixa de atalhos ("Conheça sua saúde", "Encontre
 // cuidado/atendimento", "Dados e Indicadores", "Seus Direitos", "Participe")
-// e para o pulso/heartbeat das variantes Pulso Preto (PP1/PP2). Geométricos,
+// e para o pulso/heartbeat da identidade Pulso Preto (PP3). Geométricos,
 // construídos em traço único (stroke), coerentes com a identidade "pulso" —
 // uma linha de ECG estilizada atravessa o ícone de "Conheça sua saúde"/coração.
 import type React from 'react';
-import type { FeatureIconId } from '../../../shared/data/variantContent';
+import type { FeatureIconId } from '../../../shared/data/pulsoContent';
+import { PULSO_PALETTE } from '@shared/data/pulsoPalette';
 
 function BookIcon({ size, color }: { size: number; color: string }) {
   return (
@@ -88,7 +89,7 @@ const ICONS: Record<FeatureIconId, React.FC<{ size: number; color: string }>> = 
 export default function PulsoIcon({
   id,
   size = 28,
-  color = '#C9934B',
+  color = PULSO_PALETTE.dourado,
 }: {
   id: FeatureIconId;
   size?: number;
@@ -101,7 +102,7 @@ export default function PulsoIcon({
 
 // Linha de ECG/heartbeat decorativa — assinatura visual "Pulso Preto",
 // usada no cabeçalho/rodapé junto ao nome da marca.
-export function HeartbeatLine({ width = 40, height = 14, color = '#C9934B', className = '' }: { width?: number; height?: number; color?: string; className?: string }) {
+export function HeartbeatLine({ width = 40, height = 14, color = PULSO_PALETTE.dourado, className = '' }: { width?: number; height?: number; color?: string; className?: string }) {
   return (
     <svg width={width} height={height} viewBox="0 0 60 20" className={className} aria-hidden="true">
       <path

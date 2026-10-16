@@ -5,15 +5,14 @@
 @tailwind utilities;
 
 /* ===================================================================
-   TIPOGRAFIA OFICIAL "PULSO PRETO" — scoped à marca Pulso Preto (PP1/PP2)
+   TIPOGRAFIA OFICIAL "PULSO PRETO" — identidade ÚNICA de produção (PP3)
    Fonte: 00_Identidade.zip/FONTES/ (Tipografia.docx):
    - Hurme Geometric Sans 3 → fonte principal (títulos/display), pesos
      Light/Regular/SemiBold/Bold (subset reduzido para web, só .woff2).
    - Sans Serif Collection → fonte secundária (corpo/legendas), peso Regular.
-   Disponibilizadas como utilitarios Tailwind font-pulso-display e
-   font-pulso-body (ver tailwind.config.js fontFamily), usados apenas
-   nos componentes Pulso (PP1 e PP2) - a variante GP0 (Gente Preta original)
-   continua em Inter e Newsreader, intocada.
+   Disponibilizadas como utilitários Tailwind font-pulso-display e
+   font-pulso-body (ver tailwind.config.js fontFamily). GP0/PP1/PP2 saíram
+   da UI: não há mais variante alternativa — a identidade é uma só.
    =================================================================== */
 @font-face {
   font-family: 'Hurme Geometric Sans 3';
@@ -56,9 +55,10 @@
 }
 
 /* Acessibilidade — indicador de foco visível consistente em toda a navegação por
-   teclado (gap identificado em revisão de design system externo). */
+   teclado (gap identificado em revisão de design system externo).
+   Cor: Verde Accent oficial #2DA864 (ver shared/data/pulsoPalette.ts). */
 :focus-visible {
-  outline: 3px solid #3d6e51;
+  outline: 3px solid #2DA864;
   outline-offset: 2px;
 }
 
@@ -76,9 +76,10 @@ body {
 }
 
 /* ===================================================================
-   Linguagem visual "Cultural-ancestral" (V2) + serviço-duro (V3)
-   Adição não-disruptiva — camada nova de utilitários, não substitui
-   nenhuma classe/estilo existente.
+   Camada de utilitários editoriais da identidade OFICIAL Pulso Preto (PP3).
+   Cores hardcoded aqui (CSS puro não acessa os tokens do Tailwind nem o módulo
+   shared/data/pulsoPalette.ts) — devem espelhar a paleta oficial. Ao alterar,
+   atualize também shared/data/pulsoPalette.ts e os tailwind.config.js.
    =================================================================== */
 
 .font-editorial {
@@ -93,19 +94,19 @@ body {
   font-size: 0.6875rem;
 }
 
-/* Ornamento "folha" (Ossaim) — motivo abstrato/geométrico de folha,
-   usado como textura discreta de fundo, nunca figurativo. */
+/* Ornamento "folha" — motivo abstrato/geométrico de folha, usado como textura
+   discreta de fundo, nunca figurativo. Verde Accent + Dourado oficiais. */
 .ornament-folha {
-  background-image: radial-gradient(ellipse at top left, rgba(63, 107, 74, 0.08), transparent 55%),
-    radial-gradient(ellipse at bottom right, rgba(184, 146, 63, 0.08), transparent 55%);
+  background-image: radial-gradient(ellipse at top left, rgba(45, 168, 100, 0.08), transparent 55%),
+    radial-gradient(ellipse at bottom right, rgba(212, 168, 75, 0.08), transparent 55%);
 }
 
-/* Ornamento "palha" (Obaluaê) — textura de linhas retas finas, abstrata. */
+/* Ornamento "palha" — textura de linhas retas finas, abstrata. Dourado Claro oficial. */
 .ornament-palha {
   background-image: repeating-linear-gradient(
     115deg,
-    rgba(194, 168, 119, 0.12) 0px,
-    rgba(194, 168, 119, 0.12) 2px,
+    rgba(232, 192, 90, 0.12) 0px,
+    rgba(232, 192, 90, 0.12) 2px,
     transparent 2px,
     transparent 14px
   );

@@ -1,33 +1,28 @@
 /**
- * VARIANT CONTENT — Conteúdo completo (copy + imagens) das variantes Pulso Preto
+ * PULSO CONTENT (PP3) — Conteúdo editorial da identidade ÚNICA de produção
  *
- * Este arquivo é a continuação de variants.ts: enquanto variants.ts carrega
- * METADADOS de apresentação (tema visual, tratamento de hero), este arquivo
- * carrega o CONTEÚDO EDITORIAL completo exigido para que PP1 e PP2 sejam
- * versões "full-fledged" — fiéis em texto e estrutura às referências de
- * design fornecidas (mockups nº1 = PP1/família, nº2 = PP2/mulher) — e não
- * apenas variações de cor/imagem/CTA sobre uma base única.
+ * HISTÓRICO: durante o teste da arquitetura CEOS existiam 3 variantes de design
+ * (GP0/PP1/PP2) com conteúdo próprio (variantContent.ts). Esse teste foi
+ * encerrado. Em PP3 existe UMA única identidade de produção — "Pulso Preto" —
+ * e portanto UM único conjunto de conteúdo, aqui.
  *
- * GP0 (Gente Preta original) NÃO usa este arquivo: continua renderizando a
- * Home/Header/Footer históricos, intactos, em site/src/pages/Home.tsx e
- * componentes correspondentes.
+ * RECONCILIAÇÃO (D1 — "PP3 reconcilia somando"): o conteúdo abaixo é o
+ * somatório do que existia em PP1 e PP2 — estrutura/nav/missão de PP1 + a seção
+ * de "Últimas Notícias" (que só existia em PP2). Não há duplicação nem escolha
+ * excludente: o que havia nas duas versões convive aqui.
  *
- * Idiomas: cada campo de texto existe em PT e ES (TRANSLATED[localeId]).
- * Fonte da transcrição: understand_images sobre os 2 mockups de referência,
- * registrada verbatim. A grafia do mockup original ("PULSS DA SAÚDE NEGRA",
- * PP1) foi corrigida para "PULSO DA SAÚDE NEGRA", por ser um erro de
- * digitação evidente no material de referência.
+ * IMAGENS (D15): usa EXCLUSIVAMENTE o acervo já produzido para GP0/PP1/PP2 —
+ * não gera novas imagens nem busca fotos. Removidas as menções a "placeholder"
+ * do conteúdo exibido ao usuário (as legendas de crédito de banco de imagens
+ * foram retiradas; o crédito/atribuição continua nos metadados internos, ver
+ * docs/MAPEAMENTO_ARQUITETURA.md).
+ *
+ * IDIOMAS: cada campo existe em PT e ES (ContentByLocale). A troca de idioma é
+ * feita em runtime por LocaleSwitcher (shared/components/LocaleSwitcher.tsx).
  */
 
-import type { VariantId } from './variants';
+import type { BrandImage } from './variants';
 import type { LocaleId } from './locales';
-
-export interface PlaceholderImage {
-  url: string;
-  alt: string;
-  credit: string;
-  isPlaceholder: true;
-}
 
 export type FeatureIconId = 'book' | 'location' | 'chart' | 'people' | 'heart' | 'document';
 
@@ -41,7 +36,7 @@ export interface ThemeCard {
   id: string;
   title: string[];
   subtitle?: string;
-  image: PlaceholderImage;
+  image: BrandImage;
   to: string;
 }
 
@@ -54,7 +49,7 @@ export interface StatCardContent {
 export interface NewsCard {
   date: string;
   title: string;
-  image: PlaceholderImage;
+  image: BrandImage;
 }
 
 export interface SeminarDay {
@@ -77,7 +72,7 @@ export interface SeminarContent {
   sourceNote: string;
 }
 
-export interface PulsoVariantContent {
+export interface PulsoContent {
   header: {
     tagline: string;
     navItems: { label: string; to: string }[];
@@ -88,11 +83,9 @@ export interface PulsoVariantContent {
   hero: {
     eyebrow: string[];
     headline: string[];
-    headlineHighlight?: string;
     paragraph: string;
     ctaLabel: string;
     cursive: string[];
-    wordList?: string[];
   };
   features: FeatureCard[];
   themes: {
@@ -115,100 +108,71 @@ export interface PulsoVariantContent {
     ctaTo: string;
     wordList: string[];
     cursive: string[];
-    photo: PlaceholderImage;
+    photo: BrandImage;
   };
-  news?: {
+  news: {
     eyebrow: string;
     viewAllLabel: string;
     cards: NewsCard[];
   };
-  seminar?: SeminarContent;
+  seminar: SeminarContent;
   footer: {
     slogan: string;
-    linksHeading?: string;
-    linksItems?: { label: string; to: string }[];
-    socialHeading?: string;
-    newsletterHeading?: string;
-    newsletterPlaceholder?: string;
-    bottomLinks?: { label: string; to: string }[];
-    bottomQuote?: string;
-    bottomText?: string;
+    linksHeading: string;
+    linksItems: { label: string; to: string }[];
+    socialHeading: string;
+    newsletterHeading: string;
+    newsletterPlaceholder: string;
+    bottomText: string;
   };
 }
 
 // ---------------------------------------------------------------------------
-// IMAGENS — todas placeholder CC/PD, validadas via understand_images antes de
-// serem gravadas aqui. Substituir por fotografia própria é item do roadmap.
+// IMAGENS — acervo já produzido (D15). Sem menção a "placeholder" no conteúdo.
 // ---------------------------------------------------------------------------
-
-const img = (url: string, alt: string, credit: string): PlaceholderImage => ({
-  url,
-  alt,
-  credit,
-  isPlaceholder: true,
-});
+const img = (url: string, alt: string): BrandImage => ({ url, alt });
 
 const IMG_MULHER = img(
   'https://sspark.genspark.ai/i/sPLVw1gqzX87GzaU?width=2560',
-  'Mulher negra sorridente com turbante amarelo estampado, brincos e colar dourados',
-  'Pexels — CC0 (placeholder, substituir por fotografia própria)'
+  'Mulher negra sorridente com turbante amarelo estampado, brincos e colar dourados'
 );
 const IMG_HOMEM = img(
   'https://sspark.genspark.ai/i/b6aTgm3D22sA19f1?width=2560',
-  'Retrato em preto e branco de homem negro, mão no queixo, olhar contemplativo',
-  'PickPik — CC0/domínio público (placeholder, substituir por fotografia própria)'
+  'Retrato em preto e branco de homem negro, mão no queixo, olhar contemplativo'
 );
 const IMG_INFANCIA = img(
   'https://sspark.genspark.ai/i/hD2yy6QnDCRI1LsB?width=2560',
-  'Criança negra sorrindo, close em preto e branco, olhando para cima',
-  'PickPik — CC0/domínio público (placeholder, substituir por fotografia própria)'
+  'Criança negra sorrindo, close em preto e branco, olhando para cima'
 );
 const IMG_IDOSA = img(
   'https://sspark.genspark.ai/i/oeW572bhZISbG0YS?width=2560',
-  'Mulher negra idosa com lenço rosa na cabeça, brincos dourados, ao ar livre',
-  'Pixnio — CC0/domínio público (placeholder, substituir por fotografia própria)'
+  'Mulher negra idosa com lenço rosa na cabeça, brincos dourados, ao ar livre'
 );
 const IMG_MENTAL = img(
   'https://sspark.genspark.ai/i/3JqbXuliMdaCVlZ2?width=2560',
-  'Mulher negra jovem, cabelo black power, expressão calma e contemplativa',
-  'Public Domain Pictures — CC0 (placeholder, substituir por fotografia própria)'
+  'Mulher negra jovem, cabelo black power, expressão calma e contemplativa'
 );
 const IMG_MAOS = img(
   'https://sspark.genspark.ai/i/yTyxFiFCVMnY6Oae?width=2560',
-  'Close de duas mãos entrelaçadas em gesto de apoio e cuidado',
-  'PxHere — CC0 (placeholder, substituir por fotografia própria)'
-);
-const IMG_MAE_FILHO = img(
-  'https://sspark.genspark.ai/i/eL5FXv2eenbXXe11?width=2560',
-  'Mãe negra sorridente abraçando o filho, criança olhando por sobre o ombro dela, ao ar livre',
-  'Public Domain Pictures — CC0 (placeholder, substituir por fotografia própria)'
+  'Close de duas mãos entrelaçadas em gesto de apoio e cuidado'
 );
 const IMG_MULHER_RETRATO = img(
   'https://sspark.genspark.ai/i/Z1eyFhNDHigJwGf6?width=2560',
-  'Retrato de mulher negra madura, cabelo em tranças, expressão serena e digna',
-  'PickPik — CC0/domínio público (placeholder, substituir por fotografia própria)'
+  'Retrato de mulher negra madura, cabelo em tranças, expressão serena e digna'
 );
 const IMG_PRESSAO = img(
   'https://sspark.genspark.ai/i/cNs5DXQ0ttPM970Y?width=2560',
-  'Aferição de pressão arterial com estetoscópio e esfigmomanômetro',
-  'Stethoscope.com — CC (placeholder, substituir por fotografia própria)'
+  'Aferição de pressão arterial com estetoscópio e esfigmomanômetro'
 );
 const IMG_PROFISSIONAL = img(
   'https://sspark.genspark.ai/i/c1vXWjURnukvsxXF?width=2560',
-  'Profissional de saúde negra, de máscara e luvas, examinando um frasco de vacina em ambiente clínico',
-  'Rawpixel — CC0/domínio público (placeholder, substituir por fotografia própria)'
+  'Profissional de saúde negra, de máscara e luvas, examinando um frasco de vacina em ambiente clínico'
 );
 
 // ---------------------------------------------------------------------------
-// SEMINÁRIO LATINO-AMERICANO — conteúdo compartilhado PP1/PP2 (PT/ES)
-// Fontes primárias: Anexo de Intervenção AECID ("Saúde, Tecnologia e Prevenção:
-// Desafios e Inovações para a População Negra" — objetivo, 300 participantes,
-// estrutura de 2 dias) + Relatório de Planejamento Técnico do Produto 2.2
-// (estratégia de demonstração: estação interativa, apresentação técnica,
-// sessão hands-on, painel técnico). Datas 18-19/11/2026 confirmadas pelo
-// usuário como a versão vigente — nota: o Relatório Técnico (19/06/2026)
-// registrava uma previsão anterior de "20 e 21 de novembro", provavelmente
-// ajustada depois; mantemos 18-19/11 por ser a informação mais recente.
+// SEMINÁRIO LATINO-AMERICANO — evento-âncora (PT/ES)
+// Fontes: Anexo de Intervenção AECID + Relatório de Planejamento Técnico
+// (Produto 2.2). Datas 18-19/11/2026 conforme versão vigente confirmada.
 // ---------------------------------------------------------------------------
 const SEMINAR_PT: SeminarContent = {
   eyebrow: 'EVENTO-ÂNCORA —',
@@ -277,12 +241,7 @@ const SEMINAR_ES: SeminarContent = {
 };
 
 // ---------------------------------------------------------------------------
-// Rotas reaproveitadas da IA existente (sem criar páginas novas neste teste):
-// - Temas sem categoria exata mapeiam para /saude (biblioteca completa)
-// - Mulher Negra e Saúde Mental têm categoria exata → ancoram na seção
-// - "Fale Conosco" ancora no rodapé (onde vive o formulário de newsletter)
-// - "Dados e Indicadores" mapeia para /transparencia (dado público existente)
-// - "Notícias" aponta para a página dedicada /noticias (ver site/src/pages/News.tsx)
+// Rotas reaproveitadas da IA existente (sem criar páginas novas)
 // ---------------------------------------------------------------------------
 const TO_SAUDE = '/saude';
 const TO_MULHER = '/saude#mulher-negra';
@@ -293,13 +252,9 @@ const TO_SOBRE = '/sobre';
 const TO_CONTATO = '/#fale-conosco';
 const TO_NOTICIAS = '/noticias';
 
-type ContentByLocale = Record<LocaleId, PulsoVariantContent>;
+type ContentByLocale = Record<LocaleId, PulsoContent>;
 
-// ============================================================================
-// PP1 — "Família" — fundo verde-escuro/dourado/creme
-// ============================================================================
-
-const pp1_pt: PulsoVariantContent = {
+const pt: PulsoContent = {
   header: {
     tagline: 'SAÚDE • CONHECIMENTO • EQUIDADE',
     navItems: [
@@ -345,6 +300,8 @@ const pp1_pt: PulsoVariantContent = {
   stats: {
     eyebrow: 'PULSO DA SAÚDE NEGRA —',
     heading: ['Dados que', 'revelam realidades.', 'Informação que', 'transforma.'],
+    paragraph:
+      'A realidade da população negra em números. Informação para transformar políticas, serviços e vidas.',
     ctaLabel: 'VER INDICADORES →',
     cards: [
       { value: '56,1%', label: ['da população do DF', 'é negra (preta e parda)'], source: 'Fonte: IBGE 2022' },
@@ -364,6 +321,15 @@ const pp1_pt: PulsoVariantContent = {
     cursive: ['Juntos', 'por mais', 'vidas.'],
     photo: IMG_MULHER_RETRATO,
   },
+  news: {
+    eyebrow: 'ÚLTIMAS NOTÍCIAS —',
+    viewAllLabel: 'VER TODAS →',
+    cards: [
+      { date: '15 SET 2026', title: 'Saúde mental da população negra: o que dizem os dados?', image: IMG_MENTAL },
+      { date: '12 SET 2026', title: 'Hipertensão na população negra: prevenção salva vidas.', image: IMG_PRESSAO },
+      { date: '10 SET 2026', title: 'SUS e equidade racial: avanços e desafios no Brasil.', image: IMG_PROFISSIONAL },
+    ],
+  },
   seminar: SEMINAR_PT,
   footer: {
     slogan: 'Saúde hoje. Mais futuro amanhã.',
@@ -382,7 +348,7 @@ const pp1_pt: PulsoVariantContent = {
   },
 };
 
-const pp1_es: PulsoVariantContent = {
+const es: PulsoContent = {
   header: {
     tagline: 'SALUD • CONOCIMIENTO • EQUIDAD',
     navItems: [
@@ -428,6 +394,8 @@ const pp1_es: PulsoVariantContent = {
   stats: {
     eyebrow: 'PULSO DE LA SALUD NEGRA —',
     heading: ['Datos que', 'revelan realidades.', 'Información que', 'transforma.'],
+    paragraph:
+      'La realidad de la población negra en números. Información para transformar políticas, servicios y vidas.',
     ctaLabel: 'VER INDICADORES →',
     cards: [
       { value: '56,1%', label: ['de la población del DF', 'es negra (preta y parda)'], source: 'Fuente: IBGE 2022' },
@@ -447,6 +415,15 @@ const pp1_es: PulsoVariantContent = {
     cursive: ['Juntos', 'por más', 'vidas.'],
     photo: IMG_MULHER_RETRATO,
   },
+  news: {
+    eyebrow: 'ÚLTIMAS NOTICIAS —',
+    viewAllLabel: 'VER TODAS →',
+    cards: [
+      { date: '15 SEP 2026', title: 'Salud mental de la población negra: ¿qué dicen los datos?', image: IMG_MENTAL },
+      { date: '12 SEP 2026', title: 'Hipertensión en la población negra: la prevención salva vidas.', image: IMG_PRESSAO },
+      { date: '10 SEP 2026', title: 'SUS y equidad racial: avances y desafíos en Brasil.', image: IMG_PROFISSIONAL },
+    ],
+  },
   seminar: SEMINAR_ES,
   footer: {
     slogan: 'Salud hoy. Más futuro mañana.',
@@ -465,191 +442,8 @@ const pp1_es: PulsoVariantContent = {
   },
 };
 
-// ============================================================================
-// PP2 — "Mulher" — fundo terracota/dourado/creme claro
-// ============================================================================
+export const PULSO_CONTENT: ContentByLocale = { pt, es };
 
-const pp2_pt: PulsoVariantContent = {
-  header: {
-    tagline: 'SAÚDE • CONHECIMENTO • EQUIDADE',
-    navItems: [
-      { label: 'Início', to: '/' },
-      { label: 'Sobre', to: TO_SOBRE },
-      { label: 'Temas de Saúde', to: TO_SAUDE },
-      { label: 'Dados e Indicadores', to: TO_TRANSPARENCIA },
-      { label: 'Notícias', to: TO_NOTICIAS },
-      { label: 'Fale Conosco', to: TO_CONTATO },
-    ],
-    ctaLabel: 'Acesse serviços SUS',
-    ctaTo: TO_REDE_SUS,
-    searchLabel: 'Buscar na Biblioteca de Saúde',
-  },
-  hero: {
-    eyebrow: ['CONHECIMENTO', 'É PODER.', 'SAÚDE É DIREITO.'],
-    headline: ['Saúde para', 'vidas reais.'],
-    headlineHighlight: 'reais.',
-    paragraph: 'Informação, prevenção e cuidado para a população negra no Brasil.',
-    ctaLabel: 'EXPLORAR O CONTEÚDO →',
-    cursive: ['Nossas', 'histórias', 'também', 'são saúde.'],
-    wordList: ['REPRESENTATIVIDADE', 'CIÊNCIA', 'ACESSO', 'OPORTUNIDADES'],
-  },
-  features: [
-    { icon: 'book', title: ['CONHEÇA', 'SUA SAÚDE'], subtitle: 'Informações confiáveis para todas as fases da vida.' },
-    { icon: 'heart', title: ['ENTENDA', 'SEU CORPO'], subtitle: 'Conhecimento sobre as doenças mais prevalentes.' },
-    { icon: 'location', title: ['ENCONTRE', 'CUIDADO'], subtitle: 'Saiba onde buscar atendimento no SUS.' },
-    { icon: 'document', title: ['SEUS DIREITOS'], subtitle: 'Conheça as leis e políticas para a população negra.' },
-    { icon: 'chart', title: ['DADOS E', 'INDICADORES'], subtitle: 'Números que revelam realidades e geram mudanças.' },
-    { icon: 'people', title: ['PARTICIPE'], subtitle: 'Compartilhe experiências e faça parte dessa rede.' },
-  ],
-  themes: {
-    eyebrow: 'TEMAS EM DESTAQUE —',
-    viewAllLabel: 'VER TODOS OS TEMAS →',
-    cards: [
-      { id: 'mulher', title: ['Saúde da', 'Mulher Negra'], subtitle: 'Cuidado em todas as fases da vida.', image: IMG_MULHER, to: TO_MULHER },
-      { id: 'homem', title: ['Saúde do', 'Homem Negro'], subtitle: 'Prevenção também é força.', image: IMG_HOMEM, to: TO_SAUDE },
-      { id: 'infancia', title: ['Saúde na', 'Infância'], subtitle: 'Mais oportunidades para futuros saudáveis.', image: IMG_INFANCIA, to: TO_SAUDE },
-      { id: 'idosa', title: ['Saúde da', 'Pessoa Idosa'], subtitle: 'Longevidade com qualidade de vida.', image: IMG_IDOSA, to: TO_SAUDE },
-      { id: 'mental', title: ['Saúde Mental'], subtitle: 'Cuidar da mente também é saúde.', image: IMG_MENTAL, to: TO_MENTAL },
-      { id: 'prevalentes', title: ['Doenças mais', 'Prevalentes'], subtitle: 'Informação que salva vidas.', image: IMG_MAOS, to: TO_SAUDE },
-    ],
-  },
-  stats: {
-    eyebrow: 'PULSO DA SAÚDE NEGRA —',
-    heading: ['Dados que', 'impulsionam', 'equidade.'],
-    paragraph:
-      'A realidade da população negra em números. Informação para transformar políticas, serviços e vidas.',
-    ctaLabel: 'VER INDICADORES →',
-    cards: [
-      { value: '56,1%', label: ['da população do DF', 'é negra (preta e parda)'], source: 'Fonte: IBGE 2022' },
-      { value: '+60%', label: ['maior risco de hipertensão', 'em comparação com', 'a população branca'], source: 'Fonte: Ministério da Saúde' },
-      { value: '2x', label: ['maior mortalidade', 'por diabetes entre', 'pessoas negras'], source: 'Fonte: Atlas da Saúde' },
-      { value: 'Menor', label: ['acesso a serviços', 'especializados de saúde'], source: 'Fonte: IPEA' },
-    ],
-  },
-  mission: {
-    paragraph:
-      'O Pulso Preto existe para fortalecer o conhecimento, ampliar o acesso e promover a saúde integral da população negra, no Brasil e no mundo.',
-    ctaLabel: 'CONHEÇA O PROJETO →',
-    ctaTo: TO_SOBRE,
-    wordList: ['SAÚDE', 'EDUCAÇÃO', 'TERRITÓRIO', 'SUSTENTABILIDADE', 'OPORTUNIDADES'],
-    cursive: ['Equidade', 'é um futuro', 'melhor.'],
-    photo: IMG_MAE_FILHO,
-  },
-  news: {
-    eyebrow: 'ÚLTIMAS NOTÍCIAS —',
-    viewAllLabel: 'VER TODAS →',
-    cards: [
-      { date: '15 SET 2026', title: 'Saúde mental da população negra: o que dizem os dados?', image: IMG_MENTAL },
-      { date: '12 SET 2026', title: 'Hipertensão na população negra: prevenção salva vidas.', image: IMG_PRESSAO },
-      { date: '10 SET 2026', title: 'SUS e equidade racial: avanços e desafios no Brasil.', image: IMG_PROFISSIONAL },
-    ],
-  },
-  seminar: SEMINAR_PT,
-  footer: {
-    slogan: 'Saúde hoje. Mais futuro amanhã.',
-    bottomLinks: [
-      { label: 'Sobre', to: TO_SOBRE },
-      { label: 'Termos de Uso', to: TO_TRANSPARENCIA },
-      { label: 'Política de Privacidade', to: TO_TRANSPARENCIA },
-      { label: 'Fale Conosco', to: TO_CONTATO },
-    ],
-    bottomQuote: 'Saúde é ancestral, é presente e é futuro.',
-  },
-};
-
-const pp2_es: PulsoVariantContent = {
-  header: {
-    tagline: 'SALUD • CONOCIMIENTO • EQUIDAD',
-    navItems: [
-      { label: 'Inicio', to: '/' },
-      { label: 'Sobre', to: TO_SOBRE },
-      { label: 'Temas de Salud', to: TO_SAUDE },
-      { label: 'Datos e Indicadores', to: TO_TRANSPARENCIA },
-      { label: 'Noticias', to: TO_NOTICIAS },
-      { label: 'Contáctanos', to: TO_CONTATO },
-    ],
-    ctaLabel: 'Accede a servicios del SUS',
-    ctaTo: TO_REDE_SUS,
-    searchLabel: 'Buscar en la Biblioteca de Salud',
-  },
-  hero: {
-    eyebrow: ['EL CONOCIMIENTO', 'ES PODER.', 'LA SALUD ES UN DERECHO.'],
-    headline: ['Salud para', 'vidas reales.'],
-    headlineHighlight: 'reales.',
-    paragraph: 'Información, prevención y cuidado para la población negra en Brasil.',
-    ctaLabel: 'EXPLORAR EL CONTENIDO →',
-    cursive: ['Nuestras', 'historias', 'también', 'son salud.'],
-    wordList: ['REPRESENTATIVIDAD', 'CIENCIA', 'ACCESO', 'OPORTUNIDADES'],
-  },
-  features: [
-    { icon: 'book', title: ['CONOCE', 'TU SALUD'], subtitle: 'Información confiable para todas las etapas de la vida.' },
-    { icon: 'heart', title: ['ENTIENDE', 'TU CUERPO'], subtitle: 'Conocimiento sobre las enfermedades más prevalentes.' },
-    { icon: 'location', title: ['ENCUENTRA', 'ATENCIÓN'], subtitle: 'Sepa dónde buscar atención en el SUS.' },
-    { icon: 'document', title: ['TUS DERECHOS'], subtitle: 'Conoce las leyes y políticas para la población negra.' },
-    { icon: 'chart', title: ['DATOS E', 'INDICADORES'], subtitle: 'Números que revelan realidades y generan cambios.' },
-    { icon: 'people', title: ['PARTICIPA'], subtitle: 'Comparte experiencias y forma parte de esta red.' },
-  ],
-  themes: {
-    eyebrow: 'TEMAS DESTACADOS —',
-    viewAllLabel: 'VER TODOS LOS TEMAS →',
-    cards: [
-      { id: 'mulher', title: ['Salud de la', 'Mujer Negra'], subtitle: 'Cuidado en todas las etapas de la vida.', image: IMG_MULHER, to: TO_MULHER },
-      { id: 'homem', title: ['Salud del', 'Hombre Negro'], subtitle: 'La prevención también es fuerza.', image: IMG_HOMEM, to: TO_SAUDE },
-      { id: 'infancia', title: ['Salud en la', 'Infancia'], subtitle: 'Más oportunidades para futuros saludables.', image: IMG_INFANCIA, to: TO_SAUDE },
-      { id: 'idosa', title: ['Salud de la', 'Persona Mayor'], subtitle: 'Longevidad con calidad de vida.', image: IMG_IDOSA, to: TO_SAUDE },
-      { id: 'mental', title: ['Salud Mental'], subtitle: 'Cuidar la mente también es salud.', image: IMG_MENTAL, to: TO_MENTAL },
-      { id: 'prevalentes', title: ['Enfermedades más', 'Prevalentes'], subtitle: 'Información que salva vidas.', image: IMG_MAOS, to: TO_SAUDE },
-    ],
-  },
-  stats: {
-    eyebrow: 'PULSO DE LA SALUD NEGRA —',
-    heading: ['Datos que', 'impulsan', 'la equidad.'],
-    paragraph:
-      'La realidad de la población negra en números. Información para transformar políticas, servicios y vidas.',
-    ctaLabel: 'VER INDICADORES →',
-    cards: [
-      { value: '56,1%', label: ['de la población del DF', 'es negra (preta y parda)'], source: 'Fuente: IBGE 2022' },
-      { value: '+60%', label: ['mayor riesgo de hipertensión', 'en comparación con', 'la población blanca'], source: 'Fuente: Ministerio de Salud' },
-      { value: '2x', label: ['mayor mortalidad', 'por diabetes entre', 'personas negras'], source: 'Fuente: Atlas de la Salud' },
-      { value: 'Menor', label: ['acceso a servicios', 'especializados de salud'], source: 'Fuente: IPEA' },
-    ],
-  },
-  mission: {
-    paragraph:
-      'Pulso Preto existe para fortalecer el conocimiento, ampliar el acceso y promover la salud integral de la población negra, en Brasil y en el mundo.',
-    ctaLabel: 'CONOCE EL PROYECTO →',
-    ctaTo: TO_SOBRE,
-    wordList: ['SALUD', 'EDUCACIÓN', 'TERRITORIO', 'SOSTENIBILIDAD', 'OPORTUNIDADES'],
-    cursive: ['Equidad', 'es un futuro', 'mejor.'],
-    photo: IMG_MAE_FILHO,
-  },
-  news: {
-    eyebrow: 'ÚLTIMAS NOTICIAS —',
-    viewAllLabel: 'VER TODAS →',
-    cards: [
-      { date: '15 SEP 2026', title: 'Salud mental de la población negra: ¿qué dicen los datos?', image: IMG_MENTAL },
-      { date: '12 SEP 2026', title: 'Hipertensión en la población negra: la prevención salva vidas.', image: IMG_PRESSAO },
-      { date: '10 SEP 2026', title: 'SUS y equidad racial: avances y desafíos en Brasil.', image: IMG_PROFISSIONAL },
-    ],
-  },
-  seminar: SEMINAR_ES,
-  footer: {
-    slogan: 'Salud hoy. Más futuro mañana.',
-    bottomLinks: [
-      { label: 'Sobre', to: TO_SOBRE },
-      { label: 'Términos de Uso', to: TO_TRANSPARENCIA },
-      { label: 'Política de Privacidad', to: TO_TRANSPARENCIA },
-      { label: 'Contáctanos', to: TO_CONTATO },
-    ],
-    bottomQuote: 'La salud es ancestral, es presente y es futuro.',
-  },
-};
-
-export const VARIANT_CONTENT: Partial<Record<VariantId, ContentByLocale>> = {
-  pp1: { pt: pp1_pt, es: pp1_es },
-  pp2: { pt: pp2_pt, es: pp2_es },
-};
-
-export function getVariantContent(variantId: VariantId, localeId: LocaleId): PulsoVariantContent | undefined {
-  return VARIANT_CONTENT[variantId]?.[localeId];
+export function getPulsoContent(localeId: LocaleId): PulsoContent {
+  return PULSO_CONTENT[localeId] ?? PULSO_CONTENT.pt;
 }

@@ -17,7 +17,7 @@ const PADDING_BY_ORIENTATION = {
 export default function VideoEmbed({ youtubeId, title, className = '', orientation = 'landscape' }: VideoEmbedProps) {
   return (
     <div
-      className={`relative w-full overflow-hidden rounded-2xl border border-earth-200 bg-earth-900 shadow-sm ${className}`}
+      className={`relative w-full overflow-hidden rounded-2xl border border-pulso-dourado/25 bg-pulso-verde shadow-sm ${className}`}
       style={{ paddingBottom: PADDING_BY_ORIENTATION[orientation] }}
     >
       <iframe
