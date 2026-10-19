@@ -590,6 +590,10 @@ Os **"mockups antigos"** citados **não existem como arquivo nomeado no Hub** (o
 | **D13 (app)** | `orderByRelevance` e `categoriesByRelevance` movidos para `shared/data/diseases.ts`; site e app usam a **mesma ordem**. |
 | **Lote D (parcial)** | README reescrito para o PP3 (sem VariantSwitcher/variantes, fonte única, navegação, rotas atuais). |
 
+### 8.2-D Biblioteca de Saúde — nova ordem das seções (19/10/2026)
+
+Decisão do responsável: `/saude` exibe, nesta ordem, **1.** Buscar por condição · **2.** Filtrar por categoria · **3.** Cards das categorias (acordeão, ordem por relevância — D13) · **4.** Estudo em destaque (estudo local do Distrito Federal, âncora `#estudo-df` preservada) · **5.** Medicina Tradicional Brasileira (D8).
+
 ### 8.3 Decisões adiadas (lembrar)
 
 - **Ponto F (5.5-F):** Comunidade e Memória — cards "Gente" na Home (implementado provisoriamente) **ou** itens do menu superior.
