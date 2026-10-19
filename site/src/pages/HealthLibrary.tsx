@@ -3,7 +3,6 @@ import { Link, Navigate, useLocation, useSearchParams } from 'react-router-dom';
 import { diseaseCategories, orderByRelevance, healthRecortes, LEGACY_CATEGORY_IDS } from '@shared/data/diseases';
 import { metrics } from '@shared/data/metrics';
 import CategoryIcon from '../components/CategoryIcons';
-import LocalStudyFeature from '../components/LocalStudyFeature';
 
 
 export default function HealthLibrary() {
@@ -60,6 +59,8 @@ export default function HealthLibrary() {
     setOpenIds((cur) => (cur.includes(id) ? cur.filter((x) => x !== id) : [...cur, id]));
   }
 
+  // O estudo local saiu da Biblioteca: /saude#estudo-df → página Dados e Indicadores.
+  if (hash === '#estudo-df') return <Navigate to="/dados-e-indicadores#estudo-df" replace />;
   // Âncora antiga (#mulher-negra etc.) → filtro pela categoria atual.
   const legacyHash = hash ? LEGACY_CATEGORY_IDS[decodeURIComponent(hash.slice(1))] : undefined;
   if (legacyHash) return <Navigate to={`/saude?categoria=${legacyHash}`} replace />;
@@ -77,7 +78,7 @@ export default function HealthLibrary() {
       </div>
 
       {/* Ordem da página (decisão 19/10/2026): 1. Busca · 2. Filtro por categoria ·
-          3. Cards das categorias · 4. Estudo em destaque · 5. Medicina Tradicional. */}
+          3. Cards das categorias · 4. Medicina Tradicional (Estudo em destaque → /dados-e-indicadores). */}
       {/* 1. Busca por condição */}
       <div id="buscar" className="rounded-2xl border border-pulso-dourado/25 bg-white p-5 sm:p-6 mb-4 scroll-mt-24">
         <label htmlFor="busca-condicao" className="block text-sm font-semibold text-pulso-verde mb-2">
@@ -200,15 +201,11 @@ export default function HealthLibrary() {
         })}
       </div>
 
-      {/* 4. Estudo em destaque */}
-      <div className="mt-14">
-        <LocalStudyFeature />
-      </div>
-
-      {/* 5. Medicina Tradicional Brasileira — D8: vive DENTRO de Saúde. */}
+      {/* 4. Medicina Tradicional Brasileira — D8: vive DENTRO de Saúde.
+          (O "Estudo em destaque" do Distrito Federal mudou-se para /dados-e-indicadores — 20/10/2026.) */}
       <Link
         to="/medicina-tradicional-brasileira"
-        className="group mt-10 flex items-center gap-4 rounded-2xl border border-pulso-verde-accent/40 bg-pulso-verde-medio/10 p-5 hover:border-pulso-verde-accent transition"
+        className="group mt-14 flex items-center gap-4 rounded-2xl border border-pulso-verde-accent/40 bg-pulso-verde-medio/10 p-5 hover:border-pulso-verde-accent transition"
       >
         <img src="/static/brand/elementos/icone-livro-ideias.png" alt="" aria-hidden="true" className="w-10 h-10 object-contain shrink-0" />
         <span className="flex-1">

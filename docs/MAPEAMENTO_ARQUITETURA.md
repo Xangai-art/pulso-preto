@@ -619,6 +619,12 @@ Decisão do responsável: as condições exibem **apenas duas tags** — **"Prio
 - **`/profissionais` e `/formacao`** criadas com aviso **"Em construção"**, descrição do que vão oferecer e caminhos que já funcionam. O menu "Encontre um profissional" aponta para `/profissionais`; a Home ganhou a **Linha 3 — Treinamento** (card Formação).
 - **Imagens:** segundo o responsável, Pessoa Idosa, Asma, Depressão e Miomas Uterinos carregam. Verificação em 20/10/2026: Pessoa Idosa, Asma e Depressão carregam; **Miomas Uterinos ainda retorna HTTP 403** fora de uma sessão logada (a confirmar em janela anônima).
 
+### 8.2-H Dados e Indicadores + Instagram (20/10/2026)
+
+- **Nova página `/dados-e-indicadores`** (atalhos `/indicadores`, `/dados`). Destino do atalho "Dados e Indicadores" e do botão "Ver indicadores" da Home (antes iam para `/transparencia`); também no rodapé (coluna Transparência). Conteúdo, sem números escritos à mão: **Panorama** (mesmos cards da Home — `pulsoContent.stats`), **Estudo em destaque · Evidência local do Distrito Federal** (`LocalStudyFeature`), **achados locais por condição** (derivados de `diseases.ts → localStudy`) e nota "Como usamos os dados" → Transparência.
+- **"Estudo em destaque" saiu da Biblioteca de Saúde.** Nova ordem de `/saude`: 1. Busca · 2. Filtro · 3. Categorias · 4. Medicina Tradicional. Links antigos `/saude#estudo-df` redirecionam para `/dados-e-indicadores#estudo-df`; o detalhe da condição aponta para a página nova.
+- **Instagram `@pulsovivooficial`** no rodapé (Redes Sociais), a partir de `shared/data/social.ts`. Os ícones de Facebook, YouTube e LinkedIn **saíram**: não tinham destino (`href="#"`). Voltam quando os perfis forem confirmados.
+
 ### 8.3 Decisões adiadas (lembrar)
 
 - **Ponto F (5.5-F):** Comunidade e Memória — cards "Gente" na Home (implementado provisoriamente) **ou** itens do menu superior. *Aguardando posição.*

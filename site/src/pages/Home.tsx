@@ -219,7 +219,7 @@ function PulsoStats({ content }: { content: PulsoContent }) {
             {s.paragraph && <p className="text-sm text-pulso-marrom/75 mt-3">{s.paragraph}</p>}
           </div>
           <Link
-            to="/transparencia"
+            to={s.ctaTo}
             className="rounded-md bg-pulso-verde text-pulso-creme px-5 py-3 font-bold text-sm uppercase tracking-wide hover:bg-pulso-marrom transition-colors shrink-0"
           >
             {s.ctaLabel}
