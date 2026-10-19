@@ -59,7 +59,7 @@ export default function HealthLibrary() {
     setOpenIds((cur) => (cur.includes(id) ? cur.filter((x) => x !== id) : [...cur, id]));
   }
 
-  // O estudo local saiu da Biblioteca: /saude#estudo-df → página Dados e Indicadores.
+  // A análise de dados do DF saiu da Biblioteca: /saude#estudo-df → página Dados e Indicadores.
   if (hash === '#estudo-df') return <Navigate to="/dados-e-indicadores#estudo-df" replace />;
   // Âncora antiga (#mulher-negra etc.) → filtro pela categoria atual.
   const legacyHash = hash ? LEGACY_CATEGORY_IDS[decodeURIComponent(hash.slice(1))] : undefined;
@@ -78,7 +78,7 @@ export default function HealthLibrary() {
       </div>
 
       {/* Ordem da página (decisão 19/10/2026): 1. Busca · 2. Filtro por categoria ·
-          3. Cards das categorias · 4. Medicina Tradicional (Estudo em destaque → /dados-e-indicadores). */}
+          3. Cards das categorias · 4. Medicina Tradicional (análise de dados do DF → /dados-e-indicadores). */}
       {/* 1. Busca por condição */}
       <div id="buscar" className="rounded-2xl border border-pulso-dourado/25 bg-white p-5 sm:p-6 mb-4 scroll-mt-24">
         <label htmlFor="busca-condicao" className="block text-sm font-semibold text-pulso-verde mb-2">
@@ -186,7 +186,7 @@ export default function HealthLibrary() {
                             )}
                             {d.localStudy && (
                               <span className="text-[10px] uppercase font-bold text-pulso-verde-medio bg-pulso-verde-medio/10 border border-pulso-verde-accent/40 px-1.5 py-0.5 rounded">
-                                Estudo local · Distrito Federal
+                                Dado Local DF
                               </span>
                             )}
                           </div>
@@ -202,7 +202,7 @@ export default function HealthLibrary() {
       </div>
 
       {/* 4. Medicina Tradicional Brasileira — D8: vive DENTRO de Saúde.
-          (O "Estudo em destaque" do Distrito Federal mudou-se para /dados-e-indicadores — 20/10/2026.) */}
+          (A análise de dados do Distrito Federal mudou-se para /dados-e-indicadores — 20/10/2026.) */}
       <Link
         to="/medicina-tradicional-brasileira"
         className="group mt-14 flex items-center gap-4 rounded-2xl border border-pulso-verde-accent/40 bg-pulso-verde-medio/10 p-5 hover:border-pulso-verde-accent transition"

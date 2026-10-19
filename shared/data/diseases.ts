@@ -21,7 +21,7 @@ export interface Disease {
   study?: string;
   finding?: string;
   isNew?: boolean; // condição de inclusão recente (realidade brasileira contemporânea)
-  // Dado local do Distrito Federal, extraído do Estudo Técnico-Científico
+  // Dado local do Distrito Federal, extraído da análise de dados públicos
   // "Condições de Vida e Saúde da População Negra do DF (2015–2024)"
   // (AECID/APRECIA/FIOCRUZ/UnB/FEPECS) — complementa (não substitui) a
   // literatura internacional/nacional citada em study/finding.
@@ -60,7 +60,7 @@ export const diseaseCategories: DiseaseCategory[] = [
           value: '1,50×',
           finding:
             'No DF, a mortalidade cardiovascular padronizada por idade é 50% maior em negros (180/100.000) do que em brancos (120/100.000) — a hipertensão é o principal fator de risco modificável dessa disparidade.',
-          source: 'Estudo Pop. Negra DF 2015–2024 · Indicador 13 (estimativa, estratificação racial em consolidação)',
+          source: 'Análise de dados da população negra do DF (2015–2024) · Indicador 13 (estimativa, estratificação racial em consolidação)',
         },
         hasDeepContent: true,
       },
@@ -102,7 +102,7 @@ export const diseaseCategories: DiseaseCategory[] = [
           value: '8º lugar',
           finding:
             'No DF, diabetes caiu do 3º lugar (2014) para o 8º lugar (2024) nas causas de morte — pode indicar melhora no controle (acesso a insulina/antidiabéticos pelo SUS) ou subnotificação como causa associada. Dados ainda não estratificados por raça/cor no boletim agregado.',
-          source: 'Estudo Pop. Negra DF 2015–2024 · Indicador 14 (estratificação racial pendente)',
+          source: 'Análise de dados da população negra do DF (2015–2024) · Indicador 14 (estratificação racial pendente)',
         },
         hasDeepContent: true,
       },
@@ -228,14 +228,14 @@ export const diseaseCategories: DiseaseCategory[] = [
           value: '58,3%',
           finding:
             'No DF, 58,3% dos casos novos de tuberculose em 2025 ocorreram em pessoas pardas, com tendência de aumento na incidência entre 2021 e 2025.',
-          source: 'Estudo Pop. Negra DF 2015–2024 · Indicador 15 (Boletim de Tuberculose 2026, SES-DF)',
+          source: 'Análise de dados da população negra do DF (2015–2024) · Indicador 15 (Boletim de Tuberculose 2026, SES-DF)',
         },
       },
     ],
   },
   {
-    id: 'saude-materna',
-    title: 'Saúde Materna',
+    id: 'mulher-negra',
+    title: 'Saúde da Mulher Negra',
     subtitle: 'Risco ↑ + Acesso Desigual',
     icon: '🤱',
     diseases: [
@@ -259,8 +259,8 @@ export const diseaseCategories: DiseaseCategory[] = [
         localStudy: {
           value: '1,39×',
           finding:
-            'No DF (2010–2019), a Razão de Mortalidade Materna (RMM) em mulheres pretas foi 92,7 por 100.000 nascidos vivos, contra 66,7 em brancas — 39% maior. Mulheres pardas isoladamente (45,1) aparecem abaixo de brancas, um paradoxo que o estudo atribui a incompletude/subnotificação racial nos registros de óbito.',
-          source: 'Estudo Pop. Negra DF 2015–2024 · Indicador 8 (SIM+SINASC, Relatório de Mortalidade Materna 2018–2019)',
+            'No DF (2010–2019), a Razão de Mortalidade Materna (RMM) em mulheres pretas foi 92,7 por 100.000 nascidos vivos, contra 66,7 em brancas — 39% maior. Mulheres pardas isoladamente (45,1) aparecem abaixo de brancas, um paradoxo que a análise atribui a incompletude/subnotificação racial nos registros de óbito.',
+          source: 'Análise de dados da população negra do DF (2015–2024) · Indicador 8 (SIM+SINASC, Relatório de Mortalidade Materna 2018–2019)',
         },
       },
       {
@@ -273,7 +273,7 @@ export const diseaseCategories: DiseaseCategory[] = [
           value: '78,2%',
           finding:
             'No DF (2024), 78,2% dos casos de sífilis congênita ocorreram em filhos de mães negras (pretas+pardas) — sobre-representação em relação aos 57,8% da população, refletindo menor cobertura/qualidade de pré-natal e barreiras de acesso a testagem.',
-          source: 'Estudo Pop. Negra DF 2015–2024 · Indicador 10 (Boletim de Sífilis Congênita 2025, SES-DF)',
+          source: 'Análise de dados da população negra do DF (2015–2024) · Indicador 10 (Boletim de Sífilis Congênita 2025, SES-DF)',
         },
       },
     ],
@@ -355,7 +355,7 @@ export const diseaseCategories: DiseaseCategory[] = [
           value: '70,3%',
           finding:
             'No DF (2024), 70,3% das notificações de HIV/AIDS foram de pessoas pretas ou pardas — sobre-representação em relação aos 57,8% da população, associada a menor acesso a testagem, PrEP e TARV, além de estigma (racismo + homofobia + serofobia).',
-          source: 'Estudo Pop. Negra DF 2015–2024 · Indicador 16 (SINAN+SIM, Boletim HIV/AIDS 2024)',
+          source: 'Análise de dados da população negra do DF (2015–2024) · Indicador 16 (SINAN+SIM, Boletim HIV/AIDS 2024)',
         },
       },
       { id: 'doencas-pele', name: 'Doenças de Pele (acesso desigual a diagnóstico)' },
@@ -371,7 +371,7 @@ export const diseaseCategories: DiseaseCategory[] = [
           value: '72,2%',
           finding:
             'No DF (2012–2021), 72,2% dos óbitos por acidentes de transporte ocorreram em pessoas negras — sobre-representação de 1,25× em relação à proporção populacional (57,8%).',
-          source: 'Estudo Pop. Negra DF 2015–2024 · SIM/DATASUS 2012–2021',
+          source: 'Análise de dados da população negra do DF (2015–2024) · SIM/DATASUS 2012–2021',
         },
       },
       // P23 decidido (20/10/2026): "Violência como resposta reativa" FICA em "Outras";
@@ -388,7 +388,7 @@ export const diseaseCategories: DiseaseCategory[] = [
           value: '77,4%',
           finding:
             'No DF (2015–2022), 77,4% das mortes violentas ocorreram em pessoas negras (predominantemente pardas, 70,2%) — sobre-representação de 1,34× em relação à proporção populacional. 89,9% das vítimas fatais são homens; já nas notificações de violência não fatal (SINAN), 83,1% das vítimas são mulheres.',
-          source: 'Estudo Pop. Negra DF 2015–2024 · Indicadores 17–18 (SIM/DATASUS, SINAN Q3 2025)',
+          source: 'Análise de dados da população negra do DF (2015–2024) · Indicadores 17–18 (SIM/DATASUS, SINAN Q3 2025)',
         },
       },
     ],
@@ -413,10 +413,11 @@ export const emergentThemes = diseaseCategories
 // Mental e Socioeconômica Contemporânea" desfeita; PrEP fundida em HIV/AIDS;
 // "Uso de Substâncias" fundido em "Abuso de Substância"). Mantém links antigos
 // funcionando: o DiseaseDetail redireciona para o endereço novo.
-// Ids antigos de CATEGORIA → atuais (20/10/2026: "Saúde da Mulher Negra" passou a
-// "Saúde Materna"). Usado pela Biblioteca (?categoria= / #âncora antigos).
+// Ids antigos de CATEGORIA → atuais. Em 20/10/2026 a categoria chegou a se chamar
+// "Saúde Materna" (saude-materna) e voltou a "Saúde da Mulher Negra" (mulher-negra)
+// para manter Miomas Uterinos no escopo. Usado pela Biblioteca e pelo detalhe.
 export const LEGACY_CATEGORY_IDS: Record<string, string> = {
-  'mulher-negra': 'saude-materna',
+  'saude-materna': 'mulher-negra',
 };
 
 export const LEGACY_DISEASE_IDS: Record<string, string> = {

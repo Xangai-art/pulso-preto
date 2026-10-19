@@ -614,7 +614,7 @@ Decisão do responsável: as condições exibem **apenas duas tags** — **"Prio
 
 ### 8.2-G Saúde Materna, cards filtrados e páginas "em construção" (20/10/2026)
 
-- **Saúde Materna:** o card da Home "Saúde da Mulher Negra" passou a **"Saúde Materna"**, e a categoria correspondente da Biblioteca também (`id: saude-materna`). Endereços antigos (`/saude/mulher-negra/...`, `#mulher-negra`, `?categoria=mulher-negra`) redirecionam (`LEGACY_CATEGORY_IDS`).
+- **Saúde Materna** *(revertido em 8.2-J)*: o card da Home "Saúde da Mulher Negra" passou a **"Saúde Materna"**, e a categoria correspondente da Biblioteca também (`id: saude-materna`). Endereços antigos (`/saude/mulher-negra/...`, `#mulher-negra`, `?categoria=mulher-negra`) redirecionam (`LEGACY_CATEGORY_IDS`).
 - **Cards da Home abrem a Biblioteca já filtrada:** Materna e Mental → `?categoria=`; Homem, Infância, Pessoa Idosa e Doenças mais Prevalentes → `?recorte=` (`healthRecortes` em `shared/data/diseases.ts`; "prevalentes" é derivado dos temas prioritários). O export do banco falha se um recorte citar condição inexistente. **As listas de Homem, Infância e Pessoa Idosa são curadoria editorial a validar com a coordenação.**
 - **`/profissionais` e `/formacao`** criadas com aviso **"Em construção"**, descrição do que vão oferecer e caminhos que já funcionam. O menu "Encontre um profissional" aponta para `/profissionais`; a Home ganhou a **Linha 3 — Treinamento** (card Formação).
 - **Imagens:** segundo o responsável, Pessoa Idosa, Asma, Depressão e Miomas Uterinos carregam. Verificação em 20/10/2026: Pessoa Idosa, Asma e Depressão carregam; **Miomas Uterinos ainda retorna HTTP 403** fora de uma sessão logada (a confirmar em janela anônima).
@@ -629,6 +629,18 @@ Decisão do responsável: as condições exibem **apenas duas tags** — **"Prio
 
 - **P23 resolvido:** "Violência como resposta reativa" **permanece em "Outras"**; **"Falta de educação financeira" foi removida** do catálogo (site, app, banco, ícone). Totais auto-derivados: **9 categorias · 44 condições**.
 - **Contraste dos dados:** no bloco "Estudo em destaque" (fundo verde-escuro), os números de disparidade passaram a dourado claro, os de avanço a verde de destaque, e as etiquetas dos 8 eixos ganharam fundo sólido. Legendas e fontes ficaram maiores e mais escuras/claras no Panorama (Home e Dados e Indicadores) e nos achados por condição.
+
+### 8.2-J Análise de dados em linguagem leiga + atalhos da Home (20/10/2026)
+
+Origem: 3 áudios de 10/10/2026 (14.01.07 (3), 14.01.07 (4), 14.01.08 (4)) sobre a página Dados e Indicadores. Orientação: tratar a plataforma "como uma revista para leigo"; **não é pesquisa nem "estudo epidemiológico"** — o projeto **reuniu e analisou dados que já existem** (Secretaria de Saúde do DF etc.); pesquisa só quando for a campo.
+
+- **Bloco do DF** (`LocalStudyFeature` + `site/src/data/localStudy.ts`): título em pergunta ("Você sabe como vive e como está a saúde da população negra aqui no Distrito Federal?"), etiqueta "Análise de dados · Distrito Federal", introdução explicando que são dados públicos já existentes; **removidos** "Fase 1", "dados preliminares", "primeiro estudo epidemiológico", card "6 de 20 indicadores", status Pronto/Parcial/Pendente (virou lista "O que analisamos") e "Pesquisadora responsável" (→ "Coordenação técnica"). Achados reescritos em frase simples, com fonte em letra menor. Nota final: "análise de dados públicos que já existem; a pesquisa de campo é etapa futura".
+- **Downloads removidos:** documento (.docx) e planilha (.xlsx) saíram do site (o documento ainda se apresenta como "Estudo Técnico-Científico · Fase 1").
+- **Etiqueta** "Estudo local · Distrito Federal" → **"Dado Local DF"** (site e app); quadro nas páginas de condição → "Dado local do Distrito Federal"; fontes "Estudo Pop. Negra DF" → "Análise de dados da população negra do DF (2015–2024)" (catálogo, Hipertensão, Diabetes).
+- **Panorama:** 56,1% (IBGE 2022) → **57,8% (PDAD 2024)**, igual ao bloco do DF.
+- **Saúde da Mulher Negra** de volta (card da Home e categoria), para manter Miomas Uterinos no escopo; `saude-materna` redireciona para `mulher-negra`.
+- **Atalhos da Home (2ª seção), referência PP1/Áudio 2:** Conheça sua saúde · Encontre cuidado · Seus direitos · Participe. Saíram "Entenda seu corpo" e "Dados e Indicadores" (a página segue acessível por "Ver indicadores" e pelo rodapé).
+- Limpeza: `heroSlides.ts` e `HeroSlideshow.tsx` (sem uso) apagados.
 
 ### 8.3 Decisões adiadas (lembrar)
 

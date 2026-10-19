@@ -1,12 +1,10 @@
 import { Link } from 'react-router-dom';
-import { localStudyMeta, localStudyHighlights, localStudyAxes } from '../data/localStudy';
+import { localStudyMeta, localStudyHighlights, localStudyThemes } from '../data/localStudy';
 import { PalhaLine, LeafMark } from './Ornaments';
 import { PULSO_PALETTE } from '@shared/data/pulsoPalette';
 
-// Cores dos números sobre o fundo verde-escuro (#06201B). Revisadas em 20/10/2026
-// para contraste legível (antes barro/40 e folha/40 quase sumiam):
-// disparidade = dourado claro (o achado mais importante salta aos olhos),
-// avanço = verde de destaque, meta/marco e contexto = creme.
+// Cores dos números sobre o fundo verde-escuro (#06201B), com contraste legível:
+// desigualdade = dourado claro, avanço = verde de destaque, contexto = creme.
 const highlightTypeClasses: Record<string, string> = {
   critical: 'text-pulso-dourado-claro',
   progress: 'text-pulso-verde-accent',
@@ -14,23 +12,9 @@ const highlightTypeClasses: Record<string, string> = {
   info: 'text-pulso-creme',
 };
 
-const axisStatusLabel: Record<string, string> = {
-  pronto: 'Pronto',
-  parcial: 'Parcial',
-  pendente: 'Pendente',
-};
-
-const axisStatusClasses: Record<string, string> = {
-  pronto: 'text-pulso-verde bg-pulso-verde-accent border-pulso-verde-accent font-semibold',
-  parcial: 'text-pulso-verde bg-pulso-dourado-claro border-pulso-dourado-claro font-semibold',
-  pendente: 'text-pulso-creme bg-transparent border-pulso-creme/60',
-};
-
-// Bloco de destaque para o estudo epidemiológico local (DF) contratado, exibido
-// na página Dados e Indicadores (/dados-e-indicadores — desde 20/10/2026; antes
-// ficava na Biblioteca de Saúde). Não substitui a curadoria internacional/nacional
-// já usada em diseases.ts — complementa com evidência local estratificada por
-// raça/cor, produzida por AECID/APRECIA em parceria científica com FIOCRUZ/UnB/FEPECS.
+// Análise de dados do Distrito Federal — exibida em /dados-e-indicadores.
+// Texto para leitura leiga (áudios de 10/10/2026): é uma ANÁLISE DE DADOS JÁ
+// EXISTENTES, não pesquisa nem estudo novo. Sem downloads (retirados em 20/10/2026).
 export default function LocalStudyFeature() {
   return (
     <section
@@ -44,78 +28,51 @@ export default function LocalStudyFeature() {
         }}
       />
       <div className="p-6 sm:p-8">
-        <div className="flex flex-wrap items-start justify-between gap-4 mb-6">
-          <div>
-            <div className="flex items-center gap-2 mb-2">
-              <LeafMark size={20} color={PULSO_PALETTE.dourado} />
-              <span className="eyebrow text-pulso-dourado-claro">Estudo em destaque · Evidência local do Distrito Federal</span>
-            </div>
-            <h2 className="font-editorial italic text-2xl sm:text-3xl leading-snug mb-2">
-              {localStudyMeta.title}
-            </h2>
-            <p className="text-sm text-pulso-creme max-w-2xl">
-              Período {localStudyMeta.period} · {localStudyMeta.phaseLabel}. Primeiro estudo epidemiológico local
-              que estratifica sistematicamente indicadores de saúde por raça/cor no Distrito Federal.
-            </p>
+        <div className="mb-6">
+          <div className="flex items-center gap-2 mb-2">
+            <LeafMark size={20} color={PULSO_PALETTE.dourado} />
+            <span className="eyebrow text-pulso-dourado-claro">Análise de dados · Distrito Federal</span>
           </div>
-          <span className="shrink-0 text-[10px] uppercase font-bold text-pulso-verde bg-pulso-dourado-claro px-2.5 py-1 rounded">
-            Fase 1 · dados preliminares
-          </span>
-        </div>
-
-        {/* Metadados de proveniência — credibilidade via identificação pública */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8 text-xs">
-          <MetaItem label="Pesquisadora responsável" value={localStudyMeta.researcher} />
-          <MetaItem label="Instituição executora" value={localStudyMeta.executingInstitution} />
-          <MetaItem label="Financiador" value={localStudyMeta.funder} />
-          <MetaItem label="Parceiros científicos" value={localStudyMeta.scientificPartners.join(' · ')} />
+          <h2 className="font-editorial italic text-2xl sm:text-3xl leading-snug mb-3">{localStudyMeta.question}</h2>
+          <p className="text-sm sm:text-base text-pulso-creme max-w-3xl">{localStudyMeta.intro}</p>
         </div>
 
         <div className="mb-2">
           <PalhaLine width={64} />
         </div>
-        <h3 className="text-sm font-bold uppercase tracking-wide text-pulso-dourado-claro mb-4">Principais achados</h3>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
+        <h3 className="text-sm font-bold uppercase tracking-wide text-pulso-dourado-claro mb-4">O que os dados mostram</h3>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
           {localStudyHighlights.map((h) => (
             <div key={h.label} className="border-t border-pulso-dourado/50 pt-3">
-              <div className={`text-2xl font-bold ${highlightTypeClasses[h.type]}`}>{h.value}</div>
-              <div className="text-sm text-pulso-creme mt-0.5 mb-1.5">{h.label}</div>
-              <p className="text-[11px] text-pulso-creme/85 leading-relaxed">{h.detail}</p>
+              <div className={`text-3xl font-bold ${highlightTypeClasses[h.type]}`}>{h.value}</div>
+              <div className="text-base text-pulso-creme font-semibold mt-1 mb-1.5">{h.label}</div>
+              <p className="text-sm text-pulso-creme/90 leading-relaxed mb-1.5">{h.detail}</p>
+              <p className="text-[11px] text-pulso-creme/70">Fonte: {h.source}</p>
             </div>
           ))}
         </div>
 
-        <h3 className="text-sm font-bold uppercase tracking-wide text-pulso-dourado-claro mb-3">
-          Status dos 8 eixos de análise
-        </h3>
-        <div className="flex flex-wrap gap-2 mb-8">
-          {localStudyAxes.map((a) => (
-            <span
-              key={a.id}
-              className={`text-xs border rounded-full px-3 py-1 ${axisStatusClasses[a.status]}`}
-            >
-              {a.id}. {a.title} — {axisStatusLabel[a.status]}
-            </span>
+        <h3 className="text-sm font-bold uppercase tracking-wide text-pulso-dourado-claro mb-3">O que analisamos</h3>
+        <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-2 mb-10">
+          {localStudyThemes.map((t) => (
+            <li key={t} className="flex gap-2 text-sm text-pulso-creme">
+              <span className="text-pulso-dourado-claro" aria-hidden="true">•</span>
+              <span>{t}</span>
+            </li>
           ))}
+        </ul>
+
+        {/* Quem faz — sem "pesquisadora responsável" (não é pesquisa em curso). */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8 text-xs">
+          <MetaItem label="Coordenação técnica" value={localStudyMeta.technicalCoordination} />
+          <MetaItem label="Realização" value={localStudyMeta.executingInstitution} />
+          <MetaItem label="Apoio" value={localStudyMeta.funder} />
+          <MetaItem label="Parceiros científicos" value={localStudyMeta.scientificPartners.join(' · ')} />
         </div>
 
-        <div className="flex flex-wrap items-center gap-3">
-          <a
-            href={localStudyMeta.downloadDocx}
-            className="rounded-md bg-pulso-dourado text-pulso-verde px-4 py-2.5 text-sm font-semibold hover:bg-pulso-dourado-claro"
-          >
-            Baixar estudo completo (.docx) →
-          </a>
-          <a
-            href={localStudyMeta.downloadXlsx}
-            className="rounded-md border border-pulso-dourado-claro text-pulso-dourado-claro px-4 py-2.5 text-sm font-semibold hover:bg-pulso-dourado/10"
-          >
-            Baixar planilha mestre (.xlsx) →
-          </a>
-        </div>
-        <p className="text-xs text-pulso-creme/85 mt-4 max-w-2xl">
-          Dados de Fase 1: estruturação metodológica completa, coleta secundária em andamento, cálculos
-          epidemiológicos parciais. Consulte a nota de cautela editorial e a política de métricas em{' '}
+        <p className="text-sm text-pulso-creme/90 max-w-3xl border-t border-pulso-creme/15 pt-5">
+          Esta é uma análise de dados públicos que já existem. A pesquisa de campo, com escuta direta da
+          comunidade, é uma etapa futura do projeto. Saiba como usamos os dados em{' '}
           <Link to="/transparencia" className="underline hover:text-pulso-dourado-claro">Transparência</Link>.
         </p>
       </div>
@@ -126,8 +83,8 @@ export default function LocalStudyFeature() {
 function MetaItem({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <div className="text-[10px] uppercase tracking-wide text-pulso-dourado-claro font-semibold mb-0.5">{label}</div>
-      <div className="text-pulso-creme/90">{value}</div>
+      <div className="text-[11px] uppercase tracking-wide text-pulso-dourado-claro font-semibold mb-0.5">{label}</div>
+      <div className="text-pulso-creme">{value}</div>
     </div>
   );
 }

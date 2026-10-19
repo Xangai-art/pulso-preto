@@ -194,7 +194,7 @@ export default function DesignSystem() {
           </div>
         </div>
         <p className="text-[11px] text-pulso-marrom/60 mt-3">
-          Estatística verificada na Base Científica (ver Biblioteca de Saúde → Saúde Materna →
+          Estatística verificada na Base Científica (ver Biblioteca de Saúde → Saúde da Mulher Negra →
           Mortalidade Materna).
         </p>
       </div>

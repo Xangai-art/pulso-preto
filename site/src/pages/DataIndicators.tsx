@@ -8,7 +8,7 @@ import LocalStudyFeature from '../components/LocalStudyFeature';
 // "Dados e Indicadores" e do botão "Ver indicadores" da Home.
 // Fontes (nada escrito à mão aqui):
 //   1. Números da Home → pulsoContent.stats.cards (mesma fonte da Home)
-//   2. Estudo em destaque do Distrito Federal → LocalStudyFeature (veio da Biblioteca)
+//   2. Análise de dados do Distrito Federal → LocalStudyFeature (veio da Biblioteca)
 //   3. Achados locais por condição → diseases.ts (campo localStudy)
 export default function DataIndicators() {
   const { localeId } = useAppearance();
@@ -40,7 +40,7 @@ export default function DataIndicators() {
         </div>
       </section>
 
-      {/* 2. Estudo em destaque — Evidência local do Distrito Federal */}
+      {/* 2. Análise de dados · Distrito Federal (texto leigo — áudios de 10/10/2026) */}
       <div className="mb-14">
         <LocalStudyFeature />
       </div>
@@ -50,7 +50,7 @@ export default function DataIndicators() {
         <section aria-labelledby="por-condicao" className="mb-14">
           <h2 id="por-condicao" className="text-xl font-bold text-pulso-verde mb-1">Achados do Distrito Federal por condição de saúde</h2>
           <p className="text-sm text-pulso-marrom/80 mb-5">
-            Condições da Biblioteca de Saúde que já têm dado local do estudo. Clique para ver a condição completa.
+            Condições da Biblioteca de Saúde que já têm dado do Distrito Federal. Clique para ver a condição completa.
           </p>
           <div className="grid sm:grid-cols-2 gap-4">
             {localFindings.map((d) => (

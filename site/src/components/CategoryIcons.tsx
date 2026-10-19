@@ -77,7 +77,7 @@ function RespiratoriasIcon({ size, className }: IconProps) {
 }
 
 function MulherNegraIcon({ size, className }: IconProps) {
-  // Saúde Materna — arco de proteção/acolhimento envolvendo um ponto central,
+  // Saúde da Mulher Negra — arco de proteção/acolhimento envolvendo um ponto central,
   // abstrato (sem corpo, útero ou símbolo de gênero literal).
   return (
     <svg width={size} height={size} viewBox="0 0 32 32" className={className} aria-hidden="true">
@@ -142,7 +142,7 @@ const ICONS: Record<string, React.FC<IconProps>> = {
   metabolicas: MetabolicasIcon,
   'saude-mental': SaudeMentalIcon,
   respiratorias: RespiratoriasIcon,
-  'saude-materna': MulherNegraIcon,
+  'mulher-negra': MulherNegraIcon,
   'raras-autoimunes': RarasAutoimunesIcon,
   oncologicas: OncologicasIcon,
   outras: OutrasIcon,

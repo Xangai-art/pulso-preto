@@ -11,7 +11,7 @@
 // / Onde no SUS / Fontes — adaptadas ao nível de profundidade de cada público.
 //
 // Recorte racial obrigatório (chamadas anti-racismo) e dado local do DF
-// (Estudo Técnico-Científico "Condições de Vida e Saúde da População Negra do
+// (análise de dados públicos "Condições de Vida e Saúde da População Negra do
 // DF 2015–2024" — AECID/APRECIA/FIOCRUZ/UnB/FEPECS).
 //
 // Consumido via getDeepContent(diseaseId, localeId) — ver
@@ -85,7 +85,7 @@ const hipertensaoContent_pt: DiseaseDeepContent = {
           body: [
             'Diretrizes Brasileiras de Hipertensão Arterial — Sociedade Brasileira de Cardiologia (SBC).',
             'Protocolo Clínico e Diretrizes Terapêuticas (PCDT) de Hipertensão Arterial Sistêmica — Ministério da Saúde.',
-            'Estudo Técnico-Científico "Condições de Vida e Saúde da População Negra do DF (2015–2024)" — AECID/APRECIA/FIOCRUZ/UnB/FEPECS.',
+            'Análise de dados públicos sobre a população negra do Distrito Federal (2015–2024) — Instituto APRECIA/AECID.',
             'Literatura internacional (NEJM, Lancet, AHA/ACC) sobre disparidades raciais em hipertensão e mortalidade cardiovascular.',
           ],
         },
@@ -197,7 +197,7 @@ const hipertensaoContent_pt: DiseaseDeepContent = {
       detail: 'Protocolo Clínico e Diretrizes Terapêuticas vigente, referência normativa para a conduta no SUS.',
     },
     {
-      label: 'Estudo Pop. Negra DF 2015–2024',
+      label: 'Análise de dados · População negra do DF 2015–2024',
       detail: 'AECID/APRECIA/FIOCRUZ/UnB/FEPECS — Indicador 13 (mortalidade cardiovascular, razão negra/branca 1,50).',
     },
     {
@@ -260,7 +260,7 @@ const hipertensaoContent_es: DiseaseDeepContent = {
           body: [
             'Directrices Brasileñas de Hipertensión Arterial — Sociedad Brasileña de Cardiología (SBC).',
             'Protocolo Clínico y Directrices Terapéuticas (PCDT) de Hipertensión Arterial Sistémica — Ministerio de Salud de Brasil.',
-            'Estudio Técnico-Científico "Condiciones de Vida y Salud de la Población Negra del DF (2015–2024)" — AECID/APRECIA/FIOCRUZ/UnB/FEPECS.',
+            'Análisis de datos públicos sobre la población negra del Distrito Federal (2015–2024) — Instituto APRECIA/AECID.',
             'Literatura internacional (NEJM, Lancet, AHA/ACC) sobre disparidades raciales en hipertensión y mortalidad cardiovascular.',
           ],
         },
@@ -372,7 +372,7 @@ const hipertensaoContent_es: DiseaseDeepContent = {
       detail: 'Protocolo Clínico y Directrices Terapéuticas vigente, referencia normativa para la conducta en el SUS.',
     },
     {
-      label: 'Estudio Población Negra DF 2015–2024',
+      label: 'Análisis de datos · Población negra del DF 2015–2024',
       detail: 'AECID/APRECIA/FIOCRUZ/UnB/FEPECS — Indicador 13 (mortalidad cardiovascular, razón negra/blanca 1,50).',
     },
     {

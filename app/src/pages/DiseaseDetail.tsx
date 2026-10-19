@@ -50,7 +50,7 @@ export default function DiseaseDetail() {
           )}
           {disease.localStudy && (
             <span className="text-[10px] uppercase font-bold text-pulso-verde-medio bg-pulso-verde-medio/10 border border-pulso-verde-accent/40 px-2 py-1 rounded">
-              Estudo local · Distrito Federal
+              Dado Local DF
             </span>
           )}
         </div>
@@ -80,7 +80,7 @@ export default function DiseaseDetail() {
         {disease.localStudy && (
           <div className="mt-4 rounded-xl bg-pulso-verde text-pulso-creme p-4">
             <h2 className="text-[11px] font-bold uppercase tracking-wide text-pulso-dourado-claro mb-1">
-              Estudo local — Distrito Federal
+              Dado local do Distrito Federal
             </h2>
             <div className="text-2xl font-bold text-pulso-dourado mb-1">{disease.localStudy.value}</div>
             <p className="text-sm leading-relaxed text-pulso-creme/95 mb-2">{disease.localStudy.finding}</p>
