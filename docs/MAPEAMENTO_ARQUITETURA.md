@@ -608,6 +608,10 @@ Decisão do responsável: `/saude` exibe, nesta ordem, **1.** Buscar por condiç
 
 Totais (auto-derivados): **9 categorias · 45 condições**. Links antigos continuam funcionando: `LEGACY_DISEASE_IDS` em `shared/data/diseases.ts` redireciona os ids antigos para o endereço atual (site e app).
 
+### 8.2-F Tags das condições (19/10/2026)
+
+Decisão do responsável: as condições exibem **apenas duas tags** — **"Prioritário"** (`isPriorityTheme`) e **"Estudo local · Distrito Federal"** (`localStudy`). A tag **"Atual"** (e "Realidade brasileira contemporânea" no detalhe) foi **removida** do site e do app; o campo `isNew` permanece nos dados (métrica `emergentThemes`), sem exibição. O app passou a exibir também a tag de estudo local (paridade com o site).
+
 ### 8.3 Decisões adiadas (lembrar)
 
 - **Ponto F (5.5-F):** Comunidade e Memória — cards "Gente" na Home (implementado provisoriamente) **ou** itens do menu superior.
