@@ -1,6 +1,7 @@
 // Baixe o App Sentinela — dados estruturados para a rota /baixar.
 // Fonte: pacote CASIO v10.0 "Gente Preta v4.2 — Conteúdo para 3 Páginas 404"
 // (16/08/2026), alinhado à Arquitetura Reconciliada V4.1.
+import { metrics } from '@shared/data/metrics';
 
 export const baixarMeta = {
   title: 'Baixe o App Sentinela — Gente Preta',
@@ -32,7 +33,7 @@ export const statusPanels: StatusPanel[] = [
     status: '🟢 Concluído',
     items: [
       'Arquitetura técnica V4.1 publicada',
-      'Base científica com 40+ condições curada',
+      `Base científica com ${metrics.conditions} condições curada`,
       'Modelo de dados LGPD (3 domínios separados)',
       'Site institucional público',
       'Parceria com 9 instituições formalizada',

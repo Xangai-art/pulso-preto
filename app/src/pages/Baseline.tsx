@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppStore } from '../store/useAppStore';
-import { priorityThemes } from '../data/diseases';
-import { dfAdministrativeRegions, rideEntornoMunicipalities } from '../data/project';
+import { priorityThemes } from '@shared/data/diseases';
+import { dfAdministrativeRegions, rideEntornoMunicipalities } from '@shared/data/project';
 import { fetchAddressByCep, formatCep, isValidCepFormat } from '../lib/viacep';
 import TopBar from '../components/TopBar';
 

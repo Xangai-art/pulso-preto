@@ -2,6 +2,13 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import architectureMd from '../content/arquitetura.md?raw';
 import DesignSystem from '../components/DesignSystem';
+import { metrics } from '@shared/data/metrics';
+
+// O relatório usa marcadores {{conditions}}, {{categories}}, etc. — os números
+// vêm sempre de shared/data/metrics.ts (R4), nunca digitados no Markdown.
+const renderedMd = architectureMd.replace(/\{\{(\w+)\}\}/g, (m: string, key: string) =>
+  key in metrics ? String(metrics[key as keyof typeof metrics]) : m,
+);
 
 export default function Architecture() {
   return (
@@ -23,7 +30,7 @@ export default function Architecture() {
         [&_strong]:text-pulso-verde
         [&_em]:text-pulso-marrom/70
       ">
-        <ReactMarkdown remarkPlugins={[remarkGfm]}>{architectureMd}</ReactMarkdown>
+        <ReactMarkdown remarkPlugins={[remarkGfm]}>{renderedMd}</ReactMarkdown>
       </article>
     </div>
   );

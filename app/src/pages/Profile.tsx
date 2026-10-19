@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useAppStore } from '../store/useAppStore';
-import { lgpdConsentLevels } from '../data/project';
+import { lgpdConsentLevels } from '@shared/data/project';
 import { useAppearance } from '@shared/context/AppearanceContext';
 import TopBar from '../components/TopBar';
 

@@ -122,7 +122,9 @@ async function handleApi(request, env, url) {
           .prepare('SELECT id, name, category_id, category_title, is_priority_theme, has_deep_content FROM diseases ORDER BY category_title, name')
           .all();
         if (rows?.results?.length) {
-          return jsonResponse({ source: 'd1', diseases: rows.results });
+          // Métricas e notícias vêm sempre do snapshot canônico (content.json).
+          const snap = await loadStaticContent(env, url);
+          return jsonResponse({ source: 'd1', metrics: snap?.metrics ?? null, diseases: rows.results, news: snap?.news ?? [] });
         }
       } catch {
         /* cai para o estático */
@@ -130,7 +132,12 @@ async function handleApi(request, env, url) {
     }
     const staticContent = await loadStaticContent(env, url);
     if (staticContent) {
-      return jsonResponse({ source: 'static', diseases: staticContent.diseases ?? [] });
+      return jsonResponse({
+        source: 'static',
+        metrics: staticContent.metrics ?? null,
+        diseases: staticContent.diseases ?? [],
+        news: staticContent.news ?? [],
+      });
     }
     return jsonResponse({ error: 'conteúdo indisponível' }, 503);
   }

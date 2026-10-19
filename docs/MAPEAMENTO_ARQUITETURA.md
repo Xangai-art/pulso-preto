@@ -566,6 +566,17 @@ Os **"mockups antigos"** citados **não existem como arquivo nomeado no Hub** (o
 | **Parte 5.5-C — Menu inferior em 3 colunas** | Quem somos (Sobre, Parceiros) · Transparência (Transparência e governança, Relatório de Arquitetura) · Comunicação (Notícias, Fale Conosco) — `footer.columns`. |
 | **Nada órfão (5.5-D)** | Todas as rotas agora têm ponto de entrada: Comunidade, Memória, Ensaios Clínicos, Medicina Tradicional, Arquitetura, Ouvidoria. Novo `ScrollToHash` faz as âncoras funcionarem entre páginas. |
 
+### 8.2-B Lote B — Fonte única de dados (D2/D3, R1/R4, P15–P17, P19) — 19/10/2026
+
+| Item | Implementação |
+|---|---|
+| **P16 — Paridade app↔site** | `diseases.ts`, `deepContentRegistry.ts` e `project.ts` foram **movidos para `shared/data/`** e as cópias do app foram **apagadas**. O app passou de 40 para **47 condições** (ganhou Renais e Genéticas, Tuberculose, Sífilis Congênita, Prevenção do HIV, Acidentes de Transporte) e os **dados do estudo local do DF**, agora exibidos também no detalhe do app. |
+| **R4/P15 — Número auto-derivado** | Novo `shared/data/metrics.ts`: condições, categorias, temas prioritários, emergentes, aprofundados, estudo local, idiomas e notícias são **calculados** da fonte. Removidos todos os números digitados: `48+` (heroSlides), `40+` (Baixar o App), `45+`/`48+`/`10`/`8` (relatório de Arquitetura — agora com marcadores `{{conditions}}` etc. preenchidos em tempo real), `7 temas` (roadmap), `{n}+` no app. |
+| **P17 — "7 ou 8 temas prioritários"** | Resolvido pela regra: vale a **flag** `isPriorityTheme` → **8** (Hipertensão, Diabetes, Depressão, Asma, Miomas Uterinos, Mortalidade Materna, Anemia Falciforme, Lúpus). Comentários "7 temas" removidos. |
+| **P19 — Notícias unificadas** | `shared/data/news.ts` é a única fonte (11 notícias, **PT e ES**, ordenadas por data). A Home mostra as 3 mais recentes com imagem e cada cartão leva à notícia em `/noticias#id`. `pulsoContent.news` ficou só com os rótulos da seção. |
+| **D15 — Acervo de imagens** | `shared/data/brandImages.ts` centraliza as imagens de marca usadas pela Home e pelas notícias. |
+| **Banco / API (R1/P22)** | O export (`scripts/db/export-content.mjs`) lê de `shared/data/`, grava `metrics` e `news` em `database/content.json`, e **falha o build** se a fonte única quebrar (ids duplicados, conteúdo aprofundado sem condição, métricas divergentes, notícia sem tradução). `/api/content` agora devolve `metrics`, `diseases` e `news`. |
+
 ### 8.3 Decisões adiadas (lembrar)
 
 - **Ponto F (5.5-F):** Comunidade e Memória — cards "Gente" na Home (implementado provisoriamente) **ou** itens do menu superior.
@@ -573,7 +584,10 @@ Os **"mockups antigos"** citados **não existem como arquivo nomeado no Hub** (o
 
 ### 8.4 Próximos lotes
 
-- **Lote B — SSOT de dados:** `diseases.ts` único site+app (P16), números auto-derivados (P15/P17/R4), notícias unificadas (P19).
 - **Lote C — Limpeza:** "Gente Preta" em textos públicos (P18), assinatura "CASIO v10.0" (P11), caça às siglas (D14/D14-a), conteúdos "A definir" (R3/P5/P10), ordenação por relevância no app (D13).
 - **Lote D — Documentação:** README e documentação CEOS ainda descrevem o VariantSwitcher/3 variantes.
-- **Achado fora de lote:** a imagem do card "Saúde da Pessoa Idosa" (`IMG_IDOSA`, `sspark.genspark.ai/i/oeW572bhZISbG0YS`) está quebrada (HTTP 415). Precisa ser trocada por outro ativo já produzido (D15).
+- **Imagens quebradas (decisão pendente — D15):** 4 URLs do acervo não carregam mais e precisam de substituto **do próprio acervo**:
+  - `brandImages.idosa` — card "Saúde da Pessoa Idosa" (HTTP 415)
+  - `asma.ts` heroImage (HTTP 403)
+  - `depressao.ts` heroImage (HTTP 403)
+  - `miomasUterinos.ts` heroImage (HTTP 403)

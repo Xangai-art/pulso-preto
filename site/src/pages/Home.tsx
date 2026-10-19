@@ -3,6 +3,7 @@ import { useAppearance } from '@shared/context/AppearanceContext';
 import { getPulsoContent } from '@shared/data/pulsoContent';
 import type { PulsoContent, LinkCard } from '../../../shared/data/pulsoContent';
 import PulsoIcon from '../components/PulsoIcons';
+import { homeNewsItems, formatNewsDate } from '@shared/data/news';
 import { HERO_IMAGE } from '../../../shared/data/variants';
 
 // Home "Pulso Preto" — identidade ÚNICA de produção (PP3).
@@ -332,6 +333,7 @@ function PulsoSeminar({ content }: { content: PulsoContent }) {
 
 function PulsoNews({ content }: { content: PulsoContent }) {
   const n = content.news;
+  const { localeId } = useAppearance();
   return (
     <section id="noticias" className="bg-white scroll-mt-24">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16">
@@ -339,17 +341,26 @@ function PulsoNews({ content }: { content: PulsoContent }) {
           <span className="text-xs font-bold uppercase tracking-wider text-pulso-terracota">{n.eyebrow}</span>
           <Link to="/noticias" className="text-pulso-verde text-sm font-bold hover:underline">{n.viewAllLabel}</Link>
         </div>
+        {/* Fonte única de notícias (P19): shared/data/news.ts */}
         <div className="grid sm:grid-cols-3 gap-5">
-          {n.cards.map((card, i) => (
-            <article key={i} className="rounded-xl border border-pulso-dourado/20 overflow-hidden hover:shadow-md transition-shadow">
-              <div className="relative aspect-[16/9]">
-                <img src={card.image.url} alt={card.image.alt} className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
-              </div>
+          {homeNewsItems.map((item) => (
+            <Link
+              key={item.id}
+              to={`/noticias#${item.id}`}
+              className="rounded-xl border border-pulso-dourado/20 overflow-hidden hover:shadow-md transition-shadow block"
+            >
+              {item.image && (
+                <div className="relative aspect-[16/9]">
+                  <img src={item.image.url} alt={item.image.alt} className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+                </div>
+              )}
               <div className="p-4">
-                <time className="text-xs text-pulso-terracota font-bold uppercase tracking-wide">{card.date}</time>
-                <h3 className="font-bold text-pulso-verde mt-2 leading-snug">{card.title}</h3>
+                <time dateTime={item.date} className="text-xs text-pulso-terracota font-bold uppercase tracking-wide">
+                  {formatNewsDate(item.date, localeId)}
+                </time>
+                <h3 className="font-bold text-pulso-verde mt-2 leading-snug">{item.title[localeId]}</h3>
               </div>
-            </article>
+            </Link>
           ))}
         </div>
       </div>

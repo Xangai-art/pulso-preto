@@ -13,14 +13,14 @@
 // (referência canônica) + Hipertensão, Diabetes, Miomas Uterinos, Lúpus,
 // Depressão e Asma. Todas seguem o contrato DiseaseDeepContent e a estrutura
 // editorial de 10 seções canônicas (ver shared/data/*.ts).
-import { anemiaFalciformeContent, type DiseaseDeepContent } from '@shared/data/anemiaFalciforme';
-import { hipertensaoContent } from '@shared/data/hipertensao';
-import { diabetesContent } from '@shared/data/diabetes';
-import { miomasUterinosContent } from '@shared/data/miomasUterinos';
-import { lupusContent } from '@shared/data/lupus';
-import { depressaoContent } from '@shared/data/depressao';
-import { asmaContent } from '@shared/data/asma';
-import type { LocaleId } from '@shared/data/locales';
+import { anemiaFalciformeContent, type DiseaseDeepContent } from './anemiaFalciforme.ts';
+import { hipertensaoContent } from './hipertensao.ts';
+import { diabetesContent } from './diabetes.ts';
+import { miomasUterinosContent } from './miomasUterinos.ts';
+import { lupusContent } from './lupus.ts';
+import { depressaoContent } from './depressao.ts';
+import { asmaContent } from './asma.ts';
+import type { LocaleId } from './locales.ts';
 
 const deepContentRegistry: Record<string, Record<LocaleId, DiseaseDeepContent>> = {
   'anemia-falciforme': anemiaFalciformeContent,
@@ -31,6 +31,9 @@ const deepContentRegistry: Record<string, Record<LocaleId, DiseaseDeepContent>> 
   depressao: depressaoContent,
   asma: asmaContent,
 };
+
+/** Ids das condições com conteúdo aprofundado (usado por metrics.ts). */
+export const deepContentIds: string[] = Object.keys(deepContentRegistry);
 
 export function getDeepContent(diseaseId: string, localeId: LocaleId): DiseaseDeepContent | undefined {
   return deepContentRegistry[diseaseId]?.[localeId];
