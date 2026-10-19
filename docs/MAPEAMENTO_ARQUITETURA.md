@@ -1,10 +1,11 @@
 # MAPEAMENTO_ARQUITETURA
-## Módulos master × versões (GP0 · PP1 · PP2) — foco em conteúdo
+## Módulos master × versões (GP0 · PP1 · PP2 · PP3) — foco em conteúdo, hard-services e compromisso contratual
 
 **Projeto:** Pulso Preto (ex-Gente Preta)
 **Finalidade:** inventariar todos os **módulos master** da plataforma e mostrar, de forma rastreável, **como cada um foi aproveitado em cada versão** — se de forma *original* (intacta) ou *com variante* (adaptada). O foco é **conteúdo**, não pixels.
 **Método:** leitura direta do código-fonte em `site/`, `app/`, `shared/`, `worker/`, `database/` e `docs/`, cruzada com o acervo do Hub (`PROJ NEGROS - IDEIAS ABA SITE.pdf`, `ANEXO 2`, etc.). Nenhum número aqui é estimado: todos foram contados nos arquivos.
 **Status:** documento de **diagnóstico + registro de decisões** da sessão de requisitos do PP3. Não implementa nada — serve de base para decidirmos, caso a caso, o que popula o site e o app.
+**Atualização (20/10/2026):** **Parte 9** — comparação **GP0 × PP1 × PP2 × PP3** (conteúdo, hard-services, navegação, dados, app, plataforma) e **PP3 × compromisso contratual**, com destaque para o que foi **feito ou estruturado além do contrato**. As Partes 0–7 são o **diagnóstico de 15/10/2026** (antes do PP3); para o estado atual, vale a Parte 9.
 **Atualização (19/10/2026):** registro de **implementação** na **Parte 8** (o que já saiu do papel, lote a lote) e decisão sobre siglas (D14-a).
 **Atualização (15/10/2026):** decisões de direção na **Parte 5.2**, mitigações na **Parte 5.4**, decisões de navegação (menu superior/inferior) na **Parte 5.5**, decisões dos **Áudios 2/3/4** (formato interno, rótulos e ativos) na **Parte 5.6**; lista de pendências em aberto na **Parte 6**.
 
@@ -259,7 +260,7 @@ Nem tudo foi corte — houve **expansão deliberada**, documentada em `arquitetu
 - **Biblioteca:** de "5 temas" do MVP → **10 categorias · 47 condições**.
 - **Categoria nova "Renais e Genéticas"** (gene APOL1) — não estava na ideação.
 - **7ª categoria "Saúde Mental e Socioeconômica Contemporânea"** (5 condições: ansiedade por redes, bets, substâncias, violência reativa, educação financeira) — adenda v4.1.
-- **Estudo local DF 2015–2024** (`localStudy.ts`): 1º estudo epidemiológico do DF com recorte racial; 8 condições enriquecidas com dado local.
+- **Dado local do DF 2015–2024** (`localStudy.ts`): análise de dados públicos já existentes, separados por raça/cor; 8 condições enriquecidas com dado local. *(Em 20/10/2026 a linguagem foi corrigida: não é "1º estudo epidemiológico" — ver 8.2-J.)*
 - **Medicina Tradicional Brasileira** (`/medicina-tradicional-brasileira`) — extensão da lição "Generational Health".
 - **7 deep-content clínicos** (anemia falciforme, hipertensão, diabetes, miomas, lúpus, depressão, asma) — 3 audiências × PT/ES.
 
@@ -518,6 +519,8 @@ Os **"mockups antigos"** citados **não existem como arquivo nomeado no Hub** (o
 
 ## PARTE 7 — Ficha resumida (para consulta rápida)
 
+> ⚠️ **Retrato de 15/10/2026 (antes do PP3).** Para os números atuais (9 categorias, 44 condições, 11 notícias, site e App iguais), ver **Parte 9**.
+
 | Pergunta | Resposta |
 |---|---|
 | Quantas variantes existem? | 3 (`gp0`, `pp1`, `pp2`); default `pp1` |
@@ -536,7 +539,7 @@ Os **"mockups antigos"** citados **não existem como arquivo nomeado no Hub** (o
 
 ---
 
-*Documento de diagnóstico + registro de decisões, gerado por leitura direta do repositório (site/, app/, shared/, worker/, database/, docs/) e do acervo do Hub. Todos os números foram contados nos arquivos-fonte. As Partes 5.2, 5.4 e 7 registram **direção e pauta**; a **Parte 8** registra o que já foi **implementado**.*
+*Documento de diagnóstico + registro de decisões (Partes 0–7), registro de implementação (Parte 8) e comparativo atual GP0 × PP1 × PP2 × PP3 × contrato (Parte 9), gerado por leitura direta do repositório (site/, app/, shared/, worker/, database/, docs/) e do acervo do Hub. Todos os números foram contados nos arquivos-fonte. As Partes 5.2, 5.4 e 7 registram **direção e pauta**; a **Parte 8** registra o que já foi **implementado**.*
 
 ---
 
@@ -642,6 +645,11 @@ Origem: 3 áudios de 10/10/2026 (14.01.07 (3), 14.01.07 (4), 14.01.08 (4)) sobre
 - **Atalhos da Home (2ª seção), referência PP1/Áudio 2:** Conheça sua saúde · Encontre cuidado · Seus direitos · Participe. Saíram "Entenda seu corpo" e "Dados e Indicadores" (a página segue acessível por "Ver indicadores" e pelo rodapé).
 - Limpeza: `heroSlides.ts` e `HeroSlideshow.tsx` (sem uso) apagados.
 
+### 8.2-K Dados e Indicadores sem bloco de créditos + Parte 9 (20/10/2026)
+
+- Removido da página Dados e Indicadores o bloco "Coordenação técnica · Realização · Apoio · Parceiros científicos".
+- Documento atualizado com a **Parte 9** (comparação GP0 × PP1 × PP2 × PP3 e PP3 × contrato).
+
 ### 8.3 Decisões adiadas (lembrar)
 
 - **Ponto F (5.5-F):** Comunidade e Memória — cards "Gente" na Home (implementado provisoriamente) **ou** itens do menu superior. *Aguardando posição.*
@@ -653,3 +661,143 @@ Origem: 3 áudios de 10/10/2026 (14.01.07 (3), 14.01.07 (4), 14.01.08 (4)) sobre
 
 - **Produção:** merge dos PRs dos Lotes A, B e C na `main` → Workers Builds publica automaticamente.
 - Pendências da Parte 6 ainda abertas: P1 (AVA), P2 (cartilha), P3 (Find-a-Doctor), P4 (quiz), P5 (histórias reais), P6, P7, P8 (busca global), P9 (área do usuário), P10 (nomes do Conselho), P13/P14 (vídeo/canal), P21 (app profissional).
+
+---
+
+## PARTE 9 — Comparativo GP0 × PP1 × PP2 × PP3 e PP3 × compromisso contratual (20/10/2026)
+
+> **Fontes desta parte:** código em produção (`main`, https://pulso-preto.fratozsistemas.workers.dev) e, no Hub, `Contrato_Aplicativo_assinado.pdf` (Contrato nº 004/2026, APRECIA × CASIO STUDIO V2, 20/04/2026, R$ 80.000,00), `ANEXO 2 - AFRODESCENDENTES` (formulário AECID, €235.152,41, 24 meses) e `RELATORIO_TECNICO_PRODUTO_2_2_FINAL.2.docx` (relatório de planejamento do Produto 2.2, com o MVP definido). Os números do PP3 vêm de `metrics.ts` / `database/content.json` (auto-derivados).
+>
+> **Legenda:** ✅ existe/entregue · 🟡 parcial / estruturado ("em construção") · ❌ ausente · ⏸ fora do produto digital.
+
+### 9.1 O que é cada versão
+
+| | **GP0** | **PP1** | **PP2** | **PP3** |
+|---|---|---|---|---|
+| Marca (Canon) | `gente-preta-v1` — "Gente Preta" | `pulso-preto-v1` | `pulso-preto-v1` | `pulso-preto-v1` — **única em produção** |
+| Natureza | Variante de apresentação | Variante (tratamento "Família") | Variante (tratamento "Mulher") | **Consolidação** (D1: "somar o único, subtrair o repetido") |
+| Status hoje | Memória no Canon (D4) | Memória no Canon (D4) | Memória no Canon (D4) | **Produção** |
+| Troca de variante em tempo de execução | Sim (3 variantes) | Sim | Sim | **Não** — uma só identidade |
+| Fonte de conteúdo | `project.ts` + Home própria | `variantContent.ts` (duplicado ×4) | `variantContent.ts` (duplicado ×4) | **Fonte única** `shared/data/*` → banco → `/api/content` |
+
+### 9.2 Navegação
+
+| Elemento | GP0 | PP1 | PP2 | PP3 |
+|---|---|---|---|---|
+| Menu superior | Início, Biblioteca, Rede SUS + dropdowns *Saberes* / *Instituição* | 6 itens institucionais (Início, Sobre, Temas, Dados, Notícias, Fale Conosco) | = PP1 | **Só hard-services:** Rede SUS · Encontre um profissional · Ensaios Clínicos · Ouvidoria + **Baixar o App** (D6) |
+| Rodapé | 4 colunas | 3 colunas + newsletter (verde) | topo + citação (creme) | **Institucional mínimo em 3 colunas** (Quem somos · Transparência · Comunicação) + Instagram **@pulsovivooficial** |
+| Links sem destino | Vários | Ícones sociais `href="#"` | idem | **Nenhum** (ícones sem perfil removidos) |
+| Endereços antigos | — | — | — | **Redirecionam** (ids de condição/categoria, âncoras, `/direito-a-saude`, `/indicadores`…) |
+
+### 9.3 Home
+
+| Seção | GP0 | PP1 | PP2 | PP3 |
+|---|---|---|---|---|
+| Abertura (hero) | Slideshow de 6 slides | Foto família | Foto mulher | Foto + "Saúde com raízes. Futuro com igualdade." (base PP1) |
+| Atalhos | — | 6 cards | 6 cards | **4 cards** (Conheça sua saúde · Encontre cuidado · Seus direitos · Participe) — todos clicáveis (Áudio 2) |
+| Temas de saúde com foto | 7 temas prioritários + emergentes | 6 cards | 6 cards | **6 cards** que abrem a Biblioteca **já filtrada** |
+| Gente (Comunidade, Memória) | Agenda de rodas | — | — | **Linha "Gente"** (D8; ponto F em aberto) |
+| Treinamento | — | — | — | **Linha "Treinamento"** → `/formacao` (em construção) |
+| Serviços (hard) | "Folhas de Gente Preta" (3 serviços) | — | — | **Linha "Para usar agora"** (4 serviços) |
+| Números | Ticker rolante | 4 indicadores | 4 indicadores | 4 indicadores (57,8% PDAD 2024) → **página Dados e Indicadores** |
+| Missão / Seminário | Problema × solução | ✅ / ✅ | ✅ / ✅ | ✅ / ✅ |
+| Notícias | Página `/noticias` | ❌ na Home | 3 cards (fonte separada) | **3 cards da fonte única** (11 notícias PT/ES) |
+| Parceiros | Grid na Home | — | — | Em `/sobre#parceiros` (D9) |
+
+### 9.4 Hard-services (o que a pessoa usa, não só lê)
+
+| Serviço | GP0 | PP1 | PP2 | PP3 |
+|---|---|---|---|---|
+| **Rede SUS** (navegação territorial) | ✅ "Guia do SUS Preto" | ✅ | ✅ | ✅ 7 regiões de saúde, 11 hospitais regionais, 13 UPAs, CEPAV; + âncora Encontre um profissional |
+| **Ouvidoria / Direito à saúde** | 🟡 card "Ouvidoria antirracista" | 🟡 dentro de Transparência | 🟡 idem | ✅ **rota própria `/ouvidoria`**: relato pelo App, canais 136 / 162 / 100, direitos (PNSIPN, Estatuto da Igualdade Racial, Lei do Racismo) |
+| **Encontre um profissional** | 🟡 card "Encontre uma médica preta" (texto) | ❌ | ❌ | 🟡 **rota própria `/profissionais`** (em construção — base de profissionais: P3) |
+| **Ensaios Clínicos** | ✅ | ✅ | ✅ | ✅ |
+| **Relato de discriminação** (App) | ✅ | ✅ | ✅ | ✅ (ligado à Ouvidoria do site) |
+| **Formação** | ❌ | ❌ | ❌ | 🟡 **rota `/formacao`** (em construção — AVA: P1) |
+| **Dados e Indicadores** | ❌ (ticker) | ❌ (só 4 números) | ❌ | ✅ **página dedicada** (Panorama + análise de dados do DF em linguagem leiga + achados por condição) |
+| Medicina Tradicional (fitoterapia) | ✅ na Home | ✅ página | ✅ página | ✅ dentro de Saúde (D8) |
+
+### 9.5 Conteúdo de saúde
+
+| Item | GP0 | PP1 | PP2 | PP3 |
+|---|---|---|---|---|
+| Biblioteca — categorias / condições | 10 / 47 (site) · 40 (app) | idem | idem | **9 / 44**, **iguais no site e no App**, auto-derivadas |
+| Organização | Lista longa na ordem do arquivo | idem | idem | **Busca + filtro + acordeão**, ordenada por relevância (D13) |
+| Etiquetas | Várias ("Atual", etc.) | idem | idem | Só **Prioritário** e **Dado Local DF** |
+| Linguagem | "Estudo + Achado", "recorte racial" | idem | idem | **Leiga** para o público; técnico nas abas profissionais (D11/D12) |
+| Conteúdo aprofundado por público | 7 condições × 3 públicos × PT/ES | idem | idem | idem (7) |
+| Dado local do Distrito Federal | "Estudo local", "1º estudo epidemiológico" | idem | idem | **"Análise de dados públicos já existentes"** — sem "Fase 1"/"preliminar" (áudios de 10/10) |
+| Abreviaturas | Diversas | idem | idem | **Por extenso na 1ª menção** (D14 / D14-a) |
+| "Placeholder" | Selo "Placeholder (CC)" | idem | idem | **Removido** (D15) |
+| Idiomas | PT/ES | PT/ES | PT/ES | PT/ES |
+
+### 9.6 App Sentinela e plataforma
+
+| Item | GP0 | PP1 | PP2 | PP3 |
+|---|---|---|---|---|
+| App | 11 telas, "app GP0 com pele Pulso" | tema Pulso | tema Pulso | **Tema único**, catálogo **igual ao do site** (paridade P16), etiqueta Dado Local DF |
+| Fonte única de dados | ❌ (4 cópias de conteúdo) | ❌ | ❌ | ✅ `shared/data` → `database/content.json` → `/api/content` |
+| Números no código | Escritos à mão (45+ / 47 / 48+) | idem | idem | ✅ **Auto-derivados** (`metrics.ts`) |
+| Verificação de integridade no build | ❌ | ❌ | ❌ | ✅ build **falha** se houver id duplicado, conteúdo sem condição, notícia sem tradução ou recorte inválido |
+| Publicação | Manual | Manual | Manual | ✅ **Automática** a cada merge na `main` (Cloudflare Workers Builds) |
+
+### 9.7 PP3 × compromisso contratual
+
+**O que o contrato pede.** O Contrato nº 004/2026 (R$ 80.000,00, até 18 meses) tem **um único objeto**: o **Produto 2.2 — Desenvolvimento do Aplicativo Móvel**. Ele inclui planejamento técnico, frontend, backend, funcionalidades previstas, testes, ajustes, apoio ao protótipo no Seminário Latino-Americano, suporte e documentação técnica (Cláusulas 1ª e 2ª). O **escopo funcional** foi fixado no Relatório de Planejamento (Produto 2.2, item 4.1 — MVP) e no Anexo 2 (Produto 2.2: *"aplicativo móvel … para acesso contínuo a informações sobre a saúde da população negra e formas de acesso à rede de atendimento do SUS"*, com georreferenciamento das unidades).
+
+> ⚠️ **O site institucional não é objeto do contrato.** Ele aparece na proposta comercial CASIO (item 3.2), mas a proposta **não é o contrato assinado**. O relatório de planejamento menciona "plataforma web responsiva" como *forma de acesso* ao aplicativo.
+
+#### A) MVP contratado (Relatório de Planejamento, item 4.1) × PP3
+
+| # | Funcionalidade do MVP | PP3 | Onde / observação |
+|---|---|---|---|
+| 1 | Cadastro e Consentimento (registro, autodeclaração racial, termos, LGPD, perfil protegido) | ✅ | App: `/bem-vindo`, `/consentimento` (4 níveis de consentimento), `/perfil` |
+| 2 | Questionário Inicial de Saúde (histórico familiar, fatores de risco, condições autorreferidas) | ✅ | App: `/linha-de-base` |
+| 3 | Biblioteca de Conteúdos Educativos (materiais técnicos, vídeos, infográficos) | ✅ / 🟡 | 44 condições, 7 aprofundadas por público. **Vídeos e infográficos: não há** dentro da Biblioteca |
+| 4 | Navegação em Saúde (Rede de Atenção, localização de UBS, acesso ao SUS, pesquisas clínicas) | ✅ | App `/mapa` + site Rede SUS + Ensaios Clínicos |
+| 5 | Registro e Acompanhamento (sintomas, acompanhamento periódico, dados pessoais, **lembretes**) | ✅ / 🟡 | App `/checkin` + histórico no perfil. **Lembretes: não há** |
+| 6 | Perguntas Frequentes (doenças, direitos, acesso ao SUS) | 🟡 | Existe só um FAQ sobre o acesso ao App (`/baixar`). **FAQ de saúde e direitos: não há** |
+| 7 | Sistema de Notificações (campanhas, atualizações) | ❌ | **Pendente** |
+| 8 | Módulo de Feedback (avaliar conteúdos, sugestões) | ❌ | **Pendente** |
+| — | Temas prioritários do MVP: anemia falciforme, hipertensão, diabetes tipo 2, mioma uterino, lúpus, doença renal crônica | ✅ / 🟡 | Os 6 estão na Biblioteca. **5 têm conteúdo aprofundado**; **doença renal crônica, não** |
+| — | Apoio ao protótipo no Seminário (20–21/11/2026 no relatório; o site diz 18–19/11) | 🟡 | Protótipo navegável em produção. ⚠️ **Datas divergentes — confirmar** |
+| — | Documentação técnica | ✅ | README, este mapeamento, relatório de arquitetura `/arquitetura` |
+| — | Versão para lojas (iOS/Android) | ❌ | Hoje é aplicativo web (`/app`). As lojas aparecem só na **proposta**, não no contrato — confirmar se é exigência |
+
+**Lacunas do contrato a fechar:** notificações, feedback, FAQ de saúde e direitos, lembretes, vídeos e infográficos na Biblioteca, conteúdo aprofundado de doença renal crônica e (se exigido) publicação nas lojas.
+
+#### B) Feito ou estruturado ALÉM do contrato
+
+| # | Entrega | Por que vai além | Status |
+|---|---|---|---|
+| 1 | **Site institucional público completo** (19 rotas de página + redirecionamentos) | Não é objeto do contrato (só da proposta) | ✅ produção |
+| 2 | **Arquitetura CEOS com fonte única** de dados para site + App + banco + interface de dados | O contrato pede "arquitetura técnica"; a fonte única com números auto-derivados e verificação de integridade no build vai além | ✅ |
+| 3 | **Biblioteca ampliada:** 44 condições em 9 categorias | O MVP prevê **6 temas** | ✅ |
+| 4 | **Conteúdo aprofundado em 3 públicos** (médico, enfermeiro, usuário) | O MVP não prevê segmentação por público | ✅ 7 condições |
+| 5 | **Bilíngue português/espanhol** em toda a interface e no conteúdo aprofundado | Não previsto | ✅ |
+| 6 | **Rede SUS do DF detalhada** (7 regiões, 11 hospitais, 13 UPAs, CEPAV) | O MVP fala em "localização de UBS" | ✅ |
+| 7 | **Ouvidoria** com canais oficiais e direitos | Não previsto no MVP (só o relato no App) | ✅ |
+| 8 | **Página Ensaios Clínicos completa** | O MVP fala em "divulgação de informações" | ✅ |
+| 9 | **Página Dados e Indicadores** + 8 condições com dado do DF | Isso é **Produto 1.1** (análise de dados) / **atividade 1.1.3** (divulgação), não o 2.2 | ✅ |
+| 10 | **Medicina Tradicional Brasileira** (plantas com comprovação científica) | Ligada à metodologia de saberes tradicionais do Anexo 2, fora do 2.2 | ✅ |
+| 11 | **Radar comunitário** (opt-in, transparente) | Não previsto no MVP | ✅ |
+| 12 | **Transparência e governança** (consentimento em 4 níveis, 3 domínios de dados, política de métricas) | Vai além da "conformidade LGPD" do contrato | ✅ |
+| 13 | **Notícias** (11, PT/ES) e **Seminário** no site | Divulgação do Produto 2.1 | ✅ |
+| 14 | **Comunidade e Memória** | Fora do 2.2 (aba original 8/9) | ✅ / 🟡 |
+| 15 | **Formação `/formacao`** | **Estrutura** para o Produto 3.1 (ciclos formativos) | 🟡 em construção |
+| 16 | **Encontre um profissional `/profissionais`** | Estrutura para busca de profissionais (P3) | 🟡 em construção |
+| 17 | **Publicação contínua automática** + preservação de links antigos | Não previsto | ✅ |
+| 18 | **Acessibilidade de linguagem** (sem siglas soltas, sem jargão, texto leigo) | Não previsto | ✅ |
+
+> **Leitura crítica:** a maior parte do "além do contrato" responde a **outros produtos do programa AECID** que **não têm dono técnico** no contrato 004/2026: Produto 1.1 (análise de dados e divulgação), 2.1 (Seminário), 3.1 (formação). Isso agrega valor ao programa, mas **cria dependência de manutenção sem cobertura contratual**. Recomenda-se **formalizar**, por termo aditivo ou registro no relatório intermediário, que site, Dados e Indicadores e Formação **foram entregues como apoio a outros produtos** — e, ao mesmo tempo, **priorizar as lacunas do MVP** (item A), que **condicionam o pagamento** (Cláusula 6ª: 40% na entrega final).
+
+#### C) Outros produtos do programa AECID (contexto — não são do contrato 004/2026)
+
+| Produto (Anexo 2) | Relação com o PP3 |
+|---|---|
+| 1.1 Estudo do perfil da população negra do DF | O PP3 **exibe** a análise de dados (Dados e Indicadores), em linguagem leiga. A pesquisa de campo é etapa futura |
+| 1.2 Cartilha informativa (1.000 exemplares impressos) | ⏸ Fora do digital. O relatório prevê um "repositório unificado": a fonte única do PP3 **já serve** de base |
+| 2.1 Seminário Latino-Americano | Divulgado na Home e em Comunidade. O App será apresentado lá (2.2) |
+| 3.1 Ciclos de formação (100 estudantes, 16 h) | Estrutura `/formacao` criada |
+| 3.2 Ações práticas em 10 UBS | Pode usar o App e a Biblioteca como material de apoio |
+
