@@ -227,13 +227,12 @@ export default function DesignSystem() {
           construídos com a mesma paleta dos ornamentos — cada um representa o determinante
           social do tema sem ilustrá-lo de forma literal.
         </p>
-        <div className="grid grid-cols-3 sm:grid-cols-5 gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
           {[
             ['nomofobia', 'Nomofobia'],
             ['ludopatia', 'Ludopatia'],
             ['abuso-substancia', 'Abuso de substância'],
             ['violencia-reativa', 'Violência reativa'],
-            ['falta-educacao-financeira', 'Educação financeira'],
           ].map(([id, label]) => (
             <div key={id} className="rounded-xl border border-pulso-dourado/25 bg-white p-4 flex flex-col items-center text-center gap-2">
               <ThemeIcon id={id} size={32} />

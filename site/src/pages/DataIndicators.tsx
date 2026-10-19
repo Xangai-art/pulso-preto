@@ -33,8 +33,8 @@ export default function DataIndicators() {
           {stats.cards.map((c, i) => (
             <div key={i} className="rounded-xl bg-white border border-pulso-dourado/20 p-5">
               <div className="text-3xl font-bold text-pulso-terracota mb-2">{c.value}</div>
-              <p className="text-xs text-pulso-marrom/80 leading-snug mb-2">{c.label.join(' ')}</p>
-              <p className="text-[10px] text-pulso-marrom/50 uppercase tracking-wide">{c.source}</p>
+              <p className="text-sm text-pulso-marrom leading-snug mb-2">{c.label.join(' ')}</p>
+              <p className="text-[11px] text-pulso-marrom/80 uppercase tracking-wide">{c.source}</p>
             </div>
           ))}
         </div>
@@ -61,13 +61,13 @@ export default function DataIndicators() {
               >
                 <div className="flex items-start justify-between gap-3 mb-2">
                   <div>
-                    <span className="block text-[10px] uppercase tracking-wide text-pulso-marrom/60">{d.categoryTitle}</span>
+                    <span className="block text-[11px] uppercase tracking-wide text-pulso-marrom/80">{d.categoryTitle}</span>
                     <h3 className="font-semibold text-pulso-verde">{d.name}</h3>
                   </div>
                   <span className="text-2xl font-bold text-pulso-terracota shrink-0">{d.localStudy!.value}</span>
                 </div>
                 <p className="text-sm text-pulso-marrom leading-relaxed mb-2">{d.localStudy!.finding}</p>
-                <p className="text-[11px] text-pulso-marrom/60">Fonte: {d.localStudy!.source}</p>
+                <p className="text-xs text-pulso-marrom/80">Fonte: {d.localStudy!.source}</p>
               </Link>
             ))}
           </div>

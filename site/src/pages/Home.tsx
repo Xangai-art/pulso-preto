@@ -229,12 +229,12 @@ function PulsoStats({ content }: { content: PulsoContent }) {
           {s.cards.map((c, i) => (
             <div key={i} className="rounded-xl bg-white border border-pulso-dourado/20 p-5">
               <div className="text-3xl font-bold text-pulso-terracota mb-2">{c.value}</div>
-              <p className="text-xs text-pulso-marrom/80 leading-snug mb-2">
+              <p className="text-sm text-pulso-marrom leading-snug mb-2">
                 {c.label.map((line, j) => (
                   <span key={j} className="block">{line}</span>
                 ))}
               </p>
-              <p className="text-[10px] text-pulso-marrom/50 uppercase tracking-wide">{c.source}</p>
+              <p className="text-[11px] text-pulso-marrom/80 uppercase tracking-wide">{c.source}</p>
             </div>
           ))}
         </div>

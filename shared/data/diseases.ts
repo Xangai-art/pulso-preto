@@ -374,8 +374,9 @@ export const diseaseCategories: DiseaseCategory[] = [
           source: 'Estudo Pop. Negra DF 2015–2024 · SIM/DATASUS 2012–2021',
         },
       },
-      // ---- Em avaliação (P23): mantidos VISÍVEIS em "Outras" até decisão posterior.
-      // Vieram da antiga categoria "Saúde Mental e Socioeconômica Contemporânea".
+      // P23 decidido (20/10/2026): "Violência como resposta reativa" FICA em "Outras";
+      // "Falta de educação financeira" saiu do catálogo. Vinham da antiga categoria
+      // "Saúde Mental e Socioeconômica Contemporânea".
       {
         id: 'violencia-reativa',
         name: 'Violência como resposta reativa (déficit de educação/inteligência emocional)',
@@ -389,14 +390,6 @@ export const diseaseCategories: DiseaseCategory[] = [
             'No DF (2015–2022), 77,4% das mortes violentas ocorreram em pessoas negras (predominantemente pardas, 70,2%) — sobre-representação de 1,34× em relação à proporção populacional. 89,9% das vítimas fatais são homens; já nas notificações de violência não fatal (SINAN), 83,1% das vítimas são mulheres.',
           source: 'Estudo Pop. Negra DF 2015–2024 · Indicadores 17–18 (SIM/DATASUS, SINAN Q3 2025)',
         },
-      },
-      {
-        id: 'falta-educacao-financeira',
-        name: 'Falta de educação financeira',
-        isNew: true,
-        study: 'Banco Central do Brasil — Relatório de Cidadania Financeira 2025',
-        finding:
-          'Mulheres negras de baixa renda pagam taxas de juros de até 140% ao ano em crédito informal/rotativo; a população negra recebe em média 58,3% do rendimento da população branca; a pontuação nacional média de educação financeira é de apenas 59,6/100 — um ciclo de vulnerabilidade financeira que é, em si, determinante social de saúde (estresse crônico, insegurança alimentar, ansiedade).',
       },
     ],
   },

@@ -510,7 +510,7 @@ Os **"mockups antigos"** citados **não existem como arquivo nomeado no Hub** (o
 | P20 | **Colapsar as Homes** (GP0 + PulsoHome) numa Home única | R1 |
 | P21 | **Destino do app "profissional"** (triagem CPF/CNS) × app usuário | C6 |
 | P22 | **Banco de dados master** (conteúdo + versionamentos consolidados) | R1 |
-| P23 | **Avaliar "Violência como resposta reativa" e "Falta de educação financeira"** (hoje em "Outras", visíveis, só para reter o conteúdo) | Reclassificação 19/10/2026 |
+| P23 | ✅ **Resolvido (20/10/2026):** violência reativa fica em "Outras"; educação financeira removida. ~~Avaliar "Violência como resposta reativa" e "Falta de educação financeira"~~ (hoje em "Outras", visíveis, só para reter o conteúdo) | Reclassificação 19/10/2026 |
 
 > **Observação de método (D5):** esta lista é o **ponto de partida**. Na sessão, cada pendência recebe uma decisão e, quando aplicável, é vinculada a uma **versão específica** que está sendo avaliada (ver rito na abertura do documento).
 
@@ -625,10 +625,15 @@ Decisão do responsável: as condições exibem **apenas duas tags** — **"Prio
 - **"Estudo em destaque" saiu da Biblioteca de Saúde.** Nova ordem de `/saude`: 1. Busca · 2. Filtro · 3. Categorias · 4. Medicina Tradicional. Links antigos `/saude#estudo-df` redirecionam para `/dados-e-indicadores#estudo-df`; o detalhe da condição aponta para a página nova.
 - **Instagram `@pulsovivooficial`** no rodapé (Redes Sociais), a partir de `shared/data/social.ts`. Os ícones de Facebook, YouTube e LinkedIn **saíram**: não tinham destino (`href="#"`). Voltam quando os perfis forem confirmados.
 
+### 8.2-I P23 decidido + contraste dos dados (20/10/2026)
+
+- **P23 resolvido:** "Violência como resposta reativa" **permanece em "Outras"**; **"Falta de educação financeira" foi removida** do catálogo (site, app, banco, ícone). Totais auto-derivados: **9 categorias · 44 condições**.
+- **Contraste dos dados:** no bloco "Estudo em destaque" (fundo verde-escuro), os números de disparidade passaram a dourado claro, os de avanço a verde de destaque, e as etiquetas dos 8 eixos ganharam fundo sólido. Legendas e fontes ficaram maiores e mais escuras/claras no Panorama (Home e Dados e Indicadores) e nos achados por condição.
+
 ### 8.3 Decisões adiadas (lembrar)
 
 - **Ponto F (5.5-F):** Comunidade e Memória — cards "Gente" na Home (implementado provisoriamente) **ou** itens do menu superior. *Aguardando posição.*
-- **P23 — Destino de "Violência como resposta reativa" e "Falta de educação financeira":** hoje ficam visíveis na categoria "Outras" apenas para **reter o conteúdo**; decidir se permanecem, se migram para outra categoria/página (ex.: determinantes sociais) ou se saem do catálogo. *Aguardando posição.*
+- ~~P23~~ — resolvido em 8.2-I.
 - **"Mulher/Homem Preto" × "Mulher/Homem Negro":** terminologia dos cards e textos. *Aguardando posição.*
 - **Imagem de Miomas Uterinos:** confirmar se carrega para visitantes sem login.
 
