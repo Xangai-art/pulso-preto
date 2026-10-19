@@ -1,7 +1,7 @@
 import type React from 'react';
 import { PULSO_PALETTE } from '@shared/data/pulsoPalette';
 
-// Ícones autorais para as 9 categorias-mãe da Biblioteca de Saúde / DiseaseDetail.
+// Ícones autorais para as categorias-mãe da Biblioteca de Saúde / DiseaseDetail.
 // Mesma linguagem visual de ThemeIcons.tsx (disco de fundo + 1-3 traços/formas
 // geométricas na paleta OFICIAL Pulso Preto) — nunca figurativos: nenhum órgão,
 // símbolo médico literal (coração, DNA, fita, pulmão) ou representação direta de
@@ -16,7 +16,6 @@ interface CategoryIconProps {
 // Papel semântico herdado mapeado para a paleta oficial: folha=avanço,
 // barro=risco, ouro=meta, palha=base.
 const FOLHA = PULSO_PALETTE.verdeAccent;
-const FOLHA_SOFT = PULSO_PALETTE.verdeAccent;
 const OURO = PULSO_PALETTE.dourado;
 const OURO_DEEP = PULSO_PALETTE.douradoClaro;
 const BARRO = PULSO_PALETTE.marrom;
@@ -138,22 +137,6 @@ function RenalIcon({ size, className }: IconProps) {
   );
 }
 
-function SocioeconomicaContemporaneaIcon({ size, className }: IconProps) {
-  // Saúde Mental e Socioeconômica Contemporânea — nós conectados (determinantes
-  // sociais interligados), sem tela/celular literal.
-  return (
-    <svg width={size} height={size} viewBox="0 0 32 32" className={className} aria-hidden="true">
-      <circle cx="16" cy="16" r="15" fill={PALHA} opacity="0.5" />
-      <line x1="10" y1="21" x2="16" y2="10" stroke={OURO_DEEP} strokeWidth="1.4" opacity="0.8" />
-      <line x1="16" y1="10" x2="22" y2="21" stroke={OURO_DEEP} strokeWidth="1.4" opacity="0.8" />
-      <line x1="10" y1="21" x2="22" y2="21" stroke={OURO_DEEP} strokeWidth="1.4" opacity="0.8" />
-      <circle cx="16" cy="10" r="2.6" fill={FOLHA} />
-      <circle cx="10" cy="21" r="2.6" fill={BARRO} />
-      <circle cx="22" cy="21" r="2.6" fill={FOLHA_SOFT} />
-    </svg>
-  );
-}
-
 const ICONS: Record<string, React.FC<IconProps>> = {
   cardiovasculares: CardiovascularesIcon,
   metabolicas: MetabolicasIcon,
@@ -163,7 +146,6 @@ const ICONS: Record<string, React.FC<IconProps>> = {
   'raras-autoimunes': RarasAutoimunesIcon,
   oncologicas: OncologicasIcon,
   outras: OutrasIcon,
-  'socioeconomica-contemporanea': SocioeconomicaContemporaneaIcon,
   'renais-geneticas': RenalIcon,
 };
 

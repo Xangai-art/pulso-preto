@@ -1,5 +1,5 @@
-import { Link, useParams } from 'react-router-dom';
-import { diseaseCategories } from '@shared/data/diseases';
+import { Link, Navigate, useParams } from 'react-router-dom';
+import { diseaseCategories, resolveDiseasePath } from '@shared/data/diseases';
 import { getDeepContent } from '@shared/data/deepContentRegistry';
 import CategoryIcon from '../components/CategoryIcons';
 import AudienceContentTabs from '../components/AudienceContentTabs';
@@ -13,6 +13,9 @@ export default function DiseaseDetail() {
   const deepContent = disease?.hasDeepContent ? getDeepContent(disease.id, localeId) : undefined;
 
   if (!category || !disease) {
+    // Endereço antigo (categoria/condição reclassificada) → redireciona para o atual.
+    const current = resolveDiseasePath(diseaseId);
+    if (current) return <Navigate to={current} replace />;
     return (
       <div className="max-w-3xl mx-auto px-4 sm:px-6 py-24 text-center">
         <h1 className="text-2xl font-bold text-pulso-verde mb-4">Condição não encontrada</h1>

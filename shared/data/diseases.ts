@@ -168,13 +168,30 @@ export const diseaseCategories: DiseaseCategory[] = [
       { id: 'ansiedade', name: 'Ansiedade' },
       { id: 'tept', name: 'Transtorno de Estresse Pós-Traumático (TEPT)' },
       {
-        id: 'uso-substancias',
-        name: 'Uso de Substâncias',
-        study:
-          'SAMHSA 2021 + SENAD (Grau de Pureza de Cocaína em 4 Estados) + gov.br/MJ-OBID + Fiocruz + Jornal da USP/Brasil de Fato sobre a Lei 11.343/2006',
-        finding:
-          'Além do acesso desigual a tratamento (SAMHSA 2021), a adenda v4.1 documenta uma dupla disparidade no Brasil: (1) substâncias consumidas em contextos de baixa renda tendem a ter maior grau de adulteração/mistura do que as consumidas por quem tem alta renda, ampliando o dano por dose; (2) a aplicação da política de drogas é racialmente desigual — pessoas negras cumprem, em média, mais tempo de prisão pela mesma infração.',
+        id: 'nomofobia',
+        name: 'Nomofobia',
         isNew: true,
+        study:
+          'UNICEF Brasil · CNN Brasil · Jornal da USP · The Conversation Brasil (2024–2025)',
+        finding:
+          'Nomofobia é a ansiedade ou o medo de ficar sem o celular ou sem conexão. O uso excessivo e compulsivo de redes sociais está associado a aumento de sintomas de ansiedade, comparação social e distúrbios de sono em adolescentes brasileiros — quadro já descrito como "epidemia" por especialistas, motivando a regulamentação do uso de celulares em escolas em diversos estados.',
+      },
+      {
+        id: 'ludopatia',
+        name: 'Ludopatia',
+        isNew: true,
+        study: 'Datafolha/Folha de S.Paulo (2024) · Alma Preta · Revista Raça · O Joio e O Trigo',
+        finding:
+          'Ludopatia é o vício em jogos de aposta: a pessoa perde o controle sobre quanto tempo e dinheiro gasta jogando. O foco hoje são as apostas esportivas online (bets): 66,8% dos apostadores brasileiros apresentam padrão de aposta problemático, e o perfil mais afetado é jovem, do sexo masculino, autodeclarado negro, desempregado ou de baixa renda. Estima-se que cerca de 1,4 milhão de brasileiros vivam com transtorno relacionado a apostas, com forte concentração em periferias urbanas. O mesmo padrão de risco aparece em outros jogos de azar digitais e presenciais — cassinos online e "jogos do tigrinho", caça-níqueis, raspadinhas, loterias e jogo do bicho — e em mecânicas de aposta embutidas em jogos eletrônicos, como as "caixas de recompensa" (loot boxes).',
+      },
+      {
+        id: 'abuso-substancia',
+        name: 'Abuso de Substância',
+        isNew: true,
+        study:
+          'SAMHSA 2021 · SENAD ("Grau de Pureza de Cocaína em Quatro Estados") · Fiocruz (levantamento nacional sobre uso de crack) · gov.br/MJ-OBID · Jornal da USP · Brasil de Fato (Lei 11.343/2006)',
+        finding:
+          'Pessoas negras têm acesso mais desigual a tratamento para uso de álcool e outras drogas (SAMHSA 2021). No Brasil há ainda uma dupla disparidade: (1) substâncias consumidas em contextos de baixa renda e periferia tendem a apresentar maior grau de adulteração — misturadas a outras substâncias, muitas vezes tóxicas —, ampliando o dano à saúde por dose consumida, enquanto consumidores de alta renda têm acesso a substâncias de maior pureza; (2) a política de drogas é aplicada de forma racialmente desigual — pessoas negras cumprem, em média, mais tempo de prisão pela mesma infração.',
       },
     ],
   },
@@ -331,22 +348,15 @@ export const diseaseCategories: DiseaseCategory[] = [
       {
         id: 'hiv',
         name: 'Vírus da Imunodeficiência Humana (HIV) e Síndrome da Imunodeficiência Adquirida (AIDS)',
-        study: 'Literatura epidemiológica nacional',
+        study: 'Literatura epidemiológica nacional · Lancet HIV 2022 (Profilaxia Pré-Exposição)',
         finding:
-          'População negra apresenta maior incidência de novos diagnósticos de HIV e menor acesso contínuo a tratamento antirretroviral, refletindo barreiras estruturais de acesso à saúde.',
+          'População negra apresenta maior incidência de novos diagnósticos de HIV e menor acesso contínuo a tratamento antirretroviral, refletindo barreiras estruturais de acesso à saúde. Prevenção: a ampliação do acesso à Profilaxia Pré-Exposição (PrEP) reduz as desigualdades na incidência de HIV (Lancet HIV 2022) — a PrEP é direito garantido pelo Sistema Único de Saúde (SUS) e está disponível gratuitamente na rede pública.',
         localStudy: {
           value: '70,3%',
           finding:
             'No DF (2024), 70,3% das notificações de HIV/AIDS foram de pessoas pretas ou pardas — sobre-representação em relação aos 57,8% da população, associada a menor acesso a testagem, PrEP e TARV, além de estigma (racismo + homofobia + serofobia).',
           source: 'Estudo Pop. Negra DF 2015–2024 · Indicador 16 (SINAN+SIM, Boletim HIV/AIDS 2024)',
         },
-      },
-      {
-        id: 'prevencao-hiv-prep',
-        name: 'Prevenção do HIV (Profilaxia Pré-Exposição)',
-        study: 'Lancet HIV 2022',
-        finding:
-          'Redução de desigualdades na incidência de HIV quando o acesso à Profilaxia Pré-Exposição (PrEP) é ampliado. PrEP é direito garantido pelo SUS — disponível gratuitamente na rede pública.',
       },
       { id: 'doencas-pele', name: 'Doenças de Pele (acesso desigual a diagnóstico)' },
       { id: 'osteoporose', name: 'Osteoporose' },
@@ -364,40 +374,8 @@ export const diseaseCategories: DiseaseCategory[] = [
           source: 'Estudo Pop. Negra DF 2015–2024 · SIM/DATASUS 2012–2021',
         },
       },
-    ],
-  },
-  {
-    id: 'socioeconomica-contemporanea',
-    title: 'Saúde Mental e Socioeconômica Contemporânea',
-    subtitle: 'Risco ↑ + Determinantes Sociais',
-    icon: '📱',
-    diseases: [
-      {
-        id: 'ansiedade-redes-sociais',
-        name: 'Ansiedade crônica por uso irresponsável de redes sociais',
-        isNew: true,
-        study:
-          'UNICEF Brasil · CNN Brasil · Jornal da USP · The Conversation Brasil (2024–2025)',
-        finding:
-          'Uso excessivo/compulsivo de redes sociais está associado a aumento de sintomas de ansiedade, comparação social e distúrbios de sono em adolescentes brasileiros — quadro já descrito como "epidemia" por especialistas, motivando regulamentação do uso de celulares em escolas em diversos estados.',
-      },
-      {
-        id: 'vicio-apostas',
-        name: 'Vício em jogos de apostas online (bets)',
-        isNew: true,
-        study: 'Datafolha/Folha de S.Paulo (2024) · Alma Preta · Revista Raça · O Joio e O Trigo',
-        finding:
-          '66,8% dos apostadores brasileiros apresentam padrão de aposta problemático; o perfil mais afetado é jovem, do sexo masculino, autodeclarado negro, desempregado ou de baixa renda. Estima-se que ~1,4 milhão de brasileiros vivam hoje com transtorno relacionado a apostas, com forte concentração em periferias urbanas.',
-      },
-      {
-        id: 'abuso-substancias-disparidade',
-        name: 'Abuso de substâncias — disparidade de qualidade/pureza por classe e raça',
-        isNew: true,
-        study:
-          'SENAD ("Grau de Pureza de Cocaína em Quatro Estados") · Fiocruz (levantamento nacional sobre uso de crack) · gov.br/MJ-OBID · Jornal da USP · Brasil de Fato',
-        finding:
-          'Substâncias consumidas em contextos de baixa renda/periferia tendem a apresentar maior grau de adulteração (misturadas a outras substâncias, muitas vezes tóxicas), ampliando o dano à saúde por dose consumida, enquanto consumidores de alta renda têm acesso a substâncias de maior pureza. Simultaneamente, a política de drogas é aplicada de forma racialmente desigual — pessoas negras cumprem, em média, mais tempo de prisão pela mesma infração.',
-      },
+      // ---- Em avaliação (P23): mantidos VISÍVEIS em "Outras" até decisão posterior.
+      // Vieram da antiga categoria "Saúde Mental e Socioeconômica Contemporânea".
       {
         id: 'violencia-reativa',
         name: 'Violência como resposta reativa (déficit de educação/inteligência emocional)',
@@ -437,6 +415,26 @@ export const emergentThemes = diseaseCategories
   .flatMap((c) => c.diseases.filter((d) => d.isNew).map((d) => ({ ...d, category: c.title, icon: c.icon, categoryId: c.id })));
 
 // Contagens (condições, categorias, temas): ver shared/data/metrics.ts.
+
+// Ids antigos → ids atuais (reclassificação de 19/10/2026: categoria "Saúde
+// Mental e Socioeconômica Contemporânea" desfeita; PrEP fundida em HIV/AIDS;
+// "Uso de Substâncias" fundido em "Abuso de Substância"). Mantém links antigos
+// funcionando: o DiseaseDetail redireciona para o endereço novo.
+export const LEGACY_DISEASE_IDS: Record<string, string> = {
+  'ansiedade-redes-sociais': 'nomofobia',
+  'vicio-apostas': 'ludopatia',
+  'abuso-substancias-disparidade': 'abuso-substancia',
+  'uso-substancias': 'abuso-substancia',
+  'prevencao-hiv-prep': 'hiv',
+};
+
+/** Resolve id de condição (incluindo ids antigos) → caminho atual `/saude/:cat/:id`, ou null. */
+export function resolveDiseasePath(diseaseId: string | undefined): string | null {
+  if (!diseaseId) return null;
+  const id = LEGACY_DISEASE_IDS[diseaseId] ?? diseaseId;
+  const cat = diseaseCategories.find((c) => c.diseases.some((d) => d.id === id));
+  return cat ? `/saude/${cat.id}/${id}` : null;
+}
 
 // D13 — ordena as categorias por RELEVÂNCIA (em vez da ordem de declaração no
 // array): categorias que contêm temas prioritários do App vêm primeiro; empate
