@@ -53,11 +53,6 @@ export default function DiseaseDetail() {
         {disease.isPriorityTheme && (
           <span className="text-xs uppercase font-bold text-white bg-pulso-verde px-2 py-1 rounded">Tema prioritário do App</span>
         )}
-        {disease.isNew && (
-          <span className="text-xs uppercase font-bold text-pulso-dourado bg-pulso-creme px-2 py-1 rounded">
-            Realidade brasileira contemporânea
-          </span>
-        )}
         {disease.localStudy && (
           <span className="text-xs uppercase font-bold text-pulso-verde-medio bg-pulso-verde-medio/10 border border-pulso-verde-accent/40 px-2 py-1 rounded">
             Estudo local · Distrito Federal 2015–2024

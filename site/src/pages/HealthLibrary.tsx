@@ -143,11 +143,6 @@ export default function HealthLibrary() {
                                 Prioritário
                               </span>
                             )}
-                            {d.isNew && (
-                              <span className="text-[10px] uppercase font-bold text-pulso-dourado bg-pulso-creme px-1.5 py-0.5 rounded">
-                                Atual
-                              </span>
-                            )}
                             {d.localStudy && (
                               <span className="text-[10px] uppercase font-bold text-pulso-verde-medio bg-pulso-verde-medio/10 border border-pulso-verde-accent/40 px-1.5 py-0.5 rounded">
                                 Estudo local · Distrito Federal

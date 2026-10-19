@@ -42,15 +42,15 @@ export default function DiseaseDetail() {
           </div>
         )}
 
-        <div className="flex gap-2 mb-4">
+        <div className="flex gap-2 mb-4 flex-wrap">
           {disease.isPriorityTheme && (
             <span className="text-[10px] uppercase font-bold text-pulso-creme bg-pulso-verde px-2 py-1 rounded">
               Tema prioritário
             </span>
           )}
-          {disease.isNew && (
-            <span className="text-[10px] uppercase font-bold text-pulso-marrom bg-pulso-dourado/20 px-2 py-1 rounded">
-              Atual
+          {disease.localStudy && (
+            <span className="text-[10px] uppercase font-bold text-pulso-verde-medio bg-pulso-verde-medio/10 border border-pulso-verde-accent/40 px-2 py-1 rounded">
+              Estudo local · Distrito Federal
             </span>
           )}
         </div>

@@ -54,9 +54,9 @@ export default function HealthLibrary() {
                               Prioritário
                             </span>
                           )}
-                          {d.isNew && (
-                            <span className="text-[9px] uppercase font-bold text-pulso-marrom bg-pulso-dourado/20 px-1.5 py-0.5 rounded">
-                              Atual
+                          {d.localStudy && (
+                            <span className="text-[9px] uppercase font-bold text-pulso-verde-medio bg-pulso-verde-medio/10 border border-pulso-verde-accent/40 px-1.5 py-0.5 rounded">
+                              Estudo local · Distrito Federal
                             </span>
                           )}
                         </div>
