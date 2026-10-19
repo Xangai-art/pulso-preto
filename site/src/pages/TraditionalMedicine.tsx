@@ -28,10 +28,10 @@ export default function TraditionalMedicine() {
           <h1 className="font-editorial italic text-3xl sm:text-4xl mb-4">{page.title}</h1>
           <p className="text-pulso-creme/90 text-lg max-w-2xl mb-6">{page.subtitle}</p>
           <Link
-            to="/#folhas-com-ciencia"
-            className="inline-flex items-center gap-1.5 text-sm font-semibold text-pulso-dourado-claro hover:text-pulso-dourado/15"
+            to="/saude"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-pulso-dourado-claro hover:text-pulso-creme"
           >
-            ← Voltar para "Folhas com Ciência" na Home
+            ← Voltar para a Biblioteca de Saúde
           </Link>
         </div>
       </section>

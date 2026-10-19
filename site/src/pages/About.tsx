@@ -1,4 +1,5 @@
-import { roadmap } from '../data/project';
+import { Link } from 'react-router-dom';
+import { roadmap, partners } from '../data/project';
 import { useAppearance } from '@shared/context/AppearanceContext';
 import VideoEmbed from '../components/VideoEmbed';
 
@@ -43,6 +44,31 @@ export default function About() {
       <a href="/arquitetura" className="inline-block text-pulso-verde-accent font-medium hover:underline mb-8">
         Ler o relatório de arquitetura completo →
       </a>
+
+      {/* Parceiros — migrou da Home para o menu inferior "Quem somos" (D9). */}
+      <h2 id="parceiros" className="text-xl font-bold text-pulso-verde mt-10 mb-4 scroll-mt-24">Parceiros e governança</h2>
+      <div className="not-prose grid sm:grid-cols-2 lg:grid-cols-3 gap-5 text-sm mb-4">
+        {[
+          ...partners.financiamento,
+          ...partners.institucional,
+          ...partners.execucao,
+          ...partners.academico,
+          ...partners.comunitario,
+        ].map((p) => {
+          const logo = (p as { logo?: string }).logo;
+          return (
+            <div key={p.name} className="rounded-lg bg-white border border-pulso-dourado/25 p-4">
+              {logo && <img src={logo} alt={`Logotipo ${p.name}`} className="h-8 w-auto mb-3 object-contain" loading="lazy" />}
+              <div className="font-bold text-pulso-verde">{p.name}</div>
+              <div className="text-pulso-marrom/70 text-xs mb-1">{p.full}</div>
+              <div className="text-pulso-marrom/50 text-xs">{p.role}</div>
+            </div>
+          );
+        })}
+      </div>
+      <Link to="/transparencia" className="inline-block text-pulso-verde-accent font-medium hover:underline mb-8">
+        Ver política completa de transparência e governança →
+      </Link>
 
       <h2 className="text-xl font-bold text-pulso-verde mt-10 mb-4">Roadmap</h2>
       <div className="space-y-6">

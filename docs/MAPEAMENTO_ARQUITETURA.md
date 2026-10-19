@@ -5,6 +5,7 @@
 **Finalidade:** inventariar todos os **módulos master** da plataforma e mostrar, de forma rastreável, **como cada um foi aproveitado em cada versão** — se de forma *original* (intacta) ou *com variante* (adaptada). O foco é **conteúdo**, não pixels.
 **Método:** leitura direta do código-fonte em `site/`, `app/`, `shared/`, `worker/`, `database/` e `docs/`, cruzada com o acervo do Hub (`PROJ NEGROS - IDEIAS ABA SITE.pdf`, `ANEXO 2`, etc.). Nenhum número aqui é estimado: todos foram contados nos arquivos.
 **Status:** documento de **diagnóstico + registro de decisões** da sessão de requisitos do PP3. Não implementa nada — serve de base para decidirmos, caso a caso, o que popula o site e o app.
+**Atualização (19/10/2026):** registro de **implementação** na **Parte 8** (o que já saiu do papel, lote a lote) e decisão sobre siglas (D14-a).
 **Atualização (15/10/2026):** decisões de direção na **Parte 5.2**, mitigações na **Parte 5.4**, decisões de navegação (menu superior/inferior) na **Parte 5.5**, decisões dos **Áudios 2/3/4** (formato interno, rótulos e ativos) na **Parte 5.6**; lista de pendências em aberto na **Parte 6**.
 
 > **Convenção de leitura.** "Versão" tem, neste projeto, **três significados empilhados**. Antes de mapear módulos, é obrigatório separá-los (Parte 0) — senão a própria pergunta "o que mudou entre GP0/PP1/PP2" fica ambígua.
@@ -437,6 +438,8 @@ D8 manda **Comunidade e Memória "para o topo"**, mas D6 diz **"menu superior s�
 | **D14** | **Zero abreviaturas.** "Hipertensão" sempre **por extenso**. O "abreviado" percebido no áudio **não existe no código atual** (`name: 'Hipertensão'`, site e app) — veio de **legado/mockup**; na consolidação, **revisar todo o legado para que não haja nenhuma abreviatura**. |
 | **D15** | **Ativos visuais:** usar **exclusivamente o que já foi produzido para GP0/PP1/PP2** (ex.: `static/brand/*`, `hero.png`); **remover toda menção a "placeholder"** na interface e nos créditos; **não gerar novas imagens nem buscar fotos**. |
 
+> **D14-a (19/10/2026):** siglas **entre parênteses são permitidas depois da primeira menção por extenso** — ex.: "Acidente Vascular Cerebral (AVC)", "Sistema Único de Saúde (SUS)".
+
 #### A) Áudio 2 — validação (sem mudança)
 
 Card de atalho **"Conheça sua saúde" / "Encontre cuidado"** (Home PP1/PP2) **aprovado**: *"ficou pequeno, não gritou mais do que o que é mais importante, que são as fotos, as imagens"*. **Nenhuma alteração** — registrado como **padrão a herdar no PP3**.
@@ -532,4 +535,45 @@ Os **"mockups antigos"** citados **não existem como arquivo nomeado no Hub** (o
 
 ---
 
-*Documento de diagnóstico + registro de decisões, gerado por leitura direta do repositório (site/, app/, shared/, worker/, database/, docs/) e do acervo do Hub. Todos os números foram contados nos arquivos-fonte. Destina-se à sessão de requisitos do PP3 — **nenhuma alteração de código foi feita**; as Partes 5.2, 5.4 e 7 registram apenas **direção e pauta**.*
+*Documento de diagnóstico + registro de decisões, gerado por leitura direta do repositório (site/, app/, shared/, worker/, database/, docs/) e do acervo do Hub. Todos os números foram contados nos arquivos-fonte. As Partes 5.2, 5.4 e 7 registram **direção e pauta**; a **Parte 8** registra o que já foi **implementado**.*
+
+---
+
+## PARTE 8 — Registro de implementação (o que já saiu do papel)
+
+> Esta parte registra o que **foi efetivamente implementado** a partir das decisões acima. O restante do documento continua sendo diagnóstico + direção.
+
+### 8.1 Já implementado antes de 19/10/2026 (commits 1688301, 82b62c3, 1d9f8f1)
+
+| Decisão | Status |
+|---|---|
+| D4 / P20 — identidade única Pulso Preto; VariantSwitcher removido; Home/Header/Footer únicos | ✅ |
+| D11 — jargão removido da camada pública (site e app) | ✅ |
+| D12 — "Estudo + Achado" preservado nas abas profissionais (`AudienceContentTabs`) | ✅ |
+| D13 — Biblioteca do site em acordeão, ordenada por relevância | ✅ (app: acordeão, **sem** ordenação por relevância) |
+| D15 / P12 — "placeholder" removido de interface, dados, banco e API | ✅ |
+
+### 8.2 Lote A — Navegação (D6–D10) — 19/10/2026
+
+| Item | Implementação |
+|---|---|
+| **D6/D7 — Menu superior só hard services** | `Rede SUS · Encontre um profissional · Ensaios Clínicos · Ouvidoria · [Baixar o App]` (PT/ES) em `shared/data/pulsoContent.ts` → `header.navItems`. CTA único "Baixar o App" (removido o botão duplicado). |
+| **D7 — `/ouvidoria`** | Nova rota `site/src/pages/Ouvidoria.tsx`: relato pelo App Sentinela (`/app/denunciar`), canais oficiais (136, 162, 100) e direitos (Política Nacional de Saúde Integral da População Negra, Estatuto da Igualdade Racial, Lei 7.716/1989 + Lei 14.532/2023). `/direito-a-saude` redireciona. A Rede SUS passou a apontar para a Ouvidoria. |
+| **D7 — Encontre um profissional** | Aponta para a âncora `/rede-sus#encontre-um-profissional`. A rota dedicada `/profissionais` **fica para depois** (depende de P3). |
+| **Parte 5.5-B — Home hub público** | Ordem: atalhos (agora clicáveis) → **Linha 1 SAÚDE** ("Conheça sua saúde", 6 cards + link Medicina Tradicional) → **Linha 2 GENTE** (Comunidade, Memória) → **Linha 4 SERVIÇOS** (4 cards, espelham o menu) → dados → missão → seminário → notícias. **Linha 3 TREINAMENTO** fica para depois (P1). |
+| **D8 — Medicina Tradicional dentro de Saúde** | Link na Linha SAÚDE da Home e cartão de destaque na `/saude`. O link "voltar" da página aponta para `/saude` (antes apontava para uma âncora inexistente). |
+| **D9 — Institucional mínimo** | Parceiros saíram da Home e foram para `/sobre#parceiros`. |
+| **Parte 5.5-C — Menu inferior em 3 colunas** | Quem somos (Sobre, Parceiros) · Transparência (Transparência e governança, Relatório de Arquitetura) · Comunicação (Notícias, Fale Conosco) — `footer.columns`. |
+| **Nada órfão (5.5-D)** | Todas as rotas agora têm ponto de entrada: Comunidade, Memória, Ensaios Clínicos, Medicina Tradicional, Arquitetura, Ouvidoria. Novo `ScrollToHash` faz as âncoras funcionarem entre páginas. |
+
+### 8.3 Decisões adiadas (lembrar)
+
+- **Ponto F (5.5-F):** Comunidade e Memória — cards "Gente" na Home (implementado provisoriamente) **ou** itens do menu superior.
+- **`/profissionais` e `/formacao`:** criar já com texto de "em construção" ou esperar o conteúdo (P3/P1).
+
+### 8.4 Próximos lotes
+
+- **Lote B — SSOT de dados:** `diseases.ts` único site+app (P16), números auto-derivados (P15/P17/R4), notícias unificadas (P19).
+- **Lote C — Limpeza:** "Gente Preta" em textos públicos (P18), assinatura "CASIO v10.0" (P11), caça às siglas (D14/D14-a), conteúdos "A definir" (R3/P5/P10), ordenação por relevância no app (D13).
+- **Lote D — Documentação:** README e documentação CEOS ainda descrevem o VariantSwitcher/3 variantes.
+- **Achado fora de lote:** a imagem do card "Saúde da Pessoa Idosa" (`IMG_IDOSA`, `sspark.genspark.ai/i/oeW572bhZISbG0YS`) está quebrada (HTTP 415). Precisa ser trocada por outro ativo já produzido (D15).

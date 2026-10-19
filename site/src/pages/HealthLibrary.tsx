@@ -64,6 +64,21 @@ export default function HealthLibrary() {
 
       <LocalStudyFeature />
 
+      {/* D8 — Medicina Tradicional vive DENTRO de Saúde. */}
+      <Link
+        to="/medicina-tradicional-brasileira"
+        className="group flex items-center gap-4 rounded-2xl border border-pulso-verde-accent/40 bg-pulso-verde-medio/10 p-5 mb-6 hover:border-pulso-verde-accent transition"
+      >
+        <img src="/static/brand/elementos/icone-livro-ideias.png" alt="" aria-hidden="true" className="w-10 h-10 object-contain shrink-0" />
+        <span className="flex-1">
+          <span className="block font-bold text-pulso-verde">Medicina Tradicional Brasileira</span>
+          <span className="block text-sm text-pulso-marrom/80">
+            Plantas do saber popular com comprovação científica, modo de preparo e cuidados de segurança.
+          </span>
+        </span>
+        <span className="text-pulso-verde-medio font-bold group-hover:underline shrink-0">Conhecer →</span>
+      </Link>
+
       {/* Busca + filtro por categoria */}
       <div id="buscar" className="rounded-2xl border border-pulso-dourado/25 bg-white p-5 sm:p-6 mb-4 scroll-mt-24">
         <label htmlFor="busca-condicao" className="block text-sm font-semibold text-pulso-verde mb-2">

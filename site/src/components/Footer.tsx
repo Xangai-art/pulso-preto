@@ -32,16 +32,22 @@ export default function Footer() {
           <p className="text-pulso-creme/80">{f.slogan}</p>
         </div>
 
-        <div>
-          <h4 className="font-semibold mb-3 text-pulso-dourado uppercase text-xs tracking-wide">{f.linksHeading}</h4>
-          <ul className="space-y-2 text-pulso-creme/85">
-            {f.linksItems.map((item) => (
-              <li key={item.to}>
-                <Link to={item.to} className="hover:text-pulso-dourado transition-colors">{item.label}</Link>
-              </li>
-            ))}
-          </ul>
-        </div>
+        {/* Menu inferior — institucional mínimo em 3 colunas (Parte 5.5-C):
+            Quem somos · Transparência · Comunicação. */}
+        <nav aria-label="Institucional" className="sm:col-span-2 lg:col-span-3 grid grid-cols-1 sm:grid-cols-3 gap-8">
+          {f.columns.map((col) => (
+            <div key={col.heading}>
+              <h4 className="font-semibold mb-3 text-pulso-dourado uppercase text-xs tracking-wide">{col.heading}</h4>
+              <ul className="space-y-2 text-pulso-creme/85">
+                {col.items.map((item) => (
+                  <li key={item.to}>
+                    <Link to={item.to} className="hover:text-pulso-dourado transition-colors">{item.label}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </nav>
 
         <div>
           <h4 className="font-semibold mb-3 text-pulso-dourado uppercase text-xs tracking-wide">{f.socialHeading}</h4>
