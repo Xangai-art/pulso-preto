@@ -16,6 +16,8 @@ import AppAccess from './pages/AppAccess';
 import Architecture from './pages/Architecture';
 import NotFound from './pages/NotFound';
 import Ouvidoria from './pages/Ouvidoria';
+import Professionals from './pages/Professionals';
+import Training from './pages/Training';
 import ScrollToHash from './components/ScrollToHash';
 
 function App() {
@@ -45,6 +47,9 @@ function App() {
           <Route path="/rede-sus" element={<SusNetwork />} />
           <Route path="/ouvidoria" element={<Ouvidoria />} />
           <Route path="/direito-a-saude" element={<Navigate to="/ouvidoria" replace />} />
+          <Route path="/profissionais" element={<Professionals />} />
+          <Route path="/encontre-um-profissional" element={<Navigate to="/profissionais" replace />} />
+          <Route path="/formacao" element={<Training />} />
           <Route path="/transparencia" element={<Transparency />} />
           <Route path="/arquitetura" element={<Architecture />} />
           <Route path="/acessar-app" element={<AppAccess />} />

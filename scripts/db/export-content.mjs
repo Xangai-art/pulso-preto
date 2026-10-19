@@ -63,7 +63,7 @@ function loadTsModule(absPath) {
 // 1. Carregar fontes
 // ---------------------------------------------------------------------------
 const catalogMod = await loadTsModule(CATALOG_TS);
-const { diseaseCategories } = catalogMod;
+const { diseaseCategories, healthRecortes } = catalogMod;
 const { metrics } = await loadTsModule(METRICS_TS);
 const { newsItems } = await loadTsModule(NEWS_TS);
 
@@ -91,6 +91,9 @@ const { newsItems } = await loadTsModule(NEWS_TS);
     for (const loc of LOCALES) {
       if (!n.title?.[loc] || !n.excerpt?.[loc]) errors.push(`notícia ${n.id} sem tradução '${loc}'`);
     }
+  }
+  for (const r of healthRecortes) {
+    for (const id of r.diseaseIds) if (!ids.includes(id)) errors.push(`recorte '${r.id}' cita condição inexistente: ${id}`);
   }
   if (errors.length) {
     console.error('✗ Integridade da fonte única falhou:\n  - ' + errors.join('\n  - '));

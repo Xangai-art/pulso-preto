@@ -158,15 +158,15 @@ export default function SusNetwork() {
         ))}
       </div>
 
-      {/* Âncora do item de menu "Encontre um profissional" (D7). A rota dedicada
-          /profissionais aguarda a base de profissionais (pendência P3). */}
+      {/* Âncora mantida para links antigos; a busca vive em /profissionais (D7). */}
       <div id="encontre-um-profissional" className="rounded-xl border border-pulso-dourado/25 bg-pulso-creme p-6 scroll-mt-24">
-        <h2 className="font-bold text-pulso-verde mb-2">Encontre um profissional — rede privada e atendimento humanizado (em construção)</h2>
-        <p className="text-sm text-pulso-marrom">
-          Recuperando a aba original "Onde encontrar especialistas", o objetivo é permitir busca também por
-          profissionais da rede privada com filtro de "atendimento humanizado/culturalmente competente" —
-          já priorizado no roteiro de expansão da plataforma.
+        <h2 className="font-bold text-pulso-verde mb-2">Encontre um profissional</h2>
+        <p className="text-sm text-pulso-marrom mb-3">
+          Profissionais da rede pública e privada com atendimento humanizado e culturalmente competente — página em construção.
         </p>
+        <Link to="/profissionais" className="text-pulso-verde-accent hover:underline font-medium text-sm">
+          Ir para Encontre um profissional →
+        </Link>
       </div>
 
       <div className="mt-8 rounded-xl border border-pulso-dourado/25 p-6">
