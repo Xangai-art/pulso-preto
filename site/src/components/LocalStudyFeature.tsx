@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { localStudyMeta, localStudyHighlights, localStudyAxes } from '../data/localStudy';
 import { PalhaLine, LeafMark } from './Ornaments';
 import { PULSO_PALETTE } from '@shared/data/pulsoPalette';
@@ -25,7 +26,8 @@ const axisStatusClasses: Record<string, string> = {
 };
 
 // Bloco de destaque para o estudo epidemiológico local (DF) contratado, exibido
-// na Biblioteca de Saúde (após as categorias — seção "Estudo em destaque"). Não substitui a curadoria internacional/nacional
+// na página Dados e Indicadores (/dados-e-indicadores — desde 20/10/2026; antes
+// ficava na Biblioteca de Saúde). Não substitui a curadoria internacional/nacional
 // já usada em diseases.ts — complementa com evidência local estratificada por
 // raça/cor, produzida por AECID/APRECIA em parceria científica com FIOCRUZ/UnB/FEPECS.
 export default function LocalStudyFeature() {
@@ -113,7 +115,7 @@ export default function LocalStudyFeature() {
         <p className="text-[11px] text-pulso-creme/60 mt-4 max-w-2xl">
           Dados de Fase 1: estruturação metodológica completa, coleta secundária em andamento, cálculos
           epidemiológicos parciais. Consulte a nota de cautela editorial e a política de métricas em{' '}
-          <a href="/transparencia" className="underline hover:text-pulso-dourado-claro">Transparência</a>.
+          <Link to="/transparencia" className="underline hover:text-pulso-dourado-claro">Transparência</Link>.
         </p>
       </div>
     </section>

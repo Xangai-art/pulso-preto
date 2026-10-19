@@ -4,6 +4,7 @@ import { useAppearance } from '@shared/context/AppearanceContext';
 import { getPulsoContent } from '@shared/data/pulsoContent';
 import { HeartbeatLine } from './PulsoIcons';
 import QRLink from './QRLink';
+import { SOCIAL_PROFILES, type SocialProfile } from '@shared/data/social';
 
 // Footer "Pulso Preto" — identidade ÚNICA de produção (PP3).
 //
@@ -51,12 +52,14 @@ export default function Footer() {
 
         <div>
           <h4 className="font-semibold mb-3 text-pulso-dourado uppercase text-xs tracking-wide">{f.socialHeading}</h4>
-          <div className="flex gap-3 mb-6">
-            <SocialIcon kind="instagram" />
-            <SocialIcon kind="facebook" />
-            <SocialIcon kind="youtube" />
-            <SocialIcon kind="linkedin" />
-          </div>
+          {/* Só perfis confirmados (shared/data/social.ts) — sem ícones sem destino. */}
+          <ul className="space-y-2 mb-6">
+            {SOCIAL_PROFILES.map((p) => (
+              <li key={p.url}>
+                <SocialLink profile={p} />
+              </li>
+            ))}
+          </ul>
           <h4 className="font-semibold mb-2 text-pulso-dourado uppercase text-xs tracking-wide">{f.newsletterHeading}</h4>
           <form className="flex gap-1.5" onSubmit={(e) => e.preventDefault()}>
             <input
@@ -88,24 +91,33 @@ export default function Footer() {
   );
 }
 
-function SocialIcon({ kind }: { kind: 'instagram' | 'facebook' | 'youtube' | 'linkedin' }) {
+function SocialLink({ profile }: { profile: SocialProfile }) {
   const color = '#D4A84B';
   const common = { width: 18, height: 18, viewBox: '0 0 24 24', 'aria-hidden': true as const, fill: 'none', stroke: color, strokeWidth: 1.8 };
-  const wrapClass = 'rounded-full border border-pulso-creme/25 p-2 hover:bg-pulso-creme/10 transition-colors';
+  const { kind } = profile;
   return (
-    <a href="#" aria-label={kind} className={wrapClass}>
-      {kind === 'instagram' && (
-        <svg {...common}><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17" cy="7" r="0.6" fill={color} /></svg>
-      )}
-      {kind === 'facebook' && (
-        <svg {...common}><path d="M15 8h-2a2 2 0 0 0-2 2v2H9v3h2v6h3v-6h2.2l.8-3H14v-1.5c0-.5.3-1 1-1h1z" /></svg>
-      )}
-      {kind === 'youtube' && (
-        <svg {...common}><rect x="3" y="6" width="18" height="12" rx="3" /><path d="M11 10l4 2-4 2z" fill={color} stroke="none" /></svg>
-      )}
-      {kind === 'linkedin' && (
-        <svg {...common}><rect x="3" y="3" width="18" height="18" rx="2" /><circle cx="8" cy="8" r="0.6" fill={color} /><path d="M8 11v6M13 17v-3.5c0-1.4 1-2.2 2.2-2.2 1.2 0 1.8.8 1.8 2.2V17" /></svg>
-      )}
+    <a
+      href={profile.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`${profile.label} ${profile.handle}`}
+      className="group inline-flex items-center gap-2.5 text-pulso-creme/85 hover:text-pulso-dourado transition-colors"
+    >
+      <span className="rounded-full border border-pulso-creme/25 p-2 group-hover:bg-pulso-creme/10 transition-colors">
+        {kind === 'instagram' && (
+          <svg {...common}><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17" cy="7" r="0.6" fill={color} /></svg>
+        )}
+        {kind === 'facebook' && (
+          <svg {...common}><path d="M15 8h-2a2 2 0 0 0-2 2v2H9v3h2v6h3v-6h2.2l.8-3H14v-1.5c0-.5.3-1 1-1h1z" /></svg>
+        )}
+        {kind === 'youtube' && (
+          <svg {...common}><rect x="3" y="6" width="18" height="12" rx="3" /><path d="M11 10l4 2-4 2z" fill={color} stroke="none" /></svg>
+        )}
+        {kind === 'linkedin' && (
+          <svg {...common}><rect x="3" y="3" width="18" height="18" rx="2" /><circle cx="8" cy="8" r="0.6" fill={color} /><path d="M8 11v6M13 17v-3.5c0-1.4 1-2.2 2.2-2.2 1.2 0 1.8.8 1.8 2.2V17" /></svg>
+        )}
+      </span>
+      <span className="text-sm">{profile.handle}</span>
     </a>
   );
 }

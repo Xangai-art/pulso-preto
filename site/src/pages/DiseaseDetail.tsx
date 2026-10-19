@@ -90,7 +90,7 @@ export default function DiseaseDetail() {
           <p className="text-[11px] text-pulso-creme/70">
             Fonte: {disease.localStudy.source}. Estudo Técnico-Científico "Condições de Vida e Saúde da
             População Negra do DF (2015–2024)" — AECID/APRECIA, com FIOCRUZ/UnB/FEPECS. Ver{' '}
-            <Link to="/saude#estudo-df" className="underline hover:text-pulso-dourado-claro">estudo completo na Biblioteca de Saúde</Link>.
+            <Link to="/dados-e-indicadores#estudo-df" className="underline hover:text-pulso-dourado-claro">estudo completo em Dados e Indicadores</Link>.
           </p>
         </div>
       )}

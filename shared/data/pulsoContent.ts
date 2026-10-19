@@ -138,6 +138,8 @@ export interface PulsoContent {
     heading: string[];
     paragraph?: string;
     ctaLabel: string;
+    /** Destino do botão "Ver indicadores" → página Dados e Indicadores. */
+    ctaTo: string;
     cards: StatCardContent[];
   };
   mission: {
@@ -276,6 +278,7 @@ const TO_IDOSA = '/saude?recorte=idosa';
 const TO_PREVALENTES = '/saude?recorte=prevalentes';
 const TO_REDE_SUS = '/rede-sus';
 const TO_TRANSPARENCIA = '/transparencia';
+const TO_DADOS = '/dados-e-indicadores';
 const TO_SOBRE = '/sobre';
 const TO_CONTATO = '/#fale-conosco';
 const TO_NOTICIAS = '/noticias';
@@ -308,7 +311,7 @@ const pt: PulsoContent = {
     { icon: 'heart', title: ['ENTENDA', 'SEU CORPO'], subtitle: 'Conhecimento sobre as doenças mais prevalentes.', to: TO_SAUDE },
     { icon: 'location', title: ['ENCONTRE', 'CUIDADO'], subtitle: 'Saiba onde buscar atendimento no SUS.', to: TO_REDE_SUS },
     { icon: 'document', title: ['SEUS DIREITOS'], subtitle: 'Conheça as leis e políticas para a população negra.', to: TO_OUVIDORIA },
-    { icon: 'chart', title: ['DADOS E', 'INDICADORES'], subtitle: 'Números que revelam realidades e geram mudanças.', to: TO_TRANSPARENCIA },
+    { icon: 'chart', title: ['DADOS E', 'INDICADORES'], subtitle: 'Números que revelam realidades e geram mudanças.', to: TO_DADOS },
     { icon: 'people', title: ['PARTICIPE'], subtitle: 'Compartilhe experiências e faça parte dessa rede.', to: TO_COMUNIDADE },
   ],
   themes: {
@@ -356,6 +359,7 @@ const pt: PulsoContent = {
     paragraph:
       'A realidade da população negra em números. Informação para transformar políticas, serviços e vidas.',
     ctaLabel: 'VER INDICADORES →',
+    ctaTo: TO_DADOS,
     cards: [
       { value: '56,1%', label: ['da população do DF', 'é negra (preta e parda)'], source: 'Fonte: IBGE 2022' },
       { value: '+60%', label: ['maior risco de hipertensão', 'em comparação com', 'a população branca'], source: 'Fonte: Ministério da Saúde' },
@@ -387,6 +391,7 @@ const pt: PulsoContent = {
         { label: 'Parceiros', to: TO_PARCEIROS },
       ] },
       { heading: 'Transparência', items: [
+        { label: 'Dados e Indicadores', to: TO_DADOS },
         { label: 'Transparência e governança', to: TO_TRANSPARENCIA },
         { label: 'Relatório de Arquitetura', to: TO_ARQUITETURA },
       ] },
@@ -428,7 +433,7 @@ const es: PulsoContent = {
     { icon: 'heart', title: ['ENTIENDE', 'TU CUERPO'], subtitle: 'Conocimiento sobre las enfermedades más prevalentes.', to: TO_SAUDE },
     { icon: 'location', title: ['ENCUENTRA', 'ATENCIÓN'], subtitle: 'Sepa dónde buscar atención en el SUS.', to: TO_REDE_SUS },
     { icon: 'document', title: ['TUS DERECHOS'], subtitle: 'Conoce las leyes y políticas para la población negra.', to: TO_OUVIDORIA },
-    { icon: 'chart', title: ['DATOS E', 'INDICADORES'], subtitle: 'Números que revelan realidades y generan cambios.', to: TO_TRANSPARENCIA },
+    { icon: 'chart', title: ['DATOS E', 'INDICADORES'], subtitle: 'Números que revelan realidades y generan cambios.', to: TO_DADOS },
     { icon: 'people', title: ['PARTICIPA'], subtitle: 'Comparte experiencias y forma parte de esta red.', to: TO_COMUNIDADE },
   ],
   themes: {
@@ -476,6 +481,7 @@ const es: PulsoContent = {
     paragraph:
       'La realidad de la población negra en números. Información para transformar políticas, servicios y vidas.',
     ctaLabel: 'VER INDICADORES →',
+    ctaTo: TO_DADOS,
     cards: [
       { value: '56,1%', label: ['de la población del DF', 'es negra (preta y parda)'], source: 'Fuente: IBGE 2022' },
       { value: '+60%', label: ['mayor riesgo de hipertensión', 'en comparación con', 'la población blanca'], source: 'Fuente: Ministerio de Salud' },
@@ -507,6 +513,7 @@ const es: PulsoContent = {
         { label: 'Socios', to: TO_PARCEIROS },
       ] },
       { heading: 'Transparencia', items: [
+        { label: 'Datos e Indicadores', to: TO_DADOS },
         { label: 'Transparencia y gobernanza', to: TO_TRANSPARENCIA },
         { label: 'Informe de Arquitectura', to: TO_ARQUITETURA },
       ] },
