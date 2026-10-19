@@ -229,9 +229,9 @@ export default function DesignSystem() {
         </p>
         <div className="grid grid-cols-3 sm:grid-cols-5 gap-3">
           {[
-            ['ansiedade-redes-sociais', 'Redes sociais'],
-            ['vicio-apostas', 'Apostas'],
-            ['abuso-substancias-disparidade', 'Disparidade'],
+            ['nomofobia', 'Nomofobia'],
+            ['ludopatia', 'Ludopatia'],
+            ['abuso-substancia', 'Abuso de substância'],
             ['violencia-reativa', 'Violência reativa'],
             ['falta-educacao-financeira', 'Educação financeira'],
           ].map(([id, label]) => (

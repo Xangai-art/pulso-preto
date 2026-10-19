@@ -510,6 +510,7 @@ Os **"mockups antigos"** citados **não existem como arquivo nomeado no Hub** (o
 | P20 | **Colapsar as Homes** (GP0 + PulsoHome) numa Home única | R1 |
 | P21 | **Destino do app "profissional"** (triagem CPF/CNS) × app usuário | C6 |
 | P22 | **Banco de dados master** (conteúdo + versionamentos consolidados) | R1 |
+| P23 | **Avaliar "Violência como resposta reativa" e "Falta de educação financeira"** (hoje em "Outras", visíveis, só para reter o conteúdo) | Reclassificação 19/10/2026 |
 
 > **Observação de método (D5):** esta lista é o **ponto de partida**. Na sessão, cada pendência recebe uma decisão e, quando aplicável, é vinculada a uma **versão específica** que está sendo avaliada (ver rito na abertura do documento).
 
@@ -594,6 +595,19 @@ Os **"mockups antigos"** citados **não existem como arquivo nomeado no Hub** (o
 
 Decisão do responsável: `/saude` exibe, nesta ordem, **1.** Buscar por condição · **2.** Filtrar por categoria · **3.** Cards das categorias (acordeão, ordem por relevância — D13) · **4.** Estudo em destaque (estudo local do Distrito Federal, âncora `#estudo-df` preservada) · **5.** Medicina Tradicional Brasileira (D8).
 
+### 8.2-E Biblioteca de Saúde — reclassificação de condições (19/10/2026)
+
+| Antes | Depois |
+|---|---|
+| Categoria **"Saúde Mental e Socioeconômica Contemporânea"** | **Desfeita** (sai do catálogo e do filtro) |
+| "Ansiedade crônica por uso irresponsável de redes sociais" | **Nomofobia** → categoria **Saúde Mental** |
+| "Vício em jogos de apostas online (bets)" | **Ludopatia** → **Saúde Mental**; foco em bets mantido, exemplos ampliados (cassinos online/"tigrinho", caça-níqueis, raspadinhas, loterias, jogo do bicho, *loot boxes*) |
+| "Abuso de substâncias — disparidade de qualidade/pureza por classe e raça" + "Uso de Substâncias" (Saúde Mental) | **fundidos** em **Abuso de Substância** (Saúde Mental), unindo acesso desigual a tratamento + dupla disparidade (pureza e aplicação da política de drogas) |
+| "Violência como resposta reativa" e "Falta de educação financeira" | Movidos para **Outras**, **visíveis**, em avaliação (**P23**) |
+| "Prevenção do HIV (Profilaxia Pré-Exposição)" | **fundido** no card **HIV/AIDS** (Outras) |
+
+Totais (auto-derivados): **9 categorias · 45 condições**. Links antigos continuam funcionando: `LEGACY_DISEASE_IDS` em `shared/data/diseases.ts` redireciona os ids antigos para o endereço atual (site e app).
+
 ### 8.3 Decisões adiadas (lembrar)
 
 - **Ponto F (5.5-F):** Comunidade e Memória — cards "Gente" na Home (implementado provisoriamente) **ou** itens do menu superior.
@@ -603,6 +617,7 @@ Decisão do responsável: `/saude` exibe, nesta ordem, **1.** Buscar por condiç
   - `asma.ts` heroImage (HTTP 403)
   - `depressao.ts` heroImage (HTTP 403)
   - `miomasUterinos.ts` heroImage (HTTP 403)
+- **P23 — Destino de "Violência como resposta reativa" e "Falta de educação financeira":** hoje ficam visíveis na categoria "Outras" apenas para **reter o conteúdo**; decidir se permanecem, se migram para outra categoria/página (ex.: determinantes sociais) ou se saem do catálogo.
 
 ### 8.4 Próximos passos
 

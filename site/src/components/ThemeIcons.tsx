@@ -84,9 +84,9 @@ function ColunaIcon({ size, className }: { size: number; className: string }) {
 }
 
 const ICONS: Record<string, React.FC<{ size: number; className: string }>> = {
-  'ansiedade-redes-sociais': OndasIcon,
-  'vicio-apostas': EspiralIcon,
-  'abuso-substancias-disparidade': BalancaIcon,
+  nomofobia: OndasIcon,
+  ludopatia: EspiralIcon,
+  'abuso-substancia': BalancaIcon,
   'violencia-reativa': FraturaIcon,
   'falta-educacao-financeira': ColunaIcon,
 };
