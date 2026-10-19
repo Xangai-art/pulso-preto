@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { diseaseCategories } from '@shared/data/diseases';
+import { categoriesByRelevance } from '@shared/data/diseases';
 import { metrics } from '@shared/data/metrics';
 import TopBar from '../components/TopBar';
 
 // Tema único de produção: Pulso Preto (PP3). Tokens `pulso-*` diretos.
 export default function HealthLibrary() {
-  const [openCategory, setOpenCategory] = useState<string | null>(diseaseCategories[0]?.id ?? null);
+  const [openCategory, setOpenCategory] = useState<string | null>(categoriesByRelevance[0]?.id ?? null);
 
   return (
     <div className="min-h-screen bg-pulso-creme font-pulso-body">
@@ -16,7 +16,8 @@ export default function HealthLibrary() {
           {metrics.conditions} condições com comprovação científica, organizadas por tema.
         </p>
         <div className="space-y-3">
-          {diseaseCategories.map((cat) => {
+          {/* D13 — mesma ordem por relevância do site. */}
+          {categoriesByRelevance.map((cat) => {
             const isOpen = openCategory === cat.id;
             return (
               <div

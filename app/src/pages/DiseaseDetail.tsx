@@ -69,7 +69,7 @@ export default function DiseaseDetail() {
           </div>
         ) : (
           <div className="rounded-xl border border-pulso-dourado/25 p-4 bg-white text-sm text-pulso-marrom/70">
-            Condição incluída na base científica geral. Evidência detalhada em padronização.
+            Condição incluída na base científica do Guia da Saúde da População Negra. Em caso de dúvida, converse com a equipe da sua Unidade Básica de Saúde.
           </div>
         )}
 

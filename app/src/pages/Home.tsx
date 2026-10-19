@@ -68,7 +68,7 @@ export default function Home() {
               to="/mapa"
               icon="📍"
               pulsoIcon="/static/brand/elementos/icone-hospital-comunidade.png"
-              label="Encontrar UBS"
+              label="Encontrar Unidade de Saúde"
             />
             <QuickLink
               to="/radar"

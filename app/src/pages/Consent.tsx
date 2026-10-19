@@ -29,7 +29,7 @@ export default function Consent() {
 
   return (
     <div className="min-h-screen bg-pulso-creme font-pulso-body">
-      <TopBar title="Consentimento LGPD" showBack />
+      <TopBar title="Consentimento" showBack />
       <div className="px-5 pt-4 pb-8">
         <p className="text-sm mb-6 text-pulso-marrom/80">
           Você decide o que compartilhar. O uso básico do app exige apenas o Nível 1 — os demais são opcionais e

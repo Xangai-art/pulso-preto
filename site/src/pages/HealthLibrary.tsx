@@ -1,22 +1,10 @@
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { diseaseCategories, type DiseaseCategory } from '@shared/data/diseases';
+import { diseaseCategories, orderByRelevance } from '@shared/data/diseases';
 import { metrics } from '@shared/data/metrics';
 import CategoryIcon from '../components/CategoryIcons';
 import LocalStudyFeature from '../components/LocalStudyFeature';
 
-// D13 — ordena as categorias por RELEVÂNCIA (em vez da ordem de declaração no
-// array): categorias que contêm temas prioritários do App vêm primeiro; empate
-// resolvido pelo número de condições. A curadoria interna de cada categoria é
-// preservada.
-function orderByRelevance(cats: DiseaseCategory[]): DiseaseCategory[] {
-  return [...cats].sort((a, b) => {
-    const aPriority = a.diseases.some((d) => d.isPriorityTheme) ? 0 : 1;
-    const bPriority = b.diseases.some((d) => d.isPriorityTheme) ? 0 : 1;
-    if (aPriority !== bPriority) return aPriority - bPriority;
-    return b.diseases.length - a.diseases.length;
-  });
-}
 
 export default function HealthLibrary() {
   const [query, setQuery] = useState('');
@@ -175,7 +163,7 @@ export default function HealthLibrary() {
                             )}
                             {d.localStudy && (
                               <span className="text-[10px] uppercase font-bold text-pulso-verde-medio bg-pulso-verde-medio/10 border border-pulso-verde-accent/40 px-1.5 py-0.5 rounded">
-                                Estudo local · DF
+                                Estudo local · Distrito Federal
                               </span>
                             )}
                           </div>

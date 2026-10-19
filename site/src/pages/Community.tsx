@@ -1,12 +1,14 @@
 import { partners } from '@shared/data/project';
+import { useAppearance } from '@shared/context/AppearanceContext';
 
 export default function Community() {
+  const { brand } = useAppearance();
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 py-16">
       <h1 className="text-3xl font-bold text-pulso-verde mb-4">Comunidade Preta de Saúde</h1>
       <p className="text-pulso-marrom mb-10 max-w-2xl">
         A dimensão comunitária — rodas de conversa, coletivos e ONGs parceiras — é a base de sustentação
-        social de Gente Preta, uma mídia de saúde com presença comunitária constante.
+        social do {brand.name}, uma mídia de saúde com presença comunitária constante.
       </p>
 
       <div className="grid sm:grid-cols-2 gap-6 mb-12">
@@ -45,7 +47,7 @@ export default function Community() {
             <span className="text-pulso-verde-accent/40">"Saúde, Tecnologia e Prevenção: Desafios e Inovações para a População Negra"</span>
           </h2>
           <p className="text-sm text-pulso-dourado/25">
-            <strong className="text-white">18 e 19 de novembro de 2026</strong> — Brasília/DF. Reunindo
+            <strong className="text-white">18 e 19 de novembro de 2026</strong> — Brasília, Distrito Federal. Reunindo
             especialistas da América Latina e do Caribe para discutir as doenças que mais afetam a população
             negra e as inovações tecnológicas que podem transformar o cuidado em saúde.
           </p>

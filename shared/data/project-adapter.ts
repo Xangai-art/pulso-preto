@@ -29,7 +29,7 @@ import {
   getBrandHistory,
   type BrandIdentity,
   type BrandVersionId,
-} from './brand-canon';
+} from './brand-canon.ts';
 
 /**
  * INTERFACE LEGADA (compatível com project.ts atual)

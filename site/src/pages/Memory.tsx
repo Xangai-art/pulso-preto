@@ -1,4 +1,6 @@
+import { Link } from 'react-router-dom';
 import VideoEmbed from '../components/VideoEmbed';
+import { useAppearance } from '@shared/context/AppearanceContext';
 
 interface Story {
   name: string;
@@ -13,28 +15,15 @@ const stories: Story[] = [
     name: 'Barreiras de acesso à saúde na diáspora',
     role: 'Visão de expansão internacional · comunidade migrante',
     excerpt:
-      'Um depoimento que expõe uma barreira que se repete: burocracia, longas esperas e falta de acolhimento no acesso à saúde de quem migra. É a mesma lógica de exclusão que o Gente Preta enfrenta no SUS — e o motivo pelo qual pensamos o piloto do DF como o primeiro passo de um plano de voo maior, não como destino final.',
+      'Um depoimento que expõe uma barreira que se repete: burocracia, longas esperas e falta de acolhimento no acesso à saúde de quem migra. É a mesma lógica de exclusão que o Pulso Preto enfrenta no Sistema Único de Saúde (SUS) — e o motivo pelo qual pensamos o piloto do DF como o primeiro passo de um plano de voo maior, não como destino final.',
     video: { youtubeId: 'NefFu175V0A', orientation: 'portrait' },
     hidden: true,
-  },
-  {
-    name: 'A definir — primeira história da comunidade',
-    role: 'Paciente / Usuário do Sentinela',
-    excerpt: 'Espaço reservado para a primeira história real de superação e cuidado em saúde, coletada em campo.',
-  },
-  {
-    name: 'A definir — profissional de saúde',
-    role: 'Profissional negro do SUS-DF',
-    excerpt: 'Espaço reservado para depoimento de profissional de saúde negro atuando na rede SUS do Distrito Federal.',
-  },
-  {
-    name: 'A definir — liderança comunitária',
-    role: 'CUFA/DF',
-    excerpt: 'Espaço reservado para história de liderança comunitária ligada à mobilização em saúde.',
   },
 ];
 
 export default function Memory() {
+  const { brand } = useAppearance();
+  const visibleStories = stories.filter((s) => !s.hidden);
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 py-16">
       <h1 className="text-3xl font-bold text-pulso-verde mb-4">Memória e Herança de Saúde</h1>
@@ -49,7 +38,7 @@ export default function Memory() {
           "De um projeto piloto para um plano ousado de voo."
         </p>
         <p className="text-sm text-pulso-marrom">
-          O Gente Preta nasce como piloto no Distrito Federal, mas a tecnologia social por trás dele foi
+          O {brand.name} nasce como piloto no Distrito Federal, mas a tecnologia social por trás dele foi
           desenhada para viajar. A APRECIA atua em outros países além do Brasil — e a experiência de
           escuta longitudinal, navegação em saúde e vigilância comunitária construída aqui pode ser
           adaptada para outros grupos marginalizados nesses territórios, guardadas as especificidades de
@@ -57,8 +46,10 @@ export default function Memory() {
         </p>
       </div>
 
+      {/* R3/P5: sem cartões "A definir" — histórias entram só quando reais. */}
+      {visibleStories.length > 0 && (
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-        {stories.filter((s) => !s.hidden).map((s) => (
+        {visibleStories.map((s) => (
           <div key={s.name} className="rounded-xl border border-pulso-dourado/25 p-5 bg-white">
             {s.video ? (
               <VideoEmbed
@@ -78,14 +69,20 @@ export default function Memory() {
           </div>
         ))}
       </div>
+      )}
 
       <div className="rounded-xl border border-pulso-dourado/25 bg-pulso-creme p-6 text-center">
         <h2 className="font-bold text-pulso-verde mb-2">Quer contar sua história?</h2>
         <p className="text-sm text-pulso-marrom mb-4">
-          Este espaço é construído com e para a comunidade. Em breve, um formulário de submissão estará
-          disponível aqui e no App Sentinela.
+          Este espaço é construído com e para a comunidade: histórias de pacientes, de profissionais de saúde
+          negros e de lideranças que cuidam do território. Fale com a gente para compartilhar a sua.
         </p>
-        <span className="inline-block text-xs text-pulso-marrom/60">Formulário de submissão — em desenvolvimento</span>
+        <Link
+          to="/#fale-conosco"
+          className="inline-block rounded-md bg-pulso-verde text-pulso-creme px-5 py-2.5 text-sm font-bold hover:bg-pulso-marrom transition-colors"
+        >
+          Fale Conosco →
+        </Link>
       </div>
     </div>
   );

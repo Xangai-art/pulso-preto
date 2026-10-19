@@ -51,7 +51,7 @@ export default function Profile() {
 
         <div>
           <h2 className="font-bold text-sm mb-3 text-pulso-verde font-pulso-display">
-            Consentimentos LGPD
+            Consentimentos (Lei Geral de Proteção de Dados)
           </h2>
           <div className="space-y-2">
             {lgpdConsentLevels.map((l) => {

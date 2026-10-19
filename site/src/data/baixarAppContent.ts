@@ -1,10 +1,11 @@
 // Baixe o App Sentinela — dados estruturados para a rota /baixar.
-// Fonte: pacote CASIO v10.0 "Gente Preta v4.2 — Conteúdo para 3 Páginas 404"
-// (16/08/2026), alinhado à Arquitetura Reconciliada V4.1.
+// Fonte: pacote de conteúdo v4.2 (16/08/2026), alinhado à Arquitetura
+// Reconciliada V4.1. Nome do projeto vem do Canon (P18).
+import { getCurrentBrand } from '@shared/data/brand-canon';
 import { metrics } from '@shared/data/metrics';
 
 export const baixarMeta = {
-  title: 'Baixe o App Sentinela — Gente Preta',
+  title: `Baixe o App Sentinela — ${getCurrentBrand().name}`,
   description:
     'App Sentinela — escuta longitudinal, navegação SUS e radar comunitário. Beta em construção com validação ética (CEP/FEPECS). Cadastre-se para acesso antecipado.',
 };
@@ -13,13 +14,13 @@ export const baixarHero = {
   kicker: 'Escuta longitudinal · Navegação SUS · Radar comunitário',
   title: 'App Sentinela',
   subtitle:
-    'Sua saúde, sua voz, sua comunidade — no bolso. Check-ins de 1–3 minutos, mapa de UBS do DF, biblioteca de saúde offline e radar epidemiológico devolvido à comunidade com transparência.',
+    'Sua saúde, sua voz, sua comunidade — no bolso. Check-ins de 1–3 minutos, mapa de Unidades Básicas de Saúde (UBS) do Distrito Federal (DF), biblioteca de saúde offline e radar epidemiológico devolvido à comunidade com transparência.',
   statusBadge: {
     color: 'yellow',
     icon: '🟡',
     text: 'Beta em construção — Piloto DF · Q4 2026',
     detail:
-      'Aguardando aprovação final de CEP/FEPECS e onboarding das 10 UBS piloto. Cadastre-se abaixo para receber acesso antecipado.',
+      'Aguardando aprovação final do Comitê de Ética em Pesquisa (CEP/FEPECS) e onboarding das 10 UBS piloto. Cadastre-se abaixo para receber acesso antecipado.',
   },
 };
 

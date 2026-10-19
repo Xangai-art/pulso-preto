@@ -11,7 +11,7 @@ const signals = [
     count: 34,
     zScore: 2.8,
     message: '34 pessoas na sua região relataram sintomas respiratórios nas últimas 48h — acima do padrão esperado.',
-    action: 'Procure a UBS mais próxima se tiver tosse, febre ou falta de ar.',
+    action: 'Procure a Unidade Básica de Saúde (UBS) mais próxima se tiver tosse, febre ou falta de ar.',
   },
   {
     id: 'sig-2',
