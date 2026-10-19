@@ -25,14 +25,14 @@ const axisStatusClasses: Record<string, string> = {
 };
 
 // Bloco de destaque para o estudo epidemiológico local (DF) contratado, exibido
-// no topo da Biblioteca de Saúde. Não substitui a curadoria internacional/nacional
+// na Biblioteca de Saúde (após as categorias — seção "Estudo em destaque"). Não substitui a curadoria internacional/nacional
 // já usada em diseases.ts — complementa com evidência local estratificada por
 // raça/cor, produzida por AECID/APRECIA em parceria científica com FIOCRUZ/UnB/FEPECS.
 export default function LocalStudyFeature() {
   return (
     <section
       id="estudo-df"
-      className="rounded-2xl border-2 border-pulso-dourado-claro bg-pulso-verde text-pulso-creme overflow-hidden mb-14 relative scroll-mt-24"
+      className="rounded-2xl border-2 border-pulso-dourado-claro bg-pulso-verde text-pulso-creme overflow-hidden relative scroll-mt-24"
     >
       <div
         className="h-[3px] w-full"
@@ -45,7 +45,7 @@ export default function LocalStudyFeature() {
           <div>
             <div className="flex items-center gap-2 mb-2">
               <LeafMark size={20} color={PULSO_PALETTE.dourado} />
-              <span className="eyebrow text-pulso-dourado-claro">Estudo em destaque · Evidência local (DF)</span>
+              <span className="eyebrow text-pulso-dourado-claro">Estudo em destaque · Evidência local do Distrito Federal</span>
             </div>
             <h2 className="font-editorial italic text-2xl sm:text-3xl leading-snug mb-2">
               {localStudyMeta.title}

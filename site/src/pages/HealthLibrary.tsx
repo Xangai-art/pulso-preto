@@ -51,24 +51,9 @@ export default function HealthLibrary() {
         </p>
       </div>
 
-      <LocalStudyFeature />
-
-      {/* D8 — Medicina Tradicional vive DENTRO de Saúde. */}
-      <Link
-        to="/medicina-tradicional-brasileira"
-        className="group flex items-center gap-4 rounded-2xl border border-pulso-verde-accent/40 bg-pulso-verde-medio/10 p-5 mb-6 hover:border-pulso-verde-accent transition"
-      >
-        <img src="/static/brand/elementos/icone-livro-ideias.png" alt="" aria-hidden="true" className="w-10 h-10 object-contain shrink-0" />
-        <span className="flex-1">
-          <span className="block font-bold text-pulso-verde">Medicina Tradicional Brasileira</span>
-          <span className="block text-sm text-pulso-marrom/80">
-            Plantas do saber popular com comprovação científica, modo de preparo e cuidados de segurança.
-          </span>
-        </span>
-        <span className="text-pulso-verde-medio font-bold group-hover:underline shrink-0">Conhecer →</span>
-      </Link>
-
-      {/* Busca + filtro por categoria */}
+      {/* Ordem da página (decisão 19/10/2026): 1. Busca · 2. Filtro por categoria ·
+          3. Cards das categorias · 4. Estudo em destaque · 5. Medicina Tradicional. */}
+      {/* 1. Busca por condição */}
       <div id="buscar" className="rounded-2xl border border-pulso-dourado/25 bg-white p-5 sm:p-6 mb-4 scroll-mt-24">
         <label htmlFor="busca-condicao" className="block text-sm font-semibold text-pulso-verde mb-2">
           Buscar por condição
@@ -83,6 +68,7 @@ export default function HealthLibrary() {
         />
       </div>
 
+      {/* 2. Filtrar por categoria */}
       <div className="mb-8">
         <p className="text-xs font-semibold uppercase tracking-wide text-pulso-marrom/70 mb-2">Filtrar por categoria</p>
         <div className="flex flex-wrap gap-2">
@@ -114,6 +100,7 @@ export default function HealthLibrary() {
         </div>
       )}
 
+      {/* 3. Cards com as categorias */}
       <div className="space-y-3">
         {filteredCategories.map((cat) => {
           const isOpen = isFiltering || openIds.includes(cat.id);
@@ -177,6 +164,26 @@ export default function HealthLibrary() {
           );
         })}
       </div>
+
+      {/* 4. Estudo em destaque */}
+      <div className="mt-14">
+        <LocalStudyFeature />
+      </div>
+
+      {/* 5. Medicina Tradicional Brasileira — D8: vive DENTRO de Saúde. */}
+      <Link
+        to="/medicina-tradicional-brasileira"
+        className="group mt-10 flex items-center gap-4 rounded-2xl border border-pulso-verde-accent/40 bg-pulso-verde-medio/10 p-5 hover:border-pulso-verde-accent transition"
+      >
+        <img src="/static/brand/elementos/icone-livro-ideias.png" alt="" aria-hidden="true" className="w-10 h-10 object-contain shrink-0" />
+        <span className="flex-1">
+          <span className="block font-bold text-pulso-verde">Medicina Tradicional Brasileira</span>
+          <span className="block text-sm text-pulso-marrom/80">
+            Plantas do saber popular com comprovação científica, modo de preparo e cuidados de segurança.
+          </span>
+        </span>
+        <span className="text-pulso-verde-medio font-bold group-hover:underline shrink-0">Conhecer →</span>
+      </Link>
     </div>
   );
 }
