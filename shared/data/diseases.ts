@@ -437,3 +437,19 @@ export const emergentThemes = diseaseCategories
   .flatMap((c) => c.diseases.filter((d) => d.isNew).map((d) => ({ ...d, category: c.title, icon: c.icon, categoryId: c.id })));
 
 // Contagens (condições, categorias, temas): ver shared/data/metrics.ts.
+
+// D13 — ordena as categorias por RELEVÂNCIA (em vez da ordem de declaração no
+// array): categorias que contêm temas prioritários do App vêm primeiro; empate
+// resolvido pelo número de condições. A curadoria interna de cada categoria é
+// preservada.
+export function orderByRelevance(cats: DiseaseCategory[]): DiseaseCategory[] {
+  return [...cats].sort((a, b) => {
+    const aPriority = a.diseases.some((d) => d.isPriorityTheme) ? 0 : 1;
+    const bPriority = b.diseases.some((d) => d.isPriorityTheme) ? 0 : 1;
+    if (aPriority !== bPriority) return aPriority - bPriority;
+    return b.diseases.length - a.diseases.length;
+  });
+}
+
+/** Categorias já ordenadas por relevância (site e app usam a mesma ordem). */
+export const categoriesByRelevance: DiseaseCategory[] = orderByRelevance(diseaseCategories);

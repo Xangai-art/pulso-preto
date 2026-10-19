@@ -1,4 +1,4 @@
-# Gente Preta — Arquitetura Reconciliada V4
+# Pulso Preto (ex-Gente Preta) — Arquitetura Reconciliada V4
 ## Revisão integral do acervo + benchmark BlackDoctor.com + reconciliação de contradições
 
 **Data**: 09/08/2026 (v4.1 — adenda de condições da realidade brasileira contemporânea)
@@ -91,10 +91,10 @@ Comparando a ideação original (`PROJ NEGROS - IDEIAS ABA SITE.pdf`, 9 abas) co
 Pesquisa dirigida ao site oficial e a material institucional/de imprensa (about, PR Newswire sobre o "BDO Black Community Trust Study", Fierce Healthcare sobre "Generational Health") revela um modelo consistente:
 
 1. **Confiança > Funcionalidade.** O estudo de confiança da BDO (500 pessoas, IC 90%) mostra que **honestidade/transparência (83%)**, **ser tratado como pessoa e não como sintoma (77%)**, **ser acreditado (68%)** e **compromisso de longo prazo (58%)** são os fatores decisivos de confiança — não a sofisticação tecnológica.
-   → **Lição para o Gente Preta**: o "Radar Epidemiológico" e os "Quality Gates" técnicos não substituem confiança; eles precisam ser *legíveis e devolvidos* à comunidade (ver C7).
+   → **Lição para o Pulso Preto**: o "Radar Epidemiológico" e os "Quality Gates" técnicos não substituem confiança; eles precisam ser *legíveis e devolvidos* à comunidade (ver C7).
 
 2. **Conteúdo em tom "how to do it, you can do it"**, feito por especialistas negros nomeados (Medical Advisory Board público com nome, cargo e instituição).
-   → **Lição**: o acervo Gente Preta já tem uma "Base Científica" robusta, mas falta um **conselho consultivo nomeado e visível** (substituindo a assinatura fictícia "CASIO v10.0").
+   → **Lição**: o acervo do projeto já tem uma "Base Científica" robusta, mas falta um **conselho consultivo nomeado e visível** (substituindo a assinatura fictícia "CASIO v10.0").
 
 3. **"Find a Doctor"**: banco de profissionais culturalmente sensíveis — pilar permanente do site, não um recurso secundário.
    → **Lição**: reintegrar a aba abandonada "Onde encontrar especialistas" com rede privada e busca por atendimento humanizado, não só UBS.

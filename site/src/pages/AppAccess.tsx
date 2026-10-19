@@ -128,7 +128,7 @@ export default function AppAccess() {
           ))}
         </div>
 
-        <h3 className="font-bold text-pulso-verde mb-3 text-sm">Seus direitos garantidos (LGPD Art. 18)</h3>
+        <h3 className="font-bold text-pulso-verde mb-3 text-sm">Seus direitos garantidos (Lei Geral de Proteção de Dados — LGPD, Art. 18)</h3>
         <div className="grid sm:grid-cols-2 gap-2 mb-8">
           {lgpdRights.map((r) => (
             <div key={r.name} className="text-sm text-pulso-marrom flex gap-2">

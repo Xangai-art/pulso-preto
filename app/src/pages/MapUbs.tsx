@@ -43,17 +43,17 @@ export default function MapUbs() {
   );
 
   const tabs: { id: typeof tab; label: string }[] = [
-    { id: 'ubs', label: 'UBS' },
-    { id: 'upas', label: 'UPAs' },
+    { id: 'ubs', label: 'Unidades Básicas' },
+    { id: 'upas', label: 'Pronto Atendimento' },
     { id: 'hospitais', label: 'Hospitais' },
-    { id: 'cepav', label: 'CEPAV' },
+    { id: 'cepav', label: 'Apoio à Violência' },
   ];
 
   const cardClass = 'rounded-xl border border-pulso-dourado/25 bg-white p-4';
 
   return (
     <div className="min-h-screen bg-pulso-creme font-pulso-body">
-      <TopBar title="Rede SUS — Unidades de Saúde" />
+      <TopBar title="Unidades de Saúde" />
       <div className="px-5 pt-3 pb-8">
         <input
           value={search}
@@ -83,7 +83,7 @@ export default function MapUbs() {
         )}
 
         <p className="text-[11px] mb-3 text-pulso-marrom/55">
-          Fonte: SES-DF —{' '}
+          Fonte: Secretaria de Saúde do Distrito Federal (SES-DF) —{' '}
           <a
             href="https://info.saude.df.gov.br/busca-saude-ubs/"
             target="_blank"
@@ -92,7 +92,7 @@ export default function MapUbs() {
           >
             Busca Saúde
           </a>{' '}
-          — dados agrupados por Região de Saúde. Cobertura de UBS completa para Oeste e Sul; representativa
+          — dados agrupados por Região de Saúde. Cobertura de Unidades Básicas de Saúde (UBS) completa para Oeste e Sul; representativa
           para as demais regiões.
         </p>
 
@@ -116,7 +116,7 @@ export default function MapUbs() {
               );
             })}
             {filteredUbs.length === 0 && (
-              <p className="text-sm text-center py-8 text-pulso-marrom/50">Nenhuma UBS encontrada.</p>
+              <p className="text-sm text-center py-8 text-pulso-marrom/50">Nenhuma Unidade Básica de Saúde encontrada.</p>
             )}
           </div>
         )}
@@ -141,7 +141,7 @@ export default function MapUbs() {
               );
             })}
             {filteredUpas.length === 0 && (
-              <p className="text-sm text-center py-8 text-pulso-marrom/50">Nenhuma UPA encontrada.</p>
+              <p className="text-sm text-center py-8 text-pulso-marrom/50">Nenhuma Unidade de Pronto Atendimento encontrada.</p>
             )}
           </div>
         )}
@@ -210,7 +210,7 @@ export default function MapUbs() {
               );
             })}
             {filteredCepav.length === 0 && (
-              <p className="text-sm text-center py-8 text-pulso-marrom/50">Nenhum CEPAV encontrado.</p>
+              <p className="text-sm text-center py-8 text-pulso-marrom/50">Nenhum centro de apoio encontrado.</p>
             )}
           </div>
         )}

@@ -34,7 +34,7 @@ export default function ReportDiscrimination() {
           <p className="text-sm mb-8 text-pulso-marrom/75">
             {wantsFollowUp
               ? 'Seu relato foi encaminhado com consentimento para acompanhamento institucional.'
-              : 'Seu relato foi registrado de forma anônima e contribui para os dados agregados de discriminação institucional por UBS.'}
+              : 'Seu relato foi registrado de forma anônima e contribui para os dados agregados de discriminação institucional por unidade de saúde.'}
           </p>
           <button
             onClick={() => navigate('/')}
@@ -65,7 +65,7 @@ export default function ReportDiscrimination() {
             onChange={(e) => setLocation(e.target.value)}
             className="w-full rounded-lg border border-pulso-dourado/30 p-3 text-sm bg-white"
           >
-            <option value="">Selecione a UBS ou local...</option>
+            <option value="">Selecione a Unidade Básica de Saúde ou local...</option>
             {healthUnits.map((u) => (
               <option key={u.id} value={u.name}>{u.name}</option>
             ))}

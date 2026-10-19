@@ -23,7 +23,7 @@ export default function About() {
       <h2 className="text-xl font-bold text-pulso-verde mt-10 mb-3">Visão estratégica</h2>
       <p className="text-pulso-marrom mb-4">
         No Brasil, a população negra enfrenta inequidades sistêmicas em saúde: maior risco de doenças crônicas,
-        subdiagnóstico por racismo institucional, menor acesso a serviços de qualidade no SUS e invisibilidade
+        subdiagnóstico por racismo institucional, menor acesso a serviços de qualidade no Sistema Único de Saúde (SUS) e invisibilidade
         epidemiológica — 56% da população brasileira é negra, mas apenas 1,5% das pesquisas em saúde consideram
         a raça.
       </p>

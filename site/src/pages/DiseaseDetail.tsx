@@ -57,7 +57,7 @@ export default function DiseaseDetail() {
         )}
         {disease.localStudy && (
           <span className="text-xs uppercase font-bold text-pulso-verde-medio bg-pulso-verde-medio/10 border border-pulso-verde-accent/40 px-2 py-1 rounded">
-            Estudo local · DF 2015–2024
+            Estudo local · Distrito Federal 2015–2024
           </span>
         )}
       </div>
@@ -76,8 +76,8 @@ export default function DiseaseDetail() {
       ) : (
         <div className="rounded-xl border border-pulso-dourado/25 p-5 bg-pulso-creme">
           <p className="text-pulso-marrom text-sm">
-            Condição incluída na base científica geral (Guia da Saúde da População Negra). Evidência detalhada
-            em processo de padronização para esta condição.
+            Condição incluída na base científica do Guia da Saúde da População Negra. Em caso de dúvida,
+            converse com a equipe da sua Unidade Básica de Saúde.
           </p>
         </div>
       )}
@@ -101,7 +101,7 @@ export default function DiseaseDetail() {
 
       <div className="mt-10 rounded-xl border border-pulso-dourado/25 p-5 bg-white text-sm text-pulso-marrom/70">
         <strong>Nota:</strong> em caso de sintomas, procure uma Unidade Básica de Saúde (UBS) — consulte a{' '}
-        <Link to="/rede-sus" className="text-pulso-verde-accent hover:underline">Rede SUS</Link>.
+        <Link to="/rede-sus" className="text-pulso-verde-accent hover:underline">Rede do Sistema Único de Saúde (Rede SUS)</Link>.
       </div>
     </div>
   );

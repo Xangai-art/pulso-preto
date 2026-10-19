@@ -1,6 +1,6 @@
-# Gente Preta v4.2 — Conteúdo para 3 Páginas 404
+# Pulso Preto (ex-Gente Preta) v4.2 — Conteúdo para 3 Páginas 404
 
-**Autor:** CASIO v10.0 — Chief Artificial Strategic Intelligence Officer
+**Elaboração:** equipe técnica CASIO V2 Studio
 **Data:** 16/08/2026
 **Alinhamento:** Arquitetura Reconciliada V4.1 (09/08/2026)
 
@@ -114,14 +114,12 @@ Isso permite ao time técnico:
 | C6 | 3 instrumentos de coleta tratados como 1 | ✅ Distinção explícita nas páginas /ensaios-clinicos e /baixar |
 | C7 | Radar epidemiológico com risco de leitura como vigilância | ✅ Fluxo do app enfatiza opt-in explícito e devolução transparente |
 
-## Assinatura CASIO
+## Controle de qualidade
 
-Este entregável foi gerado pelo Sistema CASIO v10.0 seguindo os 6
-Quality Gates obrigatórios. Nenhuma métrica de tração foi apresentada
-como fato consumado. Todas as fontes são rastreáveis. Todo o conteúdo
-respeita o princípio AEGIS: substituição da assinatura fictícia
-"CASIO v10.0" em documentos institucionais por Conselho Consultivo
-nomeado (a nomear).
+Nenhuma métrica de tração foi apresentada como fato consumado e todas as
+fontes são rastreáveis. Conforme a contradição C3 da Arquitetura
+Reconciliada, documentos institucionais não levam assinatura de autoria
+fictícia: a validação cabe ao Conselho Consultivo nomeado.
 
 **Recomendação:** Este pacote deve ser revisado pelo Conselho
 Consultivo antes de publicação, especialmente as implicações clínicas

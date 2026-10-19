@@ -130,7 +130,7 @@ export default function TraditionalMedicine() {
       {/* Da floresta ao SUS — seções editoriais + glossário de métodos de preparo */}
       <section className="bg-pulso-creme ornament-palha">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 py-16">
-          <h2 className="text-2xl font-bold text-pulso-verde mb-10">Da floresta ao SUS: o que o livro nos ensina</h2>
+          <h2 className="text-2xl font-bold text-pulso-verde mb-10">Da floresta ao Sistema Único de Saúde (SUS): o que o livro nos ensina</h2>
           <div className="space-y-12">
             {page.sections.map((sec) => (
               <div key={sec.id} id={sec.id} className="scroll-mt-24">

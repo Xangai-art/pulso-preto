@@ -1,5 +1,6 @@
 import type React from 'react';
 import { Link } from 'react-router-dom';
+import { useAppearance } from '@shared/context/AppearanceContext';
 import {
   ensaiosHero,
   trialPhases,
@@ -17,6 +18,7 @@ import {
 } from '../data/ensaiosClinicosContent';
 
 export default function ClinicalTrials() {
+  const { brand } = useAppearance();
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 py-16">
       {/* Hero */}
@@ -92,7 +94,7 @@ export default function ClinicalTrials() {
           ))}
         </ul>
         <p className="text-xs text-pulso-marrom/70 italic">
-          Reconhecer a história é parte de reconstruir confiança. Por isso o Gente Preta nunca intermedia
+          Reconhecer a história é parte de reconstruir confiança. Por isso o {brand.name} nunca intermedia
           recrutamento sem transparência total sobre quem financia, quem conduz e para que serve o estudo.
         </p>
       </Section>
@@ -115,7 +117,7 @@ export default function ClinicalTrials() {
             </a>
           ))}
         </div>
-        <h3 className="font-bold text-pulso-verde mb-3 text-sm">Hospitais de referência com centros de pesquisa (DF)</h3>
+        <h3 className="font-bold text-pulso-verde mb-3 text-sm">Hospitais de referência com centros de pesquisa (Distrito Federal)</h3>
         <ul className="space-y-1.5">
           {referenceHospitalsDF.map((h) => (
             <li key={h} className="text-sm text-pulso-marrom">• {h}</li>
@@ -143,9 +145,9 @@ export default function ClinicalTrials() {
       </Section>
 
       {/* Posição do projeto */}
-      <Section title="O Gente Preta e a pesquisa">
+      <Section title={`O ${brand.name} e a pesquisa`}>
         <p className="text-sm text-pulso-marrom mb-6">
-          O Gente Preta é, ele próprio, um projeto de pesquisa aplicada (aprovação CEP/FEPECS em andamento). Nossos
+          O {brand.name} é, ele próprio, um projeto de pesquisa aplicada (aprovação do Comitê de Ética em Pesquisa — CEP — da Fundação de Ensino e Pesquisa em Ciências da Saúde, FEPECS, em andamento). Nossos
           instrumentos de coleta seguem três regimes distintos e transparentes:
         </p>
         <div className="grid sm:grid-cols-3 gap-4 mb-6">
@@ -162,7 +164,7 @@ export default function ClinicalTrials() {
         </div>
         <p className="text-xs text-pulso-marrom/70 italic">
           Nenhum destes é ensaio clínico. Se um dia o projeto conduzir ensaio clínico, será com registro público,
-          aprovação CONEP e consentimento explícito — nunca embutido no fluxo do app.
+          aprovação da Comissão Nacional de Ética em Pesquisa (CONEP) e consentimento explícito — nunca embutido no fluxo do app.
         </p>
       </Section>
 

@@ -16,10 +16,10 @@ export default function Welcome() {
           App Sentinela
         </h1>
         <p className="text-sm max-w-xs mx-auto mb-1 text-pulso-creme/90">
-          Já foi mal atendido no SUS? Sentiu que seu problema não foi levado a sério?
+          Já foi mal atendido no Sistema Único de Saúde (SUS)? Sentiu que seu problema não foi levado a sério?
         </p>
         <p className="text-xs max-w-xs mx-auto text-pulso-creme/70">
-          Entenda sua saúde, encontre a UBS mais próxima e ajude sua comunidade — em check-ins de 1 minuto.
+          Entenda sua saúde, encontre a Unidade Básica de Saúde (UBS) mais próxima e ajude sua comunidade — em check-ins de 1 minuto.
         </p>
       </div>
       <div className="space-y-3">
@@ -30,7 +30,7 @@ export default function Welcome() {
           Começar
         </Link>
         <p className="text-[11px] px-4 text-pulso-creme/60">
-          Ao continuar, você poderá revisar e escolher seus níveis de consentimento LGPD na próxima tela.
+          Ao continuar, você poderá revisar e escolher seus níveis de consentimento, conforme a Lei Geral de Proteção de Dados (LGPD), na próxima tela.
         </p>
       </div>
     </div>

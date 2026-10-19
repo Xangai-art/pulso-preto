@@ -1,9 +1,12 @@
 // Ensaios Clínicos — dados estruturados para a rota /ensaios-clinicos.
-// Fonte: pacote CASIO v10.0 "Gente Preta v4.2 — Conteúdo para 3 Páginas 404"
-// (16/08/2026), alinhado à Arquitetura Reconciliada V4.1.
+// Fonte: pacote de conteúdo v4.2 (16/08/2026), alinhado à Arquitetura
+// Reconciliada V4.1. Nome do projeto vem do Canon (P18).
+import { getCurrentBrand } from '@shared/data/brand-canon';
+
+const BRAND = getCurrentBrand().name;
 
 export const ensaiosMeta = {
-  title: 'Ensaios Clínicos — Gente Preta',
+  title: `Ensaios Clínicos — ${BRAND}`,
   description:
     'Direito à pesquisa como direito à saúde. Entenda ensaios clínicos, por que a participação da população negra importa, e como encontrar estudos abertos no Brasil.',
 };
@@ -16,7 +19,7 @@ export const ensaiosHero = {
   notice: {
     icon: '⚖️',
     text:
-      'O Gente Preta não conduz ensaios clínicos. Somos uma plataforma informativa que direciona a fontes oficiais e regulamentadas (ReBEC, ClinicalTrials.gov, Plataforma Brasil). Qualquer participação em pesquisa exige aprovação de Comitê de Ética (CEP/CONEP), Termo de Consentimento Livre e Informado (TCLE) e é sempre voluntária, com direito a desistir a qualquer tempo.',
+      `O ${BRAND} não conduz ensaios clínicos. Somos uma plataforma informativa que direciona a fontes oficiais e regulamentadas (ReBEC, ClinicalTrials.gov, Plataforma Brasil). Qualquer participação em pesquisa exige aprovação de Comitê de Ética (CEP/CONEP), Termo de Consentimento Livre e Informado (TCLE) e é sempre voluntária, com direito a desistir a qualquer tempo.`,
   },
 };
 
@@ -164,7 +167,7 @@ export const ensaiosFooterCtas = [
     ctaLabel: 'Contatar Conselho Consultivo',
   },
   {
-    title: 'É pesquisador e quer publicar chamada no Gente Preta?',
+    title: `É pesquisador e quer publicar chamada no ${BRAND}?`,
     text: 'Estudos com registro CEP/CONEP e recorte racial podem ser listados aqui, sob curadoria.',
     ctaLabel: 'Submeter estudo',
   },

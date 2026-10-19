@@ -269,7 +269,7 @@ Nem tudo foi corte — houve **expansão deliberada**, documentada em `arquitetu
 |---|---|---|
 | C1 | Orçamento/escopo (R$80k ⊂ €235k) | ⚪ Fora do produto digital |
 | C2 | Métricas de tração como fato | ✅ Tratadas como meta (política em `/transparencia`) |
-| C3 | Assinatura fictícia "CASIO v10.0" | ⚠️ **Ainda presente** em `docs/v4.2-conteudo-404/README.md` e `EXECUTIVE_SUMMARY_BRAND_VERSIONING.md` |
+| C3 | Assinatura fictícia "CASIO v10.0" | ✅ **Removida** (Lote C, 19/10/2026) de `docs/v4.2-conteudo-404/README.md`, `EXECUTIVE_SUMMARY_BRAND_VERSIONING.md` e dos cabeçalhos de dados do site. Permanece só onde a própria contradição é **descrita** (relatório V4). |
 | C4 | 5 temas excluíam anemia falciforme | ✅ Corrigido (ABRADFAL + categoria Raras) |
 | C5 | Hub de ensaios clínicos prometido e inexistente | ✅ Página criada (M7) |
 | C6 | 3 instrumentos de coleta sob 1 modelo | ✅ Documentado (3 domínios em `/transparencia`) |
@@ -577,17 +577,30 @@ Os **"mockups antigos"** citados **não existem como arquivo nomeado no Hub** (o
 | **D15 — Acervo de imagens** | `shared/data/brandImages.ts` centraliza as imagens de marca usadas pela Home e pelas notícias. |
 | **Banco / API (R1/P22)** | O export (`scripts/db/export-content.mjs`) lê de `shared/data/`, grava `metrics` e `news` em `database/content.json`, e **falha o build** se a fonte única quebrar (ids duplicados, conteúdo aprofundado sem condição, métricas divergentes, notícia sem tradução). `/api/content` agora devolve `metrics`, `diseases` e `news`. |
 
+### 8.2-C Lote C — Limpeza (P18, P11, D14-a, R3, D13) — 19/10/2026
+
+| Item | Implementação |
+|---|---|
+| **P18 — "Gente Preta" em textos públicos** | `projectInfo` agora vem do **Canon** (`getProjectInfo()`); páginas Ensaios Clínicos, Comunidade, Memória, títulos de Baixar o App/Ensaios e o relatório de Arquitetura usam a marca ativa. "Gente Preta" fica só no Canon (memória histórica — D4) e em comentários de histórico. |
+| **P11/C3 — Assinatura "CASIO v10.0"** | Removida de `EXECUTIVE_SUMMARY_BRAND_VERSIONING.md`, `docs/v4.2-conteudo-404/README.md` e dos cabeçalhos de `baixarAppContent.ts` / `ensaiosClinicosContent.ts`. Autoria passa a "equipe técnica CASIO V2 Studio". |
+| **D14-a — Siglas** | Primeira menção por extenso em todas as páginas do site e do app (SUS, UBS, UPA, CEPAV, CAPS, SES-DF, LGPD, CEP, CONEP, DF). No app, abas/rótulos curtos trocados por palavras ("Unidades Básicas", "Pronto Atendimento", "Apoio à Violência", menu inferior "Unidades"). Abas profissionais (médico/enfermeiro) mantêm o registro técnico (D12). |
+| **R3/P5 — "A definir" em Memória** | Cartões "A definir" removidos; o convite "Quer contar sua história?" leva ao Fale Conosco. Histórias entram só quando reais. |
+| **R3/P10 — Conselho Consultivo** | Sem "A definir": cada vaga mostra instituição + área + "nomeação em andamento" até o nome ser publicado (campo `name` em `shared/data/project.ts`). |
+| **Texto "em padronização"** | Substituído (site e app) por orientação ao usuário: "Em caso de dúvida, converse com a equipe da sua Unidade Básica de Saúde." |
+| **D13 (app)** | `orderByRelevance` e `categoriesByRelevance` movidos para `shared/data/diseases.ts`; site e app usam a **mesma ordem**. |
+| **Lote D (parcial)** | README reescrito para o PP3 (sem VariantSwitcher/variantes, fonte única, navegação, rotas atuais). |
+
 ### 8.3 Decisões adiadas (lembrar)
 
 - **Ponto F (5.5-F):** Comunidade e Memória — cards "Gente" na Home (implementado provisoriamente) **ou** itens do menu superior.
 - **`/profissionais` e `/formacao`:** criar já com texto de "em construção" ou esperar o conteúdo (P3/P1).
-
-### 8.4 Próximos lotes
-
-- **Lote C — Limpeza:** "Gente Preta" em textos públicos (P18), assinatura "CASIO v10.0" (P11), caça às siglas (D14/D14-a), conteúdos "A definir" (R3/P5/P10), ordenação por relevância no app (D13).
-- **Lote D — Documentação:** README e documentação CEOS ainda descrevem o VariantSwitcher/3 variantes.
-- **Imagens quebradas (decisão pendente — D15):** 4 URLs do acervo não carregam mais e precisam de substituto **do próprio acervo**:
-  - `brandImages.idosa` — card "Saúde da Pessoa Idosa" (HTTP 415)
+- **Imagens quebradas (D15):** 4 URLs do acervo não carregam mais — reenviar os arquivos ou indicar substitutos **do próprio acervo**:
+  - `brandImages.idosa` — card "Saúde da Pessoa Idosa" na Home (HTTP 415)
   - `asma.ts` heroImage (HTTP 403)
   - `depressao.ts` heroImage (HTTP 403)
   - `miomasUterinos.ts` heroImage (HTTP 403)
+
+### 8.4 Próximos passos
+
+- **Produção:** merge dos PRs dos Lotes A, B e C na `main` → Workers Builds publica automaticamente.
+- Pendências da Parte 6 ainda abertas: P1 (AVA), P2 (cartilha), P3 (Find-a-Doctor), P4 (quiz), P5 (histórias reais), P6, P7, P8 (busca global), P9 (área do usuário), P10 (nomes do Conselho), P13/P14 (vídeo/canal), P21 (app profissional).

@@ -1,12 +1,10 @@
 // Dados institucionais — Pulso Preto (fonte única para site e App Sentinela — Lote B)
 import { metrics } from './metrics.ts';
+import { getProjectInfo } from './project-adapter.ts';
 
-export const projectInfo = {
-  name: 'Gente Preta',
-  subtitle: 'Sentinela de Saúde da População Negra',
-  tagline: 'Conhecimento que transforma políticas. Sua saúde, sua voz, sua comunidade.',
-  scope: 'Distrito Federal (piloto) — expansão nacional planejada',
-};
+// P18: nome/subtítulo/tagline vêm do CANON (marca ativa) — nunca hardcoded.
+// O histórico "Gente Preta" permanece preservado em brand-canon.ts (D4).
+export const projectInfo = getProjectInfo();
 
 // "Serviço-duro" — diferenciais brasileiros concretos (não apenas conteúdo editorial),
 // embutidos na Home sobre a base visual cultural-ancestral. Cada item aponta para uma
@@ -118,17 +116,19 @@ export const governance = {
     { name: 'Coordenação de Campo' },
   ],
   etica: [
-    { name: 'Aprovação CEP/CONEP', desc: 'Pesquisas com seres humanos' },
-    { name: 'DPO (Data Protection Officer)', desc: 'Conformidade LGPD' },
+    { name: 'Aprovação do Comitê de Ética em Pesquisa e da Comissão Nacional de Ética em Pesquisa (CEP/CONEP)', desc: 'Pesquisas com seres humanos' },
+    { name: 'Encarregado de Dados (DPO)', desc: 'Conformidade com a Lei Geral de Proteção de Dados (LGPD)' },
   ],
   conselhoConsultivo: {
     note:
-      'Formado por profissionais nomeados das instituições parceiras e pelo DPO do projeto — credibilidade vem de pessoas identificáveis e auditáveis publicamente, seguindo referências internacionais de conselhos consultivos de saúde comunitária.',
+      'Formado por profissionais nomeados das instituições parceiras e pelo Encarregado de Dados (DPO) do projeto — credibilidade vem de pessoas identificáveis e auditáveis publicamente, seguindo referências internacionais de conselhos consultivos de saúde comunitária.',
+    // P10: preencher `name` quando a nomeação for publicada. Sem nome, a interface
+    // exibe só a instituição e a área (nunca "A definir").
     members: [
-      { name: 'A definir', institution: 'FEPECS', area: 'Ensino em Saúde' },
-      { name: 'A definir', institution: 'UnB', area: 'Pesquisa Acadêmica' },
-      { name: 'A definir', institution: 'FIOCRUZ', area: 'Epidemiologia' },
-      { name: 'A definir', institution: 'DPO do Projeto', area: 'Privacidade e LGPD' },
+      { name: undefined as string | undefined, institution: 'FEPECS', area: 'Ensino em Saúde' },
+      { name: undefined as string | undefined, institution: 'UnB', area: 'Pesquisa Acadêmica' },
+      { name: undefined as string | undefined, institution: 'FIOCRUZ', area: 'Epidemiologia' },
+      { name: undefined as string | undefined, institution: 'Encarregado de Dados (DPO)', area: 'Privacidade e Lei Geral de Proteção de Dados' },
     ],
   },
 };

@@ -2,7 +2,7 @@
 
 **Data:** 07/10/2026  
 **Projeto:** Pulso Preto (ex-Gente Preta)  
-**Arquiteto:** CASIO v10.0 — TSI/ESIOS/CASIO/HERMES Framework  
+**Elaboração:** equipe técnica CASIO V2 Studio  
 **Stakeholder:** Glayson (Dev Lead / DPO)
 
 ---
@@ -338,7 +338,7 @@ git log --oneline --grep="brand" -- shared/data/brand-canon.ts
 - Deixar páginas internas hardcoded
 - Middle ground entre A e B
 
-### Recomendação CASIO v10.0
+### Recomendação técnica
 
 **APROVAR Opção A** com base em:
 
@@ -381,9 +381,8 @@ CRV = 90 × (1 - 0.15) × 85 = 65.0/100
 
 ## ✍️ Assinaturas
 
-**Arquiteto:**  
-CASIO v10.0 — Chief Artificial Strategic Intelligence Officer  
-TSI/ESIOS/CASIO/HERMES Framework  
+**Elaboração:**  
+Equipe técnica CASIO V2 Studio  
 07/10/2026
 
 **Aprovação Pendente:**  

@@ -4,7 +4,7 @@ const items = [
   { to: '/', label: 'Início', icon: '🏠' },
   { to: '/checkin', label: 'Check-in', icon: '✅' },
   { to: '/saude', label: 'Saúde', icon: '📚', pulsoIcon: '/static/brand/elementos/icone-livro-ideias.png' },
-  { to: '/mapa', label: 'UBS', icon: '📍', pulsoIcon: '/static/brand/elementos/icone-hospital-comunidade.png' },
+  { to: '/mapa', label: 'Unidades', icon: '📍', pulsoIcon: '/static/brand/elementos/icone-hospital-comunidade.png' },
   { to: '/radar', label: 'Radar', icon: '📡', pulsoIcon: '/static/brand/elementos/icone-coracao-pulsa.png' },
   { to: '/perfil', label: 'Perfil', icon: '👤' },
 ];

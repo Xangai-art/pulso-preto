@@ -165,13 +165,13 @@ export default function Baseline() {
               </Field>
             )}
 
-            <Field label="Região Administrativa (DF) ou município do Entorno/RIDE">
+            <Field label="Região Administrativa do Distrito Federal ou município do Entorno">
               <GroupedSelect
                 value={ra}
                 onChange={setRa}
                 groups={[
                   { label: 'Distrito Federal (Regiões Administrativas)', options: dfAdministrativeRegions },
-                  { label: 'Entorno / RIDE-DF', options: rideEntornoMunicipalities.map((m) => `${m.nome} (${m.uf})`) },
+                  { label: 'Entorno do Distrito Federal', options: rideEntornoMunicipalities.map((m) => `${m.nome} (${m.uf})`) },
                 ]}
               />
             </Field>
@@ -203,8 +203,8 @@ export default function Baseline() {
         )}
 
         {step === 2 && (
-          <Section title="Acesso ao SUS">
-            <Field label="Você utiliza uma UBS de referência?">
+          <Section title="Acesso ao Sistema Único de Saúde (SUS)">
+            <Field label="Você utiliza uma Unidade Básica de Saúde (UBS) de referência?">
               <Select value={usesUbs} onChange={setUsesUbs} options={['Sim, regularmente', 'Sim, raramente', 'Não conheço uma UBS de referência', 'Não utilizo o SUS']} />
             </Field>
             <Field label="Já enfrentou dificuldades de acesso? (opcional, descreva)">

@@ -13,11 +13,15 @@ export default function Transparency() {
 
       <h2 className="text-xl font-bold text-pulso-verde mb-4">Conselho Consultivo</h2>
       <p className="text-sm text-pulso-marrom mb-4">{governance.conselhoConsultivo.note}</p>
+      {/* R3/P10: só aparecem membros já NOMEADOS (campo name preenchido). Enquanto a
+          nomeação não é publicada, mostramos a composição prevista — sem "A definir". */}
       <div className="grid sm:grid-cols-2 gap-4 mb-12">
-        {governance.conselhoConsultivo.members.map((m, i) => (
-          <div key={i} className="rounded-xl border border-pulso-dourado/25 p-4">
-            <div className="font-semibold text-pulso-verde text-sm">{m.name}</div>
-            <div className="text-xs text-pulso-marrom/70">{m.institution} · {m.area}</div>
+        {governance.conselhoConsultivo.members.map((m) => (
+          <div key={m.institution} className="rounded-xl border border-pulso-dourado/25 p-4">
+            <div className="font-semibold text-pulso-verde text-sm">{m.name ?? m.institution}</div>
+            <div className="text-xs text-pulso-marrom/70">
+              {m.name ? `${m.institution} · ${m.area}` : `${m.area} · nomeação em andamento`}
+            </div>
           </div>
         ))}
       </div>
@@ -29,7 +33,7 @@ export default function Transparency() {
         <GovCard title="Comitê de Ética" items={governance.etica.map((e) => `${e.name} — ${e.desc}`)} />
       </div>
 
-      <h2 className="text-xl font-bold text-pulso-verde mb-4">Consentimento granular (LGPD)</h2>
+      <h2 className="text-xl font-bold text-pulso-verde mb-4">Consentimento granular (Lei Geral de Proteção de Dados — LGPD)</h2>
       <div className="space-y-3 mb-12">
         {lgpdConsentLevels.map((l) => (
           <div key={l.level} className="rounded-xl border border-pulso-dourado/25 p-4 flex items-start gap-4">
