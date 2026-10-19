@@ -26,7 +26,7 @@ export interface ContentMetrics {
   emergentThemes: number;
   /** Condições com conteúdo aprofundado por audiência. */
   deepContent: number;
-  /** Condições enriquecidas com dado do estudo local do DF. */
+  /** Condições enriquecidas com dado local do DF (análise de dados). */
   localStudy: number;
   /** Idiomas disponíveis. */
   locales: number;

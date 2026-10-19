@@ -41,7 +41,7 @@
       "finding": "Pessoas negras têm risco até 2,3x maior de desenvolver hipertensão em comparação à população branca, com pior controle pressórico mesmo em tratamento equivalente.",
       "local_value": "1,50×",
       "local_finding": "No DF, a mortalidade cardiovascular padronizada por idade é 50% maior em negros (180/100.000) do que em brancos (120/100.000) — a hipertensão é o principal fator de risco modificável dessa disparidade.",
-      "local_source": "Estudo Pop. Negra DF 2015–2024 · Indicador 13 (estimativa, estratificação racial em consolidação)"
+      "local_source": "Análise de dados da população negra do DF (2015–2024) · Indicador 13 (estimativa, estratificação racial em consolidação)"
     },
     {
       "id": "infarto",
@@ -106,7 +106,7 @@
       "finding": "Adultos negros têm probabilidade ~60% maior de serem diagnosticados com diabetes tipo 2 em comparação a adultos brancos não hispânicos.",
       "local_value": "8º lugar",
       "local_finding": "No DF, diabetes caiu do 3º lugar (2014) para o 8º lugar (2024) nas causas de morte — pode indicar melhora no controle (acesso a insulina/antidiabéticos pelo SUS) ou subnotificação como causa associada. Dados ainda não estratificados por raça/cor no boletim agregado.",
-      "local_source": "Estudo Pop. Negra DF 2015–2024 · Indicador 14 (estratificação racial pendente)"
+      "local_source": "Análise de dados da população negra do DF (2015–2024) · Indicador 14 (estratificação racial pendente)"
     },
     {
       "id": "pre-diabetes",
@@ -327,13 +327,13 @@
       "finding": "Tuberculose está associada a aglomeração domiciliar, desnutrição e menor acesso a diagnóstico/tratamento oportuno — condições mais prevalentes em contextos de vulnerabilidade social.",
       "local_value": "58,3%",
       "local_finding": "No DF, 58,3% dos casos novos de tuberculose em 2025 ocorreram em pessoas pardas, com tendência de aumento na incidência entre 2021 e 2025.",
-      "local_source": "Estudo Pop. Negra DF 2015–2024 · Indicador 15 (Boletim de Tuberculose 2026, SES-DF)"
+      "local_source": "Análise de dados da população negra do DF (2015–2024) · Indicador 15 (Boletim de Tuberculose 2026, SES-DF)"
     },
     {
       "id": "miomas-uterinos",
       "name": "Miomas Uterinos",
-      "category_id": "saude-materna",
-      "category_title": "Saúde Materna",
+      "category_id": "mulher-negra",
+      "category_title": "Saúde da Mulher Negra",
       "is_priority_theme": 1,
       "has_deep_content": 1,
       "study": "FEBRASGO / ACOG — leiomiomas uterinos",
@@ -345,8 +345,8 @@
     {
       "id": "parto-prematuro",
       "name": "Parto Prematuro",
-      "category_id": "saude-materna",
-      "category_title": "Saúde Materna",
+      "category_id": "mulher-negra",
+      "category_title": "Saúde da Mulher Negra",
       "is_priority_theme": 0,
       "has_deep_content": 0,
       "study": null,
@@ -358,28 +358,28 @@
     {
       "id": "mortalidade-materna",
       "name": "Mortalidade Materna",
-      "category_id": "saude-materna",
-      "category_title": "Saúde Materna",
+      "category_id": "mulher-negra",
+      "category_title": "Saúde da Mulher Negra",
       "is_priority_theme": 1,
       "has_deep_content": 0,
       "study": "Estudos nacionais e internacionais de saúde materna",
       "finding": "Mulheres negras têm risco de 2 a 3 vezes maior de morte materna em comparação a mulheres brancas, mesmo controlando por renda e escolaridade — indicando peso do racismo institucional no cuidado obstétrico.",
       "local_value": "1,39×",
-      "local_finding": "No DF (2010–2019), a Razão de Mortalidade Materna (RMM) em mulheres pretas foi 92,7 por 100.000 nascidos vivos, contra 66,7 em brancas — 39% maior. Mulheres pardas isoladamente (45,1) aparecem abaixo de brancas, um paradoxo que o estudo atribui a incompletude/subnotificação racial nos registros de óbito.",
-      "local_source": "Estudo Pop. Negra DF 2015–2024 · Indicador 8 (SIM+SINASC, Relatório de Mortalidade Materna 2018–2019)"
+      "local_finding": "No DF (2010–2019), a Razão de Mortalidade Materna (RMM) em mulheres pretas foi 92,7 por 100.000 nascidos vivos, contra 66,7 em brancas — 39% maior. Mulheres pardas isoladamente (45,1) aparecem abaixo de brancas, um paradoxo que a análise atribui a incompletude/subnotificação racial nos registros de óbito.",
+      "local_source": "Análise de dados da população negra do DF (2015–2024) · Indicador 8 (SIM+SINASC, Relatório de Mortalidade Materna 2018–2019)"
     },
     {
       "id": "sifilis-congenita",
       "name": "Sífilis Congênita",
-      "category_id": "saude-materna",
-      "category_title": "Saúde Materna",
+      "category_id": "mulher-negra",
+      "category_title": "Saúde da Mulher Negra",
       "is_priority_theme": 0,
       "has_deep_content": 0,
       "study": "Doença evitável com pré-natal adequado (testagem + tratamento oportuno)",
       "finding": "A sífilis congênita é totalmente evitável com testagem e tratamento no pré-natal — sua persistência reflete falhas de acesso e continuidade do cuidado obstétrico.",
       "local_value": "78,2%",
       "local_finding": "No DF (2024), 78,2% dos casos de sífilis congênita ocorreram em filhos de mães negras (pretas+pardas) — sobre-representação em relação aos 57,8% da população, refletindo menor cobertura/qualidade de pré-natal e barreiras de acesso a testagem.",
-      "local_source": "Estudo Pop. Negra DF 2015–2024 · Indicador 10 (Boletim de Sífilis Congênita 2025, SES-DF)"
+      "local_source": "Análise de dados da população negra do DF (2015–2024) · Indicador 10 (Boletim de Sífilis Congênita 2025, SES-DF)"
     },
     {
       "id": "anemia-falciforme",
@@ -535,7 +535,7 @@
       "finding": "População negra apresenta maior incidência de novos diagnósticos de HIV e menor acesso contínuo a tratamento antirretroviral, refletindo barreiras estruturais de acesso à saúde. Prevenção: a ampliação do acesso à Profilaxia Pré-Exposição (PrEP) reduz as desigualdades na incidência de HIV (Lancet HIV 2022) — a PrEP é direito garantido pelo Sistema Único de Saúde (SUS) e está disponível gratuitamente na rede pública.",
       "local_value": "70,3%",
       "local_finding": "No DF (2024), 70,3% das notificações de HIV/AIDS foram de pessoas pretas ou pardas — sobre-representação em relação aos 57,8% da população, associada a menor acesso a testagem, PrEP e TARV, além de estigma (racismo + homofobia + serofobia).",
-      "local_source": "Estudo Pop. Negra DF 2015–2024 · Indicador 16 (SINAN+SIM, Boletim HIV/AIDS 2024)"
+      "local_source": "Análise de dados da população negra do DF (2015–2024) · Indicador 16 (SINAN+SIM, Boletim HIV/AIDS 2024)"
     },
     {
       "id": "doencas-pele",
@@ -587,7 +587,7 @@
       "finding": "Maior exposição ao trânsito por uso de transporte público e motocicletas de trabalho, combinada a infraestrutura viária mais precária em periferias, eleva o risco de óbito por acidentes de transporte em populações negras.",
       "local_value": "72,2%",
       "local_finding": "No DF (2012–2021), 72,2% dos óbitos por acidentes de transporte ocorreram em pessoas negras — sobre-representação de 1,25× em relação à proporção populacional (57,8%).",
-      "local_source": "Estudo Pop. Negra DF 2015–2024 · SIM/DATASUS 2012–2021"
+      "local_source": "Análise de dados da população negra do DF (2015–2024) · SIM/DATASUS 2012–2021"
     },
     {
       "id": "violencia-reativa",
@@ -600,7 +600,7 @@
       "finding": "77% das vítimas de homicídio no Brasil são pessoas negras; taxa de 27 homicídios por 100 mil habitantes entre negros vs. 10 por 100 mil entre não negros — uma pessoa negra tem 2,6x mais chance de ser assassinada no Brasil, quadro associado à ausência de políticas preventivas de mediação de conflito e educação emocional em territórios de alta exposição à violência.",
       "local_value": "77,4%",
       "local_finding": "No DF (2015–2022), 77,4% das mortes violentas ocorreram em pessoas negras (predominantemente pardas, 70,2%) — sobre-representação de 1,34× em relação à proporção populacional. 89,9% das vítimas fatais são homens; já nas notificações de violência não fatal (SINAN), 83,1% das vítimas são mulheres.",
-      "local_source": "Estudo Pop. Negra DF 2015–2024 · Indicadores 17–18 (SIM/DATASUS, SINAN Q3 2025)"
+      "local_source": "Análise de dados da população negra do DF (2015–2024) · Indicadores 17–18 (SIM/DATASUS, SINAN Q3 2025)"
     }
   ],
   "news": [
@@ -1168,7 +1168,7 @@
                 "body": [
                   "Diretrizes Brasileiras de Hipertensão Arterial — Sociedade Brasileira de Cardiologia (SBC).",
                   "Protocolo Clínico e Diretrizes Terapêuticas (PCDT) de Hipertensão Arterial Sistêmica — Ministério da Saúde.",
-                  "Estudo Técnico-Científico \"Condições de Vida e Saúde da População Negra do DF (2015–2024)\" — AECID/APRECIA/FIOCRUZ/UnB/FEPECS.",
+                  "Análise de dados públicos sobre a população negra do Distrito Federal (2015–2024) — Instituto APRECIA/AECID.",
                   "Literatura internacional (NEJM, Lancet, AHA/ACC) sobre disparidades raciais em hipertensão e mortalidade cardiovascular."
                 ]
               }
@@ -1274,7 +1274,7 @@
             "detail": "Protocolo Clínico e Diretrizes Terapêuticas vigente, referência normativa para a conduta no SUS."
           },
           {
-            "label": "Estudo Pop. Negra DF 2015–2024",
+            "label": "Análise de dados · População negra do DF 2015–2024",
             "detail": "AECID/APRECIA/FIOCRUZ/UnB/FEPECS — Indicador 13 (mortalidade cardiovascular, razão negra/branca 1,50)."
           },
           {
@@ -1338,7 +1338,7 @@
                 "body": [
                   "Directrices Brasileñas de Hipertensión Arterial — Sociedad Brasileña de Cardiología (SBC).",
                   "Protocolo Clínico y Directrices Terapéuticas (PCDT) de Hipertensión Arterial Sistémica — Ministerio de Salud de Brasil.",
-                  "Estudio Técnico-Científico \"Condiciones de Vida y Salud de la Población Negra del DF (2015–2024)\" — AECID/APRECIA/FIOCRUZ/UnB/FEPECS.",
+                  "Análisis de datos públicos sobre la población negra del Distrito Federal (2015–2024) — Instituto APRECIA/AECID.",
                   "Literatura internacional (NEJM, Lancet, AHA/ACC) sobre disparidades raciales en hipertensión y mortalidad cardiovascular."
                 ]
               }
@@ -1444,7 +1444,7 @@
             "detail": "Protocolo Clínico y Directrices Terapéuticas vigente, referencia normativa para la conducta en el SUS."
           },
           {
-            "label": "Estudio Población Negra DF 2015–2024",
+            "label": "Análisis de datos · Población negra del DF 2015–2024",
             "detail": "AECID/APRECIA/FIOCRUZ/UnB/FEPECS — Indicador 13 (mortalidad cardiovascular, razón negra/blanca 1,50)."
           },
           {
@@ -1512,7 +1512,7 @@
                   "Diretrizes da Sociedade Brasileira de Diabetes (SBD) — referência nacional para diagnóstico e tratamento.",
                   "Protocolo Clínico e Diretrizes Terapêuticas (PCDT) de Diabetes Mellitus — Ministério da Saúde.",
                   "American Diabetes Association (ADA) — Standards of Care, referência internacional baseada em evidência.",
-                  "Estudo Técnico-Científico \"Condições de Vida e Saúde da População Negra do DF (2015–2024)\" — AECID/APRECIA/FIOCRUZ/UnB/FEPECS."
+                  "Análise de dados públicos sobre a população negra do Distrito Federal (2015–2024) — Instituto APRECIA/AECID."
                 ]
               }
             ]
@@ -1617,7 +1617,7 @@
             "detail": "Protocolo Clínico e Diretrizes Terapêuticas vigente, referência normativa para a conduta no SUS."
           },
           {
-            "label": "Estudo Pop. Negra DF 2015–2024",
+            "label": "Análise de dados · População negra do DF 2015–2024",
             "detail": "AECID/APRECIA/FIOCRUZ/UnB/FEPECS — Indicador 14 (diabetes como causa de morte: 3º lugar em 2014 → 8º em 2024; estratificação racial pendente)."
           },
           {
@@ -1683,7 +1683,7 @@
                   "Directrices de la Sociedad Brasileña de Diabetes (SBD) — referencia nacional para diagnóstico y tratamiento.",
                   "Protocolo Clínico y Directrices Terapéuticas (PCDT) de Diabetes Mellitus — Ministerio de Salud.",
                   "American Diabetes Association (ADA) — Standards of Care, referencia internacional basada en evidencia.",
-                  "Estudio Técnico-Científico \"Condiciones de Vida y Salud de la Población Negra del DF (2015–2024)\" — AECID/APRECIA/FIOCRUZ/UnB/FEPECS."
+                  "Análisis de datos públicos sobre la población negra del Distrito Federal (2015–2024) — Instituto APRECIA/AECID."
                 ]
               }
             ]
@@ -1788,7 +1788,7 @@
             "detail": "Protocolo Clínico y Directrices Terapéuticas vigente, referencia normativa para la conducta en el SUS."
           },
           {
-            "label": "Estudio Población Negra DF 2015–2024",
+            "label": "Análisis de datos · Población negra del DF 2015–2024",
             "detail": "AECID/APRECIA/FIOCRUZ/UnB/FEPECS — Indicador 14 (diabetes como causa de muerte: 3.º lugar en 2014 → 8.º en 2024; estratificación racial pendiente)."
           },
           {

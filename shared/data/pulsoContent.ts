@@ -270,7 +270,7 @@ const TO_MEMORIA = '/memoria';
 const TO_PARCEIROS = '/sobre#parceiros';
 const TO_ARQUITETURA = '/arquitetura';
 // Cards "Conheça sua saúde" abrem a Biblioteca já filtrada (20/10/2026).
-const TO_MATERNA = '/saude?categoria=saude-materna';
+const TO_MULHER = '/saude?categoria=mulher-negra';
 const TO_MENTAL = '/saude?categoria=saude-mental';
 const TO_HOMEM = '/saude?recorte=homem';
 const TO_INFANCIA = '/saude?recorte=infancia';
@@ -308,10 +308,8 @@ const pt: PulsoContent = {
   },
   features: [
     { icon: 'book', title: ['CONHEÇA', 'SUA SAÚDE'], subtitle: 'Informações confiáveis para todas as fases da vida.', to: TO_SAUDE },
-    { icon: 'heart', title: ['ENTENDA', 'SEU CORPO'], subtitle: 'Conhecimento sobre as doenças mais prevalentes.', to: TO_SAUDE },
     { icon: 'location', title: ['ENCONTRE', 'CUIDADO'], subtitle: 'Saiba onde buscar atendimento no SUS.', to: TO_REDE_SUS },
     { icon: 'document', title: ['SEUS DIREITOS'], subtitle: 'Conheça as leis e políticas para a população negra.', to: TO_OUVIDORIA },
-    { icon: 'chart', title: ['DADOS E', 'INDICADORES'], subtitle: 'Números que revelam realidades e geram mudanças.', to: TO_DADOS },
     { icon: 'people', title: ['PARTICIPE'], subtitle: 'Compartilhe experiências e faça parte dessa rede.', to: TO_COMUNIDADE },
   ],
   themes: {
@@ -320,7 +318,7 @@ const pt: PulsoContent = {
     viewAllLabel: 'VER TODOS OS TEMAS →',
     extraLink: { label: 'Medicina Tradicional Brasileira — plantas com comprovação científica →', to: TO_MEDICINA_TRADICIONAL },
     cards: [
-      { id: 'materna', title: ['Saúde', 'Materna'], subtitle: 'Gestação, parto e pós-parto com cuidado e respeito.', image: IMG_MULHER, to: TO_MATERNA },
+      { id: 'mulher', title: ['Saúde da', 'Mulher Negra'], subtitle: 'Cuidado em todas as fases da vida.', image: IMG_MULHER, to: TO_MULHER },
       { id: 'homem', title: ['Saúde do', 'Homem Negro'], subtitle: 'Prevenção também é força.', image: IMG_HOMEM, to: TO_HOMEM },
       { id: 'infancia', title: ['Saúde na', 'Infância'], subtitle: 'Mais oportunidades para futuros saudáveis.', image: IMG_INFANCIA, to: TO_INFANCIA },
       { id: 'idosa', title: ['Saúde da', 'Pessoa Idosa'], subtitle: 'Longevidade com qualidade de vida.', image: IMG_IDOSA, to: TO_IDOSA },
@@ -361,7 +359,7 @@ const pt: PulsoContent = {
     ctaLabel: 'VER INDICADORES →',
     ctaTo: TO_DADOS,
     cards: [
-      { value: '56,1%', label: ['da população do DF', 'é negra (preta e parda)'], source: 'Fonte: IBGE 2022' },
+      { value: '57,8%', label: ['da população do DF', 'é negra (preta e parda)'], source: 'Fonte: Pesquisa Distrital por Amostra de Domicílios (PDAD) 2024' },
       { value: '+60%', label: ['maior risco de hipertensão', 'em comparação com', 'a população branca'], source: 'Fonte: Ministério da Saúde' },
       { value: '2x', label: ['maior mortalidade', 'por diabetes entre', 'pessoas negras'], source: 'Fonte: Atlas da Saúde' },
       { value: 'Menor', label: ['acesso a serviços', 'especializados de saúde'], source: 'Fonte: IPEA' },
@@ -430,10 +428,8 @@ const es: PulsoContent = {
   },
   features: [
     { icon: 'book', title: ['CONOCE', 'TU SALUD'], subtitle: 'Información confiable para todas las etapas de la vida.', to: TO_SAUDE },
-    { icon: 'heart', title: ['ENTIENDE', 'TU CUERPO'], subtitle: 'Conocimiento sobre las enfermedades más prevalentes.', to: TO_SAUDE },
     { icon: 'location', title: ['ENCUENTRA', 'ATENCIÓN'], subtitle: 'Sepa dónde buscar atención en el SUS.', to: TO_REDE_SUS },
     { icon: 'document', title: ['TUS DERECHOS'], subtitle: 'Conoce las leyes y políticas para la población negra.', to: TO_OUVIDORIA },
-    { icon: 'chart', title: ['DATOS E', 'INDICADORES'], subtitle: 'Números que revelan realidades y generan cambios.', to: TO_DADOS },
     { icon: 'people', title: ['PARTICIPA'], subtitle: 'Comparte experiencias y forma parte de esta red.', to: TO_COMUNIDADE },
   ],
   themes: {
@@ -442,7 +438,7 @@ const es: PulsoContent = {
     viewAllLabel: 'VER TODOS LOS TEMAS →',
     extraLink: { label: 'Medicina Tradicional Brasileña — plantas con comprobación científica →', to: TO_MEDICINA_TRADICIONAL },
     cards: [
-      { id: 'materna', title: ['Salud', 'Materna'], subtitle: 'Embarazo, parto y posparto con cuidado y respeto.', image: IMG_MULHER, to: TO_MATERNA },
+      { id: 'mulher', title: ['Salud de la', 'Mujer Negra'], subtitle: 'Cuidado en todas las etapas de la vida.', image: IMG_MULHER, to: TO_MULHER },
       { id: 'homem', title: ['Salud del', 'Hombre Negro'], subtitle: 'La prevención también es fuerza.', image: IMG_HOMEM, to: TO_HOMEM },
       { id: 'infancia', title: ['Salud en la', 'Infancia'], subtitle: 'Más oportunidades para futuros saludables.', image: IMG_INFANCIA, to: TO_INFANCIA },
       { id: 'idosa', title: ['Salud de la', 'Persona Mayor'], subtitle: 'Longevidad con calidad de vida.', image: IMG_IDOSA, to: TO_IDOSA },
@@ -483,7 +479,7 @@ const es: PulsoContent = {
     ctaLabel: 'VER INDICADORES →',
     ctaTo: TO_DADOS,
     cards: [
-      { value: '56,1%', label: ['de la población del DF', 'es negra (preta y parda)'], source: 'Fuente: IBGE 2022' },
+      { value: '57,8%', label: ['de la población del DF', 'es negra (preta y parda)'], source: 'Fuente: Encuesta Distrital por Muestreo de Hogares (PDAD) 2024' },
       { value: '+60%', label: ['mayor riesgo de hipertensión', 'en comparación con', 'la población blanca'], source: 'Fuente: Ministerio de Salud' },
       { value: '2x', label: ['mayor mortalidad', 'por diabetes entre', 'personas negras'], source: 'Fuente: Atlas de la Salud' },
       { value: 'Menor', label: ['acceso a servicios', 'especializados de salud'], source: 'Fuente: IPEA' },

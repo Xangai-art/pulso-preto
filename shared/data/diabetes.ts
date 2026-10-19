@@ -11,7 +11,7 @@
 // / Onde no SUS / Fontes — adaptadas ao nível de profundidade de cada público.
 //
 // Recorte racial obrigatório (chamadas anti-racismo) e dado local do DF
-// (Estudo Técnico-Científico "Condições de Vida e Saúde da População Negra do
+// (análise de dados públicos "Condições de Vida e Saúde da População Negra do
 // DF 2015–2024" — AECID/APRECIA/FIOCRUZ/UnB/FEPECS).
 //
 // Consumido via getDeepContent(diseaseId, localeId) — ver
@@ -87,7 +87,7 @@ const diabetesContent_pt: DiseaseDeepContent = {
             'Diretrizes da Sociedade Brasileira de Diabetes (SBD) — referência nacional para diagnóstico e tratamento.',
             'Protocolo Clínico e Diretrizes Terapêuticas (PCDT) de Diabetes Mellitus — Ministério da Saúde.',
             'American Diabetes Association (ADA) — Standards of Care, referência internacional baseada em evidência.',
-            'Estudo Técnico-Científico "Condições de Vida e Saúde da População Negra do DF (2015–2024)" — AECID/APRECIA/FIOCRUZ/UnB/FEPECS.',
+            'Análise de dados públicos sobre a população negra do Distrito Federal (2015–2024) — Instituto APRECIA/AECID.',
           ],
         },
       ],
@@ -198,7 +198,7 @@ const diabetesContent_pt: DiseaseDeepContent = {
       detail: 'Protocolo Clínico e Diretrizes Terapêuticas vigente, referência normativa para a conduta no SUS.',
     },
     {
-      label: 'Estudo Pop. Negra DF 2015–2024',
+      label: 'Análise de dados · População negra do DF 2015–2024',
       detail: 'AECID/APRECIA/FIOCRUZ/UnB/FEPECS — Indicador 14 (diabetes como causa de morte: 3º lugar em 2014 → 8º em 2024; estratificação racial pendente).',
     },
     {
@@ -263,7 +263,7 @@ const diabetesContent_es: DiseaseDeepContent = {
             'Directrices de la Sociedad Brasileña de Diabetes (SBD) — referencia nacional para diagnóstico y tratamiento.',
             'Protocolo Clínico y Directrices Terapéuticas (PCDT) de Diabetes Mellitus — Ministerio de Salud.',
             'American Diabetes Association (ADA) — Standards of Care, referencia internacional basada en evidencia.',
-            'Estudio Técnico-Científico "Condiciones de Vida y Salud de la Población Negra del DF (2015–2024)" — AECID/APRECIA/FIOCRUZ/UnB/FEPECS.',
+            'Análisis de datos públicos sobre la población negra del Distrito Federal (2015–2024) — Instituto APRECIA/AECID.',
           ],
         },
       ],
@@ -374,7 +374,7 @@ const diabetesContent_es: DiseaseDeepContent = {
       detail: 'Protocolo Clínico y Directrices Terapéuticas vigente, referencia normativa para la conducta en el SUS.',
     },
     {
-      label: 'Estudio Población Negra DF 2015–2024',
+      label: 'Análisis de datos · Población negra del DF 2015–2024',
       detail: 'AECID/APRECIA/FIOCRUZ/UnB/FEPECS — Indicador 14 (diabetes como causa de muerte: 3.º lugar en 2014 → 8.º en 2024; estratificación racial pendiente).',
     },
     {

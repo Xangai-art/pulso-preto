@@ -55,7 +55,7 @@ export default function DiseaseDetail() {
         )}
         {disease.localStudy && (
           <span className="text-xs uppercase font-bold text-pulso-verde-medio bg-pulso-verde-medio/10 border border-pulso-verde-accent/40 px-2 py-1 rounded">
-            Estudo local · Distrito Federal 2015–2024
+            Dado Local DF
           </span>
         )}
       </div>
@@ -83,14 +83,14 @@ export default function DiseaseDetail() {
       {disease.localStudy && (
         <div className="mt-6 rounded-xl border-2 border-pulso-dourado-claro bg-pulso-verde text-pulso-creme p-5">
           <div className="flex items-center justify-between gap-2 mb-2 flex-wrap">
-            <h2 className="text-sm font-bold text-pulso-dourado-claro uppercase tracking-wide">Estudo local — Distrito Federal</h2>
+            <h2 className="text-sm font-bold text-pulso-dourado-claro uppercase tracking-wide">Dado local do Distrito Federal</h2>
             <span className="text-2xl font-bold text-pulso-dourado-claro">{disease.localStudy.value}</span>
           </div>
           <p className="text-sm leading-relaxed text-pulso-creme/95 mb-3">{disease.localStudy.finding}</p>
           <p className="text-[11px] text-pulso-creme/70">
-            Fonte: {disease.localStudy.source}. Estudo Técnico-Científico "Condições de Vida e Saúde da
-            População Negra do DF (2015–2024)" — AECID/APRECIA, com FIOCRUZ/UnB/FEPECS. Ver{' '}
-            <Link to="/dados-e-indicadores#estudo-df" className="underline hover:text-pulso-dourado-claro">estudo completo em Dados e Indicadores</Link>.
+            Fonte: {disease.localStudy.source}. Análise de dados públicos já existentes sobre a população negra
+            do Distrito Federal — Instituto APRECIA, com apoio da AECID. Ver{' '}
+            <Link to="/dados-e-indicadores#estudo-df" className="underline hover:text-pulso-dourado-claro">a análise em Dados e Indicadores</Link>.
           </p>
         </div>
       )}
