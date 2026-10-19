@@ -234,8 +234,8 @@ export const diseaseCategories: DiseaseCategory[] = [
     ],
   },
   {
-    id: 'mulher-negra',
-    title: 'Saúde da Mulher Negra',
+    id: 'saude-materna',
+    title: 'Saúde Materna',
     subtitle: 'Risco ↑ + Acesso Desigual',
     icon: '🤱',
     diseases: [
@@ -420,6 +420,12 @@ export const emergentThemes = diseaseCategories
 // Mental e Socioeconômica Contemporânea" desfeita; PrEP fundida em HIV/AIDS;
 // "Uso de Substâncias" fundido em "Abuso de Substância"). Mantém links antigos
 // funcionando: o DiseaseDetail redireciona para o endereço novo.
+// Ids antigos de CATEGORIA → atuais (20/10/2026: "Saúde da Mulher Negra" passou a
+// "Saúde Materna"). Usado pela Biblioteca (?categoria= / #âncora antigos).
+export const LEGACY_CATEGORY_IDS: Record<string, string> = {
+  'mulher-negra': 'saude-materna',
+};
+
 export const LEGACY_DISEASE_IDS: Record<string, string> = {
   'ansiedade-redes-sociais': 'nomofobia',
   'vicio-apostas': 'ludopatia',
@@ -448,6 +454,41 @@ export function orderByRelevance(cats: DiseaseCategory[]): DiseaseCategory[] {
     return b.diseases.length - a.diseases.length;
   });
 }
+
+// RECORTES DA HOME (20/10/2026) — os cards "Conheça sua saúde" da Home abrem a
+// Biblioteca já filtrada. Quando o card corresponde a uma categoria, usa-se
+// ?categoria=<id>; quando é um público (homem, infância, pessoa idosa) que
+// atravessa várias categorias, usa-se ?recorte=<id> com a lista curada abaixo.
+// "prevalentes" é DERIVADO dos temas prioritários (sem lista manual).
+// Curadoria editorial — a validar com a coordenação.
+export interface HealthRecorte {
+  id: string;
+  label: string;
+  diseaseIds: string[];
+}
+
+export const healthRecortes: HealthRecorte[] = [
+  {
+    id: 'homem',
+    label: 'Saúde do Homem Negro',
+    diseaseIds: ['hipertensao', 'avc', 'infarto', 'diabetes', 'doenca-renal-cronica', 'cancer-prostata', 'cancer-colorretal', 'acidentes-transporte', 'abuso-substancia', 'hiv'],
+  },
+  {
+    id: 'infancia',
+    label: 'Saúde na Infância',
+    diseaseIds: ['anemia-falciforme', 'asma', 'diabetes-juvenil', 'sifilis-congenita', 'parto-prematuro', 'obesidade'],
+  },
+  {
+    id: 'idosa',
+    label: 'Saúde da Pessoa Idosa',
+    diseaseIds: ['hipertensao', 'insuficiencia-cardiaca', 'avc', 'diabetes', 'doenca-renal-cronica', 'osteoporose', 'dor-cronica', 'attr-cm', 'cancer-prostata', 'cancer-colorretal'],
+  },
+  {
+    id: 'prevalentes',
+    label: 'Doenças mais Prevalentes',
+    diseaseIds: diseaseCategories.flatMap((c) => c.diseases.filter((d) => d.isPriorityTheme).map((d) => d.id)),
+  },
+];
 
 /** Categorias já ordenadas por relevância (site e app usam a mesma ordem). */
 export const categoriesByRelevance: DiseaseCategory[] = orderByRelevance(diseaseCategories);

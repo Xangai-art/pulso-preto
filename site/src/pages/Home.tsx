@@ -11,8 +11,8 @@ import { HERO_IMAGE } from '../../../shared/data/variants';
 // HUB PÚBLICO (Parte 5.5-B do MAPEAMENTO_ARQUITETURA — D6/D8/D9): a Home é onde
 // vive a descoberta. Ordem: atalhos → Linha 1 SAÚDE (primeiros cards, já que
 // "Saúde" saiu do menu superior; inclui Medicina Tradicional — D8) → Linha 2
-// GENTE (Comunidade, Memória) → Linha 4 SERVIÇOS (espelha o menu superior).
-// A Linha 3 TREINAMENTO (Formação/AVA) aguarda a pendência P1.
+// GENTE (Comunidade, Memória) → Linha 3 TREINAMENTO (/formacao, "em construção"
+// até o conteúdo do AVA — P1) → Linha 4 SERVIÇOS (espelha o menu superior).
 // Parceiros saíram da Home (D9 — institucional mínimo) e vivem em /sobre#parceiros.
 //
 // HISTÓRICO: durante o teste da arquitetura CEOS a Home ramificava por variante
@@ -33,7 +33,8 @@ export default function Home() {
       <PulsoFeatures content={content} />
       <PulsoThemes content={content} />
       <LinkCardRow id="gente" eyebrow={content.gente.eyebrow} heading={content.gente.heading} cards={content.gente.cards} tone="creme" />
-      <LinkCardRow id="servicos" eyebrow={content.services.eyebrow} heading={content.services.heading} cards={content.services.cards} tone="white" />
+      <LinkCardRow id="formacao" eyebrow={content.training.eyebrow} heading={content.training.heading} cards={content.training.cards} tone="white" />
+      <LinkCardRow id="servicos" eyebrow={content.services.eyebrow} heading={content.services.heading} cards={content.services.cards} tone="creme" />
       <PulsoStats content={content} />
       <PulsoMission content={content} />
       <PulsoSeminar content={content} />
@@ -177,7 +178,7 @@ function LinkCardRow({
   cards: LinkCard[];
   tone: 'creme' | 'white';
 }) {
-  const cols = cards.length >= 4 ? 'sm:grid-cols-2 lg:grid-cols-4' : 'sm:grid-cols-2';
+  const cols = cards.length >= 4 ? 'sm:grid-cols-2 lg:grid-cols-4' : cards.length === 1 ? 'sm:grid-cols-2 lg:grid-cols-3' : 'sm:grid-cols-2';
   return (
     <section id={id} className={`${tone === 'creme' ? 'bg-pulso-creme' : 'bg-white'} border-t border-pulso-dourado/20 scroll-mt-24`}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-14">

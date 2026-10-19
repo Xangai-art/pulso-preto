@@ -121,6 +121,12 @@ export interface PulsoContent {
     heading: string;
     cards: LinkCard[];
   };
+  /** Linha 3 da Home — Treinamento (D9). Página /formacao "em construção" (P1). */
+  training: {
+    eyebrow: string;
+    heading: string;
+    cards: LinkCard[];
+  };
   /** Linha 4 da Home — serviços hard (espelha o menu superior). */
   services: {
     eyebrow: string;
@@ -252,17 +258,22 @@ const TO_SAUDE = '/saude';
 const TO_MEDICINA_TRADICIONAL = '/medicina-tradicional-brasileira';
 const TO_ENSAIOS = '/ensaios-clinicos';
 const TO_OUVIDORIA = '/ouvidoria';
-// "Encontre um profissional": a rota dedicada /profissionais depende da base de
-// profissionais (pendência P3, decisão adiada). Até lá, aponta para a seção
-// correspondente dentro da Rede SUS.
-const TO_PROFISSIONAIS = '/rede-sus#encontre-um-profissional';
+// "Encontre um profissional" e "Formação": rotas próprias publicadas "em
+// construção" (20/10/2026) até a base de profissionais (P3) e o AVA (P1).
+const TO_PROFISSIONAIS = '/profissionais';
+const TO_FORMACAO = '/formacao';
 const TO_BAIXAR = '/baixar';
 const TO_COMUNIDADE = '/comunidade';
 const TO_MEMORIA = '/memoria';
 const TO_PARCEIROS = '/sobre#parceiros';
 const TO_ARQUITETURA = '/arquitetura';
-const TO_MULHER = '/saude#mulher-negra';
-const TO_MENTAL = '/saude#saude-mental';
+// Cards "Conheça sua saúde" abrem a Biblioteca já filtrada (20/10/2026).
+const TO_MATERNA = '/saude?categoria=saude-materna';
+const TO_MENTAL = '/saude?categoria=saude-mental';
+const TO_HOMEM = '/saude?recorte=homem';
+const TO_INFANCIA = '/saude?recorte=infancia';
+const TO_IDOSA = '/saude?recorte=idosa';
+const TO_PREVALENTES = '/saude?recorte=prevalentes';
 const TO_REDE_SUS = '/rede-sus';
 const TO_TRANSPARENCIA = '/transparencia';
 const TO_SOBRE = '/sobre';
@@ -306,12 +317,12 @@ const pt: PulsoContent = {
     viewAllLabel: 'VER TODOS OS TEMAS →',
     extraLink: { label: 'Medicina Tradicional Brasileira — plantas com comprovação científica →', to: TO_MEDICINA_TRADICIONAL },
     cards: [
-      { id: 'mulher', title: ['Saúde da', 'Mulher Negra'], subtitle: 'Cuidado em todas as fases da vida.', image: IMG_MULHER, to: TO_MULHER },
-      { id: 'homem', title: ['Saúde do', 'Homem Negro'], subtitle: 'Prevenção também é força.', image: IMG_HOMEM, to: TO_SAUDE },
-      { id: 'infancia', title: ['Saúde na', 'Infância'], subtitle: 'Mais oportunidades para futuros saudáveis.', image: IMG_INFANCIA, to: TO_SAUDE },
-      { id: 'idosa', title: ['Saúde da', 'Pessoa Idosa'], subtitle: 'Longevidade com qualidade de vida.', image: IMG_IDOSA, to: TO_SAUDE },
+      { id: 'materna', title: ['Saúde', 'Materna'], subtitle: 'Gestação, parto e pós-parto com cuidado e respeito.', image: IMG_MULHER, to: TO_MATERNA },
+      { id: 'homem', title: ['Saúde do', 'Homem Negro'], subtitle: 'Prevenção também é força.', image: IMG_HOMEM, to: TO_HOMEM },
+      { id: 'infancia', title: ['Saúde na', 'Infância'], subtitle: 'Mais oportunidades para futuros saudáveis.', image: IMG_INFANCIA, to: TO_INFANCIA },
+      { id: 'idosa', title: ['Saúde da', 'Pessoa Idosa'], subtitle: 'Longevidade com qualidade de vida.', image: IMG_IDOSA, to: TO_IDOSA },
       { id: 'mental', title: ['Saúde Mental'], subtitle: 'Cuidar da mente também é saúde.', image: IMG_MENTAL, to: TO_MENTAL },
-      { id: 'prevalentes', title: ['Doenças mais', 'Prevalentes'], subtitle: 'Informação que salva vidas.', image: IMG_MAOS, to: TO_SAUDE },
+      { id: 'prevalentes', title: ['Doenças mais', 'Prevalentes'], subtitle: 'Informação que salva vidas.', image: IMG_MAOS, to: TO_PREVALENTES },
     ],
   },
   gente: {
@@ -320,6 +331,13 @@ const pt: PulsoContent = {
     cards: [
       { id: 'comunidade', title: 'Comunidade', description: 'Rodas de conversa, coletivos e parceiros que constroem confiança no território.', to: TO_COMUNIDADE, ctaLabel: 'Participar →', icon: '/static/brand/elementos/icone-coracao-pulsa.png' },
       { id: 'memoria', title: 'Memória e Herança', description: 'Histórias de quem cuida e de quem é cuidado — a saúde da população negra contada por ela mesma.', to: TO_MEMORIA, ctaLabel: 'Conhecer histórias →', icon: '/static/brand/elementos/icone-livro-ideias.png' },
+    ],
+  },
+  training: {
+    eyebrow: 'TREINAMENTO —',
+    heading: 'Aprender para cuidar melhor',
+    cards: [
+      { id: 'formacao', title: 'Formação', description: 'Cursos, vídeos e podcasts sobre a saúde da população negra, com certificação digital. Página em construção.', to: TO_FORMACAO, ctaLabel: 'Conhecer a formação →', icon: '/static/brand/elementos/icone-livro-ideias.png' },
     ],
   },
   services: {
@@ -419,12 +437,12 @@ const es: PulsoContent = {
     viewAllLabel: 'VER TODOS LOS TEMAS →',
     extraLink: { label: 'Medicina Tradicional Brasileña — plantas con comprobación científica →', to: TO_MEDICINA_TRADICIONAL },
     cards: [
-      { id: 'mulher', title: ['Salud de la', 'Mujer Negra'], subtitle: 'Cuidado en todas las etapas de la vida.', image: IMG_MULHER, to: TO_MULHER },
-      { id: 'homem', title: ['Salud del', 'Hombre Negro'], subtitle: 'La prevención también es fuerza.', image: IMG_HOMEM, to: TO_SAUDE },
-      { id: 'infancia', title: ['Salud en la', 'Infancia'], subtitle: 'Más oportunidades para futuros saludables.', image: IMG_INFANCIA, to: TO_SAUDE },
-      { id: 'idosa', title: ['Salud de la', 'Persona Mayor'], subtitle: 'Longevidad con calidad de vida.', image: IMG_IDOSA, to: TO_SAUDE },
+      { id: 'materna', title: ['Salud', 'Materna'], subtitle: 'Embarazo, parto y posparto con cuidado y respeto.', image: IMG_MULHER, to: TO_MATERNA },
+      { id: 'homem', title: ['Salud del', 'Hombre Negro'], subtitle: 'La prevención también es fuerza.', image: IMG_HOMEM, to: TO_HOMEM },
+      { id: 'infancia', title: ['Salud en la', 'Infancia'], subtitle: 'Más oportunidades para futuros saludables.', image: IMG_INFANCIA, to: TO_INFANCIA },
+      { id: 'idosa', title: ['Salud de la', 'Persona Mayor'], subtitle: 'Longevidad con calidad de vida.', image: IMG_IDOSA, to: TO_IDOSA },
       { id: 'mental', title: ['Salud Mental'], subtitle: 'Cuidar la mente también es salud.', image: IMG_MENTAL, to: TO_MENTAL },
-      { id: 'prevalentes', title: ['Enfermedades más', 'Prevalentes'], subtitle: 'Información que salva vidas.', image: IMG_MAOS, to: TO_SAUDE },
+      { id: 'prevalentes', title: ['Enfermedades más', 'Prevalentes'], subtitle: 'Información que salva vidas.', image: IMG_MAOS, to: TO_PREVALENTES },
     ],
   },
   gente: {
@@ -433,6 +451,13 @@ const es: PulsoContent = {
     cards: [
       { id: 'comunidade', title: 'Comunidad', description: 'Círculos de conversación, colectivos y socios que construyen confianza en el territorio.', to: TO_COMUNIDADE, ctaLabel: 'Participar →', icon: '/static/brand/elementos/icone-coracao-pulsa.png' },
       { id: 'memoria', title: 'Memoria y Herencia', description: 'Historias de quien cuida y de quien es cuidado — la salud de la población negra contada por ella misma.', to: TO_MEMORIA, ctaLabel: 'Conocer historias →', icon: '/static/brand/elementos/icone-livro-ideias.png' },
+    ],
+  },
+  training: {
+    eyebrow: 'FORMACIÓN —',
+    heading: 'Aprender para cuidar mejor',
+    cards: [
+      { id: 'formacao', title: 'Formación', description: 'Cursos, videos y pódcasts sobre la salud de la población negra, con certificación digital. Página en construcción.', to: TO_FORMACAO, ctaLabel: 'Conocer la formación →', icon: '/static/brand/elementos/icone-livro-ideias.png' },
     ],
   },
   services: {

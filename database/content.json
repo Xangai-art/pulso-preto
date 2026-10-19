@@ -332,8 +332,8 @@
     {
       "id": "miomas-uterinos",
       "name": "Miomas Uterinos",
-      "category_id": "mulher-negra",
-      "category_title": "Saúde da Mulher Negra",
+      "category_id": "saude-materna",
+      "category_title": "Saúde Materna",
       "is_priority_theme": 1,
       "has_deep_content": 1,
       "study": "FEBRASGO / ACOG — leiomiomas uterinos",
@@ -345,8 +345,8 @@
     {
       "id": "parto-prematuro",
       "name": "Parto Prematuro",
-      "category_id": "mulher-negra",
-      "category_title": "Saúde da Mulher Negra",
+      "category_id": "saude-materna",
+      "category_title": "Saúde Materna",
       "is_priority_theme": 0,
       "has_deep_content": 0,
       "study": null,
@@ -358,8 +358,8 @@
     {
       "id": "mortalidade-materna",
       "name": "Mortalidade Materna",
-      "category_id": "mulher-negra",
-      "category_title": "Saúde da Mulher Negra",
+      "category_id": "saude-materna",
+      "category_title": "Saúde Materna",
       "is_priority_theme": 1,
       "has_deep_content": 0,
       "study": "Estudos nacionais e internacionais de saúde materna",
@@ -371,8 +371,8 @@
     {
       "id": "sifilis-congenita",
       "name": "Sífilis Congênita",
-      "category_id": "mulher-negra",
-      "category_title": "Saúde da Mulher Negra",
+      "category_id": "saude-materna",
+      "category_title": "Saúde Materna",
       "is_priority_theme": 0,
       "has_deep_content": 0,
       "study": "Doença evitável com pré-natal adequado (testagem + tratamento oportuno)",

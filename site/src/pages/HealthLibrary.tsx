@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { diseaseCategories, orderByRelevance } from '@shared/data/diseases';
+import { Link, Navigate, useLocation, useSearchParams } from 'react-router-dom';
+import { diseaseCategories, orderByRelevance, healthRecortes, LEGACY_CATEGORY_IDS } from '@shared/data/diseases';
 import { metrics } from '@shared/data/metrics';
 import CategoryIcon from '../components/CategoryIcons';
 import LocalStudyFeature from '../components/LocalStudyFeature';
@@ -8,11 +8,28 @@ import LocalStudyFeature from '../components/LocalStudyFeature';
 
 export default function HealthLibrary() {
   const [query, setQuery] = useState('');
-  const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const { hash } = useLocation();
+  // Filtros vêm da URL (?categoria= / ?recorte=) para que os cards da Home abram
+  // a Biblioteca já filtrada e o endereço possa ser compartilhado.
+  const [params, setParams] = useSearchParams();
+  const rawCategory = params.get('categoria');
+  const categoryParam = rawCategory ? (LEGACY_CATEGORY_IDS[rawCategory] ?? rawCategory) : null;
+  const activeCategory = diseaseCategories.some((c) => c.id === categoryParam) ? categoryParam : null;
+  const recorte = healthRecortes.find((r) => r.id === params.get('recorte')) ?? null;
   const [openIds, setOpenIds] = useState<string[]>(() => {
     const first = orderByRelevance(diseaseCategories)[0];
     return first ? [first.id] : [];
   });
+
+  function updateFilters(next: { categoria?: string | null; recorte?: string | null }) {
+    const p = new URLSearchParams(params);
+    for (const [k, v] of Object.entries(next)) {
+      if (v) p.set(k, v);
+      else p.delete(k);
+    }
+    setParams(p, { replace: true });
+  }
+  const setActiveCategory = (id: string | null) => updateFilters({ categoria: id });
 
   const normalizedQuery = query.trim().toLowerCase();
 
@@ -22,6 +39,7 @@ export default function HealthLibrary() {
       .map((cat) => ({
         ...cat,
         diseases: cat.diseases.filter((d) => {
+          if (recorte && !recorte.diseaseIds.includes(d.id)) return false;
           if (!normalizedQuery) return true;
           return (
             d.name.toLowerCase().includes(normalizedQuery) ||
@@ -32,14 +50,21 @@ export default function HealthLibrary() {
         }),
       }))
       .filter((cat) => cat.diseases.length > 0);
-  }, [normalizedQuery, activeCategory]);
+  }, [normalizedQuery, activeCategory, recorte]);
 
   const noResults = filteredCategories.length === 0;
   const shownCount = filteredCategories.reduce((acc, c) => acc + c.diseases.length, 0);
-  const isFiltering = normalizedQuery.length > 0 || activeCategory !== null;
+  const isFiltering = normalizedQuery.length > 0 || activeCategory !== null || recorte !== null;
 
   function toggleCategory(id: string) {
     setOpenIds((cur) => (cur.includes(id) ? cur.filter((x) => x !== id) : [...cur, id]));
+  }
+
+  // Âncora antiga (#mulher-negra etc.) → filtro pela categoria atual.
+  const legacyHash = hash ? LEGACY_CATEGORY_IDS[decodeURIComponent(hash.slice(1))] : undefined;
+  if (legacyHash) return <Navigate to={`/saude?categoria=${legacyHash}`} replace />;
+  if (rawCategory && rawCategory !== categoryParam && activeCategory) {
+    return <Navigate to={`/saude?categoria=${activeCategory}`} replace />;
   }
 
   return (
@@ -73,20 +98,35 @@ export default function HealthLibrary() {
         <p className="text-xs font-semibold uppercase tracking-wide text-pulso-marrom/70 mb-2">Filtrar por categoria</p>
         <div className="flex flex-wrap gap-2">
           <FilterPill
-            active={activeCategory === null}
-            onClick={() => setActiveCategory(null)}
+            active={activeCategory === null && recorte === null}
+            onClick={() => updateFilters({ categoria: null, recorte: null })}
             label="Todas"
           />
           {diseaseCategories.map((cat) => (
             <FilterPill
               key={cat.id}
               active={activeCategory === cat.id}
-              onClick={() => setActiveCategory((cur) => (cur === cat.id ? null : cat.id))}
+              onClick={() => setActiveCategory(activeCategory === cat.id ? null : cat.id)}
               label={cat.title}
             />
           ))}
         </div>
       </div>
+
+      {recorte && (
+        <div className="mb-4 flex flex-wrap items-center gap-3 rounded-xl border border-pulso-verde-accent/40 bg-pulso-verde-medio/10 px-4 py-3">
+          <span className="text-sm text-pulso-verde">
+            Recorte: <strong>{recorte.label}</strong>
+          </span>
+          <button
+            type="button"
+            onClick={() => updateFilters({ recorte: null })}
+            className="text-xs font-semibold text-pulso-verde-accent hover:underline"
+          >
+            Limpar recorte ×
+          </button>
+        </div>
+      )}
 
       {isFiltering && (
         <p className="text-sm text-pulso-marrom/70 mb-6">

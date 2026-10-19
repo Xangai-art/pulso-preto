@@ -612,16 +612,19 @@ Totais (auto-derivados): **9 categorias · 45 condições**. Links antigos conti
 
 Decisão do responsável: as condições exibem **apenas duas tags** — **"Prioritário"** (`isPriorityTheme`) e **"Estudo local · Distrito Federal"** (`localStudy`). A tag **"Atual"** (e "Realidade brasileira contemporânea" no detalhe) foi **removida** do site e do app; o campo `isNew` permanece nos dados (métrica `emergentThemes`), sem exibição. O app passou a exibir também a tag de estudo local (paridade com o site).
 
+### 8.2-G Saúde Materna, cards filtrados e páginas "em construção" (20/10/2026)
+
+- **Saúde Materna:** o card da Home "Saúde da Mulher Negra" passou a **"Saúde Materna"**, e a categoria correspondente da Biblioteca também (`id: saude-materna`). Endereços antigos (`/saude/mulher-negra/...`, `#mulher-negra`, `?categoria=mulher-negra`) redirecionam (`LEGACY_CATEGORY_IDS`).
+- **Cards da Home abrem a Biblioteca já filtrada:** Materna e Mental → `?categoria=`; Homem, Infância, Pessoa Idosa e Doenças mais Prevalentes → `?recorte=` (`healthRecortes` em `shared/data/diseases.ts`; "prevalentes" é derivado dos temas prioritários). O export do banco falha se um recorte citar condição inexistente. **As listas de Homem, Infância e Pessoa Idosa são curadoria editorial a validar com a coordenação.**
+- **`/profissionais` e `/formacao`** criadas com aviso **"Em construção"**, descrição do que vão oferecer e caminhos que já funcionam. O menu "Encontre um profissional" aponta para `/profissionais`; a Home ganhou a **Linha 3 — Treinamento** (card Formação).
+- **Imagens:** segundo o responsável, Pessoa Idosa, Asma, Depressão e Miomas Uterinos carregam. Verificação em 20/10/2026: Pessoa Idosa, Asma e Depressão carregam; **Miomas Uterinos ainda retorna HTTP 403** fora de uma sessão logada (a confirmar em janela anônima).
+
 ### 8.3 Decisões adiadas (lembrar)
 
-- **Ponto F (5.5-F):** Comunidade e Memória — cards "Gente" na Home (implementado provisoriamente) **ou** itens do menu superior.
-- **`/profissionais` e `/formacao`:** criar já com texto de "em construção" ou esperar o conteúdo (P3/P1).
-- **Imagens quebradas (D15):** 4 URLs do acervo não carregam mais — reenviar os arquivos ou indicar substitutos **do próprio acervo**:
-  - `brandImages.idosa` — card "Saúde da Pessoa Idosa" na Home (HTTP 415)
-  - `asma.ts` heroImage (HTTP 403)
-  - `depressao.ts` heroImage (HTTP 403)
-  - `miomasUterinos.ts` heroImage (HTTP 403)
-- **P23 — Destino de "Violência como resposta reativa" e "Falta de educação financeira":** hoje ficam visíveis na categoria "Outras" apenas para **reter o conteúdo**; decidir se permanecem, se migram para outra categoria/página (ex.: determinantes sociais) ou se saem do catálogo.
+- **Ponto F (5.5-F):** Comunidade e Memória — cards "Gente" na Home (implementado provisoriamente) **ou** itens do menu superior. *Aguardando posição.*
+- **P23 — Destino de "Violência como resposta reativa" e "Falta de educação financeira":** hoje ficam visíveis na categoria "Outras" apenas para **reter o conteúdo**; decidir se permanecem, se migram para outra categoria/página (ex.: determinantes sociais) ou se saem do catálogo. *Aguardando posição.*
+- **"Mulher/Homem Preto" × "Mulher/Homem Negro":** terminologia dos cards e textos. *Aguardando posição.*
+- **Imagem de Miomas Uterinos:** confirmar se carrega para visitantes sem login.
 
 ### 8.4 Próximos passos
 
