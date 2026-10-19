@@ -30,6 +30,29 @@ export interface FeatureCard {
   icon: FeatureIconId;
   title: string[];
   subtitle: string;
+  /** Destino do atalho (D6/D9 — todo cartão leva a um serviço ou conteúdo real). */
+  to: string;
+}
+
+/** Cartão de serviço / área pública na Home (linhas GENTE e SERVIÇOS — Parte 5.5-B). */
+export interface LinkCard {
+  id: string;
+  title: string;
+  description: string;
+  to: string;
+  ctaLabel: string;
+  /** Ícone do acervo oficial de marca (static/brand/elementos) — D15. */
+  icon: string;
+}
+
+export interface NavLinkItem {
+  label: string;
+  to: string;
+}
+
+export interface FooterColumn {
+  heading: string;
+  items: NavLinkItem[];
 }
 
 export interface ThemeCard {
@@ -75,7 +98,8 @@ export interface SeminarContent {
 export interface PulsoContent {
   header: {
     tagline: string;
-    navItems: { label: string; to: string }[];
+    /** Menu superior = SÓ hard services (D6/D7). */
+    navItems: NavLinkItem[];
     ctaLabel: string;
     ctaTo: string;
     searchLabel: string;
@@ -90,8 +114,23 @@ export interface PulsoContent {
   features: FeatureCard[];
   themes: {
     eyebrow: string;
+    heading: string;
     viewAllLabel: string;
     cards: ThemeCard[];
+    /** D8 — Medicina Tradicional vive DENTRO de Saúde. */
+    extraLink: NavLinkItem;
+  };
+  /** Linha 2 da Home — área pública "Gente" (D8). */
+  gente: {
+    eyebrow: string;
+    heading: string;
+    cards: LinkCard[];
+  };
+  /** Linha 4 da Home — serviços hard (espelha o menu superior). */
+  services: {
+    eyebrow: string;
+    heading: string;
+    cards: LinkCard[];
   };
   stats: {
     eyebrow: string;
@@ -118,8 +157,8 @@ export interface PulsoContent {
   seminar: SeminarContent;
   footer: {
     slogan: string;
-    linksHeading: string;
-    linksItems: { label: string; to: string }[];
+    /** Menu inferior = institucional mínimo em 3 colunas (Parte 5.5-C). */
+    columns: FooterColumn[];
     socialHeading: string;
     newsletterHeading: string;
     newsletterPlaceholder: string;
@@ -241,9 +280,21 @@ const SEMINAR_ES: SeminarContent = {
 };
 
 // ---------------------------------------------------------------------------
-// Rotas reaproveitadas da IA existente (sem criar páginas novas)
+// Rotas (Parte 5.5-D — reorganização completa, nada órfão)
 // ---------------------------------------------------------------------------
 const TO_SAUDE = '/saude';
+const TO_MEDICINA_TRADICIONAL = '/medicina-tradicional-brasileira';
+const TO_ENSAIOS = '/ensaios-clinicos';
+const TO_OUVIDORIA = '/ouvidoria';
+// "Encontre um profissional": a rota dedicada /profissionais depende da base de
+// profissionais (pendência P3, decisão adiada). Até lá, aponta para a seção
+// correspondente dentro da Rede SUS.
+const TO_PROFISSIONAIS = '/rede-sus#encontre-um-profissional';
+const TO_BAIXAR = '/baixar';
+const TO_COMUNIDADE = '/comunidade';
+const TO_MEMORIA = '/memoria';
+const TO_PARCEIROS = '/sobre#parceiros';
+const TO_ARQUITETURA = '/arquitetura';
 const TO_MULHER = '/saude#mulher-negra';
 const TO_MENTAL = '/saude#saude-mental';
 const TO_REDE_SUS = '/rede-sus';
@@ -258,15 +309,13 @@ const pt: PulsoContent = {
   header: {
     tagline: 'SAÚDE • CONHECIMENTO • EQUIDADE',
     navItems: [
-      { label: 'Início', to: '/' },
-      { label: 'Sobre', to: TO_SOBRE },
-      { label: 'Temas de Saúde', to: TO_SAUDE },
-      { label: 'Dados e Indicadores', to: TO_TRANSPARENCIA },
-      { label: 'Notícias', to: TO_NOTICIAS },
-      { label: 'Fale Conosco', to: TO_CONTATO },
+      { label: 'Rede SUS', to: TO_REDE_SUS },
+      { label: 'Encontre um profissional', to: TO_PROFISSIONAIS },
+      { label: 'Ensaios Clínicos', to: TO_ENSAIOS },
+      { label: 'Ouvidoria', to: TO_OUVIDORIA },
     ],
-    ctaLabel: 'CUIDE-SE',
-    ctaTo: TO_REDE_SUS,
+    ctaLabel: 'Baixar o App',
+    ctaTo: TO_BAIXAR,
     searchLabel: 'Buscar na Biblioteca de Saúde',
   },
   hero: {
@@ -278,16 +327,18 @@ const pt: PulsoContent = {
     cursive: ['Nossa saúde também importa.'],
   },
   features: [
-    { icon: 'book', title: ['CONHEÇA', 'SUA SAÚDE'], subtitle: 'Informações confiáveis para todas as fases da vida.' },
-    { icon: 'heart', title: ['ENTENDA', 'SEU CORPO'], subtitle: 'Conhecimento sobre as doenças mais prevalentes.' },
-    { icon: 'location', title: ['ENCONTRE', 'CUIDADO'], subtitle: 'Saiba onde buscar atendimento no SUS.' },
-    { icon: 'document', title: ['SEUS DIREITOS'], subtitle: 'Conheça as leis e políticas para a população negra.' },
-    { icon: 'chart', title: ['DADOS E', 'INDICADORES'], subtitle: 'Números que revelam realidades e geram mudanças.' },
-    { icon: 'people', title: ['PARTICIPE'], subtitle: 'Compartilhe experiências e faça parte dessa rede.' },
+    { icon: 'book', title: ['CONHEÇA', 'SUA SAÚDE'], subtitle: 'Informações confiáveis para todas as fases da vida.', to: TO_SAUDE },
+    { icon: 'heart', title: ['ENTENDA', 'SEU CORPO'], subtitle: 'Conhecimento sobre as doenças mais prevalentes.', to: TO_SAUDE },
+    { icon: 'location', title: ['ENCONTRE', 'CUIDADO'], subtitle: 'Saiba onde buscar atendimento no SUS.', to: TO_REDE_SUS },
+    { icon: 'document', title: ['SEUS DIREITOS'], subtitle: 'Conheça as leis e políticas para a população negra.', to: TO_OUVIDORIA },
+    { icon: 'chart', title: ['DADOS E', 'INDICADORES'], subtitle: 'Números que revelam realidades e geram mudanças.', to: TO_TRANSPARENCIA },
+    { icon: 'people', title: ['PARTICIPE'], subtitle: 'Compartilhe experiências e faça parte dessa rede.', to: TO_COMUNIDADE },
   ],
   themes: {
-    eyebrow: 'TEMAS EM DESTAQUE —',
+    eyebrow: 'SAÚDE —',
+    heading: 'Conheça sua saúde',
     viewAllLabel: 'VER TODOS OS TEMAS →',
+    extraLink: { label: 'Medicina Tradicional Brasileira — plantas com comprovação científica →', to: TO_MEDICINA_TRADICIONAL },
     cards: [
       { id: 'mulher', title: ['Saúde da', 'Mulher Negra'], subtitle: 'Cuidado em todas as fases da vida.', image: IMG_MULHER, to: TO_MULHER },
       { id: 'homem', title: ['Saúde do', 'Homem Negro'], subtitle: 'Prevenção também é força.', image: IMG_HOMEM, to: TO_SAUDE },
@@ -295,6 +346,24 @@ const pt: PulsoContent = {
       { id: 'idosa', title: ['Saúde da', 'Pessoa Idosa'], subtitle: 'Longevidade com qualidade de vida.', image: IMG_IDOSA, to: TO_SAUDE },
       { id: 'mental', title: ['Saúde Mental'], subtitle: 'Cuidar da mente também é saúde.', image: IMG_MENTAL, to: TO_MENTAL },
       { id: 'prevalentes', title: ['Doenças mais', 'Prevalentes'], subtitle: 'Informação que salva vidas.', image: IMG_MAOS, to: TO_SAUDE },
+    ],
+  },
+  gente: {
+    eyebrow: 'GENTE —',
+    heading: 'Nossa comunidade, nossa história',
+    cards: [
+      { id: 'comunidade', title: 'Comunidade', description: 'Rodas de conversa, coletivos e parceiros que constroem confiança no território.', to: TO_COMUNIDADE, ctaLabel: 'Participar →', icon: '/static/brand/elementos/icone-coracao-pulsa.png' },
+      { id: 'memoria', title: 'Memória e Herança', description: 'Histórias de quem cuida e de quem é cuidado — a saúde da população negra contada por ela mesma.', to: TO_MEMORIA, ctaLabel: 'Conhecer histórias →', icon: '/static/brand/elementos/icone-livro-ideias.png' },
+    ],
+  },
+  services: {
+    eyebrow: 'SERVIÇOS —',
+    heading: 'Para usar agora',
+    cards: [
+      { id: 'rede-sus', title: 'Rede SUS', description: 'Unidades de saúde do Distrito Federal por região: Unidades Básicas, Unidades de Pronto Atendimento, Hospitais Regionais e Centros de Apoio às Vítimas de Violência.', to: TO_REDE_SUS, ctaLabel: 'Encontrar atendimento →', icon: '/static/brand/elementos/icone-hospital-comunidade.png' },
+      { id: 'profissionais', title: 'Encontre um profissional', description: 'Atendimento humanizado e culturalmente competente na rede pública e privada do Distrito Federal.', to: TO_PROFISSIONAIS, ctaLabel: 'Buscar profissional →', icon: '/static/brand/elementos/icone-coracao-pulsa.png' },
+      { id: 'ensaios', title: 'Ensaios Clínicos', description: 'Entenda o que são pesquisas clínicas, seus direitos e onde encontrar estudos com aprovação ética.', to: TO_ENSAIOS, ctaLabel: 'Saber mais →', icon: '/static/brand/elementos/icone-livro-ideias.png' },
+      { id: 'ouvidoria', title: 'Ouvidoria', description: 'Sofreu discriminação em um atendimento de saúde? Relate e conheça seus direitos.', to: TO_OUVIDORIA, ctaLabel: 'Relatar agora →', icon: '/static/brand/elementos/icone-mao-balanca.png' },
     ],
   },
   stats: {
@@ -333,13 +402,19 @@ const pt: PulsoContent = {
   seminar: SEMINAR_PT,
   footer: {
     slogan: 'Saúde hoje. Mais futuro amanhã.',
-    linksHeading: 'Links',
-    linksItems: [
-      { label: 'Sobre', to: TO_SOBRE },
-      { label: 'Temas de Saúde', to: TO_SAUDE },
-      { label: 'Dados e Indicadores', to: TO_TRANSPARENCIA },
-      { label: 'Notícias', to: TO_NOTICIAS },
-      { label: 'Fale Conosco', to: TO_CONTATO },
+    columns: [
+      { heading: 'Quem somos', items: [
+        { label: 'Sobre / Quem somos', to: TO_SOBRE },
+        { label: 'Parceiros', to: TO_PARCEIROS },
+      ] },
+      { heading: 'Transparência', items: [
+        { label: 'Transparência e governança', to: TO_TRANSPARENCIA },
+        { label: 'Relatório de Arquitetura', to: TO_ARQUITETURA },
+      ] },
+      { heading: 'Comunicação', items: [
+        { label: 'Notícias', to: TO_NOTICIAS },
+        { label: 'Fale Conosco', to: TO_CONTATO },
+      ] },
     ],
     socialHeading: 'Redes Sociais',
     newsletterHeading: 'Receba novidades',
@@ -352,15 +427,13 @@ const es: PulsoContent = {
   header: {
     tagline: 'SALUD • CONOCIMIENTO • EQUIDAD',
     navItems: [
-      { label: 'Inicio', to: '/' },
-      { label: 'Sobre', to: TO_SOBRE },
-      { label: 'Temas de Salud', to: TO_SAUDE },
-      { label: 'Datos e Indicadores', to: TO_TRANSPARENCIA },
-      { label: 'Noticias', to: TO_NOTICIAS },
-      { label: 'Contáctanos', to: TO_CONTATO },
+      { label: 'Red SUS', to: TO_REDE_SUS },
+      { label: 'Encuentra un profesional', to: TO_PROFISSIONAIS },
+      { label: 'Ensayos Clínicos', to: TO_ENSAIOS },
+      { label: 'Defensoría', to: TO_OUVIDORIA },
     ],
-    ctaLabel: 'CUÍDATE',
-    ctaTo: TO_REDE_SUS,
+    ctaLabel: 'Descargar la App',
+    ctaTo: TO_BAIXAR,
     searchLabel: 'Buscar en la Biblioteca de Salud',
   },
   hero: {
@@ -372,16 +445,18 @@ const es: PulsoContent = {
     cursive: ['Nuestra salud también importa.'],
   },
   features: [
-    { icon: 'book', title: ['CONOCE', 'TU SALUD'], subtitle: 'Información confiable para todas las etapas de la vida.' },
-    { icon: 'heart', title: ['ENTIENDE', 'TU CUERPO'], subtitle: 'Conocimiento sobre las enfermedades más prevalentes.' },
-    { icon: 'location', title: ['ENCUENTRA', 'ATENCIÓN'], subtitle: 'Sepa dónde buscar atención en el SUS.' },
-    { icon: 'document', title: ['TUS DERECHOS'], subtitle: 'Conoce las leyes y políticas para la población negra.' },
-    { icon: 'chart', title: ['DATOS E', 'INDICADORES'], subtitle: 'Números que revelan realidades y generan cambios.' },
-    { icon: 'people', title: ['PARTICIPA'], subtitle: 'Comparte experiencias y forma parte de esta red.' },
+    { icon: 'book', title: ['CONOCE', 'TU SALUD'], subtitle: 'Información confiable para todas las etapas de la vida.', to: TO_SAUDE },
+    { icon: 'heart', title: ['ENTIENDE', 'TU CUERPO'], subtitle: 'Conocimiento sobre las enfermedades más prevalentes.', to: TO_SAUDE },
+    { icon: 'location', title: ['ENCUENTRA', 'ATENCIÓN'], subtitle: 'Sepa dónde buscar atención en el SUS.', to: TO_REDE_SUS },
+    { icon: 'document', title: ['TUS DERECHOS'], subtitle: 'Conoce las leyes y políticas para la población negra.', to: TO_OUVIDORIA },
+    { icon: 'chart', title: ['DATOS E', 'INDICADORES'], subtitle: 'Números que revelan realidades y generan cambios.', to: TO_TRANSPARENCIA },
+    { icon: 'people', title: ['PARTICIPA'], subtitle: 'Comparte experiencias y forma parte de esta red.', to: TO_COMUNIDADE },
   ],
   themes: {
-    eyebrow: 'TEMAS DESTACADOS —',
+    eyebrow: 'SALUD —',
+    heading: 'Conoce tu salud',
     viewAllLabel: 'VER TODOS LOS TEMAS →',
+    extraLink: { label: 'Medicina Tradicional Brasileña — plantas con comprobación científica →', to: TO_MEDICINA_TRADICIONAL },
     cards: [
       { id: 'mulher', title: ['Salud de la', 'Mujer Negra'], subtitle: 'Cuidado en todas las etapas de la vida.', image: IMG_MULHER, to: TO_MULHER },
       { id: 'homem', title: ['Salud del', 'Hombre Negro'], subtitle: 'La prevención también es fuerza.', image: IMG_HOMEM, to: TO_SAUDE },
@@ -389,6 +464,24 @@ const es: PulsoContent = {
       { id: 'idosa', title: ['Salud de la', 'Persona Mayor'], subtitle: 'Longevidad con calidad de vida.', image: IMG_IDOSA, to: TO_SAUDE },
       { id: 'mental', title: ['Salud Mental'], subtitle: 'Cuidar la mente también es salud.', image: IMG_MENTAL, to: TO_MENTAL },
       { id: 'prevalentes', title: ['Enfermedades más', 'Prevalentes'], subtitle: 'Información que salva vidas.', image: IMG_MAOS, to: TO_SAUDE },
+    ],
+  },
+  gente: {
+    eyebrow: 'GENTE —',
+    heading: 'Nuestra comunidad, nuestra historia',
+    cards: [
+      { id: 'comunidade', title: 'Comunidad', description: 'Círculos de conversación, colectivos y socios que construyen confianza en el territorio.', to: TO_COMUNIDADE, ctaLabel: 'Participar →', icon: '/static/brand/elementos/icone-coracao-pulsa.png' },
+      { id: 'memoria', title: 'Memoria y Herencia', description: 'Historias de quien cuida y de quien es cuidado — la salud de la población negra contada por ella misma.', to: TO_MEMORIA, ctaLabel: 'Conocer historias →', icon: '/static/brand/elementos/icone-livro-ideias.png' },
+    ],
+  },
+  services: {
+    eyebrow: 'SERVICIOS —',
+    heading: 'Para usar ahora',
+    cards: [
+      { id: 'rede-sus', title: 'Red SUS', description: 'Unidades de salud del Distrito Federal por región: Unidades Básicas, Unidades de Atención de Urgencia, Hospitales Regionales y Centros de Apoyo a Víctimas de Violencia.', to: TO_REDE_SUS, ctaLabel: 'Encontrar atención →', icon: '/static/brand/elementos/icone-hospital-comunidade.png' },
+      { id: 'profissionais', title: 'Encuentra un profesional', description: 'Atención humanizada y culturalmente competente en la red pública y privada del Distrito Federal.', to: TO_PROFISSIONAIS, ctaLabel: 'Buscar profesional →', icon: '/static/brand/elementos/icone-coracao-pulsa.png' },
+      { id: 'ensaios', title: 'Ensayos Clínicos', description: 'Entiende qué son las investigaciones clínicas, tus derechos y dónde encontrar estudios con aprobación ética.', to: TO_ENSAIOS, ctaLabel: 'Saber más →', icon: '/static/brand/elementos/icone-livro-ideias.png' },
+      { id: 'ouvidoria', title: 'Defensoría', description: '¿Sufriste discriminación en una atención de salud? Denuncia y conoce tus derechos.', to: TO_OUVIDORIA, ctaLabel: 'Denunciar ahora →', icon: '/static/brand/elementos/icone-mao-balanca.png' },
     ],
   },
   stats: {
@@ -427,13 +520,19 @@ const es: PulsoContent = {
   seminar: SEMINAR_ES,
   footer: {
     slogan: 'Salud hoy. Más futuro mañana.',
-    linksHeading: 'Enlaces',
-    linksItems: [
-      { label: 'Sobre', to: TO_SOBRE },
-      { label: 'Temas de Salud', to: TO_SAUDE },
-      { label: 'Datos e Indicadores', to: TO_TRANSPARENCIA },
-      { label: 'Noticias', to: TO_NOTICIAS },
-      { label: 'Contáctanos', to: TO_CONTATO },
+    columns: [
+      { heading: 'Quiénes somos', items: [
+        { label: 'Sobre / Quiénes somos', to: TO_SOBRE },
+        { label: 'Socios', to: TO_PARCEIROS },
+      ] },
+      { heading: 'Transparencia', items: [
+        { label: 'Transparencia y gobernanza', to: TO_TRANSPARENCIA },
+        { label: 'Informe de Arquitectura', to: TO_ARQUITETURA },
+      ] },
+      { heading: 'Comunicación', items: [
+        { label: 'Noticias', to: TO_NOTICIAS },
+        { label: 'Contáctanos', to: TO_CONTATO },
+      ] },
     ],
     socialHeading: 'Redes Sociales',
     newsletterHeading: 'Recibe novedades',

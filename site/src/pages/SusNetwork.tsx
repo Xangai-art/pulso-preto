@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import {
   healthUnits,
   healthRegions,
@@ -157,8 +158,10 @@ export default function SusNetwork() {
         ))}
       </div>
 
-      <div className="rounded-xl border border-pulso-dourado/25 bg-pulso-creme p-6">
-        <h2 className="font-bold text-pulso-verde mb-2">Rede privada e atendimento humanizado (em construção)</h2>
+      {/* Âncora do item de menu "Encontre um profissional" (D7). A rota dedicada
+          /profissionais aguarda a base de profissionais (pendência P3). */}
+      <div id="encontre-um-profissional" className="rounded-xl border border-pulso-dourado/25 bg-pulso-creme p-6 scroll-mt-24">
+        <h2 className="font-bold text-pulso-verde mb-2">Encontre um profissional — rede privada e atendimento humanizado (em construção)</h2>
         <p className="text-sm text-pulso-marrom">
           Recuperando a aba original "Onde encontrar especialistas", o objetivo é permitir busca também por
           profissionais da rede privada com filtro de "atendimento humanizado/culturalmente competente" —
@@ -169,12 +172,12 @@ export default function SusNetwork() {
       <div className="mt-8 rounded-xl border border-pulso-dourado/25 p-6">
         <h2 className="font-bold text-pulso-verde mb-2">Direito à saúde</h2>
         <p className="text-sm text-pulso-marrom mb-3">
-          Se você sofreu discriminação em um atendimento de saúde, você pode relatar pelo App Sentinela. O
-          relato é encaminhado, com consentimento, para acompanhamento institucional.
+          Se você sofreu discriminação em um atendimento de saúde, a Ouvidoria reúne o relato pelo App Sentinela,
+          os canais oficiais de denúncia e os seus direitos.
         </p>
-        <a href={APP_URL} target="_blank" rel="noopener noreferrer" className="text-pulso-verde-accent hover:underline font-medium text-sm">
-          Relatar no App Sentinela →
-        </a>
+        <Link to="/ouvidoria" className="text-pulso-verde-accent hover:underline font-medium text-sm">
+          Ir para a Ouvidoria →
+        </Link>
       </div>
     </div>
   );

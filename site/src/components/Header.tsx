@@ -13,11 +13,15 @@ import { HeartbeatLine } from './PulsoIcons';
 // header "Pulso Preto" plano). Esse teste foi encerrado. Em PP3 existe apenas
 // este header, fiel à identidade oficial: logo + subtítulo em maiúsculas, nav
 // plana, ícone de busca, seletor de idioma e CTA sólido.
+//
+// MENU SUPERIOR = SÓ HARD SERVICES (D6/D7 — Parte 5.5-A do MAPEAMENTO):
+//   Rede SUS · Encontre um profissional · Ensaios Clínicos · Ouvidoria · [Baixar o App]
+// "Saúde" saiu do menu e virou os primeiros cards da Home; o institucional
+// mínimo vive no rodapé (menu inferior).
 export default function Header() {
   const { brand, localeId } = useAppearance();
   const content = getPulsoContent(localeId);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const { t } = useAppearance();
 
   return (
     <header className="sticky top-0 z-50 bg-pulso-creme/95 backdrop-blur border-b border-pulso-dourado/30 font-pulso-body">
@@ -64,16 +68,10 @@ export default function Header() {
         <div className="hidden lg:flex items-center gap-2 shrink-0">
           <LocaleSwitcher />
           <NavLink
-            to="/baixar"
-            className="rounded-md border border-pulso-verde text-pulso-verde px-3 py-2 text-xs font-bold uppercase tracking-wide hover:bg-pulso-verde hover:text-pulso-creme transition-colors"
-          >
-            📱 {t('app.download.cta')}
-          </NavLink>
-          <NavLink
             to={content.header.ctaTo}
             className="rounded-md bg-pulso-verde text-pulso-creme px-4 py-2 text-sm font-bold uppercase tracking-wide hover:bg-pulso-marrom transition-colors"
           >
-            {content.header.ctaLabel}
+            📱 {content.header.ctaLabel}
           </NavLink>
         </div>
 
@@ -108,18 +106,11 @@ export default function Header() {
             </Link>
           ))}
           <Link
-            to="/baixar"
-            onClick={() => setMobileOpen(false)}
-            className="px-3 py-2 rounded-md text-sm font-bold uppercase text-center text-pulso-verde border border-pulso-verde"
-          >
-            📱 {t('app.download.cta')}
-          </Link>
-          <Link
             to={content.header.ctaTo}
             onClick={() => setMobileOpen(false)}
             className="mt-1 px-3 py-2 rounded-md text-sm font-bold uppercase text-center text-pulso-creme bg-pulso-verde hover:bg-pulso-marrom"
           >
-            {content.header.ctaLabel}
+            📱 {content.header.ctaLabel}
           </Link>
         </div>
       )}

@@ -15,10 +15,13 @@ import Transparency from './pages/Transparency';
 import AppAccess from './pages/AppAccess';
 import Architecture from './pages/Architecture';
 import NotFound from './pages/NotFound';
+import Ouvidoria from './pages/Ouvidoria';
+import ScrollToHash from './components/ScrollToHash';
 
 function App() {
   return (
     <div className="min-h-screen flex flex-col bg-white text-pulso-verde">
+      <ScrollToHash />
       <Header />
       <main className="flex-1">
         <Routes>
@@ -40,6 +43,8 @@ function App() {
           <Route path="/noticias" element={<News />} />
           <Route path="/comunidade" element={<Community />} />
           <Route path="/rede-sus" element={<SusNetwork />} />
+          <Route path="/ouvidoria" element={<Ouvidoria />} />
+          <Route path="/direito-a-saude" element={<Navigate to="/ouvidoria" replace />} />
           <Route path="/transparencia" element={<Transparency />} />
           <Route path="/arquitetura" element={<Architecture />} />
           <Route path="/acessar-app" element={<AppAccess />} />

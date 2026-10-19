@@ -1,12 +1,18 @@
 import { Link } from 'react-router-dom';
-import { partners } from '../data/project';
 import { useAppearance } from '@shared/context/AppearanceContext';
 import { getPulsoContent } from '@shared/data/pulsoContent';
-import type { PulsoContent } from '../../../shared/data/pulsoContent';
+import type { PulsoContent, LinkCard } from '../../../shared/data/pulsoContent';
 import PulsoIcon from '../components/PulsoIcons';
 import { HERO_IMAGE } from '../../../shared/data/variants';
 
 // Home "Pulso Preto" — identidade ÚNICA de produção (PP3).
+//
+// HUB PÚBLICO (Parte 5.5-B do MAPEAMENTO_ARQUITETURA — D6/D8/D9): a Home é onde
+// vive a descoberta. Ordem: atalhos → Linha 1 SAÚDE (primeiros cards, já que
+// "Saúde" saiu do menu superior; inclui Medicina Tradicional — D8) → Linha 2
+// GENTE (Comunidade, Memória) → Linha 4 SERVIÇOS (espelha o menu superior).
+// A Linha 3 TREINAMENTO (Formação/AVA) aguarda a pendência P1.
+// Parceiros saíram da Home (D9 — institucional mínimo) e vivem em /sobre#parceiros.
 //
 // HISTÓRICO: durante o teste da arquitetura CEOS a Home ramificava por variante
 // (GP0 → Home "Gente Preta"; PP1/PP2 → Home "Pulso Preto"). Esse teste foi
@@ -25,11 +31,12 @@ export default function Home() {
       <PulsoHero content={content} />
       <PulsoFeatures content={content} />
       <PulsoThemes content={content} />
+      <LinkCardRow id="gente" eyebrow={content.gente.eyebrow} heading={content.gente.heading} cards={content.gente.cards} tone="creme" />
+      <LinkCardRow id="servicos" eyebrow={content.services.eyebrow} heading={content.services.heading} cards={content.services.cards} tone="white" />
       <PulsoStats content={content} />
       <PulsoMission content={content} />
       <PulsoSeminar content={content} />
       <PulsoNews content={content} />
-      <PulsoPartners />
     </div>
   );
 }
@@ -86,7 +93,7 @@ function PulsoFeatures({ content }: { content: PulsoContent }) {
     <section className="bg-pulso-creme border-b border-pulso-dourado/20">
       <div className={`max-w-6xl mx-auto px-4 sm:px-6 py-12 grid ${cols} gap-6`}>
         {content.features.map((f, i) => (
-          <div key={i} className="flex flex-col items-start gap-3">
+          <Link key={i} to={f.to} className="group flex flex-col items-start gap-3 rounded-lg -m-2 p-2 hover:bg-pulso-dourado/10 transition-colors">
             <div className="rounded-full bg-pulso-verde/10 p-3">
               <PulsoIcon id={f.icon} size={26} color="#06201B" />
             </div>
@@ -96,7 +103,7 @@ function PulsoFeatures({ content }: { content: PulsoContent }) {
               ))}
             </h3>
             <p className="text-xs text-pulso-marrom/75 leading-snug">{f.subtitle}</p>
-          </div>
+          </Link>
         ))}
       </div>
     </section>
@@ -109,7 +116,10 @@ function PulsoThemes({ content }: { content: PulsoContent }) {
     <section className="bg-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16">
         <div className="flex items-end justify-between mb-8 flex-wrap gap-2">
-          <span className="text-xs font-bold uppercase tracking-wider text-pulso-terracota">{th.eyebrow}</span>
+          <div>
+            <span className="text-xs font-bold uppercase tracking-wider text-pulso-terracota block mb-1">{th.eyebrow}</span>
+            <h2 className="font-pulso-display text-2xl sm:text-3xl font-bold text-pulso-verde">{th.heading}</h2>
+          </div>
           <Link to="/saude" className="text-pulso-verde text-sm font-bold hover:underline">{th.viewAllLabel}</Link>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -137,6 +147,52 @@ function PulsoThemes({ content }: { content: PulsoContent }) {
                 </div>
                 <span className="shrink-0 rounded-full bg-pulso-dourado text-pulso-verde w-8 h-8 flex items-center justify-center font-bold">→</span>
               </div>
+            </Link>
+          ))}
+        </div>
+        <div className="mt-6 text-right">
+          <Link to={th.extraLink.to} className="text-pulso-verde-medio text-sm font-semibold hover:underline">
+            {th.extraLink.label}
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// Linhas "GENTE" e "SERVIÇOS" da Home (Parte 5.5-B). Cartões discretos, com os
+// ícones oficiais do acervo de marca — no padrão aprovado no Áudio 2 ("ficou
+// pequeno, não gritou mais do que o que é mais importante").
+function LinkCardRow({
+  id,
+  eyebrow,
+  heading,
+  cards,
+  tone,
+}: {
+  id: string;
+  eyebrow: string;
+  heading: string;
+  cards: LinkCard[];
+  tone: 'creme' | 'white';
+}) {
+  const cols = cards.length >= 4 ? 'sm:grid-cols-2 lg:grid-cols-4' : 'sm:grid-cols-2';
+  return (
+    <section id={id} className={`${tone === 'creme' ? 'bg-pulso-creme' : 'bg-white'} border-t border-pulso-dourado/20 scroll-mt-24`}>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-14">
+        <span className="text-xs font-bold uppercase tracking-wider text-pulso-terracota block mb-1">{eyebrow}</span>
+        <h2 className="font-pulso-display text-2xl sm:text-3xl font-bold text-pulso-verde mb-8">{heading}</h2>
+        <div className={`grid ${cols} gap-5`}>
+          {cards.map((c) => (
+            <Link
+              key={c.id}
+              to={c.to}
+              className="group flex flex-col rounded-xl border border-pulso-dourado/30 bg-white p-5 hover:border-pulso-verde-accent hover:shadow-md transition"
+            >
+              <img src={c.icon} alt="" aria-hidden="true" className="w-10 h-10 object-contain mb-3" loading="lazy" />
+              <h3 className="font-bold text-pulso-verde mb-1.5">{c.title}</h3>
+              <p className="text-sm text-pulso-marrom/80 leading-snug flex-1">{c.description}</p>
+              <span className="mt-4 text-sm font-bold text-pulso-verde-medio group-hover:underline">{c.ctaLabel}</span>
             </Link>
           ))}
         </div>
@@ -295,47 +351,6 @@ function PulsoNews({ content }: { content: PulsoContent }) {
               </div>
             </article>
           ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// Parceiros e Governança — reaproveita o acervo de logos oficiais de parceiros
-// (site/public/static/brand/partners/) fornecido no pacote de identidade de
-// marca (Logotipos.zip). Re-tematizado para a identidade Pulso Preto.
-function PulsoPartners() {
-  const all = [
-    ...partners.financiamento,
-    ...partners.institucional,
-    ...partners.execucao,
-    ...partners.academico,
-    ...partners.comunitario,
-  ];
-  return (
-    <section className="bg-pulso-verde-medio/10 border-t border-pulso-dourado/20">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16">
-        <span className="text-xs font-bold uppercase tracking-wider text-pulso-terracota block mb-2">PARCEIROS E GOVERNANÇA —</span>
-        <h2 className="font-pulso-display text-2xl sm:text-3xl font-bold text-pulso-verde mb-8">Quem constrói o Pulso Preto</h2>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 text-sm">
-          {all.map((p) => {
-            const logo = (p as { logo?: string }).logo;
-            return (
-              <div key={p.name} className="rounded-lg bg-white border border-pulso-dourado/25 p-4">
-                {logo && (
-                  <img src={logo} alt={`Logotipo ${p.name}`} className="h-8 w-auto mb-3 object-contain" loading="lazy" />
-                )}
-                <div className="font-bold text-pulso-verde">{p.name}</div>
-                <div className="text-pulso-marrom/70 text-xs mb-1">{p.full}</div>
-                <div className="text-pulso-marrom/50 text-xs">{p.role}</div>
-              </div>
-            );
-          })}
-        </div>
-        <div className="text-center mt-8">
-          <Link to="/transparencia" className="text-pulso-verde hover:underline font-medium">
-            Ver política completa de transparência e governança →
-          </Link>
         </div>
       </div>
     </section>
