@@ -25,9 +25,9 @@ export const heroSlides: HeroSlide[] = [
   {
     id: 'biblioteca',
     eyebrow: 'Biblioteca de Saúde',
-    title: 'Evidência científica com recorte racial, sem misticismo',
+    title: 'Evidência científica, sem misticismo',
     description:
-      'Cada condição traz Estudo + Achado + Implicação prática, incluindo dados locais do primeiro estudo epidemiológico do DF que estratifica saúde por raça/cor.',
+      'Cada condição traz o que a ciência mostra e o que isso significa na prática, incluindo dados locais do primeiro estudo epidemiológico do DF que estratifica saúde por raça/cor.',
     stat: '48+',
     statLabel: 'condições mapeadas com estudo científico',
     tone: 'brand',

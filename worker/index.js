@@ -53,7 +53,7 @@ async function loadStaticContent(env, requestUrl) {
 async function loadContentFromD1(db, diseaseId, localeId) {
   const rows = await db
     .prepare(
-      'SELECT id, audience, summary, hero_image_url, hero_image_alt, hero_image_credit, hero_is_placeholder ' +
+      'SELECT id, audience, summary, hero_image_url, hero_image_alt, hero_image_credit ' +
         'FROM disease_content WHERE disease_id = ? AND locale_id = ?'
     )
     .bind(diseaseId, localeId)
@@ -91,7 +91,6 @@ async function loadContentFromD1(db, diseaseId, localeId) {
       url: first.hero_image_url,
       alt: first.hero_image_alt,
       credit: first.hero_image_credit,
-      isPlaceholder: !!first.hero_is_placeholder,
     },
     audiences,
     sources: (srcRows?.results ?? []).map((s) => ({ label: s.label, detail: s.detail })),

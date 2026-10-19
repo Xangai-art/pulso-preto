@@ -18,7 +18,7 @@ import NotFound from './pages/NotFound';
 
 function App() {
   return (
-    <div className="min-h-screen flex flex-col bg-white text-earth-800">
+    <div className="min-h-screen flex flex-col bg-white text-pulso-verde">
       <Header />
       <main className="flex-1">
         <Routes>

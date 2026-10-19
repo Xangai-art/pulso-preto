@@ -19,9 +19,9 @@ const AUDIENCE_ICON: Record<AudienceKey, string> = {
 };
 
 const AUDIENCE_TONE: Record<AudienceKey, string> = {
-  medico: 'border-brand-500 bg-brand-50 text-brand-800',
-  enfermeiro: 'border-ouro-500 bg-palha-50 text-ouro-700',
-  usuario: 'border-folha-500 bg-folha-50 text-folha-700',
+  medico: 'border-pulso-verde-medio bg-pulso-verde-accent/10 text-pulso-verde',
+  enfermeiro: 'border-pulso-dourado bg-pulso-creme text-pulso-dourado',
+  usuario: 'border-pulso-verde-accent bg-pulso-verde-medio/10 text-pulso-verde-medio',
 };
 
 export default function AudienceContentTabs({ content }: { content: DiseaseDeepContent }) {
@@ -32,11 +32,11 @@ export default function AudienceContentTabs({ content }: { content: DiseaseDeepC
   return (
     <div className="mt-10">
       <div className="mb-2 flex items-center gap-2">
-        <span className="h-px flex-1 bg-earth-200" />
-        <span className="text-xs uppercase tracking-wide text-earth-400 font-semibold px-2">
+        <span className="h-px flex-1 bg-pulso-dourado/25" />
+        <span className="text-xs uppercase tracking-wide text-pulso-marrom/60 font-semibold px-2">
           Conteúdo por audiência
         </span>
-        <span className="h-px flex-1 bg-earth-200" />
+        <span className="h-px flex-1 bg-pulso-dourado/25" />
       </div>
 
       <div
@@ -52,7 +52,7 @@ export default function AudienceContentTabs({ content }: { content: DiseaseDeepC
             aria-selected={active === key}
             onClick={() => setActive(key)}
             className={`rounded-xl border-2 px-3 py-3 text-left transition-colors ${
-              active === key ? AUDIENCE_TONE[key] : 'border-earth-200 text-earth-500 hover:bg-earth-50'
+              active === key ? AUDIENCE_TONE[key] : 'border-pulso-dourado/25 text-pulso-marrom/70 hover:bg-pulso-creme'
             }`}
           >
             <span className="block text-lg mb-1" aria-hidden="true">{AUDIENCE_ICON[key]}</span>
@@ -61,19 +61,19 @@ export default function AudienceContentTabs({ content }: { content: DiseaseDeepC
         ))}
       </div>
 
-      <p className="text-xs text-earth-400 mb-6 italic">{t(`disease.audience.description.${active}`)}</p>
+      <p className="text-xs text-pulso-marrom/60 mb-6 italic">{t(`disease.audience.description.${active}`)}</p>
 
-      <div className="rounded-xl border border-earth-200 bg-white p-5 sm:p-6">
-        <p className="text-sm font-semibold text-earth-800 mb-5">{audience.summary}</p>
+      <div className="rounded-xl border border-pulso-dourado/25 bg-white p-5 sm:p-6">
+        <p className="text-sm font-semibold text-pulso-verde mb-5">{audience.summary}</p>
         <div className="space-y-6">
           {audience.sections.map((section) => (
             <div key={section.heading}>
-              <h3 className="text-sm font-bold text-earth-900 uppercase tracking-wide mb-2">
+              <h3 className="text-sm font-bold text-pulso-verde uppercase tracking-wide mb-2">
                 {section.heading}
               </h3>
               <div className="space-y-3">
                 {section.body.map((paragraph, i) => (
-                  <p key={i} className="text-sm text-earth-700 leading-relaxed">
+                  <p key={i} className="text-sm text-pulso-marrom leading-relaxed">
                     {paragraph}
                   </p>
                 ))}
@@ -83,12 +83,12 @@ export default function AudienceContentTabs({ content }: { content: DiseaseDeepC
         </div>
       </div>
 
-      <div className="mt-6 rounded-xl border border-earth-200 bg-earth-50 p-5">
-        <h3 className="text-xs font-bold text-earth-700 uppercase tracking-wide mb-3">Fontes</h3>
+      <div className="mt-6 rounded-xl border border-pulso-dourado/25 bg-pulso-creme p-5">
+        <h3 className="text-xs font-bold text-pulso-marrom uppercase tracking-wide mb-3">Fontes</h3>
         <ul className="space-y-2">
           {content.sources.map((s) => (
-            <li key={s.label} className="text-xs text-earth-600">
-              <strong className="text-earth-800">{s.label}</strong> — {s.detail}
+            <li key={s.label} className="text-xs text-pulso-marrom">
+              <strong className="text-pulso-verde">{s.label}</strong> — {s.detail}
             </li>
           ))}
         </ul>

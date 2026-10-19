@@ -1,6 +1,5 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useAppStore } from './store/useAppStore';
-import { useAppearance } from '@shared/context/AppearanceContext';
 import BottomNav from './components/BottomNav';
 
 import Welcome from './pages/Welcome';
@@ -30,17 +29,9 @@ function RequireOnboarding({ children }: { children: React.ReactNode }) {
 function App() {
   const consent = useAppStore((s) => s.consent);
   const onboarded = useAppStore((s) => s.onboarded);
-  const { variantId } = useAppearance();
-  const isPulso = variantId === 'pp1' || variantId === 'pp2';
 
   return (
-    <div
-      className={
-        isPulso
-          ? 'min-h-screen bg-pulso-creme flex flex-col max-w-md mx-auto relative'
-          : 'min-h-screen bg-earth-50 flex flex-col max-w-md mx-auto relative'
-      }
-    >
+    <div className="min-h-screen bg-pulso-creme font-pulso-body flex flex-col max-w-md mx-auto relative">
       <div className="flex-1 pb-20">
         <Routes>
           <Route path="/bem-vindo" element={<Welcome />} />

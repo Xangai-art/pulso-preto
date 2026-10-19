@@ -1,6 +1,7 @@
-// Ornamentos geométricos discretos — paleta ancestral-cultural (ref. Ìlera V2/V3).
+// Ornamentos geométricos discretos — paleta OFICIAL Pulso Preto (SSOT).
 // Todos abstratos e geométricos, nunca figurativos. Usados como divisores, marcadores
 // de seção e assinatura visual. Ver documentação pública em /arquitetura ("Sistema de design").
+import { PULSO_PALETTE } from '@shared/data/pulsoPalette';
 
 interface LeafMarkProps {
   size?: number;
@@ -8,7 +9,7 @@ interface LeafMarkProps {
   className?: string;
 }
 
-export function LeafMark({ size = 24, color = '#3d6e51', className = '' }: LeafMarkProps) {
+export function LeafMark({ size = 24, color = PULSO_PALETTE.verdeAccent, className = '' }: LeafMarkProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" className={className} aria-hidden="true">
       <path
@@ -16,7 +17,7 @@ export function LeafMark({ size = 24, color = '#3d6e51', className = '' }: LeafM
         fill={color}
         opacity="0.9"
       />
-      <path d="M12 3 L 8 17" stroke="#f4f0e6" strokeWidth="0.8" fill="none" opacity="0.5" />
+      <path d="M12 3 L 8 17" stroke={PULSO_PALETTE.creme} strokeWidth="0.8" fill="none" opacity="0.5" />
     </svg>
   );
 }
@@ -43,7 +44,7 @@ export function PalhaLine({ width = 60, className = '' }: PalhaLineProps) {
           y={(12 - h) / 2}
           width={2}
           height={h}
-          fill={i % 2 === 0 ? '#957237' : '#3d6e51'}
+          fill={i % 2 === 0 ? PULSO_PALETTE.douradoClaro : PULSO_PALETTE.verdeAccent}
           opacity="0.75"
         />
       ))}
@@ -68,7 +69,7 @@ export function ContasRing({ size = 40, className = '' }: ContasRingProps) {
   return (
     <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} className={className} aria-hidden="true">
       {dots.map((d) => (
-        <circle key={d.i} cx={d.x} cy={d.y} r="1.8" fill={d.i % 2 ? '#3d6e51' : '#957237'} />
+        <circle key={d.i} cx={d.x} cy={d.y} r="1.8" fill={d.i % 2 ? PULSO_PALETTE.verdeAccent : PULSO_PALETTE.douradoClaro} />
       ))}
     </svg>
   );

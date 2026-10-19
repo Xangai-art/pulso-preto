@@ -38,12 +38,11 @@ export const hardServices = [
 ];
 
 // "Folhas com Ciência" — coluna de fitoterapia popular com evidência científica,
-// no mesmo formato "Estudo + Achado" usado na Base Científica (diseases.ts).
+// no mesmo formato de evidência usado na Base Científica (diseases.ts).
 // Sem misticismo: cada planta traz nome popular, nome científico, achado
 // farmacológico com fonte real e um alerta de segurança quando relevante.
-// Referência editorial: coluna "Folhas de Ossaim" da proposta de design Ìlera
-// (adaptação BR do BlackDoctor.org, em diálogo com este piloto) — nomenclatura
-// adaptada para manter a identidade Gente Preta sem referência direta a orixás.
+// Referência editorial: coluna "Folhas com Ciência" — nomenclatura adaptada
+// para manter a identidade Pulso Preto sem referência direta a orixás.
 export const phytotherapy = [
   {
     id: 'picao-preto',

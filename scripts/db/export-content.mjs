@@ -127,9 +127,9 @@ for (const id of Object.keys(DEEP_MODULES)) {
       if (!aud) throw new Error(`Audiência '${audience}' ausente em ${id}/${localeId}`);
       const contentId = ++contentSeq;
       statements.push(
-        `INSERT OR REPLACE INTO disease_content (id, disease_id, locale_id, audience, summary, hero_image_url, hero_image_alt, hero_image_credit, hero_is_placeholder) VALUES (` +
+        `INSERT OR REPLACE INTO disease_content (id, disease_id, locale_id, audience, summary, hero_image_url, hero_image_alt, hero_image_credit) VALUES (` +
           `${contentId}, ${sqlStr(id)}, ${sqlStr(localeId)}, ${sqlStr(audience)}, ${sqlStr(aud.summary)}, ` +
-          `${sqlStr(hero?.url)}, ${sqlStr(hero?.alt)}, ${sqlStr(hero?.credit)}, ${sqlInt(hero?.isPlaceholder)});`
+          `${sqlStr(hero?.url)}, ${sqlStr(hero?.alt)}, ${sqlStr(hero?.credit)});`
       );
 
       aud.sections.forEach((section, sIdx) => {
@@ -228,7 +228,6 @@ const schemaJson = {
         { name: 'hero_image_url', type: 'TEXT' },
         { name: 'hero_image_alt', type: 'TEXT' },
         { name: 'hero_image_credit', type: 'TEXT' },
-        { name: 'hero_is_placeholder', type: 'INTEGER', not_null: true, default: 1 },
       ],
       unique: [['disease_id', 'locale_id', 'audience']],
       indexes: [{ name: 'idx_content_disease_locale', columns: ['disease_id', 'locale_id'] }],
@@ -285,7 +284,7 @@ for (const stmt of statements) db.exec(stmt);
 
 function reconstruct(diseaseId, localeId) {
   const rows = db
-    .prepare('SELECT id, audience, summary, hero_image_url, hero_image_alt, hero_image_credit, hero_is_placeholder FROM disease_content WHERE disease_id = ? AND locale_id = ?')
+    .prepare('SELECT id, audience, summary, hero_image_url, hero_image_alt, hero_image_credit FROM disease_content WHERE disease_id = ? AND locale_id = ?')
     .all(diseaseId, localeId);
   if (rows.length === 0) return null;
   const audiences = {};
@@ -312,7 +311,6 @@ function reconstruct(diseaseId, localeId) {
       url: first.hero_image_url,
       alt: first.hero_image_alt,
       credit: first.hero_image_credit,
-      isPlaceholder: !!first.hero_is_placeholder,
     },
     audiences,
     sources,

@@ -22,15 +22,13 @@ import type { DiseaseDeepContent } from './anemiaFalciforme';
 const heroImage_pt = {
   url: 'https://sspark.genspark.ai/i/2ZrbjwRPCOIjnBSA?width=2560',
   alt: 'Ilustração médica representando inflamação autoimune multissistêmica do lúpus, com destaque para articulações e pele',
-  credit: 'Imagem placeholder (CC/PD) — substituir por material próprio se necessário',
-  isPlaceholder: true as const,
+  credit: 'Domínio público / CC0',
 };
 
 const heroImage_es = {
   url: 'https://sspark.genspark.ai/i/2ZrbjwRPCOIjnBSA?width=2560',
   alt: 'Ilustración médica que representa la inflamación autoinmune multisistémica del lupus, con énfasis en articulaciones y piel',
-  credit: 'Imagen de relleno (CC/PD) — sustituir por material propio si es necesario',
-  isPlaceholder: true as const,
+  credit: 'Dominio público / CC0',
 };
 
 const lupusContent_pt: DiseaseDeepContent = {

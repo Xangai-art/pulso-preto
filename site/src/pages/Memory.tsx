@@ -37,18 +37,18 @@ const stories: Story[] = [
 export default function Memory() {
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 py-16">
-      <h1 className="text-3xl font-bold text-earth-900 mb-4">Memória e Herança de Saúde</h1>
-      <p className="text-earth-600 mb-6 max-w-2xl">
+      <h1 className="text-3xl font-bold text-pulso-verde mb-4">Memória e Herança de Saúde</h1>
+      <p className="text-pulso-marrom mb-6 max-w-2xl">
         Um espaço de storytelling que liga ciência a herança cultural e histórias de família — homenagens,
         saúde geracional e trajetórias de superação da comunidade negra em saúde.
       </p>
 
-      <div className="rounded-xl border border-ouro-300 bg-palha-100 p-5 mb-10 max-w-3xl">
-        <span className="eyebrow text-ouro-700">Visão de expansão</span>
-        <p className="font-editorial italic text-lg text-earth-900 mt-2 mb-2">
+      <div className="rounded-xl border border-pulso-dourado-claro bg-pulso-creme p-5 mb-10 max-w-3xl">
+        <span className="eyebrow text-pulso-dourado">Visão de expansão</span>
+        <p className="font-editorial italic text-lg text-pulso-verde mt-2 mb-2">
           "De um projeto piloto para um plano ousado de voo."
         </p>
-        <p className="text-sm text-earth-700">
+        <p className="text-sm text-pulso-marrom">
           O Gente Preta nasce como piloto no Distrito Federal, mas a tecnologia social por trás dele foi
           desenhada para viajar. A APRECIA atua em outros países além do Brasil — e a experiência de
           escuta longitudinal, navegação em saúde e vigilância comunitária construída aqui pode ser
@@ -59,7 +59,7 @@ export default function Memory() {
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
         {stories.filter((s) => !s.hidden).map((s) => (
-          <div key={s.name} className="rounded-xl border border-earth-200 p-5 bg-white">
+          <div key={s.name} className="rounded-xl border border-pulso-dourado/25 p-5 bg-white">
             {s.video ? (
               <VideoEmbed
                 youtubeId={s.video.youtubeId}
@@ -68,24 +68,24 @@ export default function Memory() {
                 className="mb-4"
               />
             ) : (
-              <div className="h-32 rounded-lg bg-gradient-to-br from-brand-100 to-earth-100 mb-4 flex items-center justify-center text-earth-400 text-sm">
+              <div className="h-32 rounded-lg bg-gradient-to-br from-pulso-verde-accent/15 to-pulso-dourado/15 mb-4 flex items-center justify-center text-pulso-marrom/60 text-sm">
                 Foto/vídeo em breve
               </div>
             )}
-            <h3 className="font-bold text-earth-900 text-sm mb-1">{s.name}</h3>
-            <p className="text-xs text-earth-500 mb-2">{s.role}</p>
-            <p className="text-sm text-earth-600">{s.excerpt}</p>
+            <h3 className="font-bold text-pulso-verde text-sm mb-1">{s.name}</h3>
+            <p className="text-xs text-pulso-marrom/70 mb-2">{s.role}</p>
+            <p className="text-sm text-pulso-marrom">{s.excerpt}</p>
           </div>
         ))}
       </div>
 
-      <div className="rounded-xl border border-earth-200 bg-earth-50 p-6 text-center">
-        <h2 className="font-bold text-earth-900 mb-2">Quer contar sua história?</h2>
-        <p className="text-sm text-earth-600 mb-4">
+      <div className="rounded-xl border border-pulso-dourado/25 bg-pulso-creme p-6 text-center">
+        <h2 className="font-bold text-pulso-verde mb-2">Quer contar sua história?</h2>
+        <p className="text-sm text-pulso-marrom mb-4">
           Este espaço é construído com e para a comunidade. Em breve, um formulário de submissão estará
           disponível aqui e no App Sentinela.
         </p>
-        <span className="inline-block text-xs text-earth-400">Formulário de submissão — em desenvolvimento</span>
+        <span className="inline-block text-xs text-pulso-marrom/60">Formulário de submissão — em desenvolvimento</span>
       </div>
     </div>
   );
