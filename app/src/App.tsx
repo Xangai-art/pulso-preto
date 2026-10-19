@@ -13,6 +13,7 @@ import MapUbs from './pages/MapUbs';
 import Radar from './pages/Radar';
 import Profile from './pages/Profile';
 import ReportDiscrimination from './pages/ReportDiscrimination';
+import Faq from './pages/Faq';
 
 function RequireOnboarding({ children }: { children: React.ReactNode }) {
   const onboarded = useAppStore((s) => s.onboarded);
@@ -91,6 +92,14 @@ function App() {
             element={
               <RequireOnboarding>
                 <Profile />
+              </RequireOnboarding>
+            }
+          />
+          <Route
+            path="/perguntas"
+            element={
+              <RequireOnboarding>
+                <Faq />
               </RequireOnboarding>
             }
           />

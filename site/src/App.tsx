@@ -19,6 +19,7 @@ import Ouvidoria from './pages/Ouvidoria';
 import Professionals from './pages/Professionals';
 import Training from './pages/Training';
 import DataIndicators from './pages/DataIndicators';
+import Faq from './pages/Faq';
 import ScrollToHash from './components/ScrollToHash';
 
 function App() {
@@ -52,6 +53,8 @@ function App() {
           <Route path="/encontre-um-profissional" element={<Navigate to="/profissionais" replace />} />
           <Route path="/formacao" element={<Training />} />
           <Route path="/dados-e-indicadores" element={<DataIndicators />} />
+          <Route path="/perguntas-frequentes" element={<Faq />} />
+          <Route path="/faq" element={<Navigate to="/perguntas-frequentes" replace />} />
           <Route path="/indicadores" element={<Navigate to="/dados-e-indicadores" replace />} />
           <Route path="/dados" element={<Navigate to="/dados-e-indicadores" replace />} />
           <Route path="/transparencia" element={<Transparency />} />

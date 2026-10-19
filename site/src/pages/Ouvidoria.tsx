@@ -121,6 +121,15 @@ export default function Ouvidoria() {
           <Link to="/rede-sus" className="text-pulso-verde-accent font-medium hover:underline">Rede SUS</Link>.
         </p>
       </section>
+      <div className="mt-10 rounded-xl border border-pulso-dourado/25 bg-pulso-creme p-6">
+        <h2 className="font-bold text-pulso-verde mb-2">Ainda com dúvidas sobre seus direitos?</h2>
+        <p className="text-sm text-pulso-marrom mb-3">
+          Acompanhante no parto, raça/cor no cadastro, pesquisa clínica, proteção de dados e mais — em linguagem simples.
+        </p>
+        <Link to="/perguntas-frequentes#direitos" className="text-sm font-semibold text-pulso-verde-accent hover:underline">
+          Ver perguntas frequentes sobre direitos →
+        </Link>
+      </div>
     </div>
   );
 }

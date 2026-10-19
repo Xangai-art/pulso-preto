@@ -88,6 +88,12 @@ export default function Home() {
               pulsoIcon="/static/brand/elementos/icone-mao-balanca.png"
               label="Direito à saúde"
             />
+            <QuickLink
+              to="/perguntas"
+              icon="❓"
+              pulsoIcon="/static/brand/elementos/icone-livro-ideias.png"
+              label="Perguntas frequentes"
+            />
           </div>
         </div>
 

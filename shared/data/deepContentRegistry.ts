@@ -20,6 +20,7 @@ import { miomasUterinosContent } from './miomasUterinos.ts';
 import { lupusContent } from './lupus.ts';
 import { depressaoContent } from './depressao.ts';
 import { asmaContent } from './asma.ts';
+import { doencaRenalCronicaContent } from './doencaRenalCronica.ts';
 import type { LocaleId } from './locales.ts';
 
 const deepContentRegistry: Record<string, Record<LocaleId, DiseaseDeepContent>> = {
@@ -30,6 +31,8 @@ const deepContentRegistry: Record<string, Record<LocaleId, DiseaseDeepContent>> 
   lupus: lupusContent,
   depressao: depressaoContent,
   asma: asmaContent,
+  // 20/10/2026 — tema prioritário do MVP do Produto 2.2 (Relatório de Planejamento, 4.2).
+  'doenca-renal-cronica': doencaRenalCronicaContent,
 };
 
 /** Ids das condições com conteúdo aprofundado (usado por metrics.ts). */

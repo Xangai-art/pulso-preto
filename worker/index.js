@@ -124,7 +124,7 @@ async function handleApi(request, env, url) {
         if (rows?.results?.length) {
           // Métricas e notícias vêm sempre do snapshot canônico (content.json).
           const snap = await loadStaticContent(env, url);
-          return jsonResponse({ source: 'd1', metrics: snap?.metrics ?? null, diseases: rows.results, news: snap?.news ?? [] });
+          return jsonResponse({ source: 'd1', metrics: snap?.metrics ?? null, diseases: rows.results, news: snap?.news ?? [], faq: snap?.faq ?? null });
         }
       } catch {
         /* cai para o estático */
@@ -137,6 +137,7 @@ async function handleApi(request, env, url) {
         metrics: staticContent.metrics ?? null,
         diseases: staticContent.diseases ?? [],
         news: staticContent.news ?? [],
+        faq: staticContent.faq ?? null,
       });
     }
     return jsonResponse({ error: 'conteúdo indisponível' }, 503);
