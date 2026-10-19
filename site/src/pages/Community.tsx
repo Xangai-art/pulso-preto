@@ -1,4 +1,4 @@
-import { partners } from '../data/project';
+import { partners } from '@shared/data/project';
 
 export default function Community() {
   return (

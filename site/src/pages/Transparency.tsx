@@ -1,4 +1,4 @@
-import { governance, lgpdConsentLevels, dataDomains, internationalReferencesNote } from '../data/project';
+import { governance, lgpdConsentLevels, dataDomains, internationalReferencesNote } from '@shared/data/project';
 
 export default function Transparency() {
   return (

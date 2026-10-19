@@ -1,15 +1,36 @@
-// Base Científica — Gente Preta
-// 9 categorias temáticas · 45+ condições mapeadas · evidência com comprovação científica
+// Base Científica — Pulso Preto
+//
+// FONTE ÚNICA DE VERDADE (SSOT — D2/D3, Lote B): este arquivo é o catálogo
+// ÚNICO de condições, consumido pelo site, pelo App Sentinela e pelo export do
+// banco (scripts/db/export-content.mjs → database/content.json → /api/content).
+// Antes existiam duas cópias (site 47 × app 40 condições — P16).
+//
+// NUNCA escreva contagens à mão (categorias, condições, temas): use
+// shared/data/metrics.ts, que deriva tudo daqui (R4/P15).
+
+export interface LocalStudyFinding {
+  value: string;
+  finding: string;
+  source: string; // seção/indicador do estudo, para rastreabilidade
+}
 
 export interface Disease {
   id: string;
   name: string;
-  isPriorityTheme?: boolean; // faz parte dos 7 temas prioritários do App
+  isPriorityTheme?: boolean; // tema prioritário do App (contagem em metrics.ts)
   study?: string;
   finding?: string;
   isNew?: boolean; // condição de inclusão recente (realidade brasileira contemporânea)
-  // Ver nota equivalente em site/src/data/diseases.ts — sinaliza conteúdo
-  // aprofundado por audiência (shared/data/anemiaFalciforme.ts).
+  // Dado local do Distrito Federal, extraído do Estudo Técnico-Científico
+  // "Condições de Vida e Saúde da População Negra do DF (2015–2024)"
+  // (AECID/APRECIA/FIOCRUZ/UnB/FEPECS) — complementa (não substitui) a
+  // literatura internacional/nacional citada em study/finding.
+  localStudy?: LocalStudyFinding;
+  // Sinaliza que esta condição tem conteúdo aprofundado e segmentado por
+  // audiência (médicos/enfermeiros/usuários) em um arquivo dedicado — ver
+  // shared/data/anemiaFalciforme.ts e o registro em deepContentRegistry.ts.
+  // Quando true, DiseaseDetail.tsx renderiza as abas de audiência além do
+  // bloco padrão de evidência científica.
   hasDeepContent?: boolean;
 }
 
@@ -35,6 +56,12 @@ export const diseaseCategories: DiseaseCategory[] = [
         study: 'NEJM / Parsa et al. 2013',
         finding:
           'Pessoas negras têm risco até 2,3x maior de desenvolver hipertensão em comparação à população branca, com pior controle pressórico mesmo em tratamento equivalente.',
+        localStudy: {
+          value: '1,50×',
+          finding:
+            'No DF, a mortalidade cardiovascular padronizada por idade é 50% maior em negros (180/100.000) do que em brancos (120/100.000) — a hipertensão é o principal fator de risco modificável dessa disparidade.',
+          source: 'Estudo Pop. Negra DF 2015–2024 · Indicador 13 (estimativa, estratificação racial em consolidação)',
+        },
         hasDeepContent: true,
       },
       {
@@ -71,6 +98,12 @@ export const diseaseCategories: DiseaseCategory[] = [
         study: 'CDC 2021',
         finding:
           'Adultos negros têm probabilidade ~60% maior de serem diagnosticados com diabetes tipo 2 em comparação a adultos brancos não hispânicos.',
+        localStudy: {
+          value: '8º lugar',
+          finding:
+            'No DF, diabetes caiu do 3º lugar (2014) para o 8º lugar (2024) nas causas de morte — pode indicar melhora no controle (acesso a insulina/antidiabéticos pelo SUS) ou subnotificação como causa associada. Dados ainda não estratificados por raça/cor no boletim agregado.',
+          source: 'Estudo Pop. Negra DF 2015–2024 · Indicador 14 (estratificação racial pendente)',
+        },
         hasDeepContent: true,
       },
       { id: 'pre-diabetes', name: 'Pré-Diabetes' },
@@ -83,6 +116,38 @@ export const diseaseCategories: DiseaseCategory[] = [
       },
       { id: 'obesidade', name: 'Obesidade' },
       { id: 'sindrome-metabolica', name: 'Síndrome Metabólica' },
+    ],
+  },
+  {
+    // Unificado a partir da antiga página /biblioteca-saude (schema "biblioteca.ts",
+    // retirada de circulação): narrativa do gene APOL1, mais frequente em
+    // afrodescendentes, e seu impacto na progressão da doença renal.
+    id: 'renais-geneticas',
+    title: 'Renais e Genéticas',
+    subtitle: 'Fator Genético',
+    icon: '🧬',
+    diseases: [
+      {
+        id: 'doenca-renal-cronica',
+        name: 'Doença Renal Crônica',
+        study: 'Science / Genovese et al. 2010',
+        finding:
+          'Identificação do gene APOL1 (variantes G1/G2), mais frequente em afrodescendentes, como fator de risco para doença renal crônica.',
+      },
+      {
+        id: 'progressao-doenca-renal',
+        name: 'Progressão da Doença Renal',
+        study: 'JCI / Friedman & Pollak 2011',
+        finding:
+          'Variantes do gene APOL1 associadas a maior risco de progressão para diálise — encaminhamento precoce a nefrologista muda o desfecho.',
+      },
+      {
+        id: 'insuficiencia-renal',
+        name: 'Insuficiência Renal',
+        study: 'NEJM / Parsa et al. 2013',
+        finding:
+          'Confirmação da associação entre APOL1 e doença renal terminal. Combinado a hipertensão mal controlada e menor acesso a nefrologia, resulta em maior taxa de diálise precoce na população negra. A fila para transplante renal também carrega viés racial documentado.',
+      },
     ],
   },
   {
@@ -136,6 +201,19 @@ export const diseaseCategories: DiseaseCategory[] = [
           'Populações negras tiveram taxas de hospitalização e mortalidade por COVID-19 desproporcionalmente mais altas, refletindo comorbidades prévias e desigualdade de acesso a cuidados críticos.',
       },
       { id: 'apneia-sono', name: 'Apneia do Sono' },
+      {
+        id: 'tuberculose',
+        name: 'Tuberculose',
+        study: 'Literatura epidemiológica nacional — associação com pobreza e acesso desigual',
+        finding:
+          'Tuberculose está associada a aglomeração domiciliar, desnutrição e menor acesso a diagnóstico/tratamento oportuno — condições mais prevalentes em contextos de vulnerabilidade social.',
+        localStudy: {
+          value: '58,3%',
+          finding:
+            'No DF, 58,3% dos casos novos de tuberculose em 2025 ocorreram em pessoas pardas, com tendência de aumento na incidência entre 2021 e 2025.',
+          source: 'Estudo Pop. Negra DF 2015–2024 · Indicador 15 (Boletim de Tuberculose 2026, SES-DF)',
+        },
+      },
     ],
   },
   {
@@ -161,6 +239,25 @@ export const diseaseCategories: DiseaseCategory[] = [
         study: 'Estudos nacionais e internacionais de saúde materna',
         finding:
           'Mulheres negras têm risco de 2 a 3 vezes maior de morte materna em comparação a mulheres brancas, mesmo controlando por renda e escolaridade — indicando peso do racismo institucional no cuidado obstétrico.',
+        localStudy: {
+          value: '1,39×',
+          finding:
+            'No DF (2010–2019), a Razão de Mortalidade Materna (RMM) em mulheres pretas foi 92,7 por 100.000 nascidos vivos, contra 66,7 em brancas — 39% maior. Mulheres pardas isoladamente (45,1) aparecem abaixo de brancas, um paradoxo que o estudo atribui a incompletude/subnotificação racial nos registros de óbito.',
+          source: 'Estudo Pop. Negra DF 2015–2024 · Indicador 8 (SIM+SINASC, Relatório de Mortalidade Materna 2018–2019)',
+        },
+      },
+      {
+        id: 'sifilis-congenita',
+        name: 'Sífilis Congênita',
+        study: 'Doença evitável com pré-natal adequado (testagem + tratamento oportuno)',
+        finding:
+          'A sífilis congênita é totalmente evitável com testagem e tratamento no pré-natal — sua persistência reflete falhas de acesso e continuidade do cuidado obstétrico.',
+        localStudy: {
+          value: '78,2%',
+          finding:
+            'No DF (2024), 78,2% dos casos de sífilis congênita ocorreram em filhos de mães negras (pretas+pardas) — sobre-representação em relação aos 57,8% da população, refletindo menor cobertura/qualidade de pré-natal e barreiras de acesso a testagem.',
+          source: 'Estudo Pop. Negra DF 2015–2024 · Indicador 10 (Boletim de Sífilis Congênita 2025, SES-DF)',
+        },
       },
     ],
   },
@@ -237,10 +334,36 @@ export const diseaseCategories: DiseaseCategory[] = [
         study: 'Literatura epidemiológica nacional',
         finding:
           'População negra apresenta maior incidência de novos diagnósticos de HIV e menor acesso contínuo a tratamento antirretroviral, refletindo barreiras estruturais de acesso à saúde.',
+        localStudy: {
+          value: '70,3%',
+          finding:
+            'No DF (2024), 70,3% das notificações de HIV/AIDS foram de pessoas pretas ou pardas — sobre-representação em relação aos 57,8% da população, associada a menor acesso a testagem, PrEP e TARV, além de estigma (racismo + homofobia + serofobia).',
+          source: 'Estudo Pop. Negra DF 2015–2024 · Indicador 16 (SINAN+SIM, Boletim HIV/AIDS 2024)',
+        },
+      },
+      {
+        id: 'prevencao-hiv-prep',
+        name: 'Prevenção do HIV (Profilaxia Pré-Exposição)',
+        study: 'Lancet HIV 2022',
+        finding:
+          'Redução de desigualdades na incidência de HIV quando o acesso à Profilaxia Pré-Exposição (PrEP) é ampliado. PrEP é direito garantido pelo SUS — disponível gratuitamente na rede pública.',
       },
       { id: 'doencas-pele', name: 'Doenças de Pele (acesso desigual a diagnóstico)' },
       { id: 'osteoporose', name: 'Osteoporose' },
       { id: 'dor-cronica', name: 'Dor Crônica (subtratada por viés racial na avaliação de dor)' },
+      {
+        id: 'acidentes-transporte',
+        name: 'Acidentes de Transporte',
+        study: 'Associado a exposição ocupacional (entregadores) e infraestrutura viária desigual',
+        finding:
+          'Maior exposição ao trânsito por uso de transporte público e motocicletas de trabalho, combinada a infraestrutura viária mais precária em periferias, eleva o risco de óbito por acidentes de transporte em populações negras.',
+        localStudy: {
+          value: '72,2%',
+          finding:
+            'No DF (2012–2021), 72,2% dos óbitos por acidentes de transporte ocorreram em pessoas negras — sobre-representação de 1,25× em relação à proporção populacional (57,8%).',
+          source: 'Estudo Pop. Negra DF 2015–2024 · SIM/DATASUS 2012–2021',
+        },
+      },
     ],
   },
   {
@@ -282,6 +405,12 @@ export const diseaseCategories: DiseaseCategory[] = [
         study: 'Atlas da Violência 2026 (IPEA / Fórum Brasileiro de Segurança Pública)',
         finding:
           '77% das vítimas de homicídio no Brasil são pessoas negras; taxa de 27 homicídios por 100 mil habitantes entre negros vs. 10 por 100 mil entre não negros — uma pessoa negra tem 2,6x mais chance de ser assassinada no Brasil, quadro associado à ausência de políticas preventivas de mediação de conflito e educação emocional em territórios de alta exposição à violência.',
+        localStudy: {
+          value: '77,4%',
+          finding:
+            'No DF (2015–2022), 77,4% das mortes violentas ocorreram em pessoas negras (predominantemente pardas, 70,2%) — sobre-representação de 1,34× em relação à proporção populacional. 89,9% das vítimas fatais são homens; já nas notificações de violência não fatal (SINAN), 83,1% das vítimas são mulheres.',
+          source: 'Estudo Pop. Negra DF 2015–2024 · Indicadores 17–18 (SIM/DATASUS, SINAN Q3 2025)',
+        },
       },
       {
         id: 'falta-educacao-financeira',
@@ -295,15 +424,16 @@ export const diseaseCategories: DiseaseCategory[] = [
   },
 ];
 
-// Os 7 temas prioritários do App — condições clássicas com parceria/evidência consolidada.
-// Mantido separado dos temas emergentes (isNew) para não inflar essa contagem curada.
+// Temas prioritários do App — condições clássicas com parceria/evidência consolidada
+// (flag isPriorityTheme). Mantido separado dos temas emergentes (isNew) para não
+// inflar essa lista curada. Quantidade: metrics.priorityThemes (P17).
 export const priorityThemes = diseaseCategories
-  .flatMap((c) => c.diseases.filter((d) => d.isPriorityTheme).map((d) => ({ ...d, category: c.title, icon: c.icon })));
+  .flatMap((c) => c.diseases.filter((d) => d.isPriorityTheme).map((d) => ({ ...d, category: c.title, icon: c.icon, categoryId: c.id })));
 
 // Temas emergentes — condições/determinantes sociais de inclusão recente (realidade
 // brasileira contemporânea). Categoria própria na Biblioteca de Saúde; não compõem os
-// 7 temas prioritários do App.
+// temas prioritários do App.
 export const emergentThemes = diseaseCategories
-  .flatMap((c) => c.diseases.filter((d) => d.isNew).map((d) => ({ ...d, category: c.title, icon: c.icon })));
+  .flatMap((c) => c.diseases.filter((d) => d.isNew).map((d) => ({ ...d, category: c.title, icon: c.icon, categoryId: c.id })));
 
-export const totalConditionsCount = diseaseCategories.reduce((acc, c) => acc + c.diseases.length, 0);
+// Contagens (condições, categorias, temas): ver shared/data/metrics.ts.

@@ -7,7 +7,7 @@ import {
   cepavUnits,
   mentalHealthUnits,
   otherHealthServices,
-} from '../data/project';
+} from '@shared/data/project';
 import { APP_URL } from '../config';
 
 export default function SusNetwork() {

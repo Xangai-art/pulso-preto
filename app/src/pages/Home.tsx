@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useAppStore } from '../store/useAppStore';
-import { priorityThemes } from '../data/diseases';
+import { priorityThemes } from '@shared/data/diseases';
 import TopBar from '../components/TopBar';
 import { useAppearance } from '@shared/context/AppearanceContext';
 import { getPulsoContent } from '@shared/data/pulsoContent';

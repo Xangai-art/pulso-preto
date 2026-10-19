@@ -1,6 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
-import { diseaseCategories } from '../data/diseases';
-import { getDeepContent } from '../data/deepContentRegistry';
+import { diseaseCategories } from '@shared/data/diseases';
+import { getDeepContent } from '@shared/data/deepContentRegistry';
 import CategoryIcon from '../components/CategoryIcons';
 import AudienceContentTabs from '../components/AudienceContentTabs';
 import { useAppearance } from '@shared/context/AppearanceContext';

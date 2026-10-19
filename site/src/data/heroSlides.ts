@@ -1,6 +1,8 @@
 // Slides da apresentação dinâmica da hero da Home — substitui o vídeo por um
 // carrossel informativo focado no que o site + App Sentinela oferecem e no
 // benefício concreto para a sociedade (não é depoimento, é vitrine de produto).
+// Números: SEMPRE derivados de shared/data/metrics.ts (R4) — nunca digitados.
+import { metrics } from '@shared/data/metrics';
 export interface HeroSlide {
   id: string;
   eyebrow: string;
@@ -28,7 +30,7 @@ export const heroSlides: HeroSlide[] = [
     title: 'Evidência científica, sem misticismo',
     description:
       'Cada condição traz o que a ciência mostra e o que isso significa na prática, incluindo dados locais do primeiro estudo epidemiológico do DF que estratifica saúde por raça/cor.',
-    stat: '48+',
+    stat: String(metrics.conditions),
     statLabel: 'condições mapeadas com estudo científico',
     tone: 'brand',
   },
@@ -58,7 +60,7 @@ export const heroSlides: HeroSlide[] = [
     title: 'Rodas de conversa, histórias reais e saberes tradicionais',
     description:
       'Memória e Herança de Saúde, Medicina Tradicional Brasileira e encontros semanais — porque equidade em saúde também se constrói com cultura, escuta e pertencimento.',
-    stat: '48+',
+    stat: String(metrics.conditions),
     statLabel: 'condições · 1 Biblioteca viva, sempre crescendo',
     tone: 'folha',
   },
@@ -68,7 +70,7 @@ export const heroSlides: HeroSlide[] = [
     title: 'Dados que se transformam em política pública',
     description:
       'Cada check-in e cada busca geram evidência agregada e anônima para fortalecer o SUS e pressionar por políticas de equidade racial em saúde — começando pelo Distrito Federal.',
-    stat: '7',
+    stat: String(metrics.priorityThemes),
     statLabel: 'temas prioritários guiando o piloto no DF',
     tone: 'brand',
   },

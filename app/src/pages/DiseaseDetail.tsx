@@ -1,7 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
-import { diseaseCategories } from '../data/diseases';
+import { diseaseCategories } from '@shared/data/diseases';
 import TopBar from '../components/TopBar';
-import { getDeepContent } from '../data/deepContentRegistry';
+import { getDeepContent } from '@shared/data/deepContentRegistry';
 import AudienceContentTabs from '../components/AudienceContentTabs';
 import { useAppearance } from '@shared/context/AppearanceContext';
 
@@ -70,6 +70,18 @@ export default function DiseaseDetail() {
         ) : (
           <div className="rounded-xl border border-pulso-dourado/25 p-4 bg-white text-sm text-pulso-marrom/70">
             Condição incluída na base científica geral. Evidência detalhada em padronização.
+          </div>
+        )}
+
+        {/* Dado local do DF — agora disponível no app pelo catálogo único (P16). */}
+        {disease.localStudy && (
+          <div className="mt-4 rounded-xl bg-pulso-verde text-pulso-creme p-4">
+            <h2 className="text-[11px] font-bold uppercase tracking-wide text-pulso-dourado-claro mb-1">
+              Estudo local — Distrito Federal
+            </h2>
+            <div className="text-2xl font-bold text-pulso-dourado mb-1">{disease.localStudy.value}</div>
+            <p className="text-sm leading-relaxed text-pulso-creme/95 mb-2">{disease.localStudy.finding}</p>
+            <p className="text-[10px] text-pulso-creme/70">Fonte: {disease.localStudy.source}.</p>
           </div>
         )}
 

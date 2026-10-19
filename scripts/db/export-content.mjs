@@ -2,7 +2,7 @@
 // ============================================================================
 // export-content.mjs — Gera a "base de dados" de conteúdo do Pulso Preto
 // ----------------------------------------------------------------------------
-// Lê as fontes canônicas em TypeScript (o catálogo em site/src/data/diseases.ts
+// Lê as fontes canônicas em TypeScript (o catálogo em shared/data/diseases.ts
 // e o conteúdo aprofundado em shared/data/*.ts) e materializa:
 //
 //   1. database/content.json   — representação canônica (JSON) do conteúdo
@@ -29,7 +29,9 @@ const ROOT = path.resolve(__dirname, '..', '..');
 const DB_DIR = path.join(ROOT, 'database');
 const TABLES_DIR = path.join(ROOT, '.tables');
 
-const CATALOG_TS = path.join(ROOT, 'site', 'src', 'data', 'diseases.ts');
+const CATALOG_TS = path.join(ROOT, 'shared', 'data', 'diseases.ts');
+const METRICS_TS = path.join(ROOT, 'shared', 'data', 'metrics.ts');
+const NEWS_TS = path.join(ROOT, 'shared', 'data', 'news.ts');
 const CONTENT_DIR = path.join(ROOT, 'shared', 'data');
 const SCHEMA_SQL = path.join(DB_DIR, 'schema.sql');
 
@@ -62,6 +64,40 @@ function loadTsModule(absPath) {
 // ---------------------------------------------------------------------------
 const catalogMod = await loadTsModule(CATALOG_TS);
 const { diseaseCategories } = catalogMod;
+const { metrics } = await loadTsModule(METRICS_TS);
+const { newsItems } = await loadTsModule(NEWS_TS);
+
+// ---------------------------------------------------------------------------
+// 1b. Integridade da fonte única (SSOT — Lote B). Falha o build se quebrar.
+// ---------------------------------------------------------------------------
+{
+  const errors = [];
+  const ids = diseaseCategories.flatMap((c) => c.diseases.map((d) => d.id));
+  const dup = ids.filter((id, i) => ids.indexOf(id) !== i);
+  if (dup.length) errors.push(`ids de condição duplicados: ${[...new Set(dup)].join(', ')}`);
+  const catIds = diseaseCategories.map((c) => c.id);
+  if (new Set(catIds).size !== catIds.length) errors.push('ids de categoria duplicados');
+  for (const id of Object.keys(DEEP_MODULES)) {
+    if (!ids.includes(id)) errors.push(`conteúdo aprofundado sem condição no catálogo: ${id}`);
+  }
+  if (metrics.conditions !== ids.length) errors.push(`metrics.conditions (${metrics.conditions}) ≠ catálogo (${ids.length})`);
+  if (metrics.categories !== diseaseCategories.length) errors.push('metrics.categories diverge do catálogo');
+  if (metrics.deepContent !== Object.keys(DEEP_MODULES).length) {
+    errors.push(`metrics.deepContent (${metrics.deepContent}) ≠ DEEP_MODULES (${Object.keys(DEEP_MODULES).length}) — registre o módulo nos dois lugares`);
+  }
+  const newsIds = newsItems.map((n) => n.id);
+  if (new Set(newsIds).size !== newsIds.length) errors.push('ids de notícia duplicados');
+  for (const n of newsItems) {
+    for (const loc of LOCALES) {
+      if (!n.title?.[loc] || !n.excerpt?.[loc]) errors.push(`notícia ${n.id} sem tradução '${loc}'`);
+    }
+  }
+  if (errors.length) {
+    console.error('✗ Integridade da fonte única falhou:\n  - ' + errors.join('\n  - '));
+    process.exit(1);
+  }
+  console.log(`✓ Fonte única íntegra: ${metrics.conditions} condições · ${metrics.categories} categorias · ${metrics.priorityThemes} temas prioritários · ${metrics.deepContent} aprofundados · ${metrics.news} notícias`);
+}
 
 // Achata o catálogo em linhas de "diseases".
 const diseaseRows = [];
@@ -169,11 +205,13 @@ const schemaSql = readFileSync(SCHEMA_SQL, 'utf8');
 // 3a. content.json — representação canônica
 const canonical = {
   generated_by: 'scripts/db/export-content.mjs',
-  source: 'shared/data/*.ts + site/src/data/diseases.ts',
+  source: 'shared/data/*.ts (fonte única)',
+  metrics,
   locales: LOCALES,
   audiences: AUDIENCES,
   priority_diseases: Object.keys(DEEP_MODULES),
   diseases: diseaseRows,
+  news: newsItems,
   deepContent: deep,
 };
 writeFileSync(path.join(DB_DIR, 'content.json'), JSON.stringify(canonical, null, 2) + '\n');

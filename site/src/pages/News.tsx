@@ -1,9 +1,9 @@
-import { newsItems } from '../data/news';
+import { newsItems, formatNewsDate } from '@shared/data/news';
 import { useAppearance } from '@shared/context/AppearanceContext';
 import { getPulsoContent } from '@shared/data/pulsoContent';
 
 // Página dedicada de Notícias — identidade ÚNICA de produção (PP3).
-// Reaproveita `newsItems` (site/src/data/news.ts) e injeta o Seminário
+// Lê a fonte única de notícias (shared/data/news.ts — P19) e injeta o Seminário
 // Latino-Americano (18-19 nov 2026) como item fixo em destaque no topo —
 // mesma fonte de dados usada em Home.tsx (`content.seminar`) e Community.tsx.
 export default function News() {
@@ -31,12 +31,17 @@ export default function News() {
 
       <div className="space-y-6">
         {newsItems.map((n) => (
-          <article key={n.id} className="rounded-xl border border-pulso-dourado/20 p-5">
-            <time className="text-xs text-pulso-terracota uppercase tracking-wide">
-              {new Date(n.date).toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' })}
-            </time>
-            <h2 className="font-bold text-pulso-verde mt-1 mb-2">{n.title}</h2>
-            <p className="text-sm text-pulso-marrom/80">{n.excerpt}</p>
+          <article key={n.id} id={n.id} className="rounded-xl border border-pulso-dourado/20 overflow-hidden scroll-mt-24 sm:flex">
+            {n.image && (
+              <img src={n.image.url} alt={n.image.alt} className="w-full sm:w-48 h-40 sm:h-auto object-cover shrink-0" loading="lazy" />
+            )}
+            <div className="p-5">
+              <time dateTime={n.date} className="text-xs text-pulso-terracota uppercase tracking-wide">
+                {formatNewsDate(n.date, localeId, 'long')}
+              </time>
+              <h2 className="font-bold text-pulso-verde mt-1 mb-2">{n.title[localeId]}</h2>
+              <p className="text-sm text-pulso-marrom/80">{n.excerpt[localeId]}</p>
+            </div>
           </article>
         ))}
       </div>

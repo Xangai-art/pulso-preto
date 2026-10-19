@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { diseaseCategories, totalConditionsCount, type DiseaseCategory } from '../data/diseases';
+import { diseaseCategories, type DiseaseCategory } from '@shared/data/diseases';
+import { metrics } from '@shared/data/metrics';
 import CategoryIcon from '../components/CategoryIcons';
 import LocalStudyFeature from '../components/LocalStudyFeature';
 
@@ -115,7 +116,7 @@ export default function HealthLibrary() {
 
       {isFiltering && (
         <p className="text-sm text-pulso-marrom/70 mb-6">
-          Mostrando {shownCount} de {totalConditionsCount} condições.
+          Mostrando {shownCount} de {metrics.conditions} condições.
         </p>
       )}
 

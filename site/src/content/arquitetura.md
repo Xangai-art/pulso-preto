@@ -18,7 +18,7 @@ Este relatório é um **documento histórico de diagnóstico e planejamento** �
 | 2. Reintroduzir Find a Doctor (rede privada + atendimento humanizado) | 🟡 Parcial | `/rede-sus` já expõe a intenção e o filtro planejado; a base de profissionais da rede privada em si ainda está em construção |
 | 4. Adicionar Condições Genéticas/Raras como tema prioritário | ✅ Implementado | Anemia Falciforme e Lúpus são temas prioritários na Biblioteca de Saúde (categoria "Raras e Autoimunes"), coerente com a parceria ABRADFAL |
 | 4.1 Adicionar Saúde Mental e Socioeconômica Contemporânea | ✅ Implementado | 7ª categoria ativa na Biblioteca de Saúde, com as 5 condições descritas na Parte 4.5 |
-| — | ✅ Expandido além da proposta original | A Biblioteca de Saúde cresceu para **10 categorias e 48+ condições** — incluindo a incorporação da categoria "Renais e Genéticas" (gene APOL1) e enriquecimento de 8 condições com dados do primeiro estudo epidemiológico local do DF (AECID/APRECIA/FIOCRUZ/UnB/FEPECS, 2015–2024), com estratificação real por raça/cor |
+| — | ✅ Expandido além da proposta original | A Biblioteca de Saúde cresceu para **{{categories}} categorias e {{conditions}} condições** — incluindo a incorporação da categoria "Renais e Genéticas" (gene APOL1) e enriquecimento de {{localStudy}} condições com dados do primeiro estudo epidemiológico local do DF (AECID/APRECIA/FIOCRUZ/UnB/FEPECS, 2015–2024), com estratificação real por raça/cor |
 | 5. Substituir assinatura fictícia por Conselho Consultivo nomeado | ✅ Implementado | Página `/transparencia` publica os nomes e instituições do Conselho Consultivo, Comitê de Gestão, Coordenação e Comitê de Ética |
 | 3. Separar 3 domínios de dados (conteúdo/pesquisa/triagem) | ✅ Documentado | Publicado em `/transparencia`, com os 3 domínios e os níveis de consentimento LGPD descritos publicamente |
 | 6. Reposicionar Radar Epidemiológico como sinal transparente e opt-in | ✅ Documentado | Linguagem "opt-in e transparente, nunca vigilância silenciosa" adotada na Home, em `/baixar` e no roadmap público |
@@ -152,7 +152,7 @@ A plataforma dupla (Site + App) permanece correta como decisão estrutural (DUAL
 │  (mídia + comunidade)│    │  (navegação + escuta)  │   │  (AVA + pesquisa +    │
 │                     │      │                        │   │   triagem clínica)    │
 ├─────────────────────┤      ├────────────────────────┤   ├───────────────────────┤
-│ • Biblioteca 45+     │      │ • Check-in 1-3min      │   │ • AVA (4 ciclos, 100  │
+│ • Biblioteca {{conditions}}      │      │ • Check-in 1-3min      │   │ • AVA (4 ciclos, 100  │
 │   condições (níveis  │      │ • Baseline 5-10min     │   │   estudantes Fepecs)  │
 │   1/2/3 de profund.) │      │ • Mapa UBS + rede      │   │ • Pesquisa populacional│
 │ • Find a Doctor      │      │   privada + busca      │   │   ANÔNIMA (survey)    │

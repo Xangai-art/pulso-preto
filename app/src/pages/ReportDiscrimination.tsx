@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppStore } from '../store/useAppStore';
-import { healthUnits } from '../data/project';
+import { healthUnits } from '@shared/data/project';
 import TopBar from '../components/TopBar';
 
 // Tema único de produção: Pulso Preto (PP3). Tokens `pulso-*` diretos.

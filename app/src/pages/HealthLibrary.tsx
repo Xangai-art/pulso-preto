@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { diseaseCategories, totalConditionsCount } from '../data/diseases';
+import { diseaseCategories } from '@shared/data/diseases';
+import { metrics } from '@shared/data/metrics';
 import TopBar from '../components/TopBar';
 
 // Tema único de produção: Pulso Preto (PP3). Tokens `pulso-*` diretos.
@@ -12,7 +13,7 @@ export default function HealthLibrary() {
       <TopBar title="Biblioteca de Saúde" />
       <div className="px-5 pt-3 pb-8">
         <p className="text-xs mb-4 text-pulso-marrom/70">
-          {totalConditionsCount}+ condições com comprovação científica, organizadas por tema.
+          {metrics.conditions} condições com comprovação científica, organizadas por tema.
         </p>
         <div className="space-y-3">
           {diseaseCategories.map((cat) => {

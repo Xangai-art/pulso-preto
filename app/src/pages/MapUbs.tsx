@@ -5,7 +5,7 @@ import {
   healthRegions,
   emergencyUnits,
   cepavUnits,
-} from '../data/project';
+} from '@shared/data/project';
 import { useAppStore } from '../store/useAppStore';
 import TopBar from '../components/TopBar';
 

@@ -23,6 +23,7 @@
 
 import type { BrandImage } from './variants';
 import type { LocaleId } from './locales';
+import { BRAND_IMAGES } from './brandImages';
 
 export type FeatureIconId = 'book' | 'location' | 'chart' | 'people' | 'heart' | 'document';
 
@@ -67,12 +68,6 @@ export interface StatCardContent {
   value: string;
   label: string[];
   source: string;
-}
-
-export interface NewsCard {
-  date: string;
-  title: string;
-  image: BrandImage;
 }
 
 export interface SeminarDay {
@@ -149,10 +144,10 @@ export interface PulsoContent {
     cursive: string[];
     photo: BrandImage;
   };
+  /** Rótulos da seção de notícias. Os itens vêm de news.ts (fonte única — P19). */
   news: {
     eyebrow: string;
     viewAllLabel: string;
-    cards: NewsCard[];
   };
   seminar: SeminarContent;
   footer: {
@@ -167,46 +162,17 @@ export interface PulsoContent {
 }
 
 // ---------------------------------------------------------------------------
-// IMAGENS — acervo já produzido (D15). Sem menção a "placeholder" no conteúdo.
+// IMAGENS — acervo já produzido (D15), centralizado em ./brandImages.ts
 // ---------------------------------------------------------------------------
-const img = (url: string, alt: string): BrandImage => ({ url, alt });
-
-const IMG_MULHER = img(
-  'https://sspark.genspark.ai/i/sPLVw1gqzX87GzaU?width=2560',
-  'Mulher negra sorridente com turbante amarelo estampado, brincos e colar dourados'
-);
-const IMG_HOMEM = img(
-  'https://sspark.genspark.ai/i/b6aTgm3D22sA19f1?width=2560',
-  'Retrato em preto e branco de homem negro, mão no queixo, olhar contemplativo'
-);
-const IMG_INFANCIA = img(
-  'https://sspark.genspark.ai/i/hD2yy6QnDCRI1LsB?width=2560',
-  'Criança negra sorrindo, close em preto e branco, olhando para cima'
-);
-const IMG_IDOSA = img(
-  'https://sspark.genspark.ai/i/oeW572bhZISbG0YS?width=2560',
-  'Mulher negra idosa com lenço rosa na cabeça, brincos dourados, ao ar livre'
-);
-const IMG_MENTAL = img(
-  'https://sspark.genspark.ai/i/3JqbXuliMdaCVlZ2?width=2560',
-  'Mulher negra jovem, cabelo black power, expressão calma e contemplativa'
-);
-const IMG_MAOS = img(
-  'https://sspark.genspark.ai/i/yTyxFiFCVMnY6Oae?width=2560',
-  'Close de duas mãos entrelaçadas em gesto de apoio e cuidado'
-);
-const IMG_MULHER_RETRATO = img(
-  'https://sspark.genspark.ai/i/Z1eyFhNDHigJwGf6?width=2560',
-  'Retrato de mulher negra madura, cabelo em tranças, expressão serena e digna'
-);
-const IMG_PRESSAO = img(
-  'https://sspark.genspark.ai/i/cNs5DXQ0ttPM970Y?width=2560',
-  'Aferição de pressão arterial com estetoscópio e esfigmomanômetro'
-);
-const IMG_PROFISSIONAL = img(
-  'https://sspark.genspark.ai/i/c1vXWjURnukvsxXF?width=2560',
-  'Profissional de saúde negra, de máscara e luvas, examinando um frasco de vacina em ambiente clínico'
-);
+const {
+  mulher: IMG_MULHER,
+  homem: IMG_HOMEM,
+  infancia: IMG_INFANCIA,
+  idosa: IMG_IDOSA,
+  mental: IMG_MENTAL,
+  maos: IMG_MAOS,
+  mulherRetrato: IMG_MULHER_RETRATO,
+} = BRAND_IMAGES;
 
 // ---------------------------------------------------------------------------
 // SEMINÁRIO LATINO-AMERICANO — evento-âncora (PT/ES)
@@ -393,11 +359,6 @@ const pt: PulsoContent = {
   news: {
     eyebrow: 'ÚLTIMAS NOTÍCIAS —',
     viewAllLabel: 'VER TODAS →',
-    cards: [
-      { date: '15 SET 2026', title: 'Saúde mental da população negra: o que dizem os dados?', image: IMG_MENTAL },
-      { date: '12 SET 2026', title: 'Hipertensão na população negra: prevenção salva vidas.', image: IMG_PRESSAO },
-      { date: '10 SET 2026', title: 'SUS e equidade racial: avanços e desafios no Brasil.', image: IMG_PROFISSIONAL },
-    ],
   },
   seminar: SEMINAR_PT,
   footer: {
@@ -511,11 +472,6 @@ const es: PulsoContent = {
   news: {
     eyebrow: 'ÚLTIMAS NOTICIAS —',
     viewAllLabel: 'VER TODAS →',
-    cards: [
-      { date: '15 SEP 2026', title: 'Salud mental de la población negra: ¿qué dicen los datos?', image: IMG_MENTAL },
-      { date: '12 SEP 2026', title: 'Hipertensión en la población negra: la prevención salva vidas.', image: IMG_PRESSAO },
-      { date: '10 SEP 2026', title: 'SUS y equidad racial: avances y desafíos en Brasil.', image: IMG_PROFISSIONAL },
-    ],
   },
   seminar: SEMINAR_ES,
   footer: {

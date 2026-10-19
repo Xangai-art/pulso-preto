@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { roadmap, partners } from '../data/project';
+import { roadmap, partners } from '@shared/data/project';
 import { useAppearance } from '@shared/context/AppearanceContext';
 import VideoEmbed from '../components/VideoEmbed';
 
