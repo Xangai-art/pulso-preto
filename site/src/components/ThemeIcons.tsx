@@ -13,7 +13,6 @@ interface ThemeIconProps {
 
 // Cores vêm da FONTE ÚNICA (shared/data/pulsoPalette.ts) — nunca hex solto.
 const FOLHA = PULSO_PALETTE.verdeAccent;
-const OURO = PULSO_PALETTE.dourado;
 const OURO_DEEP = PULSO_PALETTE.douradoClaro;
 const BARRO = PULSO_PALETTE.marrom;
 const PALHA = PULSO_PALETTE.creme;
@@ -71,24 +70,11 @@ function FraturaIcon({ size, className }: { size: number; className: string }) {
   );
 }
 
-function ColunaIcon({ size, className }: { size: number; className: string }) {
-  // Falta de educação financeira — colunas em queda, ciclo de vulnerabilidade.
-  return (
-    <svg width={size} height={size} viewBox="0 0 32 32" className={className} aria-hidden="true">
-      <circle cx="16" cy="16" r="15" fill={PALHA} opacity="0.5" />
-      <rect x="8" y="10" width="3.4" height="14" fill={FOLHA} opacity="0.85" />
-      <rect x="14.3" y="14" width="3.4" height="10" fill={OURO} opacity="0.9" />
-      <rect x="20.6" y="18" width="3.4" height="6" fill={BARRO} opacity="0.85" />
-    </svg>
-  );
-}
-
 const ICONS: Record<string, React.FC<{ size: number; className: string }>> = {
   nomofobia: OndasIcon,
   ludopatia: EspiralIcon,
   'abuso-substancia': BalancaIcon,
   'violencia-reativa': FraturaIcon,
-  'falta-educacao-financeira': ColunaIcon,
 };
 
 export default function ThemeIcon({ id, size = 28, className = '' }: ThemeIconProps) {

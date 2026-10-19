@@ -3,13 +3,14 @@ import { localStudyMeta, localStudyHighlights, localStudyAxes } from '../data/lo
 import { PalhaLine, LeafMark } from './Ornaments';
 import { PULSO_PALETTE } from '@shared/data/pulsoPalette';
 
-// Semântica de cor reaproveitada da Home (Stat / statTypeClasses), com shades
-// mais claras adaptadas ao fundo escuro pulso-verde deste bloco: barro=risco/
-// disparidade, folha=avanço, ouro=meta/marco, palha=contexto.
+// Cores dos números sobre o fundo verde-escuro (#06201B). Revisadas em 20/10/2026
+// para contraste legível (antes barro/40 e folha/40 quase sumiam):
+// disparidade = dourado claro (o achado mais importante salta aos olhos),
+// avanço = verde de destaque, meta/marco e contexto = creme.
 const highlightTypeClasses: Record<string, string> = {
-  critical: 'text-pulso-marrom/40',
-  progress: 'text-pulso-verde-accent/40',
-  goal: 'text-pulso-dourado-claro',
+  critical: 'text-pulso-dourado-claro',
+  progress: 'text-pulso-verde-accent',
+  goal: 'text-pulso-creme',
   info: 'text-pulso-creme',
 };
 
@@ -20,9 +21,9 @@ const axisStatusLabel: Record<string, string> = {
 };
 
 const axisStatusClasses: Record<string, string> = {
-  pronto: 'text-pulso-verde-medio bg-pulso-verde-medio/10 border-pulso-verde-accent/40',
-  parcial: 'text-pulso-dourado bg-pulso-creme border-pulso-dourado-claro',
-  pendente: 'text-pulso-marrom bg-pulso-marrom/10 border-pulso-marrom/40',
+  pronto: 'text-pulso-verde bg-pulso-verde-accent border-pulso-verde-accent font-semibold',
+  parcial: 'text-pulso-verde bg-pulso-dourado-claro border-pulso-dourado-claro font-semibold',
+  pendente: 'text-pulso-creme bg-transparent border-pulso-creme/60',
 };
 
 // Bloco de destaque para o estudo epidemiológico local (DF) contratado, exibido
@@ -52,7 +53,7 @@ export default function LocalStudyFeature() {
             <h2 className="font-editorial italic text-2xl sm:text-3xl leading-snug mb-2">
               {localStudyMeta.title}
             </h2>
-            <p className="text-sm text-pulso-creme/90 max-w-2xl">
+            <p className="text-sm text-pulso-creme max-w-2xl">
               Período {localStudyMeta.period} · {localStudyMeta.phaseLabel}. Primeiro estudo epidemiológico local
               que estratifica sistematicamente indicadores de saúde por raça/cor no Distrito Federal.
             </p>
@@ -79,7 +80,7 @@ export default function LocalStudyFeature() {
             <div key={h.label} className="border-t border-pulso-dourado/50 pt-3">
               <div className={`text-2xl font-bold ${highlightTypeClasses[h.type]}`}>{h.value}</div>
               <div className="text-sm text-pulso-creme mt-0.5 mb-1.5">{h.label}</div>
-              <p className="text-[11px] text-pulso-creme/70 leading-relaxed">{h.detail}</p>
+              <p className="text-[11px] text-pulso-creme/85 leading-relaxed">{h.detail}</p>
             </div>
           ))}
         </div>
@@ -112,7 +113,7 @@ export default function LocalStudyFeature() {
             Baixar planilha mestre (.xlsx) →
           </a>
         </div>
-        <p className="text-[11px] text-pulso-creme/60 mt-4 max-w-2xl">
+        <p className="text-xs text-pulso-creme/85 mt-4 max-w-2xl">
           Dados de Fase 1: estruturação metodológica completa, coleta secundária em andamento, cálculos
           epidemiológicos parciais. Consulte a nota de cautela editorial e a política de métricas em{' '}
           <Link to="/transparencia" className="underline hover:text-pulso-dourado-claro">Transparência</Link>.
@@ -125,7 +126,7 @@ export default function LocalStudyFeature() {
 function MetaItem({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <div className="text-[10px] uppercase tracking-wide text-pulso-dourado-claro/80 font-semibold mb-0.5">{label}</div>
+      <div className="text-[10px] uppercase tracking-wide text-pulso-dourado-claro font-semibold mb-0.5">{label}</div>
       <div className="text-pulso-creme/90">{value}</div>
     </div>
   );
