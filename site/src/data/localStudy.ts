@@ -12,10 +12,6 @@ export const localStudyMeta = {
   question: 'Você sabe como vive e como está a saúde da população negra aqui no Distrito Federal?',
   intro:
     'Reunimos e analisamos dados públicos que já existem — da Secretaria de Saúde do Distrito Federal, do Ministério da Saúde e do Instituto de Pesquisa e Estatística do Distrito Federal (IPEDF) — de 2015 a 2024, separados por raça/cor. O objetivo é entender a realidade e começar a agir.',
-  technicalCoordination: 'Dra. Vivilian Muller',
-  executingInstitution: 'Instituto APRECIA',
-  funder: 'Agência Espanhola de Cooperação Internacional para o Desenvolvimento (AECID)',
-  scientificPartners: ['FIOCRUZ', 'UnB', 'FEPECS'],
 };
 
 export interface StudyHighlight {

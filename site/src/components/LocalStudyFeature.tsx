@@ -62,14 +62,6 @@ export default function LocalStudyFeature() {
           ))}
         </ul>
 
-        {/* Quem faz — sem "pesquisadora responsável" (não é pesquisa em curso). */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8 text-xs">
-          <MetaItem label="Coordenação técnica" value={localStudyMeta.technicalCoordination} />
-          <MetaItem label="Realização" value={localStudyMeta.executingInstitution} />
-          <MetaItem label="Apoio" value={localStudyMeta.funder} />
-          <MetaItem label="Parceiros científicos" value={localStudyMeta.scientificPartners.join(' · ')} />
-        </div>
-
         <p className="text-sm text-pulso-creme/90 max-w-3xl border-t border-pulso-creme/15 pt-5">
           Esta é uma análise de dados públicos que já existem. A pesquisa de campo, com escuta direta da
           comunidade, é uma etapa futura do projeto. Saiba como usamos os dados em{' '}
@@ -77,14 +69,5 @@ export default function LocalStudyFeature() {
         </p>
       </div>
     </section>
-  );
-}
-
-function MetaItem({ label, value }: { label: string; value: string }) {
-  return (
-    <div>
-      <div className="text-[11px] uppercase tracking-wide text-pulso-dourado-claro font-semibold mb-0.5">{label}</div>
-      <div className="text-pulso-creme">{value}</div>
-    </div>
   );
 }
