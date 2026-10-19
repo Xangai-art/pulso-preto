@@ -32,6 +32,7 @@ const TABLES_DIR = path.join(ROOT, '.tables');
 const CATALOG_TS = path.join(ROOT, 'shared', 'data', 'diseases.ts');
 const METRICS_TS = path.join(ROOT, 'shared', 'data', 'metrics.ts');
 const NEWS_TS = path.join(ROOT, 'shared', 'data', 'news.ts');
+const FAQ_TS = path.join(ROOT, 'shared', 'data', 'faq.ts');
 const CONTENT_DIR = path.join(ROOT, 'shared', 'data');
 const SCHEMA_SQL = path.join(DB_DIR, 'schema.sql');
 
@@ -44,6 +45,7 @@ const DEEP_MODULES = {
   lupus: { file: 'lupus.ts', exportName: 'lupusContent' },
   depressao: { file: 'depressao.ts', exportName: 'depressaoContent' },
   asma: { file: 'asma.ts', exportName: 'asmaContent' },
+  'doenca-renal-cronica': { file: 'doencaRenalCronica.ts', exportName: 'doencaRenalCronicaContent' },
 };
 
 const LOCALES = ['pt', 'es'];
@@ -66,6 +68,7 @@ const catalogMod = await loadTsModule(CATALOG_TS);
 const { diseaseCategories, healthRecortes } = catalogMod;
 const { metrics } = await loadTsModule(METRICS_TS);
 const { newsItems } = await loadTsModule(NEWS_TS);
+const { faqItems, faqCategories } = await loadTsModule(FAQ_TS);
 
 // ---------------------------------------------------------------------------
 // 1b. Integridade da fonte única (SSOT — Lote B). Falha o build se quebrar.
@@ -92,6 +95,22 @@ const { newsItems } = await loadTsModule(NEWS_TS);
       if (!n.title?.[loc] || !n.excerpt?.[loc]) errors.push(`notícia ${n.id} sem tradução '${loc}'`);
     }
   }
+  // Perguntas frequentes: ids únicos, PT/ES completos, links de condição válidos.
+  const faqIds = faqItems.map((f) => f.id);
+  if (new Set(faqIds).size !== faqIds.length) errors.push('ids de pergunta frequente duplicados');
+  const faqCatIds = faqCategories.map((c) => c.id);
+  for (const f of faqItems) {
+    if (!faqCatIds.includes(f.category)) errors.push(`pergunta ${f.id} com categoria inexistente: ${f.category}`);
+    for (const loc of ['pt', 'es']) {
+      if (!f.q?.[loc] || !f.a?.[loc]) errors.push(`pergunta ${f.id} sem tradução '${loc}'`);
+      if (f.to && !f.linkLabel?.[loc]) errors.push(`pergunta ${f.id} sem rótulo de link '${loc}'`);
+    }
+    const m = f.to?.match(/^\/saude\/([^/?#]+)\/([^/?#]+)$/);
+    if (m) {
+      const cat = diseaseCategories.find((c) => c.id === m[1]);
+      if (!cat || !cat.diseases.some((d) => d.id === m[2])) errors.push(`pergunta ${f.id} aponta para condição inexistente: ${f.to}`);
+    }
+  }
   for (const r of healthRecortes) {
     for (const id of r.diseaseIds) if (!ids.includes(id)) errors.push(`recorte '${r.id}' cita condição inexistente: ${id}`);
   }
@@ -99,7 +118,7 @@ const { newsItems } = await loadTsModule(NEWS_TS);
     console.error('✗ Integridade da fonte única falhou:\n  - ' + errors.join('\n  - '));
     process.exit(1);
   }
-  console.log(`✓ Fonte única íntegra: ${metrics.conditions} condições · ${metrics.categories} categorias · ${metrics.priorityThemes} temas prioritários · ${metrics.deepContent} aprofundados · ${metrics.news} notícias`);
+  console.log(`✓ Fonte única íntegra: ${metrics.conditions} condições · ${metrics.categories} categorias · ${metrics.priorityThemes} temas prioritários · ${metrics.deepContent} aprofundados · ${metrics.news} notícias · ${faqItems.length} perguntas frequentes`);
 }
 
 // Achata o catálogo em linhas de "diseases".
@@ -215,6 +234,7 @@ const canonical = {
   priority_diseases: Object.keys(DEEP_MODULES),
   diseases: diseaseRows,
   news: newsItems,
+  faq: { categories: faqCategories, items: faqItems },
   deepContent: deep,
 };
 writeFileSync(path.join(DB_DIR, 'content.json'), JSON.stringify(canonical, null, 2) + '\n');

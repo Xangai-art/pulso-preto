@@ -279,6 +279,7 @@ const TO_PREVALENTES = '/saude?recorte=prevalentes';
 const TO_REDE_SUS = '/rede-sus';
 const TO_TRANSPARENCIA = '/transparencia';
 const TO_DADOS = '/dados-e-indicadores';
+const TO_FAQ = '/perguntas-frequentes';
 const TO_SOBRE = '/sobre';
 const TO_CONTATO = '/#fale-conosco';
 const TO_NOTICIAS = '/noticias';
@@ -395,6 +396,7 @@ const pt: PulsoContent = {
       ] },
       { heading: 'Comunicação', items: [
         { label: 'Notícias', to: TO_NOTICIAS },
+        { label: 'Perguntas frequentes', to: TO_FAQ },
         { label: 'Fale Conosco', to: TO_CONTATO },
       ] },
     ],
@@ -515,6 +517,7 @@ const es: PulsoContent = {
       ] },
       { heading: 'Comunicación', items: [
         { label: 'Noticias', to: TO_NOTICIAS },
+        { label: 'Preguntas frecuentes', to: TO_FAQ },
         { label: 'Contáctanos', to: TO_CONTATO },
       ] },
     ],

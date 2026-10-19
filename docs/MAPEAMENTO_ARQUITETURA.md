@@ -650,6 +650,11 @@ Origem: 3 áudios de 10/10/2026 (14.01.07 (3), 14.01.07 (4), 14.01.08 (4)) sobre
 - Removido da página Dados e Indicadores o bloco "Coordenação técnica · Realização · Apoio · Parceiros científicos".
 - Documento atualizado com a **Parte 9** (comparação GP0 × PP1 × PP2 × PP3 e PP3 × contrato).
 
+### 8.2-L Doença renal crônica aprofundada + Perguntas frequentes (20/10/2026)
+
+- **Doença Renal Crônica** ganhou conteúdo aprofundado (`shared/data/doencaRenalCronica.ts`): 3 públicos × PT/ES. Para médicos: estadiamento por filtração e albuminúria, rastreamento, iSGLT2/IECA/BRA, encaminhamento, **estimativa da função renal sem "fator raça"** (CKD-EPI 2021) e APOL1. Para a equipe e para a população: linguagem simples. Imagem do acervo (aferição de pressão), sem dado do DF inventado. Total: **8 aprofundados** — os 6 temas do MVP agora cobertos.
+- **Perguntas frequentes** (`shared/data/faq.ts`, 18 perguntas PT/ES em Saúde · Direitos · Como usar o SUS), com leis e serviços verificáveis (Leis 7.716/1989, 14.532/2023, 12.288/2010, 11.108/2005, 14.737/2023, 10.741/2003, 13.709/2018; Portarias 992/2009, 344/2017, 1.820/2009; Resolução CNS 466/2012; telefones 136, 162, 100, 188, 192, 180). Site `/perguntas-frequentes` (busca + filtro + acordeão; atalho `/faq`), App `/perguntas` (Acesso rápido) e `/api/content` (campo `faq`). Links no rodapé (Comunicação) e na Ouvidoria. O build falha se faltar tradução ou se um link apontar para condição inexistente.
+
 ### 8.3 Decisões adiadas (lembrar)
 
 - **Ponto F (5.5-F):** Comunidade e Memória — cards "Gente" na Home (implementado provisoriamente) **ou** itens do menu superior. *Aguardando posição.*
@@ -725,7 +730,7 @@ Origem: 3 áudios de 10/10/2026 (14.01.07 (3), 14.01.07 (4), 14.01.08 (4)) sobre
 | Organização | Lista longa na ordem do arquivo | idem | idem | **Busca + filtro + acordeão**, ordenada por relevância (D13) |
 | Etiquetas | Várias ("Atual", etc.) | idem | idem | Só **Prioritário** e **Dado Local DF** |
 | Linguagem | "Estudo + Achado", "recorte racial" | idem | idem | **Leiga** para o público; técnico nas abas profissionais (D11/D12) |
-| Conteúdo aprofundado por público | 7 condições × 3 públicos × PT/ES | idem | idem | idem (7) |
+| Conteúdo aprofundado por público | 7 condições × 3 públicos × PT/ES | idem | idem | **8** (+ doença renal crônica) |
 | Dado local do Distrito Federal | "Estudo local", "1º estudo epidemiológico" | idem | idem | **"Análise de dados públicos já existentes"** — sem "Fase 1"/"preliminar" (áudios de 10/10) |
 | Abreviaturas | Diversas | idem | idem | **Por extenso na 1ª menção** (D14 / D14-a) |
 | "Placeholder" | Selo "Placeholder (CC)" | idem | idem | **Removido** (D15) |
@@ -756,15 +761,15 @@ Origem: 3 áudios de 10/10/2026 (14.01.07 (3), 14.01.07 (4), 14.01.08 (4)) sobre
 | 3 | Biblioteca de Conteúdos Educativos (materiais técnicos, vídeos, infográficos) | ✅ / 🟡 | 44 condições, 7 aprofundadas por público. **Vídeos e infográficos: não há** dentro da Biblioteca |
 | 4 | Navegação em Saúde (Rede de Atenção, localização de UBS, acesso ao SUS, pesquisas clínicas) | ✅ | App `/mapa` + site Rede SUS + Ensaios Clínicos |
 | 5 | Registro e Acompanhamento (sintomas, acompanhamento periódico, dados pessoais, **lembretes**) | ✅ / 🟡 | App `/checkin` + histórico no perfil. **Lembretes: não há** |
-| 6 | Perguntas Frequentes (doenças, direitos, acesso ao SUS) | 🟡 | Existe só um FAQ sobre o acesso ao App (`/baixar`). **FAQ de saúde e direitos: não há** |
+| 6 | Perguntas Frequentes (doenças, direitos, acesso ao SUS) | ✅ | **20/10/2026:** 18 perguntas em 3 grupos (Saúde · Direitos · Como usar o SUS), PT/ES, fonte única `shared/data/faq.ts` → site `/perguntas-frequentes` + App `/perguntas` + banco |
 | 7 | Sistema de Notificações (campanhas, atualizações) | ❌ | **Pendente** |
 | 8 | Módulo de Feedback (avaliar conteúdos, sugestões) | ❌ | **Pendente** |
-| — | Temas prioritários do MVP: anemia falciforme, hipertensão, diabetes tipo 2, mioma uterino, lúpus, doença renal crônica | ✅ / 🟡 | Os 6 estão na Biblioteca. **5 têm conteúdo aprofundado**; **doença renal crônica, não** |
+| — | Temas prioritários do MVP: anemia falciforme, hipertensão, diabetes tipo 2, mioma uterino, lúpus, doença renal crônica | ✅ | Os 6 estão na Biblioteca **com conteúdo aprofundado** (doença renal crônica incluída em 20/10/2026) |
 | — | Apoio ao protótipo no Seminário (20–21/11/2026 no relatório; o site diz 18–19/11) | 🟡 | Protótipo navegável em produção. ⚠️ **Datas divergentes — confirmar** |
 | — | Documentação técnica | ✅ | README, este mapeamento, relatório de arquitetura `/arquitetura` |
 | — | Versão para lojas (iOS/Android) | ❌ | Hoje é aplicativo web (`/app`). As lojas aparecem só na **proposta**, não no contrato — confirmar se é exigência |
 
-**Lacunas do contrato a fechar:** notificações, feedback, FAQ de saúde e direitos, lembretes, vídeos e infográficos na Biblioteca, conteúdo aprofundado de doença renal crônica e (se exigido) publicação nas lojas.
+**Lacunas do contrato a fechar:** notificações, feedback, lembretes, vídeos e infográficos na Biblioteca e (se exigido) publicação nas lojas. *(FAQ de saúde e direitos e conteúdo aprofundado de doença renal crônica: entregues em 20/10/2026.)*
 
 #### B) Feito ou estruturado ALÉM do contrato
 
@@ -773,7 +778,7 @@ Origem: 3 áudios de 10/10/2026 (14.01.07 (3), 14.01.07 (4), 14.01.08 (4)) sobre
 | 1 | **Site institucional público completo** (19 rotas de página + redirecionamentos) | Não é objeto do contrato (só da proposta) | ✅ produção |
 | 2 | **Arquitetura CEOS com fonte única** de dados para site + App + banco + interface de dados | O contrato pede "arquitetura técnica"; a fonte única com números auto-derivados e verificação de integridade no build vai além | ✅ |
 | 3 | **Biblioteca ampliada:** 44 condições em 9 categorias | O MVP prevê **6 temas** | ✅ |
-| 4 | **Conteúdo aprofundado em 3 públicos** (médico, enfermeiro, usuário) | O MVP não prevê segmentação por público | ✅ 7 condições |
+| 4 | **Conteúdo aprofundado em 3 públicos** (médico, enfermeiro, usuário) | O MVP não prevê segmentação por público | ✅ 8 condições |
 | 5 | **Bilíngue português/espanhol** em toda a interface e no conteúdo aprofundado | Não previsto | ✅ |
 | 6 | **Rede SUS do DF detalhada** (7 regiões, 11 hospitais, 13 UPAs, CEPAV) | O MVP fala em "localização de UBS" | ✅ |
 | 7 | **Ouvidoria** com canais oficiais e direitos | Não previsto no MVP (só o relato no App) | ✅ |

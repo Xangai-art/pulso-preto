@@ -133,6 +133,7 @@ export const diseaseCategories: DiseaseCategory[] = [
         study: 'Science / Genovese et al. 2010',
         finding:
           'Identificação do gene APOL1 (variantes G1/G2), mais frequente em afrodescendentes, como fator de risco para doença renal crônica.',
+        hasDeepContent: true,
       },
       {
         id: 'progressao-doenca-renal',
