@@ -1,0 +1,116 @@
+
+> gente-preta-monorepo@1.0.0 build
+> npm run db:export && npm run install:all && npm run build:site && npm run build:app && npm run assemble
+
+
+> gente-preta-monorepo@1.0.0 db:export
+> node --experimental-strip-types scripts/db/export-content.mjs
+
+✓ Fonte única íntegra: 44 condições · 9 categorias · 8 temas prioritários · 8 aprofundados · 11 notícias · 18 perguntas frequentes
+Pulso Preto — export de conteúdo
+  artefatos:
+    database/content.json
+    database/seed.sql
+    .tables/schema.json
+  tabelas (SQLite verificado):
+    diseases: 44
+    disease_content: 48
+    disease_sections: 256
+    disease_paragraphs: 770
+    disease_sources: 64
+  doenças aprofundadas: 8 × 2 idiomas × 3 audiências
+  verificação: OK (banco == fonte)
+(node:14522) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:14522) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/user/webapp/shared/data/diseases.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/user/webapp/package.json.
+
+> gente-preta-monorepo@1.0.0 install:all
+> npm run install:site && npm run install:app
+
+
+> gente-preta-monorepo@1.0.0 install:site
+> cd site && npm install
+
+
+up to date, audited 213 packages in 2s
+
+114 packages are looking for funding
+  run `npm fund` for details
+
+3 vulnerabilities (1 moderate, 2 high)
+
+To address all issues, run:
+  npm audit fix
+
+Run `npm audit` for details.
+
+> gente-preta-monorepo@1.0.0 install:app
+> cd app && npm install
+
+
+up to date, audited 113 packages in 1s
+
+30 packages are looking for funding
+  run `npm fund` for details
+
+3 vulnerabilities (1 moderate, 2 high)
+
+To address all issues, run:
+  npm audit fix
+
+Run `npm audit` for details.
+
+> gente-preta-monorepo@1.0.0 build:site
+> cd site && npm run build
+
+
+> site@0.0.0 build
+> tsc -b && vite build
+
+vite v8.2.1 building client environment for production...
+
+transforming...✓ 336 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   1.11 kB │ gzip:   0.62 kB
+dist/assets/index-B9BJ981J.css   28.33 kB │ gzip:   6.26 kB
+dist/assets/index-D2MobLHp.js   928.73 kB │ gzip: 276.77 kB
+
+✓ built in 1.85s
+[plugin builtin:vite-reporter]
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+
+> gente-preta-monorepo@1.0.0 build:app
+> cd app && npm run build
+
+
+> app@0.0.0 build
+> tsc -b && vite build
+
+vite v8.2.1 building client environment for production...
+
+transforming...✓ 70 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   1.07 kB │ gzip:   0.60 kB
+dist/assets/index-l3SHDa6o.css   19.94 kB │ gzip:   4.69 kB
+dist/assets/index-B3mHkjQM.js   601.27 kB │ gzip: 182.09 kB
+
+[INEFFECTIVE_DYNAMIC_IMPORT] ../shared/data/diseases.ts is dynamically imported by src/lib/useHealthCatalogue.ts but also statically imported by src/pages/Baseline.tsx, src/pages/DiseaseDetail.tsx, src/pages/Home.tsx, ../shared/data/metrics.ts, dynamic import will not move module into another chunk.
+
+[plugin builtin:vite-reporter]
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+[INEFFECTIVE_DYNAMIC_IMPORT] ../shared/data/deepContentRegistry.ts is dynamically imported by src/components/HealthDeepContent.tsx but also statically imported by ../shared/data/metrics.ts, dynamic import will not move module into another chunk.
+
+✓ built in 1.27s
+
+> gente-preta-monorepo@1.0.0 assemble
+> rm -rf dist && mkdir -p dist && cp -r site/dist/. dist/ && mkdir -p dist/app && cp -r app/dist/. dist/app/ && mkdir -p dist/api && cp database/content.json dist/api/content.json && cp worker/index.js dist/_worker.js && printf '_worker.js\n' > dist/.assetsignore

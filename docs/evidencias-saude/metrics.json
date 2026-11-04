@@ -1,0 +1,23 @@
+{
+  "s0Blocks": 7,
+  "s0WordsInFold": 43,
+  "S2-anemia-falciforme-words": 82,
+  "S2-hipertensao-words": 87,
+  "S2-diabetes-words": 89,
+  "S2-miomas-uterinos-words": 82,
+  "S2-lupus-words": 82,
+  "S2-doenca-renal-cronica-words": 84,
+  "hospitalDistances": [
+    0.3,
+    11.5,
+    11.7,
+    15.1,
+    19.9,
+    24.6,
+    24.9,
+    29.1,
+    30.2,
+    30.9
+  ],
+  "noHorizontalOverflowAt200": true
+}

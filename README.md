@@ -243,8 +243,78 @@ Ver `docs/MAPEAMENTO_ARQUITETURA.md` → Parte 6 (pendências) e Parte 8.3
 - Formulário de `/baixar` conectado a e-mail transacional (hoje client-side).
 - QA de acessibilidade e revisão clínica formal pelo Conselho Consultivo.
 
+## Aba Saúde do App — revelação progressiva (04/11/2026)
+
+**Estado:** estrutura web funcional, com build e testes executados; **não há
+aceite clínico final**. Definição, três sinais e três ações de S2 usam o marcador
+`[CONTEÚDO PENDENTE DE VALIDAÇÃO PELA EQUIPE DA SAÚDE]` enquanto a equipe não
+aprovar os textos. O acervo científico original permanece acessível em N3 e
+não foi editado nem excluído.
+
+### Guia e rotas do App
+
+Após o onboarding existente, abra Saúde na tab bar:
+
+| URI (base de produção `/app/`) | Uso |
+|---|---|
+| `/app/saude` | S0: busca, três intenções, seis destaques e ver todas. |
+| `/app/saude?lista=1` | S1: nove sistemas, primeira seção aberta e três filtros de seleção única. |
+| `/app/saude/:categoryId/:diseaseId` | S2: nome popular/técnico, cinco blocos e aprofundamento fechado. |
+| Mesma rota com `?aprofundar=1` | S3: explicação, equidade, ciência e acervo completo, paginados. |
+| Mesma rota com `?aprofundar=1#science` | Acesso ao estudo/achado e bibliografia interna. |
+| `/app/mapa?condicao=<id>` | S4: rede geral, tipo de unidade, até dez resultados, telefone/rota e “Antes de ir”. A associação clínica por condição ainda não é validada. |
+
+Os seis destaques são anemia falciforme, pressão alta, diabetes tipo 2, mioma
+uterino, lúpus e doença renal crônica. A busca aceita nomes populares/técnicos,
+acentos e alguns erros de digitação. “Minhas anotações” informa indisponibilidade;
+não foi criado novo armazenamento pessoal. Os filtros de risco/acesso usam a
+classificação temática existente, não avaliação individual.
+
+### Dados e offline
+
+- Catálogo e acervo vêm das fontes existentes `shared/data/`; o adaptador de
+  apresentação fica em `app/src/lib/healthPresentation.ts`.
+- Cache API do navegador (`pulso-health-editorial-v1`) conserva catálogo e
+  marcadores locais dos IDs de condições abertas. Estes IDs representam histórico
+  de leitura; revisar retenção/governança antes da homologação. Não há envio novo
+  desse histórico ao servidor nem novo armazenamento de localização/notas.
+- Offline foi testado com o app já carregado. **Não há garantia de abertura a
+  frio offline, Service Worker ou instalador PWA/nativo nesta entrega.**
+- Localização usa a autorização já existente no Perfil e estado transitório da
+  tela. Distâncias só são calculadas para serviços com coordenadas reais.
+- Backend, autenticação, cadastro, consentimentos, modelo de dados, políticas,
+  build/CI e dependências do produto não foram alterados.
+
+### Testes e evidências
+
+```bash
+npm run build
+npm run lint --prefix app
+node scripts/test-health.mjs
+# Requer preview existente na porta 3000 e Playwright local de QA:
+node scripts/test-health-browser.mjs
+```
+
+Foram aprovadas 32 verificações de funções/dados e a comparação de 23 snapshots
+de árvore acessível em Chromium (360×800), incluindo estados e seis condições.
+Playwright fica fora dos manifests do produto; preparação, limites e comandos
+estão no [relatório CA-01 a CA-16](docs/RELATORIO_SAUDE_CA.md).
+Capturas estão em [docs/evidencias-saude/](docs/evidencias-saude/).
+
+**Pendências e próximos passos:** receber textos clínicos aprovados, URLs das
+fontes, vocabulário de sintomas e associação condição–serviço; completar dados
+da rede, tradução da UI, auditoria de siglas e acessibilidade; medir 4G e testar
+com cinco usuários. Ver [PENDENCIAS_CONTEUDO.md](PENDENCIAS_CONTEUDO.md).
+VoiceOver/TalkBack e aceite WCAG integral não foram verificados.
+
+**Publicação:** preview local verificado em `http://localhost:3000/app/saude`.
+Nenhum deploy manual desta refatoração foi realizado; a publicação por Workers
+Builds descrita acima depende do pipeline conectado ao push. Não foi verificada
+uma URL de produção para esta versão.
+
 ## Última atualização
-19/10/2026 — PP3 Lotes A (navegação público-primeiro, `/ouvidoria`), B (fonte
-única de dados, métricas auto-derivadas, notícias unificadas, paridade
-site↔app 47/47) e C (marca via Canon, assinatura fictícia removida, siglas
-por extenso, sem "A definir", ordem por relevância no app).
+04/11/2026 — Estrutura progressiva da aba Saúde no App, testes e registro de
+pendências. A documentação histórica PP3 acima é preservada; os números atuais
+de conteúdo devem ser obtidos de `shared/data/metrics.ts`/exportação, não das
+contagens históricas deste texto. O build atual exporta oito condições
+aprofundadas, incluindo doença renal crônica.
