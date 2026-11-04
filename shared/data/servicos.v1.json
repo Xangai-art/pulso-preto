@@ -1,0 +1,4367 @@
+[
+  {
+    "id": "ubs-central-01",
+    "nome": "Unidade Básica de Saúde 1 Asa Sul",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "SGAS Quadra 612/613, Lotes 38/39",
+      "numero": null,
+      "bairro": "Asa Sul",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-central-02",
+    "nome": "Unidade Básica de Saúde 1 Asa Norte",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "SGAN Quadra 905, Módulo D",
+      "numero": null,
+      "bairro": "Asa Norte",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-central-03",
+    "nome": "Unidade Básica de Saúde 2 Asa Norte",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "EQN 114/115, Área Especial",
+      "numero": null,
+      "bairro": "Asa Norte",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-central-04",
+    "nome": "Unidade Básica de Saúde 3 Asa Norte (Vila Planalto)",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "Rua Piauí, Área Especial, S/N",
+      "numero": null,
+      "bairro": "Vila Planalto",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-central-05",
+    "nome": "Unidade Básica de Saúde 5 Asa Norte (Granja do Torto)",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "Quadra 1, Granja do Torto",
+      "numero": null,
+      "bairro": "Asa Norte",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-central-06",
+    "nome": "Unidade Básica de Saúde 3 Lago Sul",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "SHIS QI 21, Área Especial",
+      "numero": null,
+      "bairro": "Lago Sul",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-central-07",
+    "nome": "Unidade Básica de Saúde 1 Lago Norte",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "SHIN QI 03, Área Especial",
+      "numero": null,
+      "bairro": "Lago Norte",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-central-08",
+    "nome": "Unidade Básica de Saúde 1 Cruzeiro",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "SHCES Quadra 601, Lote 01, Cruzeiro Novo",
+      "numero": null,
+      "bairro": "Cruzeiro",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-central-09",
+    "nome": "Unidade Básica de Saúde 2 Cruzeiro",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "Setor Escolar, Lote 04, Cruzeiro Velho",
+      "numero": null,
+      "bairro": "Cruzeiro",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-central-10",
+    "nome": "Unidade Básica de Saúde 1 Varjão",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "Quadra 05, Conjunto A, Lote 17, Vila Varjão",
+      "numero": null,
+      "bairro": "Varjão",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-centrosul-01",
+    "nome": "Unidade Básica de Saúde 1 Guará",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "SRIA QI 06, Lote C, Guará I",
+      "numero": null,
+      "bairro": "Guará",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-centrosul-02",
+    "nome": "Unidade Básica de Saúde 2 Guará",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "QE 23, Área Especial, Lote C, Guará II",
+      "numero": null,
+      "bairro": "Guará",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-centrosul-03",
+    "nome": "Unidade Básica de Saúde 3 Guará",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "QE 38, Guará II, Área Especial",
+      "numero": null,
+      "bairro": "Guará",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-centrosul-04",
+    "nome": "Unidade Básica de Saúde 4 Guará",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "QELC EQ 2/3, Conjunto Lúcio Costa",
+      "numero": null,
+      "bairro": "Guará",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-centrosul-05",
+    "nome": "Unidade Básica de Saúde 5 Guará",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "QE 38, Conjunto O, Área Especial",
+      "numero": null,
+      "bairro": "Guará",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-centrosul-06",
+    "nome": "Unidade Básica de Saúde 1 Núcleo Bandeirante",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "3ª Avenida, Área Especial nº 03",
+      "numero": null,
+      "bairro": "Núcleo Bandeirante",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-centrosul-07",
+    "nome": "Unidade Básica de Saúde 2 Núcleo Bandeirante",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "Rua 1, Setor dos Engenheiros, Área Especial nº 02",
+      "numero": null,
+      "bairro": "Núcleo Bandeirante",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-centrosul-08",
+    "nome": "Unidade Básica de Saúde 1 Park Way",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "Área Especial nº 01, Vargem Bonita",
+      "numero": null,
+      "bairro": "Park Way",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-centrosul-09",
+    "nome": "Unidade Básica de Saúde 1 Candangolândia",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "EQR 05/07, Área Especial nº 01",
+      "numero": null,
+      "bairro": "Candangolândia",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-centrosul-10",
+    "nome": "Unidade Básica de Saúde 1 Riacho Fundo I",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "QN 09, Área Especial nº 11",
+      "numero": null,
+      "bairro": "Riacho Fundo I",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-centrosul-11",
+    "nome": "Unidade Básica de Saúde 2 Riacho Fundo I",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "QN 01, Conjunto 32, Área Especial",
+      "numero": null,
+      "bairro": "Riacho Fundo I",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-centrosul-12",
+    "nome": "Unidade Básica de Saúde 1 Riacho Fundo II",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "QC 06, Conjunto 16, Lote 01",
+      "numero": null,
+      "bairro": "Riacho Fundo II",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-centrosul-13",
+    "nome": "Unidade Básica de Saúde 1 Estrutural",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "Área Especial 01, Setor Central",
+      "numero": null,
+      "bairro": "Estrutural",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-norte-01",
+    "nome": "Unidade Básica de Saúde 1 Planaltina",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "Quadra 18, Conjunto H, Área Especial 01, Buritis IV",
+      "numero": null,
+      "bairro": "Planaltina",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-norte-02",
+    "nome": "Unidade Básica de Saúde 5 Planaltina",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "Quadra 12, Conjunto I, Arapoanga",
+      "numero": null,
+      "bairro": "Planaltina",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-norte-03",
+    "nome": "Unidade Básica de Saúde 9 Planaltina",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "DF 130, Km 25, Núcleo Rural Santos Dumont",
+      "numero": null,
+      "bairro": "Planaltina",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-norte-04",
+    "nome": "Unidade Básica de Saúde 1 Sobradinho",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "QD 14, Área Especial nº 22/23",
+      "numero": null,
+      "bairro": "Sobradinho",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-norte-05",
+    "nome": "Unidade Básica de Saúde 1 Sobradinho II",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "AR 13, Conjunto 07, Lote 01",
+      "numero": null,
+      "bairro": "Sobradinho II",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-norte-06",
+    "nome": "Unidade Básica de Saúde 1 Fercal",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "DF 150, Km 12, Quadra 10, Lote 14",
+      "numero": null,
+      "bairro": "Fercal",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-sul-gama-01",
+    "nome": "Unidade Básica de Saúde 1 Gama",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "Entrequadra 06/12, Setor Sul",
+      "numero": null,
+      "bairro": "Gama",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-sul-gama-02",
+    "nome": "Unidade Básica de Saúde 2 Gama",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "Quadra 11, Área Especial, Lotes A, B, C, D",
+      "numero": null,
+      "bairro": "Gama",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-sul-gama-03",
+    "nome": "Unidade Básica de Saúde 3 Gama",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "EQ 3/5, Área Especial, Setor Leste",
+      "numero": null,
+      "bairro": "Gama",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-sul-gama-04",
+    "nome": "Unidade Básica de Saúde 4 Gama",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "Praça 3, Área Especial, Setor Leste",
+      "numero": null,
+      "bairro": "Gama",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-sul-gama-05",
+    "nome": "Unidade Básica de Saúde 5 Gama",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "Área Especial, Lote 38, Setor Central",
+      "numero": null,
+      "bairro": "Gama",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-sul-gama-06",
+    "nome": "Unidade Básica de Saúde 6 Gama",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "Entrequadra 12/16, Área Especial, Setor Oeste",
+      "numero": null,
+      "bairro": "Gama",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-sul-gama-07",
+    "nome": "Unidade Básica de Saúde 7 Gama",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "Área Especial nº 1, Estádio Bezerrão, Setor Central",
+      "numero": null,
+      "bairro": "Gama",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-sul-gama-08",
+    "nome": "Unidade Básica de Saúde 8 Gama (DVO)",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "Travessa Eucaliptos nº 4, Área Especial DVO",
+      "numero": null,
+      "bairro": "Gama",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-sul-gama-09",
+    "nome": "Unidade Básica de Saúde 9 Gama",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "Engenho das Lages, Rua Libânio, Casa nº 13",
+      "numero": null,
+      "bairro": "Gama",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-sul-gama-11",
+    "nome": "Unidade Básica de Saúde 11 Gama",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "DF 475, Km 05, Núcleo Rural Ponte Alta Norte",
+      "numero": null,
+      "bairro": "Gama",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-sul-gama-12",
+    "nome": "Unidade Básica de Saúde 12 Gama",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "Ponte Alta, DF 290 (antigo Posto Fiscal)",
+      "numero": null,
+      "bairro": "Gama",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-sul-gama-13",
+    "nome": "Unidade Básica de Saúde 13 Gama",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "Quadra 26, Casa 39, Setor Leste",
+      "numero": null,
+      "bairro": "Gama",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-sul-sm-01",
+    "nome": "Unidade Básica de Saúde 1 Santa Maria",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "Quadra 207/307, Conjunto T, Área Especial",
+      "numero": null,
+      "bairro": "Santa Maria",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-sul-sm-02",
+    "nome": "Unidade Básica de Saúde 2 Santa Maria",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "EQ 217/317, Lote E",
+      "numero": null,
+      "bairro": "Santa Maria",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-sul-sm-03",
+    "nome": "Unidade Básica de Saúde 3 Santa Maria",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "Quadra 100, Conjunto I, Lote 01, Área Especial",
+      "numero": null,
+      "bairro": "Santa Maria",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-sul-sm-05",
+    "nome": "Unidade Básica de Saúde 5 Santa Maria",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "Entre Quadra 212/213, Área Especial",
+      "numero": null,
+      "bairro": "Santa Maria",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-sul-sm-06",
+    "nome": "Unidade Básica de Saúde 6 Santa Maria",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "Entre Quadra 202/203, Área Especial",
+      "numero": null,
+      "bairro": "Santa Maria",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-sul-sm-07",
+    "nome": "Unidade Básica de Saúde 7 Santa Maria",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "Av. Brigadeiro Pinto de Moura, S/N, Área Especial",
+      "numero": null,
+      "bairro": "Santa Maria",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-sul-sm-08",
+    "nome": "Unidade Básica de Saúde 8 Santa Maria",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "EQ 418/518",
+      "numero": null,
+      "bairro": "Santa Maria",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-sul-sm-10",
+    "nome": "Unidade Básica de Saúde 10 Santa Maria (DVO)",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "Área Especial do DVO, Rua do Eucalipto nº 04",
+      "numero": null,
+      "bairro": "Santa Maria",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-leste-01",
+    "nome": "Unidade Básica de Saúde 1 Itapoã",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "QD 378, Conjunto L, Área Especial, Del Lago",
+      "numero": null,
+      "bairro": "Itapoã",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-leste-02",
+    "nome": "Unidade Básica de Saúde 19 São Sebastião",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "Rua 07, Casa 400, Bairro Vila do Boa",
+      "numero": null,
+      "bairro": "São Sebastião",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-oeste-cei-01",
+    "nome": "Unidade Básica de Saúde 1 Ceilândia",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "EQNP 7/11, Área Especial",
+      "numero": null,
+      "bairro": "Ceilândia",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-oeste-cei-02",
+    "nome": "Unidade Básica de Saúde 2 Ceilândia",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "QNN 15, Lote F, Área Especial",
+      "numero": null,
+      "bairro": "Ceilândia",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-oeste-cei-03",
+    "nome": "Unidade Básica de Saúde 3 Ceilândia",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "QNM 15, Lote D, Área Especial",
+      "numero": null,
+      "bairro": "Ceilândia",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-oeste-cei-05",
+    "nome": "Unidade Básica de Saúde 5 Ceilândia",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "QNM 16, Módulo F, Área Especial",
+      "numero": null,
+      "bairro": "Ceilândia",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-oeste-cei-06",
+    "nome": "Unidade Básica de Saúde 6 Ceilândia",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "EQNP 10/14, Módulos E, F, G, H, Área Especial",
+      "numero": null,
+      "bairro": "Ceilândia",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-oeste-cei-07",
+    "nome": "Unidade Básica de Saúde 7 Ceilândia",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "QNO 10, Área Especial D/E",
+      "numero": null,
+      "bairro": "Ceilândia",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-oeste-cei-08",
+    "nome": "Unidade Básica de Saúde 8 Ceilândia",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "EQNP 13/17, Módulos A, B, C, D, Área Especial",
+      "numero": null,
+      "bairro": "Ceilândia",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-oeste-cei-09",
+    "nome": "Unidade Básica de Saúde 9 Ceilândia",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "EQNP 28/32, Setor P Sul",
+      "numero": null,
+      "bairro": "Ceilândia",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-oeste-cei-10",
+    "nome": "Unidade Básica de Saúde 10 Ceilândia",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "QNN 12, Área Especial 01",
+      "numero": null,
+      "bairro": "Ceilândia",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-oeste-cei-11",
+    "nome": "Unidade Básica de Saúde 11 Ceilândia",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "QNO 10, Módulos D, E, Área Especial",
+      "numero": null,
+      "bairro": "Ceilândia",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-oeste-cei-12",
+    "nome": "Unidade Básica de Saúde 12 Ceilândia",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "QNQ 03/04, Área Especial",
+      "numero": null,
+      "bairro": "Ceilândia",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-oeste-cei-13",
+    "nome": "Unidade Básica de Saúde 13 Ceilândia",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "Núcleo Rural Boa Esperança",
+      "numero": null,
+      "bairro": "Ceilândia",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-oeste-cei-14",
+    "nome": "Unidade Básica de Saúde 14 Ceilândia",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "Condomínio Privê Lucena Roriz, Rua 01, Área Especial 03, Módulo 12, Lote 01",
+      "numero": null,
+      "bairro": "Ceilândia",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-oeste-cei-15",
+    "nome": "Unidade Básica de Saúde 15 Ceilândia",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "QNP 21, Área Especial",
+      "numero": null,
+      "bairro": "Ceilândia",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-oeste-cei-16",
+    "nome": "Unidade Básica de Saúde 16 Ceilândia (Sol Nascente)",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "Quadra 501, Área Especial 02, Trecho 01, Setor Habitacional Sol Nascente, Conjunto B",
+      "numero": null,
+      "bairro": "Sol Nascente/Pôr do Sol",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-oeste-cei-17",
+    "nome": "Unidade Básica de Saúde 17 Ceilândia",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "EQNP 16/20",
+      "numero": null,
+      "bairro": "Ceilândia",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-oeste-braz-01",
+    "nome": "Unidade Básica de Saúde 1 Brazlândia",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "EQ 6/8, Setor Norte, Área Especial 3",
+      "numero": null,
+      "bairro": "Brazlândia",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-oeste-braz-02",
+    "nome": "Unidade Básica de Saúde 2 Brazlândia",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "QD 45, Área Especial 01, Vila São José",
+      "numero": null,
+      "bairro": "Brazlândia",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-oeste-braz-03",
+    "nome": "Unidade Básica de Saúde 3 Brazlândia",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "Quadra 3, Lote 6, Área Especial nº 2, Setor Veredas",
+      "numero": null,
+      "bairro": "Brazlândia",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-oeste-braz-04",
+    "nome": "Unidade Básica de Saúde 4 Brazlândia",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "Quadra 01, Área Especial 1, Setor Veredas II",
+      "numero": null,
+      "bairro": "Brazlândia",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-oeste-braz-05",
+    "nome": "Unidade Básica de Saúde 5 Brazlândia",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "Reserva A, DF 240/DF 008, Km 445, Vicinal, Área Especial 1",
+      "numero": null,
+      "bairro": "Brazlândia",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-oeste-braz-06",
+    "nome": "Unidade Básica de Saúde 6 Brazlândia",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "Fazenda Almécegas, BR 180/205, Km 05",
+      "numero": null,
+      "bairro": "Brazlândia",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-oeste-braz-07",
+    "nome": "Unidade Básica de Saúde 7 Brazlândia",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "Quadra 15, Lote 02, Loja 01, Área Especial 02, Incra 08",
+      "numero": null,
+      "bairro": "Brazlândia",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-sudoeste-01",
+    "nome": "Unidade Básica de Saúde 1 Águas Claras",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "QS 05, Avenida Areal, Lote 24",
+      "numero": null,
+      "bairro": "Águas Claras",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-sudoeste-02",
+    "nome": "Unidade Básica de Saúde 1 Vicente Pires",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "Rua 4C, Chácara 12, Colônia Agrícola Samambaia",
+      "numero": null,
+      "bairro": "Vicente Pires",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-sudoeste-03",
+    "nome": "Unidade Básica de Saúde 1 Recanto das Emas",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "Quadra 307, Área Especial 01",
+      "numero": null,
+      "bairro": "Recanto das Emas",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "ubs-sudoeste-04",
+    "nome": "Unidade Básica de Saúde 1 Taguatinga",
+    "tipo": "ubs",
+    "endereco": {
+      "logradouro": "QNG, Área Especial 19",
+      "numero": null,
+      "bairro": "Taguatinga",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://info.saude.df.gov.br/busca-saude-ubs/",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "hran",
+    "nome": "Hospital Regional da Asa Norte",
+    "tipo": "hospital",
+    "endereco": {
+      "logradouro": "SMHN Quadra 101 Bloco A, Área Especial",
+      "numero": null,
+      "bairro": null,
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": -15.7797,
+      "lng": -47.8827,
+      "precisao": "nao_informada"
+    },
+    "telefones": [
+      "(61) 3449-4650/4651"
+    ],
+    "horario": {
+      "descricao": "Emergência 24h",
+      "is24h": true,
+      "escopo": "setor",
+      "fonte": "https://www.saude.df.gov.br/carta-servicos-hran"
+    },
+    "servicos": [
+      "Emergência 24h",
+      "Cirurgia Geral",
+      "Clínica Médica",
+      "Ginecologia e Obstetrícia",
+      "Queimados",
+      "Cirurgia Plástica",
+      "Odontologia"
+    ],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://www.saude.df.gov.br/carta-servicos-hran",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "hrbraz",
+    "nome": "Hospital Regional de Brazlândia",
+    "tipo": "hospital",
+    "endereco": {
+      "logradouro": "Área Especial 06, Setor Tradicional",
+      "numero": null,
+      "bairro": null,
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": -15.6683,
+      "lng": -48.1439,
+      "precisao": "nao_informada"
+    },
+    "telefones": [
+      "(61) 3449-6318/6319"
+    ],
+    "horario": {
+      "descricao": "Emergência 24h",
+      "is24h": true,
+      "escopo": "setor",
+      "fonte": "https://www.saude.df.gov.br/brazlandia-urgencia-e-emergencia"
+    },
+    "servicos": [
+      "Emergência 24h",
+      "Clínica Médica",
+      "Cirurgia Geral",
+      "Ginecologia e Obstetrícia"
+    ],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://www.saude.df.gov.br/brazlandia-urgencia-e-emergencia",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "hrc",
+    "nome": "Hospital Regional de Ceilândia",
+    "tipo": "hospital",
+    "endereco": {
+      "logradouro": "QNM 27 Área Especial 1, QNM 28",
+      "numero": null,
+      "bairro": null,
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": -15.8153,
+      "lng": -48.1074,
+      "precisao": "nao_informada"
+    },
+    "telefones": [
+      "(61) 3449-6027/6028/6029"
+    ],
+    "horario": {
+      "descricao": "Emergência 24h",
+      "is24h": true,
+      "escopo": "setor",
+      "fonte": "https://www.saude.df.gov.br/hospital-regional-de-ceilandia"
+    },
+    "servicos": [
+      "Emergência 24h",
+      "Ambulatorial",
+      "Banco de Leite",
+      "Internação Domiciliar (NRAD)",
+      "Ouvidoria",
+      "Serviço Social",
+      "Voluntariado"
+    ],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://www.saude.df.gov.br/hospital-regional-de-ceilandia",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "hrg",
+    "nome": "Hospital Regional do Gama",
+    "tipo": "hospital",
+    "endereco": {
+      "logradouro": "Área Especial nº 1, Setor Central",
+      "numero": null,
+      "bairro": null,
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": -16.0181,
+      "lng": -48.0656,
+      "precisao": "nao_informada"
+    },
+    "telefones": [
+      "(61) 3449-7044/7039"
+    ],
+    "horario": {
+      "descricao": "Emergência 24h",
+      "is24h": true,
+      "escopo": "setor",
+      "fonte": "https://www.saude.df.gov.br/hospital-regional-do-gama"
+    },
+    "servicos": [
+      "Emergência 24h",
+      "Maternidade",
+      "UTI",
+      "Banco de Leite",
+      "Ortopedia",
+      "Cardiologia",
+      "Núcleo de Atenção Domiciliar (NRAD)"
+    ],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://www.saude.df.gov.br/hospital-regional-do-gama",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "hrgu",
+    "nome": "Hospital Regional do Guará",
+    "tipo": "hospital",
+    "endereco": {
+      "logradouro": "QI 06 Área Especial C, Guará I",
+      "numero": null,
+      "bairro": null,
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": -15.8244,
+      "lng": -47.9772,
+      "precisao": "nao_informada"
+    },
+    "telefones": [
+      "(61) 3449-4943/4944"
+    ],
+    "horario": {
+      "descricao": "Emergência 24h",
+      "is24h": true,
+      "escopo": "setor",
+      "fonte": "https://www.saude.df.gov.br/hospital-do-guar%C3%A1"
+    },
+    "servicos": [
+      "Emergência 24h",
+      "Clínica Médica",
+      "Pediatria"
+    ],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://www.saude.df.gov.br/hospital-do-guar%C3%A1",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "hrpa",
+    "nome": "Hospital da Região Leste (Paranoá)",
+    "tipo": "hospital",
+    "endereco": {
+      "logradouro": "Área Especial Hospitalar, Quadra 2, Conjunto K, Lote 1",
+      "numero": null,
+      "bairro": null,
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": -15.7642,
+      "lng": -47.7719,
+      "precisao": "nao_informada"
+    },
+    "telefones": [
+      "(61) 3449-5225/5224"
+    ],
+    "horario": {
+      "descricao": "Emergência 24h",
+      "is24h": true,
+      "escopo": "setor",
+      "fonte": "https://www.saude.df.gov.br/hospital-regiao-leste"
+    },
+    "servicos": [
+      "Emergência 24h",
+      "Trauma (Ortopedia e Cirurgia Geral)",
+      "Pediatria",
+      "Ginecologia e Obstetrícia",
+      "Maternidade"
+    ],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://www.saude.df.gov.br/hospital-regiao-leste",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "hrpl",
+    "nome": "Hospital Regional de Planaltina",
+    "tipo": "hospital",
+    "endereco": {
+      "logradouro": "Av. WL4, Área Especial, Setor Hospitalar",
+      "numero": null,
+      "bairro": null,
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": -15.6169,
+      "lng": -47.6547,
+      "precisao": "nao_informada"
+    },
+    "telefones": [
+      "(61) 3449-5753"
+    ],
+    "horario": {
+      "descricao": "Emergência 24h",
+      "is24h": true,
+      "escopo": "setor",
+      "fonte": "https://www.saude.df.gov.br/hospital-regional-de-planaltina"
+    },
+    "servicos": [
+      "Emergência 24h",
+      "Ambulatorial",
+      "Banco de Leite",
+      "Banco de Sangue",
+      "Ecografia",
+      "Hospital Amigo da Criança (IHAC)"
+    ],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://www.saude.df.gov.br/hospital-regional-de-planaltina",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "hrsm",
+    "nome": "Hospital Regional de Santa Maria",
+    "tipo": "hospital",
+    "endereco": {
+      "logradouro": "Quadra AC 102, Conjuntos A a D",
+      "numero": null,
+      "bairro": null,
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": -16.0206,
+      "lng": -47.9878,
+      "precisao": "nao_informada"
+    },
+    "telefones": [
+      "(61) 4042-7770"
+    ],
+    "horario": {
+      "descricao": "Emergência 24h",
+      "is24h": true,
+      "escopo": "setor",
+      "fonte": "https://www.saude.df.gov.br/ceo-hospital-regional-de-santa-maria-hrsm"
+    },
+    "servicos": [
+      "Emergência 24h",
+      "Clínica Médica e Cirúrgica",
+      "Ginecologia e Obstetrícia",
+      "Pediatria",
+      "Ortopedia",
+      "UTI Adulto/Pediátrica/Neonatal"
+    ],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://www.saude.df.gov.br/ceo-hospital-regional-de-santa-maria-hrsm",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "hrsam",
+    "nome": "Hospital Regional de Samambaia",
+    "tipo": "hospital",
+    "endereco": {
+      "logradouro": "QS 614 Conjunto C, Lotes 1/2",
+      "numero": null,
+      "bairro": null,
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": -15.8752,
+      "lng": -48.0904,
+      "precisao": "nao_informada"
+    },
+    "telefones": [
+      "(61) 3449-6810/6811/6812"
+    ],
+    "horario": {
+      "descricao": "Emergência 24h",
+      "is24h": true,
+      "escopo": "setor",
+      "fonte": "https://www.saude.df.gov.br/w/hospital-regional-de-samambaia"
+    },
+    "servicos": [
+      "Emergência 24h",
+      "Clínica Médica",
+      "Ginecologia e Obstetrícia"
+    ],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://www.saude.df.gov.br/w/hospital-regional-de-samambaia",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "hrs",
+    "nome": "Hospital Regional de Sobradinho",
+    "tipo": "hospital",
+    "endereco": {
+      "logradouro": "Q 12 Conjunto B, Lote 38",
+      "numero": null,
+      "bairro": null,
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": -15.6529,
+      "lng": -47.8291,
+      "precisao": "nao_informada"
+    },
+    "telefones": [
+      "(61) 3449-5542/5543"
+    ],
+    "horario": {
+      "descricao": "Emergência 24h",
+      "is24h": true,
+      "escopo": "setor",
+      "fonte": "https://www.saude.df.gov.br/hospital-de-sobradinho"
+    },
+    "servicos": [
+      "Emergência 24h",
+      "Banco de Leite",
+      "Banco de Sangue",
+      "CAPSI",
+      "CAPS AD",
+      "Nefrologia",
+      "Núcleo de Atenção Domiciliar (NRAD)"
+    ],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://www.saude.df.gov.br/hospital-de-sobradinho",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "hrt",
+    "nome": "Hospital Regional de Taguatinga",
+    "tipo": "hospital",
+    "endereco": {
+      "logradouro": "QNC Área Especial 24, Taguatinga Norte",
+      "numero": null,
+      "bairro": null,
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": -15.8342,
+      "lng": -48.0575,
+      "precisao": "nao_informada"
+    },
+    "telefones": [
+      "(61) 3449-6534/6535/6536/6537"
+    ],
+    "horario": {
+      "descricao": "Emergência 24h",
+      "is24h": true,
+      "escopo": "setor",
+      "fonte": "https://www.saude.df.gov.br/hospital-de-taguatinga"
+    },
+    "servicos": [
+      "Emergência 24h",
+      "Clínica Médica e Cirúrgica",
+      "Trauma",
+      "Ginecologia e Obstetrícia",
+      "Oftalmologia",
+      "Ortopedia",
+      "Pediatria",
+      "UTI Adulto/Pediátrica/Neonatal"
+    ],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://www.saude.df.gov.br/hospital-de-taguatinga",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "upa-brazlandia",
+    "nome": "Unidade de Pronto Atendimento Brazlândia",
+    "tipo": "upa",
+    "endereco": {
+      "logradouro": "Quadra 37, Área Especial 1, Vila São José",
+      "numero": null,
+      "bairro": "Brazlândia",
+      "cep": "72.737-000",
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://www.saude.df.gov.br/upa-24h",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "upa-ceilandia-1",
+    "nome": "Unidade de Pronto Atendimento Ceilândia I",
+    "tipo": "upa",
+    "endereco": {
+      "logradouro": "QNN 27, Área Especial D",
+      "numero": null,
+      "bairro": "Ceilândia",
+      "cep": "72.225-270",
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://www.saude.df.gov.br/upa-24h",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "upa-ceilandia-2",
+    "nome": "Unidade de Pronto Atendimento Ceilândia II",
+    "tipo": "upa",
+    "endereco": {
+      "logradouro": "Expansão do Setor O, QNO 23, Área Especial",
+      "numero": null,
+      "bairro": "Ceilândia",
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://www.saude.df.gov.br/upa-24h",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "upa-gama",
+    "nome": "Unidade de Pronto Atendimento Gama",
+    "tipo": "upa",
+    "endereco": {
+      "logradouro": "Quadra 105, Conjunto J, Área Especial 2, Setor Central",
+      "numero": null,
+      "bairro": "Gama",
+      "cep": "72.445-070",
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://www.saude.df.gov.br/upa-24h",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "upa-nucleo-bandeirante",
+    "nome": "Unidade de Pronto Atendimento Núcleo Bandeirante",
+    "tipo": "upa",
+    "endereco": {
+      "logradouro": "DF-075, Km 180, Área Especial, EPNB (Placa das Mercedes)",
+      "numero": null,
+      "bairro": "Núcleo Bandeirante",
+      "cep": "71.732-010",
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://www.saude.df.gov.br/upa-24h",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "upa-paranoa",
+    "nome": "Unidade de Pronto Atendimento Paranoá",
+    "tipo": "upa",
+    "endereco": {
+      "logradouro": "Área Especial Hospitalar, Quadra 2, Conjunto K, Lote 1",
+      "numero": null,
+      "bairro": "Paranoá",
+      "cep": "71.570-050",
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://www.saude.df.gov.br/paranoa-urgencia-e-emergencia",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "upa-planaltina",
+    "nome": "Unidade de Pronto Atendimento Planaltina",
+    "tipo": "upa",
+    "endereco": {
+      "logradouro": "Quadra 22, MD 1, Lote AE1, Setor Habitacional Mestre D'Armas",
+      "numero": null,
+      "bairro": "Planaltina",
+      "cep": "73.403-330",
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://www.saude.df.gov.br/upa-24h",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "upa-recanto-das-emas",
+    "nome": "Unidade de Pronto Atendimento Recanto das Emas",
+    "tipo": "upa",
+    "endereco": {
+      "logradouro": "Quadra 400/600, Área Especial",
+      "numero": null,
+      "bairro": "Recanto das Emas",
+      "cep": "72.625-000",
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://www.saude.df.gov.br/rec-urgencia-e-emergencia",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "upa-riacho-fundo-2",
+    "nome": "Unidade de Pronto Atendimento Riacho Fundo II",
+    "tipo": "upa",
+    "endereco": {
+      "logradouro": "QN 31, Conjunto 3, Lote 1",
+      "numero": null,
+      "bairro": "Riacho Fundo II",
+      "cep": "71.880-140",
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://www.saude.df.gov.br/upa-24h",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "upa-samambaia",
+    "nome": "Unidade de Pronto Atendimento Samambaia",
+    "tipo": "upa",
+    "endereco": {
+      "logradouro": "QS 107, Conjunto 04, Área Especial 01",
+      "numero": null,
+      "bairro": "Samambaia",
+      "cep": "72.301-524",
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://www.saude.df.gov.br/upa-samambaia",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "upa-sao-sebastiao",
+    "nome": "Unidade de Pronto Atendimento São Sebastião",
+    "tipo": "upa",
+    "endereco": {
+      "logradouro": "Quadra 102, Conjunto 1, Lote 1, Residencial Oeste",
+      "numero": null,
+      "bairro": "São Sebastião",
+      "cep": "71.692-101",
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://www.saude.df.gov.br/upa-sao-sebastiao",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "upa-sobradinho",
+    "nome": "Unidade de Pronto Atendimento Sobradinho",
+    "tipo": "upa",
+    "endereco": {
+      "logradouro": "DF 420, Km 03, em frente à AR 13, próximo ao COER",
+      "numero": null,
+      "bairro": "Sobradinho II",
+      "cep": "73.080-050",
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://www.saude.df.gov.br/upa-sobradinho",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "upa-vicente-pires",
+    "nome": "Unidade de Pronto Atendimento Vicente Pires",
+    "tipo": "upa",
+    "endereco": {
+      "logradouro": "Rua 10, Quadra 4D, Chácara 135",
+      "numero": null,
+      "bairro": "Vicente Pires",
+      "cep": "72.007-240",
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://www.saude.df.gov.br/upa-24h",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "cepav-margarida",
+    "nome": "Centro de atendimento a pessoas em situação de violência Margarida",
+    "tipo": "apoio_violencia",
+    "endereco": {
+      "logradouro": "Ambulatório do HRAN, 1º Andar, Sala 04 — SMHN Q2, Asa Norte",
+      "numero": null,
+      "bairro": null,
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [
+      "(61) 3449-4740 / 99237-0336"
+    ],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://www.saude.df.gov.br/carta-servicos-violencia",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "cepav-jardim",
+    "nome": "Centro de atendimento a pessoas em situação de violência Jardim",
+    "tipo": "apoio_violencia",
+    "endereco": {
+      "logradouro": "Ambulatório do HRAN, 1º Andar, Sala 04 — SMHN Q2, Asa Norte",
+      "numero": null,
+      "bairro": null,
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://www.saude.df.gov.br/carta-servicos-violencia",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "cepav-jasmim",
+    "nome": "Centro de atendimento a pessoas em situação de violência Jasmim",
+    "tipo": "apoio_violencia",
+    "endereco": {
+      "logradouro": "Ambulatório do HRAN, 1º Andar, Sala 04 — SMHN Q2, Asa Norte",
+      "numero": null,
+      "bairro": null,
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [
+      "(61) 3449-4739 / 99451-2967"
+    ],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://www.saude.df.gov.br/carta-servicos-violencia",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "cepav-caliandra",
+    "nome": "Centro de atendimento a pessoas em situação de violência Caliandra",
+    "tipo": "apoio_violencia",
+    "endereco": {
+      "logradouro": "Adolescentro — SGAS Quadra 605, Lote 32/33, Asa Sul",
+      "numero": null,
+      "bairro": null,
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://www.saude.df.gov.br/carta-servicos-violencia",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "cepav-alecrim",
+    "nome": "Centro de atendimento a pessoas em situação de violência Alecrim",
+    "tipo": "apoio_violencia",
+    "endereco": {
+      "logradouro": "Ambulatório do HRAN, Térreo, Corredor Vermelho, Sala 03 — SMHN Q2, Asa Norte",
+      "numero": null,
+      "bairro": null,
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [
+      "(61) 3449-4738"
+    ],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://www.saude.df.gov.br/carta-servicos-violencia",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "cepav-primavera",
+    "nome": "Centro de atendimento a pessoas em situação de violência Primavera",
+    "tipo": "apoio_violencia",
+    "endereco": {
+      "logradouro": "Policlínica da Região Centro-Sul — HRGu, Área Especial QI 06, Lote C, Guará I",
+      "numero": null,
+      "bairro": null,
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [
+      "(61) 3449-5127 / WhatsApp (61) 99451-0035"
+    ],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://www.saude.df.gov.br/carta-servicos-violencia",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "cepav-alfazema",
+    "nome": "Centro de atendimento a pessoas em situação de violência Alfazema",
+    "tipo": "apoio_violencia",
+    "endereco": {
+      "logradouro": "Policlínica da Região Centro-Sul — Núcleo Bandeirante, 3ª Avenida, Área Especial nº 03",
+      "numero": null,
+      "bairro": null,
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [
+      "(61) 2017-1145 ramal 8170 / WhatsApp (61) 9451-2245"
+    ],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://www.saude.df.gov.br/carta-servicos-violencia",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "cepav-flor-de-lotus",
+    "nome": "Centro de atendimento a pessoas em situação de violência Flor de Lótus",
+    "tipo": "apoio_violencia",
+    "endereco": {
+      "logradouro": "Hospital Regional de Ceilândia (HRC) — QNM 27, Área Especial 1",
+      "numero": null,
+      "bairro": null,
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [
+      "(61) 2017-2000 ramal 3155"
+    ],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://www.saude.df.gov.br/carta-servicos-violencia",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "cepav-flor-do-cerrado",
+    "nome": "Centro de atendimento a pessoas em situação de violência Flor do Cerrado",
+    "tipo": "apoio_violencia",
+    "endereco": {
+      "logradouro": "Hospital Regional de Santa Maria (HRSM) — Quadra AC 102, Conjuntos A, B, C e D",
+      "numero": null,
+      "bairro": null,
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [
+      "(61) 3449-7356 / 4042-7770 ramal 5525"
+    ],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://www.saude.df.gov.br/carta-servicos-violencia",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "cepav-gardenia",
+    "nome": "Centro de atendimento a pessoas em situação de violência Gardênia",
+    "tipo": "apoio_violencia",
+    "endereco": {
+      "logradouro": "Hospital Regional do Gama (HRG) — Área Especial nº 1, Setor Central",
+      "numero": null,
+      "bairro": null,
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [
+      "(61) 3449-7357/7354/7355 / (61) 99201-7372"
+    ],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://www.saude.df.gov.br/carta-servicos-violencia",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "cepav-girassol",
+    "nome": "Centro de atendimento a pessoas em situação de violência Girassol",
+    "tipo": "apoio_violencia",
+    "endereco": {
+      "logradouro": "Hospital da Região Leste (HRL) — Área Especial, Quadra 2, Conjunto K, Lote 1, Paranoá",
+      "numero": null,
+      "bairro": null,
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [
+      "(61) 2017-1550 ramal 1711 / (61) 99264-2694"
+    ],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://www.saude.df.gov.br/carta-servicos-violencia",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "cepav-tulipa",
+    "nome": "Centro de atendimento a pessoas em situação de violência Tulipa",
+    "tipo": "apoio_violencia",
+    "endereco": {
+      "logradouro": "Centro de Múltiplas Atividades 10 — UBS nº 1, São Sebastião",
+      "numero": null,
+      "bairro": null,
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [
+      "(61) 99175-2409"
+    ],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://www.saude.df.gov.br/carta-servicos-violencia",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "cepav-flor-de-lis",
+    "nome": "Centro de atendimento a pessoas em situação de violência Flor de Lis",
+    "tipo": "apoio_violencia",
+    "endereco": {
+      "logradouro": "Hospital Regional de Planaltina — Via W/L 4, Área Especial",
+      "numero": null,
+      "bairro": null,
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [
+      "(61) 3449-5749 / 99262-0729"
+    ],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://www.saude.df.gov.br/carta-servicos-violencia",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "cepav-sempre-viva",
+    "nome": "Centro de atendimento a pessoas em situação de violência Sempre Viva",
+    "tipo": "apoio_violencia",
+    "endereco": {
+      "logradouro": "Hospital Regional de Sobradinho — Quadra Central, Área Administrativa, Bloco B (antiga CEB), Sobradinho I",
+      "numero": null,
+      "bairro": null,
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [
+      "(61) 3449-5541 / WhatsApp (61) 99253-2414"
+    ],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://www.saude.df.gov.br/carta-servicos-violencia",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "cepav-orquidea",
+    "nome": "Centro de atendimento a pessoas em situação de violência Orquídea",
+    "tipo": "apoio_violencia",
+    "endereco": {
+      "logradouro": "Hospital Regional de Samambaia (HRSam) — QS 614, Conjunto C, Lotes 01 e 02",
+      "numero": null,
+      "bairro": null,
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [
+      "(61) 3449-7009 / 99155-2702"
+    ],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://www.saude.df.gov.br/carta-servicos-violencia",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "cepav-azaleia",
+    "nome": "Centro de atendimento a pessoas em situação de violência Azaleia",
+    "tipo": "apoio_violencia",
+    "endereco": {
+      "logradouro": "Hospital Regional de Taguatinga (HRT) — QNC, Área Especial nº 24 (ambulatório ao lado da matrícula)",
+      "numero": null,
+      "bairro": null,
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [
+      "(61) 3449-6678 / 99357-5529"
+    ],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://www.saude.df.gov.br/carta-servicos-violencia",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "cepav-amarilis",
+    "nome": "Centro de atendimento a pessoas em situação de violência Amarilis",
+    "tipo": "apoio_violencia",
+    "endereco": {
+      "logradouro": "UBS 03 Recanto das Emas — Quadra 104/105, Área Especial, Lote 25, Área Hospitalar",
+      "numero": null,
+      "bairro": null,
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [
+      "(61) 99171-4300"
+    ],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://www.saude.df.gov.br/carta-servicos-violencia",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "cepav-violeta",
+    "nome": "Centro de atendimento a pessoas em situação de violência Violeta",
+    "tipo": "apoio_violencia",
+    "endereco": {
+      "logradouro": "Hospital Materno Infantil de Brasília (HMIB) — SGAS Quadra 608/609, Módulo A, Asa Sul",
+      "numero": null,
+      "bairro": null,
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [
+      "(61) 3449-7759 (WhatsApp e ligação)"
+    ],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://www.saude.df.gov.br/carta-servicos-violencia",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  },
+  {
+    "id": "pigl-hmib",
+    "nome": "PIGL — Programa de Interrupção Gestacional Prevista em Lei",
+    "tipo": "apoio_violencia",
+    "endereco": {
+      "logradouro": "Hospital Materno Infantil de Brasília (HMIB) — SGAS Quadra 608/609, Módulo A, Asa Sul",
+      "numero": null,
+      "bairro": null,
+      "cep": null,
+      "municipio": null,
+      "uf": "DF"
+    },
+    "geo": {
+      "lat": null,
+      "lng": null,
+      "precisao": "nao_informada"
+    },
+    "telefones": [
+      "(61) 3449-7667"
+    ],
+    "horario": {
+      "descricao": null,
+      "is24h": false,
+      "escopo": "servico",
+      "fonte": null
+    },
+    "servicos": [],
+    "condicoes_relacionadas": [],
+    "fonte": {
+      "nome": "Secretaria de Saúde do Distrito Federal",
+      "url": "https://www.saude.df.gov.br/carta-servicos-violencia",
+      "data_coleta": null,
+      "responsavel": null
+    },
+    "status_dado": "pendente_validacao",
+    "atualizado_em": null
+  }
+]

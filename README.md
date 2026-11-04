@@ -245,11 +245,11 @@ Ver `docs/MAPEAMENTO_ARQUITETURA.md` → Parte 6 (pendências) e Parte 8.3
 
 ## Aba Saúde do App — revelação progressiva (04/11/2026)
 
-**Estado:** estrutura web funcional, com build e testes executados; **não há
-aceite clínico final**. Definição, três sinais e três ações de S2 usam o marcador
-`[CONTEÚDO PENDENTE DE VALIDAÇÃO PELA EQUIPE DA SAÚDE]` enquanto a equipe não
-aprovar os textos. O acervo científico original permanece acessível em N3 e
-não foi editado nem excluído.
+**Estado:** seis fichas do pacote `conteudo-saude.v1.json.txt` integradas, com
+definição, três sinais, alerta antes das três ações, equidade e fontes diretas.
+Todas continuam **propostas, em revisão clínica**, sem assinatura de aprovação.
+O acervo científico original permanece acessível e não foi editado nem excluído.
+A especificação `ESPECIFICACAO_CONTEUDO_SAUDE_v1.0.md` orienta esta integração.
 
 ### Guia e rotas do App
 
@@ -258,32 +258,37 @@ Após o onboarding existente, abra Saúde na tab bar:
 | URI (base de produção `/app/`) | Uso |
 |---|---|
 | `/app/saude` | S0: busca, três intenções, seis destaques e ver todas. |
-| `/app/saude?lista=1` | S1: nove sistemas, primeira seção aberta e três filtros de seleção única. |
-| `/app/saude/:categoryId/:diseaseId` | S2: nome popular/técnico, cinco blocos e aprofundamento fechado. |
+| `/app/saude?lista=1` | S1: nove sistemas, eixo transversal e grupo sem classificação; três filtros editoriais. |
+| `/app/saude/:categoryId/:diseaseId` | S2: ficha proposta, alerta, três sinais/ações, fontes e aprofundamento fechado. |
 | Mesma rota com `?aprofundar=1` | S3: explicação, equidade, ciência e acervo completo, paginados. |
 | Mesma rota com `?aprofundar=1#science` | Acesso ao estudo/achado e bibliografia interna. |
-| `/app/mapa?condicao=<id>` | S4: rede geral, tipo de unidade, até dez resultados, telefone/rota e “Antes de ir”. A associação clínica por condição ainda não é validada. |
+| `/app/mapa?condicao=<id>` | S4: rede geral, até dez resultados; `condicao` nunca filtra nem encaminha clinicamente. |
+| `/app/mapa?limite=3` | Rede geral limitada a três resultados, acessível pelo estado vazio. |
 
 Os seis destaques são anemia falciforme, pressão alta, diabetes tipo 2, mioma
 uterino, lúpus e doença renal crônica. A busca aceita nomes populares/técnicos,
-acentos e alguns erros de digitação. “Minhas anotações” informa indisponibilidade;
-não foi criado novo armazenamento pessoal. Os filtros de risco/acesso usam a
-classificação temática existente, não avaliação individual.
+aliases permitidos, erros de digitação e 42 termos de sintomas para navegação,
+sem triagem. Termos clinicamente distintos são excluídos dos sinônimos.
+“Minhas anotações” permanece desabilitada, sem novo armazenamento pessoal.
+Filtros usam metadados editoriais por condição, nunca risco individual.
+Controles Saúde estão em PT/ES; as novas fichas permanecem originais em português,
+identificadas como tal. Os arrays de FAQ fornecidos estão vazios: não há respostas inventadas.
 
 ### Dados e offline
 
-- Catálogo e acervo vêm das fontes existentes `shared/data/`; o adaptador de
-  apresentação fica em `app/src/lib/healthPresentation.ts`.
-- Cache API do navegador (`pulso-health-editorial-v1`) conserva catálogo e
-  marcadores locais dos IDs de condições abertas. Estes IDs representam histórico
-  de leitura; revisar retenção/governança antes da homologação. Não há envio novo
-  desse histórico ao servidor nem novo armazenamento de localização/notas.
+- Catálogo e acervo vêm de `shared/data/`; fichas propostas versionadas em
+  `condicoes.saude.v1.json`, glossário e dicionários em `shared/i18n/`.
+- Rede: adaptador `shared/data/healthServices.ts` e snapshot `servicos.v1.json`,
+  com paridade testada. Dados ausentes ficam nulos; validação permanece pendente.
+- Cache API (`pulso-health-catalogue-v1.0`) conserva somente catálogo público e
+  versão. O cache legado é apagado, incluindo IDs de condições lidas. Sem novo
+  histórico, notas, localização persistida ou identificador de sessão.
 - Offline foi testado com o app já carregado. **Não há garantia de abertura a
   frio offline, Service Worker ou instalador PWA/nativo nesta entrega.**
 - Localização usa a autorização já existente no Perfil e estado transitório da
   tela. Distâncias só são calculadas para serviços com coordenadas reais.
-- Backend, autenticação, cadastro, consentimentos, modelo de dados, políticas,
-  build/CI e dependências do produto não foram alterados.
+- Backend, autenticação, cadastro, consentimentos e dependências do produto
+  preservados. Build ganhou verificações de conteúdo; páginas usam carregamento lazy.
 
 ### Testes e evidências
 
@@ -295,26 +300,28 @@ node scripts/test-health.mjs
 node scripts/test-health-browser.mjs
 ```
 
-Foram aprovadas 32 verificações de funções/dados e a comparação de 23 snapshots
-de árvore acessível em Chromium (360×800), incluindo estados e seis condições.
-Playwright fica fora dos manifests do produto; preparação, limites e comandos
-estão no [relatório CA-01 a CA-16](docs/RELATORIO_SAUDE_CA.md).
-Capturas estão em [docs/evidencias-saude/](docs/evidencias-saude/).
+Aprovados: build completo, lint sem avisos/erros, **47 verificações** de
+funções/dados e **15 snapshots** comparados sem atualização em Chromium 360×800.
+Zero erros de página e nenhuma violação axe séria/crítica nos cenários testados.
+Playwright/axe ficam fora dos manifests do produto; capturas atuais locais em
+`.qa-tools/artifacts/`. Evidências em `docs/evidencias-saude/` são históricas.
+Reprodução e limites no [relatório CA-01 a CA-16](docs/RELATORIO_SAUDE_CA.md).
 
-**Pendências e próximos passos:** receber textos clínicos aprovados, URLs das
-fontes, vocabulário de sintomas e associação condição–serviço; completar dados
-da rede, tradução da UI, auditoria de siglas e acessibilidade; medir 4G e testar
-com cinco usuários. Ver [PENDENCIAS_CONTEUDO.md](PENDENCIAS_CONTEUDO.md).
-VoiceOver/TalkBack e aceite WCAG integral não foram verificados.
+**Pendências e próximos passos:** obter assinatura clínica e revisão bilíngue,
+validar equidade/fontes, dados e coordenadas da rede, siglas do acervo,
+classificação e associações de sintomas; medir 4G e testar com cinco usuários.
+VoiceOver/TalkBack e aceite WCAG integral não foram verificados. O chunk de entrada
+caiu para cerca de 79,25 KB gzip, mas isso não comprova abertura <2s nem mede todo
+o JavaScript inicial. Ver [PENDENCIAS_CONTEUDO.md](PENDENCIAS_CONTEUDO.md).
 
 **Publicação:** preview local verificado em `http://localhost:3000/app/saude`.
-Nenhum deploy manual desta refatoração foi realizado; a publicação por Workers
-Builds descrita acima depende do pipeline conectado ao push. Não foi verificada
+Sem push e sem deploy desta integração. Workers Builds pode publicar ao receber
+push em `main`; não enviar sem revisão dos bloqueios clínicos. Não foi verificada
 uma URL de produção para esta versão.
 
 ## Última atualização
-04/11/2026 — Estrutura progressiva da aba Saúde no App, testes e registro de
-pendências. A documentação histórica PP3 acima é preservada; os números atuais
+04/11/2026 — Integração das seis fichas propostas, UI PT/ES, rede geral,
+privacidade do cache, testes e pendências de homologação. A documentação histórica PP3 acima é preservada; os números atuais
 de conteúdo devem ser obtidos de `shared/data/metrics.ts`/exportação, não das
 contagens históricas deste texto. O build atual exporta oito condições
 aprofundadas, incluindo doença renal crônica.

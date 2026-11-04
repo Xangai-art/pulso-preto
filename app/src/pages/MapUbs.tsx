@@ -1,23 +1,19 @@
+import { useHealthText } from '../lib/healthI18n';
 import { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import { healthUnits, regionalHospitals, emergencyUnits, cepavUnits } from '@shared/data/project';
+import { healthServices, dataStatus, phoneHref } from '@shared/data/healthServices';
 import { useAppStore } from '../store/useAppStore';
-import { HealthLayout } from '../components/HealthComponents';
-import { citizenText, orderUnits, normalize } from '../lib/healthPresentation';
+import { ClinicalText, HealthLayout } from '../components/HealthComponents';
+import { orderUnits, normalize } from '../lib/healthPresentation';
+import { healthContent } from '../lib/healthContent';
 
-type Unit = { id: string; name: string; type: string; address: string; phone?: string; hours?: string; lat?: number; lng?: number };
-const units: Unit[] = [
-  ...healthUnits.map(unit => ({ id: unit.id, name: unit.name.replace(/^UBS\b/, 'Unidade Básica de Saúde'), type: 'Unidade Básica de Saúde', address: `${unit.endereco}, ${unit.ra}, Distrito Federal` })),
-  ...regionalHospitals.map(unit => ({ id: unit.id, name: unit.nome, type: 'Hospital', address: `${unit.endereco}, Distrito Federal`, phone: unit.telefone,
-    hours: unit.servicos.find(service => /24h/i.test(service)), lat: unit.lat, lng: unit.lng })),
-  ...emergencyUnits.map(unit => ({ id: unit.id, name: unit.nome.replace(/^UPA\b/, 'Unidade de Pronto Atendimento'), type: 'Pronto atendimento', address: `${unit.endereco}, ${unit.ra}, Distrito Federal` })),
-  ...cepavUnits.map(unit => ({ id: unit.id, name: unit.nome.replace(/^CEPAV\b/, 'Centro de atendimento a pessoas em situação de violência'), type: 'Apoio à violência', address: `${unit.endereco}, Distrito Federal`, phone: unit.telefone })),
-];
+const types: Record<string, string> = { ubs: 'Unidade Básica de Saúde', hospital: 'Hospital', upa: 'Pronto atendimento', apoio_violencia: 'Apoio à violência' };
 export default function MapUbs() {
   const [params] = useSearchParams();
+  const { t, localeId } = useHealthText();
   const consent = useAppStore(state => state.consent.level4_geolocation);
   const [search, setSearch] = useState('');
-  const [type, setType] = useState('Unidade Básica de Saúde');
+  const [type, setType] = useState('');
   const [location, setLocation] = useState<{ lat: number; lng: number }>();
   const [locationMessage, setLocationMessage] = useState('');
   const [locating, setLocating] = useState(false);
@@ -26,35 +22,43 @@ export default function MapUbs() {
     if (!consent || !navigator.geolocation) return;
     setLocating(true);
     navigator.geolocation.getCurrentPosition(position => {
-      setLocation({ lat: position.coords.latitude, lng: position.coords.longitude }); setLocationMessage('Localização obtida. Distâncias em linha reta, quando disponíveis.'); setLocating(false);
+      setLocation({ lat: position.coords.latitude, lng: position.coords.longitude });
+      setLocationMessage('Localização obtida. Distâncias em linha reta, quando disponíveis.'); setLocating(false);
     }, () => { setLocationMessage('Não foi possível obter sua localização. Você pode buscar pelo nome ou região.'); setLocating(false); }, { timeout: 8000, maximumAge: 0 });
   }
-  const shown = orderUnits(units.filter(unit => unit.type === type && normalize(`${unit.name} ${unit.address}`).includes(normalize(search))), consent ? location : undefined);
+  // condicao never participates in filtering, clinical referral or storage.
+  const shown = orderUnits(healthServices.filter(unit => (!type || unit.tipo === type) && normalize(`${unit.nome} ${unit.endereco.logradouro} ${unit.endereco.bairro ?? ''}`).includes(normalize(search)))
+    .map(unit => ({ ...unit, name: unit.nome, lat: unit.geo.lat, lng: unit.geo.lng })), consent ? location : undefined).slice(0, params.get('limite') === '3' ? 3 : 10);
   return <HealthLayout back="/saude">
     <div className="health-stack" data-screen="S4">
-      <h2>Onde me atender</h2>
-      {params.get('condicao') && <p>Busca iniciada a partir de uma condição. A rede abaixo é geral: a relação entre condição e serviço ainda precisa ser validada.</p>}
-      <label>Buscar unidade ou região<input type="search" value={search} onChange={event => setSearch(event.target.value)} placeholder="Nome da unidade ou região" /></label>
-      <label>Tipo de unidade<select value={type} onChange={event => setType(event.target.value)}>
-        {['Unidade Básica de Saúde', 'Hospital', 'Pronto atendimento', 'Apoio à violência'].map(label => <option key={label}>{label}</option>)}
+      <h2>{t('Serviços de saúde')}</h2>
+      <p data-network-disclaimer>{t(healthContent.servicos.aviso)}</p>
+      <label>{t('Buscar unidade ou região')}<input type="search" value={search} onChange={event => setSearch(event.target.value)} placeholder={t('Nome da unidade ou região')} /></label>
+      <label>{t('Tipo de unidade')}<select value={type} onChange={event => setType(event.target.value)}>
+        <option value="">{t('Todos os serviços')}</option>{Object.entries(types).map(([id, label]) => <option key={id} value={id}>{t(label)}</option>)}
       </select></label>
-      {consent ? <button type="button" onClick={locate} disabled={locating || !navigator.geolocation}>{locating ? 'Buscando localização…' : 'Usar minha localização'}</button>
-        : <p>Para calcular distâncias, autorize a geolocalização no <Link to="/perfil">Perfil</Link>. Você pode consultar a lista sem autorizar.</p>}
-      {locationMessage && <p role="status">{locationMessage}</p>}
-      <p>Fonte: <a href="https://info.saude.df.gov.br/busca-saude-ubs/" target="_blank" rel="noopener noreferrer">Secretaria de Saúde do Distrito Federal — Busca Saúde</a>. Exibimos até 10 resultados. Unidades sem coordenadas não têm distância calculada e aparecem em ordem alfabética, após as unidades com distância conhecida.</p>
-      {shown.length === 0 && <section role="status" className="health-state"><p>Nenhum serviço encontrado. Tente outra região ou tipo de unidade.</p><button type="button" onClick={() => setSearch('')}>Limpar busca</button></section>}
-      <ol className="health-stack health-services" aria-label="Serviços de saúde">
-        {shown.map(unit => <li key={unit.id} className="health-panel">
-          <h3>{citizenText(unit.name)}</h3><p>{unit.type}</p><p>{unit.address}</p>
-          <p>{unit.distance == null ? 'Distância indisponível' : `${unit.distance.toLocaleString('pt-BR', { maximumFractionDigits: 1 })} km em linha reta`}</p>
-          <p>Horário: {unit.hours ? `${unit.hours}. Confirme os demais serviços antes de ir.` : 'não informado na base. Confirme antes de ir.'}</p>
+      {consent ? <button type="button" onClick={locate} disabled={locating || !navigator.geolocation}>{t(locating ? 'Buscando localização…' : 'Usar minha localização')}</button>
+        : <p>{t('Autorize a localização no Perfil.')} <Link to="/perfil">{t('Perfil')}</Link></p>}
+      {!location && <p>{t('Ative a localização para ver a distância. A lista segue ordem alfabética.')}</p>}
+      {locationMessage && <p role="status">{t(locationMessage)}</p>}
+      <p>{t('Exibimos até 10 resultados. Distâncias em linha reta.')}</p>
+      <p role="status" aria-live="polite">{shown.length} {t('Serviços de saúde')}</p>
+      {shown.length === 0 && <section role="status" className="health-state"><p>{t('Nenhum serviço encontrado. Tente outra região ou tipo de unidade.')}</p><button type="button" onClick={() => setSearch('')}>{t('Limpar busca')}</button></section>}
+      <ol className="health-stack health-services" aria-label={t('Serviços de saúde')}>
+        {shown.map(unit => <li key={unit.id} data-service-id={unit.id} className="health-panel">
+          <h3 lang="pt-BR">{unit.nome}</h3><p>{t(types[unit.tipo])}</p><p lang="pt-BR">{unit.endereco.logradouro}{unit.endereco.bairro ? `, ${unit.endereco.bairro}` : ''}</p>
+          {dataStatus(unit) !== 'validado' && <p>{t(dataStatus(unit) === 'desatualizado' ? 'Dados desatualizados — confirme na unidade.' : healthContent.servicos.fallbacks.pendente)}</p>}
+          <p>{unit.distance == null ? t(healthContent.servicos.fallbacks.distancia) : `${unit.distance.toLocaleString(localeId === 'es' ? 'es' : 'pt-BR', { maximumFractionDigits: 1 })} ${t('km em linha reta')}`}</p>
+          <p>{unit.horario.is24h && unit.horario.escopo === 'setor' ? t(healthContent.servicos.horario_24h) : unit.horario.descricao ?? t(healthContent.servicos.fallbacks.horario)}</p>
+          {unit.telefones.length ? <p lang="pt-BR">{unit.telefones.join(' / ')}</p> : <p>{t(healthContent.servicos.fallbacks.telefone)}</p>}
           <div className="health-filters">
-            {unit.phone ? <a href={`tel:+55${unit.phone.split('/')[0].replace(/\D/g, '')}`} aria-label={`Ligar para ${unit.name}`}>Ligar</a> : <button type="button" disabled>Ligar indisponível</button>}
-            <a href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(unit.lat != null && unit.lng != null ? `${unit.lat},${unit.lng}` : `${unit.name}, ${unit.address}`)}`} target="_blank" rel="noopener noreferrer" aria-label={`Ver rota para ${unit.name}, abre mapa externo`}>Rota</a>
+            {phoneHref(unit.telefones[0]) && <a href={phoneHref(unit.telefones[0])} aria-label={`${t('Ligar')} — ${unit.nome}`}>{t('Ligar')}</a>}
+            <a href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(unit.lat != null && unit.lng != null ? `${unit.lat},${unit.lng}` : `${unit.nome}, ${unit.endereco.logradouro}, Distrito Federal`)}`} target="_blank" rel="noopener noreferrer">{t('Como chegar')}</a>
+            <a href={unit.fonte.url} target="_blank" rel="noopener noreferrer">{t('Ver fonte')}</a>
           </div>
         </li>)}
       </ol>
-      <section className="health-panel"><h2>Antes de ir</h2><ul><li>Documento com foto.</li><li>Cartão do Sistema Único de Saúde (SUS).</li><li>Lista de remédios em uso.</li></ul></section>
+      <section className="health-panel"><h2>{t('Antes de ir')}</h2><p><ClinicalText text={t(healthContent.servicos.antes_de_ir.texto)} /></p></section>
     </div>
   </HealthLayout>;
 }

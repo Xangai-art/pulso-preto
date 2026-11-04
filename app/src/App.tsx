@@ -1,19 +1,20 @@
+import { lazy, Suspense } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useAppStore } from './store/useAppStore';
 import BottomNav from './components/BottomNav';
 
-import Welcome from './pages/Welcome';
-import Consent from './pages/Consent';
-import Baseline from './pages/Baseline';
-import Home from './pages/Home';
-import CheckIn from './pages/CheckIn';
-import HealthLibrary from './pages/HealthLibrary';
-import DiseaseDetail from './pages/DiseaseDetail';
-import MapUbs from './pages/MapUbs';
-import Radar from './pages/Radar';
-import Profile from './pages/Profile';
-import ReportDiscrimination from './pages/ReportDiscrimination';
-import Faq from './pages/Faq';
+const Welcome = lazy(() => import('./pages/Welcome'));
+const Consent = lazy(() => import('./pages/Consent'));
+const Baseline = lazy(() => import('./pages/Baseline'));
+const Home = lazy(() => import('./pages/Home'));
+const CheckIn = lazy(() => import('./pages/CheckIn'));
+const HealthLibrary = lazy(() => import('./pages/HealthLibrary'));
+const DiseaseDetail = lazy(() => import('./pages/DiseaseDetail'));
+const MapUbs = lazy(() => import('./pages/MapUbs'));
+const Radar = lazy(() => import('./pages/Radar'));
+const Profile = lazy(() => import('./pages/Profile'));
+const ReportDiscrimination = lazy(() => import('./pages/ReportDiscrimination'));
+const Faq = lazy(() => import('./pages/Faq'));
 
 function RequireOnboarding({ children }: { children: React.ReactNode }) {
   const onboarded = useAppStore((s) => s.onboarded);
@@ -34,7 +35,7 @@ function App() {
   return (
     <div className="min-h-screen bg-pulso-creme font-pulso-body flex flex-col max-w-md mx-auto relative">
       <div className="flex-1 pb-20">
-        <Routes>
+        <Suspense fallback={<p role="status" className="p-4">…</p>}><Routes>
           <Route path="/bem-vindo" element={<Welcome />} />
           <Route path="/consentimento" element={<Consent />} />
           <Route path="/linha-de-base" element={<Baseline />} />
@@ -124,7 +125,7 @@ function App() {
               )
             }
           />
-        </Routes>
+        </Routes></Suspense>
       </div>
       {consent.level1_appUsage && onboarded && <BottomNav />}
     </div>

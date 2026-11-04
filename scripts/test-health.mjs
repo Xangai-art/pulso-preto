@@ -1,19 +1,23 @@
 import assert from 'node:assert/strict';
 import { fileURLToPath } from 'node:url';
+import { readFileSync, readdirSync } from 'node:fs';
+import { gzipSync } from 'node:zlib';
 import { createServer } from '../app/node_modules/vite/dist/node/index.js';
 
 // Uses the project's existing TypeScript transformer; no product dependencies added.
-const server = await createServer({ configFile: false, root: fileURLToPath(new URL('../app', import.meta.url)), resolve: { alias: { '@shared': fileURLToPath(new URL('../shared', import.meta.url)) } }, server: { middlewareMode: true, hmr: false }, appType: 'custom' });
+const server = await createServer({ configFile: false, root: fileURLToPath(new URL('../app', import.meta.url)), resolve: { alias: { '@shared': fileURLToPath(new URL('../shared', import.meta.url)), react: fileURLToPath(new URL('../app/node_modules/react', import.meta.url)) } }, server: { middlewareMode: true, hmr: false }, appType: 'custom' });
 let checks = 0;
 function check(name, fn) { fn(); checks++; console.log(`PASS ${name}`); }
 try {
-  const { MVP_IDS, conditionNames, matchesCondition, groupSystems, citizenText, distanceKm, wordPages, orderUnits } = await server.ssrLoadModule('/src/lib/healthPresentation.ts');
+  const { MVP_IDS, conditionNames, matchesCondition, groupSystems, citizenText, distanceKm, wordPages, orderUnits, matchesRisk } = await server.ssrLoadModule('/src/lib/healthPresentation.ts');
   const { diseaseCategories } = await server.ssrLoadModule('../shared/data/diseases.ts');
   const { getDeepContent } = await server.ssrLoadModule('../shared/data/deepContentRegistry.ts');
   const entries = diseaseCategories.flatMap(category => category.diseases.map(disease => ({ category, disease })));
-  check('catálogo inteiro permanece acessível em nove sistemas', () => {
+  check('catálogo preservado em nove sistemas, eixo e não classificados', () => {
     const systems = groupSystems(diseaseCategories);
-    assert.equal(systems.length, 9);
+    assert.equal(systems.length, 11);
+    assert.equal(systems.find(s => s.id === 'sangue-imunidade').entries.some(e => e.disease.id === 'anemia-falciforme'), true);
+    console.log('Classificação em revisão:', systems.find(s => s.id === 'sem-classificacao').entries.map(e => e.disease.id).join(', ') || 'nenhuma');
     const ids = systems.flatMap(system => system.entries.map(entry => entry.disease.id));
     assert.deepEqual([...ids].sort(), entries.map(entry => entry.disease.id).sort());
     assert.equal(new Set(ids).size, ids.length);
@@ -30,7 +34,7 @@ try {
     ['diabetes tipo 2', 'diabetes'], ['diabtes', 'diabetes'], ['diabetis', 'diabetes'],
     ['mioma uterino', 'miomas-uterinos'], ['miomas', 'miomas-uterinos'], ['mioma uterin', 'miomas-uterinos'],
     ['lupus', 'lupus'], ['lúpus', 'lupus'], ['lupuz', 'lupus'],
-    ['doenca renal cronica', 'doenca-renal-cronica'], ['renal cronca', 'doenca-renal-cronica'], ['rim perde funcao', 'doenca-renal-cronica'],
+    ['doenca renal cronica', 'doenca-renal-cronica'], ['renal cronca', 'doenca-renal-cronica'], ['rim fraco', 'doenca-renal-cronica'],
   ];
   for (const [query, id] of queries) check(`busca: ${query}`, () => assert.ok(matchesCondition(entries.find(entry => entry.disease.id === id).disease, query)));
   check('busca sem correspondência', () => assert.ok(!entries.some(({ disease }) => matchesCondition(disease, 'zzzzzzzzzzzz'))));
@@ -41,7 +45,7 @@ try {
       const paragraphs = Object.values(content.audiences).flatMap(audience => [audience.summary, ...audience.sections.flatMap(section => [section.heading, ...section.body])]);
       const pages = wordPages(paragraphs);
       assert.ok(pages.every(page => page.join(' ').split(/\s+/).length <= 180));
-      assert.equal(pages.flat().join(' '), paragraphs.map(citizenText).join(' ').split(/\s+/).filter(Boolean).join(' '));
+      assert.equal(pages.flat().join(' '), paragraphs.join(' ').split(/\s+/).filter(Boolean).join(' '));
     }
   });
   check('distância e ordenação simuladas', () => {
@@ -58,6 +62,86 @@ try {
     for (const color of ['06201B', '1A5C3A']) {
       const ratio = (luminance('F7F5F0') + 0.05) / (luminance(color) + 0.05);
       console.log(`  #${color} / #F7F5F0: ${ratio.toFixed(2)}:1`); assert.ok(ratio >= 4.5);
+    }
+  });
+  const pkg = JSON.parse(readFileSync(new URL('../shared/data/condicoes.saude.v1.json', import.meta.url), 'utf8'));
+  const glossary = JSON.parse(readFileSync(new URL('../shared/data/glossario-siglas.json', import.meta.url), 'utf8'));
+  const { hasClinicalApproval, healthTranslate } = await server.ssrLoadModule('/src/lib/healthContent.ts');
+  for (const condition of pkg.condicoes) check(`contrato clínico: ${condition.id}`, () => {
+    const words = condition.definicao.trim().split(/\s+/).length;
+    const sentences = condition.definicao.split(/[.!?]+/).filter(s => s.trim()).length;
+    assert.ok(words <= 55 && sentences >= 2 && sentences <= 3);
+    assert.equal(condition.sinais.length, 3); assert.equal(condition.acoes.length, 3);
+    assert.ok(condition.equidade.trim().split(/\s+/).length <= 60);
+    assert.ok(condition.alerta && condition.fontes.length);
+    assert.ok(condition.fontes.every(s => /^https:\/\//.test(s.url) && s.orgao && s.acesso));
+    assert.ok(condition.selos.every(s => pkg.selos_permitidos.includes(s)));
+    const text = [condition.definicao, ...condition.sinais, ...condition.acoes, condition.alerta, condition.equidade].join(' ');
+    for (const word of pkg.rules.proibido_prescrever) assert.ok(!new RegExp(`\\b${word}\\b`, 'iu').test(text), word);
+    for (const acronym of text.match(/\b[A-Z]{2,}[0-9]*\b/g) ?? []) assert.ok(glossary[acronym], acronym);
+    if (/mais comum|mais frequente|vezes mais|prevalência/i.test(text)) assert.ok(condition.fontes.length);
+    assert.equal(hasClinicalApproval(condition), false);
+    assert.equal(hasClinicalApproval({ ...condition, status: 'aprovado' }), false);
+    assert.equal(hasClinicalApproval({ ...condition, status: 'aprovado', revisor: 'Revisor de teste', revisor_conselho: 'Conselho de teste', data_revisao: '2026-11-04' }), true);
+    for (const alias of condition.aliases) assert.ok(matchesCondition(entries.find(e => e.disease.id === condition.id).disease, alias), alias);
+  });
+  check('aliases clinicamente distintos não são sinônimos', () => {
+    for (const [id, query] of [['anemia-falciforme', 'traço falciforme'], ['anemia-falciforme', 'anemia'], ['diabetes', 'diabetes tipo 1'], ['lupus', 'lúpus da pele'], ['doenca-renal-cronica', 'pedra nos rins']])
+      assert.equal(matchesCondition(entries.find(e => e.disease.id === id).disease, query), false);
+  });
+  check('filtro editorial usa metadados por condição', () => {
+    assert.ok(matchesRisk({ id: 'teste', name: 'Teste', isPriorityTheme: true }, 'Tema prioritário de equidade'));
+    assert.equal(matchesRisk({ id: 'teste', name: 'Teste' }, 'Dado local disponível (DF)'), false);
+  });
+  const { symptoms, symptomConditionIds, isUrgentSearch } = await server.ssrLoadModule('/src/lib/healthSymptoms.ts');
+  check('42 sintomas, sem associação a mais de quatro fichas', () => {
+    assert.equal(symptoms.length, 42);
+    for (const terms of symptoms) assert.ok(symptomConditionIds(terms).length <= 4);
+    for (const term of ['dor no peito', 'desmaio', 'falta de ar', 'dor torácica', 'dispneia']) assert.ok(isUrgentSearch(term));
+    assert.ok(!isUrgentSearch('mioma'));
+  });
+  check('proximidade cobre UBS, UPA e hospital com e sem geo', () => {
+    for (const type of ['ubs', 'upa', 'hospital']) {
+      const units = [{ id: `${type}-longe`, name: 'B', lat: -16, lng: -48 }, { id: `${type}-perto`, name: 'C', lat: -15.78, lng: -47.88 }, { id: `${type}-sem`, name: 'A', lat: null, lng: null }];
+      assert.deepEqual(orderUnits(units, { lat: -15.78, lng: -47.88 }).map(u => u.name), ['C','B','A']);
+      assert.deepEqual(orderUnits(units).map(u => u.name), ['A','B','C']);
+      assert.ok(orderUnits(units).every(u => u.distance === undefined));
+    }
+  });
+  const { healthServices, phoneHref, dataStatus } = await server.ssrLoadModule('../shared/data/healthServices.ts');
+  check('schema de rede não fabrica coleta, validação, geo ou horário', () => {
+    assert.ok(healthServices.length > 0);
+    for (const unit of healthServices) {
+      assert.equal(unit.status_dado, 'pendente_validacao'); assert.equal(unit.fonte.data_coleta, null);
+      assert.ok(unit.fonte.url.startsWith('https://'));
+      if (unit.tipo !== 'hospital') { assert.equal(unit.geo.lat, null); assert.equal(unit.horario.descricao, null); }
+      if (unit.horario.is24h) assert.equal(unit.horario.escopo, 'setor');
+      assert.deepEqual(unit.condicoes_relacionadas, []);
+    }
+    assert.equal(phoneHref('(61) 3449-4738'), 'tel:+556134494738');
+    assert.equal(phoneHref('9999-0000'), undefined);
+    assert.equal(dataStatus({ ...healthServices[0], fonte: { data_coleta: '2020-01-01' } }), 'desatualizado');
+    assert.deepEqual(JSON.parse(readFileSync(new URL('../shared/data/servicos.v1.json', import.meta.url), 'utf8')), healthServices);
+  });
+  check('paridade dos dicionários PT/ES e traduções do Anexo D', () => {
+    const pt = JSON.parse(readFileSync(new URL('../shared/i18n/pt-BR.json', import.meta.url), 'utf8'));
+    const es = JSON.parse(readFileSync(new URL('../shared/i18n/es.json', import.meta.url), 'utf8'));
+    assert.deepEqual(Object.keys(pt).sort(), Object.keys(es).sort());
+    assert.equal(healthTranslate('es', 'Saúde'), 'Salud');
+    assert.equal(healthTranslate('es', 'Filtros de conteúdo'), 'Filtros de contenido');
+    assert.equal(healthTranslate('es', pkg.servicos.aviso).includes('Ela não'), false);
+  });
+  check('cache público não registra IDs e migra cache legado', () => {
+    const code = readFileSync(new URL('../app/src/lib/useHealthCatalogue.ts', import.meta.url), 'utf8');
+    assert.ok(code.includes("caches.delete('pulso-health-editorial-v1')"));
+    assert.ok(!/openedKey|saveOpenedCondition|\/opened\//.test(code));
+    assert.ok(!/localStorage|indexedDB/.test(code));
+    assert.ok(!pkg.features.notes && !pkg.features.condition_read_history && !pkg.features.service_worker);
+  });
+  check('orçamento do catálogo ≤120 KB gzip', () => assert.ok(gzipSync(Buffer.from(JSON.stringify(pkg))).length <= 120 * 1024));
+  if (!process.argv.includes('--content-only')) check('bundle não contém marcador clínico antigo', () => {
+    for (const name of readdirSync(new URL('../app/dist/assets', import.meta.url))) {
+      if (name.endsWith('.js')) assert.ok(!readFileSync(new URL(`../app/dist/assets/${name}`, import.meta.url), 'utf8').includes(pkg.rules.marcador_antigo_proibido));
     }
   });
   console.log(`\n${checks} verificações aprovadas. Não substituem validação clínica, VoiceOver/TalkBack ou teste com usuários.`);

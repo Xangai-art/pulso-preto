@@ -1,37 +1,35 @@
 import { useCallback, useEffect, useState } from 'react';
 import type { DiseaseCategory } from '@shared/data/diseases';
+import { healthContent } from './healthContent';
 
 export type HealthStatus = 'loading' | 'ready' | 'empty' | 'error' | 'offline';
-export const HEALTH_CACHE = 'pulso-health-editorial-v1';
+export const HEALTH_CACHE = 'pulso-health-catalogue-v1.0';
 const catalogueKey = '/__health_editorial/catalogue';
-const openedKey = (id: string) => `/__health_editorial/opened/${encodeURIComponent(id)}`;
+let sessionCatalogue: DiseaseCategory[] | undefined;
 
 async function readCatalogue(offline: boolean): Promise<DiseaseCategory[]> {
+  // Remove the entire legacy cache: it included sensitive reading-history IDs.
+  if ('caches' in window) {
+    try { await caches.delete('pulso-health-editorial-v1'); } catch { /* Storage unavailable. */ }
+  }
   if (offline) {
-    if (!('caches' in window)) return [];
-    const cache = await caches.open(HEALTH_CACHE);
-    const response = await cache.match(catalogueKey);
-    if (!response) return [];
-    const categories = await response.json() as DiseaseCategory[];
-    const saved = new Set((await cache.keys()).map(request => new URL(request.url).pathname));
-    return categories.map(category => ({ ...category, diseases: category.diseases.filter(disease => saved.has(openedKey(disease.id))) }));
+    if (sessionCatalogue) return sessionCatalogue;
+    try {
+      const cache = await caches.open(HEALTH_CACHE);
+      const response = await cache.match(catalogueKey);
+      if (response) return (await response.json()).categories;
+    } catch { /* No offline cache; report empty without inventing content. */ }
+    return [];
   }
   const { diseaseCategories } = await import('@shared/data/diseases');
+  sessionCatalogue = diseaseCategories;
   if ('caches' in window) {
     try {
       const cache = await caches.open(HEALTH_CACHE);
-      await cache.put(catalogueKey, Response.json(diseaseCategories));
-    } catch { /* Storage denied/full must not prevent reading online content. */ }
+      await cache.put(catalogueKey, Response.json({ categories: diseaseCategories, versao_conteudo: healthContent.content_version, atualizado_em: healthContent.updated_at }));
+    } catch { /* Public catalogue caching must not prevent reading online. */ }
   }
   return diseaseCategories;
-}
-
-export async function saveOpenedCondition(id: string) {
-  if (!navigator.onLine || !('caches' in window)) return;
-  try {
-    const cache = await caches.open(HEALTH_CACHE);
-    await cache.put(openedKey(id), Response.json({ version: 1 }));
-  } catch { /* Best-effort public editorial cache; never stores personal data. */ }
 }
 
 export function useHealthCatalogue() {
@@ -43,11 +41,7 @@ export function useHealthCatalogue() {
     let cancelled = false;
     setStatus('loading');
     const offline = !navigator.onLine;
-    // Bound the skeleton. A timeout shows retry, not an endless loading screen.
-    const timer = window.setTimeout(() => {
-      cancelled = true;
-      setStatus('error');
-    }, 2000);
+    const timer = window.setTimeout(() => { cancelled = true; setStatus('error'); }, 8000);
     readCatalogue(offline).then(data => {
       if (cancelled) return;
       window.clearTimeout(timer);

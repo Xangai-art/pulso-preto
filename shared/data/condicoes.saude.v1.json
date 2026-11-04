@@ -1,0 +1,439 @@
+{
+  "schema": "pulso-preto.saude.conteudo",
+  "schema_version": "1.0.0",
+  "content_version": "1.0",
+  "updated_at": "2026-11-04",
+  "content_status": "proposto",
+  "clinical_approval": {
+    "aprovado": false,
+    "revisor": null,
+    "conselho": null,
+    "data": null,
+    "observacao": "Conteúdo redigido a partir de fontes oficiais brasileiras. Requer assinatura do responsável clínico para passar a status=aprovado."
+  },
+  "rules": {
+    "definicao_max_palavras": 55,
+    "definicao_min_frases": 2,
+    "definicao_max_frases": 3,
+    "sinais_obrigatorios": 3,
+    "acoes_obrigatorias": 3,
+    "acoes_devem_ser_executaveis_hoje": true,
+    "proibido_prescrever": [
+      "dose",
+      "mg",
+      "tome",
+      "prescrevo",
+      "cura",
+      "você tem",
+      "provavelmente"
+    ],
+    "siglas_exigem_glossario": true,
+    "afirmacao_prevalencia_exige_fonte": true,
+    "marcador_antigo_proibido": "[CONTEÚDO PENDENTE DE VALIDAÇÃO PELA EQUIPE DA SAÚDE]"
+  },
+  "selos_permitidos": [
+    "Tema prioritário de equidade",
+    "Dado local disponível (DF)"
+  ],
+  "selos_proibidos": [
+    "Alta prevalência",
+    "Maior risco",
+    "Diagnóstico tardio"
+  ],
+  "sistemas": [
+    {
+      "id": "coracao-circulacao-respiracao",
+      "nome": "Coração, circulação e respiração"
+    },
+    {
+      "id": "sangue-imunidade",
+      "nome": "Sangue e imunidade"
+    },
+    {
+      "id": "hormonios-metabolismo",
+      "nome": "Hormônios e metabolismo"
+    },
+    {
+      "id": "rins-vias-urinarias",
+      "nome": "Rins e vias urinárias"
+    },
+    {
+      "id": "saude-da-mulher",
+      "nome": "Saúde da mulher"
+    },
+    {
+      "id": "digestao-abdome",
+      "nome": "Digestão e abdômen"
+    },
+    {
+      "id": "pele",
+      "nome": "Pele"
+    },
+    {
+      "id": "ossos-musculos-articulacoes",
+      "nome": "Ossos, músculos e articulações"
+    },
+    {
+      "id": "saude-mental-nervoso",
+      "nome": "Saúde mental e sistema nervoso"
+    }
+  ],
+  "eixos": [
+    {
+      "id": "violencias-acidentes",
+      "nome": "Violências e acidentes",
+      "tipo": "tema_transversal"
+    }
+  ],
+  "sem_classificacao": {
+    "sistema_id": "sem-classificacao",
+    "nome": "Classificação em revisão",
+    "visivel_em": "todas"
+  },
+  "condicoes": [
+    {
+      "id": "anemia-falciforme",
+      "nome_oficial": "Anemia falciforme",
+      "nome_leigo": "Anemia falciforme",
+      "definicao": "Doença do sangue que passa de pais para filhos. As hemácias assumem forma de foice, rompem-se com facilidade e obstruem pequenos vasos, causando anemia e crises de dor. É mais comum em pessoas negras e pode ser detectada pelo teste do pezinho.",
+      "sinais": [
+        "Dor forte nos ossos ou articulações que não passa com analgésico comum.",
+        "Palidez nas mãos, lábios ou conjuntivas, cansaço extremo, pele amarelada.",
+        "Febre, falta de ar, inchaço doloroso nas mãos e nos pés."
+      ],
+      "acoes": [
+        "Beber água ao longo do dia e evitar frio, esforço extremo e desidratação.",
+        "Em crise de dor ou febre, procurar hoje o serviço que acompanha a doença.",
+        "Levar a caderneta de vacinação e a lista de remédios na próxima consulta."
+      ],
+      "alerta": "Febre ≥ 38°C, falta de ar, dor no peito, fraqueza ou fala enrolada, barriga inchada em criança, ereção dolorosa > 2 horas.",
+      "equidade": "A doença é mais comum na população negra brasileira, que também enfrenta mais demora de diagnóstico e de acesso a acompanhamento especializado. O teste do pezinho é gratuito e universal.",
+      "equidade_claim_status": "verificada",
+      "fontes": [
+        {
+          "orgao": "Ministério da Saúde — BVS/MS",
+          "titulo": "Anemia falciforme",
+          "url": "https://bvsms.saude.gov.br/anemia-falciforme/",
+          "tipo": "oficial",
+          "acesso": "2026-11-04"
+        },
+        {
+          "orgao": "Ministério da Saúde",
+          "titulo": "PCDT da Doença Falciforme (atualizado em 22/11/2024)",
+          "url": "https://www.gov.br/saude/pt-br/assuntos/pcdt/d/doenca-falciforme",
+          "tipo": "oficial",
+          "acesso": "2026-11-04"
+        }
+      ],
+      "sistema_id": "sangue-imunidade",
+      "eixos": [],
+      "selos": [
+        "Tema prioritário de equidade"
+      ],
+      "faq": [],
+      "status": "proposto",
+      "versao": "1.0",
+      "revisor": null,
+      "revisor_conselho": null,
+      "data_revisao": null,
+      "aliases": [
+        "anemia falciforme",
+        "doença falciforme",
+        "falciforme",
+        "anemia de células falciformes"
+      ]
+    },
+    {
+      "id": "hipertensao",
+      "nome_oficial": "Hipertensão arterial",
+      "nome_leigo": "Pressão alta",
+      "definicao": "A pressão do sangue dentro das artérias fica alta de forma constante. Habitualmente não provoca sintomas, por isso é chamada de doença silenciosa. Sem controle, pode lesar coração, cérebro, rins e visão.",
+      "sinais": [
+        "Dor de cabeça frequente, principalmente na nuca, ou tontura ao levantar.",
+        "Visão embaçada, zumbido no ouvido ou falta de ar em esforço leve.",
+        "Pressão medida igual ou acima de 140 por 90 mmHg em mais de uma aferição."
+      ],
+      "acoes": [
+        "Medir a pressão na UBS mais próxima: é rápido, gratuito e não exige pedido médico.",
+        "Reduzir sal, caldo pronto, tempero industrializado e embutidos nas refeições de hoje.",
+        "Se já usa remédio, tomar no horário e não interromper por conta própria."
+      ],
+      "alerta": "Pressão ≥ 180 por 120 mmHg com dor de cabeça forte, dor no peito, falta de ar, visão turva ou fraqueza súbita: procure emergência.",
+      "equidade": "O controle da pressão depende de consulta, remédio contínuo e alimentação adequada. Onde o racismo estrutural concentra pobreza e distância dos serviços, essas três condições faltam ao mesmo tempo.",
+      "equidade_claim_status": "narrativa_sem_dado",
+      "fontes": [
+        {
+          "orgao": "Sociedade Brasileira de Cardiologia",
+          "titulo": "Diretriz Brasileira de Hipertensão Arterial — 2025",
+          "url": "https://abccardiol.org/article/diretriz-brasileira-de-hipertensao-arterial-2025/",
+          "tipo": "diretriz",
+          "acesso": "2026-11-04"
+        },
+        {
+          "orgao": "Ministério da Saúde",
+          "titulo": "PCDT de Hipertensão Arterial Sistêmica",
+          "url": "https://www.gov.br/conitec/pt-br/midias/protocolos/pcdt-hipertensao-arterial-sistemica.pdf",
+          "tipo": "oficial",
+          "acesso": "2026-11-04"
+        }
+      ],
+      "sistema_id": "coracao-circulacao-respiracao",
+      "eixos": [],
+      "selos": [
+        "Tema prioritário de equidade"
+      ],
+      "faq": [],
+      "status": "proposto",
+      "versao": "1.0",
+      "revisor": null,
+      "revisor_conselho": null,
+      "data_revisao": null,
+      "aliases": [
+        "pressão alta",
+        "hipertensão",
+        "hipertensão arterial",
+        "HAS",
+        "pressão elevada"
+      ]
+    },
+    {
+      "id": "diabetes",
+      "nome_oficial": "Diabetes mellitus tipo 2",
+      "nome_leigo": "Diabetes tipo 2",
+      "definicao": "O corpo perde a capacidade de usar bem o açúcar do sangue, porque a insulina não age como deveria. Pode passar anos sem sintomas enquanto vasos e nervos são lesionados.",
+      "sinais": [
+        "Sede excessiva, boca seca e necessidade de urinar muitas vezes, inclusive à noite.",
+        "Perda de peso sem explicação, cansaço constante ou visão embaçada.",
+        "Feridas que demoram a cicatrizar e formigamento ou queimação nos pés."
+      ],
+      "acoes": [
+        "Fazer a glicemia na UBS: o exame é gratuito e o teste rápido não exige jejum.",
+        "Trocar refrigerante, suco de caixinha e café adoçado por água.",
+        "Olhar a sola dos pés todos os dias, procurando corte, bolha ou mancha escura."
+      ],
+      "alerta": "Glicemia muito alta com vômito, respiração rápida, hálito de fruta ou sonolência: procure emergência. Ferida no pé com pus ou escurecimento: atendimento no mesmo dia.",
+      "equidade": "O diabetes causa menos dano quando há diagnóstico precoce e acompanhamento contínuo. Amputações e diálise resultam, em grande parte, do tempo em que a doença permaneceu sem cuidado.",
+      "equidade_claim_status": "narrativa_sem_dado",
+      "fontes": [
+        {
+          "orgao": "Sociedade Brasileira de Diabetes",
+          "titulo": "Diretriz da Sociedade Brasileira de Diabetes",
+          "url": "https://diretriz.diabetes.org.br/",
+          "tipo": "diretriz",
+          "acesso": "2026-11-04"
+        }
+      ],
+      "sistema_id": "hormonios-metabolismo",
+      "eixos": [],
+      "selos": [
+        "Tema prioritário de equidade"
+      ],
+      "faq": [],
+      "status": "proposto",
+      "versao": "1.0",
+      "revisor": null,
+      "revisor_conselho": null,
+      "data_revisao": null,
+      "aliases": [
+        "diabetes tipo 2",
+        "diabetes",
+        "açúcar alto",
+        "DM2",
+        "glicemia alta"
+      ]
+    },
+    {
+      "id": "miomas-uterinos",
+      "nome_oficial": "Mioma uterino",
+      "nome_leigo": "Mioma",
+      "definicao": "Nódulo benigno de músculo que cresce na parede do útero. Na maioria dos casos não é câncer. Pode não causar sintomas ou provocar menstruação intensa, cólica e aumento da barriga.",
+      "sinais": [
+        "Menstruação muito intensa, com coágulos, durando mais de sete dias.",
+        "Cólica forte fora do período menstrual, dor na relação sexual ou pressão na bexiga.",
+        "Aumento da barriga sem ganho de peso, cansaço e palidez por anemia."
+      ],
+      "acoes": [
+        "Anotar no celular os dias de sangramento e quantos absorventes troca por dia.",
+        "Agendar consulta ginecológica na UBS e pedir encaixe se a agenda demorar.",
+        "Se encharcar um absorvente por hora, com tontura ou desmaio, procurar urgência hoje."
+      ],
+      "alerta": "Sangramento intenso com tontura, desmaio ou falta de ar; dor pélvica súbita e intensa; febre com corrimento de mau cheiro.",
+      "equidade": "O mioma é comum e quase sempre tratável. O que muda o desfecho é chegar ao exame antes que a anemia e o sangramento crônico se instalem, o que depende de acesso à ginecologia.",
+      "equidade_claim_status": "narrativa_sem_dado",
+      "fontes": [
+        {
+          "orgao": "FEBRASGO",
+          "titulo": "Mioma uterino: um problema muito comum e quase silencioso",
+          "url": "https://www.febrasgo.org.br/noticia/mioma-uterino-um-problema-muito-comum-e-quase-silencioso/",
+          "tipo": "diretriz",
+          "acesso": "2026-11-04"
+        }
+      ],
+      "sistema_id": "saude-da-mulher",
+      "eixos": [],
+      "selos": [
+        "Tema prioritário de equidade"
+      ],
+      "faq": [],
+      "status": "proposto",
+      "versao": "1.0",
+      "revisor": null,
+      "revisor_conselho": null,
+      "data_revisao": null,
+      "aliases": [
+        "mioma",
+        "miomas",
+        "fibroma",
+        "miomatose",
+        "mioma uterino"
+      ]
+    },
+    {
+      "id": "lupus",
+      "nome_oficial": "Lúpus eritematoso sistêmico",
+      "nome_leigo": "Lúpus",
+      "definicao": "Doença autoimune em que o sistema de defesa ataca o próprio corpo. Atinge pele, articulações, rins e cérebro em crises intermitentes. É mais frequente em mulheres negras e exige acompanhamento contínuo.",
+      "sinais": [
+        "Mancha vermelha em asa de borboleta nas bochechas e no nariz, que piora ao sol.",
+        "Dor e inchaço nas articulações com cansaço extremo, mesmo dormindo bem.",
+        "Febre baixa recorrente, queda de cabelo, feridas na boca ou dor no peito ao respirar."
+      ],
+      "acoes": [
+        "Usar protetor solar FPS 50 ou mais todos os dias e evitar sol direto entre 10h e 16h.",
+        "Não interromper a medicação nem faltar à coleta de exames.",
+        "Anotar sintomas, datas e gatilhos para levar à consulta com reumatologista."
+      ],
+      "alerta": "Febre alta, falta de ar, dor no peito, urina escura ou reduzida, confusão mental ou convulsão: procure atendimento imediato.",
+      "equidade": "O lúpus é três a quatro vezes mais frequente em mulheres negras e tende a ser mais grave nelas, com maior comprometimento renal. O diagnóstico tardio é o principal fator de risco modificável.",
+      "equidade_claim_status": "verificada",
+      "fontes": [
+        {
+          "orgao": "Ministério da Saúde",
+          "titulo": "Lúpus",
+          "url": "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/l/lupus",
+          "tipo": "oficial",
+          "acesso": "2026-11-04"
+        }
+      ],
+      "sistema_id": "sangue-imunidade",
+      "eixos": [],
+      "selos": [
+        "Tema prioritário de equidade"
+      ],
+      "faq": [],
+      "status": "proposto",
+      "versao": "1.0",
+      "revisor": null,
+      "revisor_conselho": null,
+      "data_revisao": null,
+      "aliases": [
+        "lúpus",
+        "LES",
+        "lúpus eritematoso sistêmico"
+      ]
+    },
+    {
+      "id": "doenca-renal-cronica",
+      "nome_oficial": "Doença renal crônica",
+      "nome_leigo": "Doença renal crônica",
+      "definicao": "Os rins perdem progressivamente a capacidade de filtrar o sangue; no início não há sintomas e, quando avança, surgem inchaço, cansaço e acúmulo de toxinas. Pressão alta e diabetes são as principais causas.",
+      "sinais": [
+        "Inchaço nos pés, tornozelos ou ao redor dos olhos, apertando sapato ou anel.",
+        "Urina espumosa ou necessidade de levantar mais de duas vezes à noite para urinar.",
+        "Cansaço fora do normal, coceira no corpo, falta de ar e perda de apetite."
+      ],
+      "acoes": [
+        "Pedir na UBS os exames de creatinina no sangue e de albumina na urina.",
+        "Manter pressão e diabetes controlados, que respondem pela maior parte dos casos que evoluem para diálise.",
+        "Não usar anti-inflamatório, chá detox ou suplemento sem orientação profissional."
+      ],
+      "alerta": "Falta de ar, inchaço de instalação rápida, urina muito escura ou ausência de urina, vômitos persistentes, sonolência.",
+      "equidade": "A doença renal é silenciosa e só aparece no exame. Chegar ao exame depende de vínculo com a UBS, vínculo que falta onde a população negra encontra mais barreiras de acesso.",
+      "equidade_claim_status": "narrativa_sem_dado",
+      "fontes": [
+        {
+          "orgao": "Ministério da Saúde",
+          "titulo": "Doenças Renais Crônicas",
+          "url": "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/d/drc",
+          "tipo": "oficial",
+          "acesso": "2026-11-04"
+        },
+        {
+          "orgao": "Sociedade Brasileira de Nefrologia",
+          "titulo": "Insuficiência renal",
+          "url": "https://sbn.org.br/publico/doencas-comuns/insuficiencia-renal/",
+          "tipo": "diretriz",
+          "acesso": "2026-11-04"
+        }
+      ],
+      "sistema_id": "rins-vias-urinarias",
+      "eixos": [],
+      "selos": [
+        "Tema prioritário de equidade"
+      ],
+      "faq": [],
+      "status": "proposto",
+      "versao": "1.0",
+      "revisor": null,
+      "revisor_conselho": null,
+      "data_revisao": null,
+      "aliases": [
+        "doença renal crônica",
+        "DRC",
+        "insuficiência renal crônica",
+        "rim fraco",
+        "problema nos rins"
+      ]
+    }
+  ],
+  "fora_do_mvp": {
+    "texto_detalhe": "Conteúdo desta condição em preparação — as seis condições desta versão são as validadas.",
+    "herda_texto_de_outra_condicao": false
+  },
+  "servicos": {
+    "schema_version": "1.0.0",
+    "filtro_por_condicao": false,
+    "aviso": "Esta lista mostra serviços de saúde do seu território. Ela não indica qual serviço trata esta condição nem substitui avaliação profissional. Confirme na unidade ou ligue 160.",
+    "fallbacks": {
+      "telefone": "Telefone não informado. Confirme na unidade.",
+      "horario": "Horário não informado.",
+      "distancia": "Distância indisponível",
+      "pendente": "Dados em conferência"
+    },
+    "antes_de_ir": {
+      "itens": [
+        "Documento com foto",
+        "Cartão do SUS (ou número do CPF)",
+        "Lista dos remédios em uso, com as doses"
+      ],
+      "opcional": "Exames recentes",
+      "texto": "Leve documento com foto, o cartão do SUS (ou o número do CPF) e a lista dos remédios que você usa, com as doses. Se tiver exames recentes, leve também."
+    },
+    "horario_24h": "Pronto atendimento 24 horas. Ambulatórios e exames seguem horário próprio — confirme antes.",
+    "status_dado": [
+      "validado",
+      "pendente_validacao",
+      "desatualizado"
+    ],
+    "recarga_dias": 90,
+    "expira_dias": 180
+  },
+  "features": {
+    "notes": false,
+    "service_worker": false,
+    "pwa_install": false,
+    "native_build": false,
+    "i18n_es": true,
+    "condition_read_history": false
+  },
+  "avisos_fixos": {
+    "informativo": "Este conteúdo é informativo e não substitui avaliação de saúde nem indica diagnóstico.",
+    "filtros": "Estes filtros organizam conteúdo e não estimam risco individual.",
+    "offline_cache": "Conteúdo pode estar desatualizado. Última atualização: {data}.",
+    "notes_off": "Minhas anotações chegam na próxima versão. Este espaço vai guardar o que você anotar, no seu celular, sem enviar para o servidor."
+  },
+  "quality_gates": {
+    "definicao_conforme": true,
+    "erros": []
+  }
+}

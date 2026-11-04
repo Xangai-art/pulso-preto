@@ -1,3 +1,4 @@
+import { useAppearance } from '@shared/context/AppearanceContext';
 import { NavLink } from 'react-router-dom';
 
 const items = [
@@ -13,15 +14,17 @@ const items = [
 // Fundo creme, ícones oficiais (elementos do pacote de identidade), tipografia
 // oficial. HISTÓRICO: ramificava por variante durante o teste CEOS (encerrado).
 export default function BottomNav() {
+  const { localeId } = useAppearance();
+  const labels: Record<string, string> = { 'Início': 'Inicio', 'Check-in': 'Check-in', 'Saúde': 'Salud', 'Unidades': 'Unidades', 'Radar': 'Radar', 'Perfil': 'Perfil' };
   return (
-    <nav className="fixed bottom-0 left-0 right-0 bg-pulso-creme border-t border-pulso-dourado/40 flex justify-between px-1 py-1.5 z-40 max-w-md mx-auto font-pulso-body">
+    <nav lang={localeId === 'es' ? 'es-419' : 'pt-BR'} aria-label={localeId === 'es' ? 'Navegación principal' : 'Navegação principal'} className="fixed bottom-0 left-0 right-0 bg-pulso-creme border-t border-pulso-dourado/40 flex justify-between px-1 py-1.5 z-40 max-w-md mx-auto font-pulso-body">
       {items.map((item) => (
         <NavLink
           key={item.to}
           to={item.to}
           className={({ isActive }) =>
             `flex-1 flex flex-col items-center gap-0.5 py-1.5 rounded-lg text-[10px] font-medium ${
-              isActive ? 'text-pulso-verde bg-pulso-dourado/15' : 'text-pulso-marrom/70'
+              isActive ? 'text-pulso-verde bg-pulso-dourado/15' : 'text-pulso-marrom'
             }`
           }
         >
@@ -30,7 +33,7 @@ export default function BottomNav() {
           ) : (
             <span className="text-base">{item.icon}</span>
           )}
-          {item.label}
+          {localeId === 'es' ? labels[item.label] : item.label}
         </NavLink>
       ))}
     </nav>

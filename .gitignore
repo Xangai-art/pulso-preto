@@ -12,3 +12,8 @@ app/dist/
 # Sempre rode `npm run build` na raiz antes de commitar mudanças de site/ ou app/.
 !/dist/
 .identity-work/
+
+# Local QA tooling, browser artifacts and secrets
+.qa-tools/
+.dev.vars
+.env.*

@@ -1,106 +1,89 @@
 # Aba Saúde — relatório verificável CA-01 a CA-16
 
-**Data:** 04/11/2026. **Repositório:** Xangai-art/pulso-preto. **Base:** `6383ac2f08f9682023512cf5f20f134bfa764ae4`.
+**Data:** 04/11/2026. **Repositório:** Xangai-art/pulso-preto. **Base desta integração:** `370c0f868391d2b00eb95535c03b218526a7e7c3`.
 
-## Parecer
+## Parecer e escopo
 
-**Estrutura web implementada e testada; aceite final bloqueado.** Há pendências P0 de conteúdo clínico, auditoria global de siglas, acessibilidade humana e compreensão. Não se declara certificação WCAG, validação clínica, build nativo instalável ou produção publicada. Commit/push não substitui homologação.
+**Integração técnica das seis fichas propostas concluída; homologação clínica e humana pendente.** Este relatório substitui as medições da versão com marcadores vazios. Não declara certificação WCAG, aprovação médica, instalação nativa ou publicação em produção.
 
-Foi mantida a arquitetura React do repositório real, sem reescrever o app em Hono. Tab bar, cadastro, consentimentos, backend, autenticação, modelo de dados, privacidade, build/CI e dependências do produto não foram editados. Artefatos de `dist/app/` foram regenerados pelo build existente. Arquivos clínicos e referências originais em `shared/data/` permaneceram intactos.
+Autoridades de conteúdo: `conteudo-saude.v1.json.txt` e `ESPECIFICACAO_CONTEUDO_SAUDE_v1.0.md`, fornecidos pelo usuário. O JSON foi copiado integralmente para `shared/data/condicoes.saude.v1.json`; todas as seis condições continuam propostas. A apresentação não reproduz a redação contraditória que chamava essas fichas de validadas. Aprovação requer status e assinatura clínica completos.
 
-## Escopo por onda e arquivos
-
-| Onda | Arquivos principais | Finalidade / resultado |
-|---|---|---|
-| 1 — estrutura | `app/src/components/HealthComponents.tsx`, `app/src/lib/healthPresentation.ts`, `app/src/lib/useHealthCatalogue.ts`, `app/src/pages/HealthLibrary.tsx`, `app/src/index.css` | Componentes reutilizáveis, S0/S1, nomes, busca, nove sistemas, filtros, cache, estados e estilos com tokens existentes. |
-| 1 — linguagem | `app/src/pages/Home.tsx`, `app/src/pages/Faq.tsx` | Nomes populares/técnicos e expansão textual da tabela de siglas, sem editar dados compartilhados. |
-| 2 — detalhe/acervo | `app/src/pages/DiseaseDetail.tsx`, `app/src/components/HealthDeepContent.tsx` | S2 padronizada com marcadores clínicos e acordeão; S3 com quatro blocos e acervo paginado preservado. |
-| 2 — atendimento | `app/src/pages/MapUbs.tsx` | Até dez serviços, tipo, endereço, distância quando possível, telefone/rota e “Antes de ir”. Sem inventar encaminhamento clínico. |
-| 3 — verificação | `scripts/test-health.mjs`, `scripts/test-health-browser.mjs`, `scripts/health-ui.snap.json` | Funções/dados, snapshots de árvore acessível e testes de navegador; não substituem usuários/leitores de tela. |
-| 3 — documentação | `PENDENCIAS_CONTEUDO.md`, este relatório, README e `docs/evidencias-saude/` | Lacunas, critérios, reprodução e capturas. |
+Arquitetura existente React/Vite/Worker, site institucional, rotas, onboarding, consentimentos e acervo científico preservados. Foram alterados componentes Saúde, navegação bilíngue, carregamento lazy das páginas, estilos e scripts de testes/build. Adicionados adaptadores editoriais, glossário, dicionários PT/ES e schema/snapshot da rede. `dist/app/` regenerado. Nenhum backend novo, anotações pessoais ou histórico de leitura foi criado.
 
 ## Critérios de aceite
 
-“Atendido” refere-se somente ao enunciado técnico descrito, na versão e ambiente testados. “Não atendido” inclui implementação parcial. “NÃO VERIFICADO” não significa aprovado. P0: CA-01 a CA-13 e CA-16; P1: CA-14 e CA-15.
+“Atendido tecnicamente” vale apenas para o comportamento testado. Critérios dependentes de validação humana permanecem abertos. Prioridade P0: CA-01 a CA-13 e CA-16; P1: CA-14 e CA-15.
 
-| Critério | Prioridade | Status | Evidência e limite |
-|---|---|---|---|
-| CA-01 — Nenhuma sigla não explicada em S0–S4 | P0 | **Não atendido** | Tabela de expansão testada e aplicada na apresentação; não há auditoria integral do acervo, rótulos da rede nem do restante do app. |
-| CA-02 — Pressão alta / Hipertensão arterial na camada 1 | P0 | **Atendido** | Mapeamento testado e snapshot `S0-ready` com os dois nomes. |
-| CA-03 — S0 com sete blocos e seis cards | P0 | **Atendido** | Seis cards, três intenções, sete blocos na contagem documentada (header, contexto, busca, intenções, destaques, ver todas, rodapé). 43 palavras na dobra a 360×800. O atalho de anotações informa indisponibilidade. |
-| CA-04 — S2 com cinco blocos e até 180 palavras | P0 | **Atendido (estrutura atual)** | Cinco blocos e 82–89 palavras nas seis condições. Contagem do artigo inteiro é conservadora em relação à dobra. Texto contém marcadores; repetir após aprovação clínica. |
-| CA-05 — Acordeão fechado por padrão | P0 | **Atendido** | `aria-expanded=false` verificado em cada uma das seis condições. |
-| CA-06 — Evidência a dois toques de S2 | P0 | **Atendido (acervo interno)** | Clique em “Entenda melhor” e no link de ciência abre S3/#science; teste alcança estudo/referência existente. “Ver fonte” segue para bibliografia interna. URLs originais/DOIs continuam pendentes. |
-| CA-07 — Seis condições no mesmo padrão | P0 | **Atendido (estrutura atual)** | Seis renders/snapshots; cinco blocos, três slots de sinais, três slots de ações. Não equivale a seis textos clínicos aprovados. |
-| CA-08 — S1 só primeira seção aberta e três chips | P0 | **Atendido** | Nove sistemas, uma seção aberta e três botões de seleção única. União de coração/circulação/pulmões resolve divergência da especificação. |
-| CA-09 — Quatro estados em S0/S1/S2 | P0 | **Atendido (app já aberto)** | Capturas/snapshots de carregando, vazio, erro e offline nas três telas; retry testado. Cache corrompido/atrasado por fixture, rede realmente desativada no navegador. Não prova cold start offline. |
-| CA-10 — Contraste de texto ≥4,5:1 | P0 | **NÃO VERIFICADO integralmente** | Dois pares principais calculados: 15,67:1 e 7,31:1. Não há auditoria de todas as combinações, estados e controles globais. |
-| CA-11 — Leitor anuncia popular, técnico e selos | P0 | **NÃO VERIFICADO** | Texto presente na árvore acessível e semântica nativa; faltam VoiceOver/TalkBack reais, ordem de foco e avaliação humana. |
-| CA-12 — Busca popular tolerante a erro | P0 | **Atendido** | Vinte consultas com nomes populares/técnicos, acentos e erros aprovadas, além de busca sem correspondência. Busca por sintomas validada não implementada. |
-| CA-13 — Aviso legal em S1–S4 | P0 | **Atendido** | Todas usam `HealthLayout` com rodapé literal; capturas incluem o aviso (também em S0). CSS de 13px e cores principais contrastantes. |
-| CA-14 — Abertura <2s em 4G | P1 | **NÃO VERIFICADO** | Build e HTTP 200 não medem 4G. Timeout do skeleton de 2s não é prova de desempenho. |
-| CA-15 — S4 ordenada por proximidade | P1 | **Não atendido para toda a rede** | Hospitais com coordenadas ordenados corretamente com localização simulada; outras unidades têm dados incompletos e ordem alfabética explícita. Sem autorização, não solicita localização. |
-| CA-16 — Cinco usuários; 90% compreendem o que é/o que fazer | P0 | **NÃO VERIFICADO** | Teste humano não executado e conteúdo cidadão ainda pendente. Bloqueia aceite. |
+| Critério | Estado atual | Evidência e limite |
+|---|---|---|
+| CA-01 — Siglas explicadas em S0–S4 | Parcial | Glossário, expansão textual e `abbr` com nome acessível; auditoria automatizada nas seis fichas. Acervo completo e primeira ocorrência em rerenders independentes/StrictMode ainda requerem revisão. |
+| CA-02 — Pressão alta / Hipertensão arterial | Atendido tecnicamente | Nomes popular/técnico vindos do pacote editorial; testes de nomenclatura e browser. |
+| CA-03 — S0 e seis cards | Atendido tecnicamente para seis cards | Seis destaques, busca e intenções; anotações desabilitadas. Não reutilizar a antiga contagem de palavras da versão com marcadores. |
+| CA-04 — S2 e limite de texto | Parcial | Definições de 2–3 frases e até 55 palavras, três sinais e três ações verificados. Artigo completo agora inclui alertas, fontes e avisos; limite global de 180 palavras não certificado. |
+| CA-05 — Aprofundamento fechado | Atendido tecnicamente | Controle nativo fechado por padrão; seis snapshots. |
+| CA-06 — Acesso à evidência | Atendido tecnicamente para links | Fontes oficiais diretas, `noopener noreferrer` e acervo preservado. Nove URLs únicas responderam 200; correspondência científica continua sujeita à revisão. |
+| CA-07 — Seis condições no mesmo padrão | Atendido tecnicamente | Definição, três sinais, alerta antes das três ações, fontes e selo de revisão. Não equivale a aprovação clínica. |
+| CA-08 — S1 e filtros | Atendido conforme nova especificação | Nove sistemas, eixo transversal e grupo sem classificação; primeira seção aberta, três filtros editoriais. Não usa subtítulo de categoria como risco individual. |
+| CA-09 — Estados | Parcial | Estados de carregamento/erro/vazio/offline implementados; regressão atual verifica vazio e offline após abertura. Não cobre todos os estados em todas as telas nem cold start. |
+| CA-10 — Contraste | Parcial | Pares principais 15,67:1 e 7,31:1; axe sem violações nos cenários medidos. Não há certificação integral de todos os estados/dispositivos. |
+| CA-11 — Leitores de tela | Não verificado humanamente | Semântica, foco e árvore acessível testados. Faltam VoiceOver/TalkBack reais. |
+| CA-12 — Busca tolerante | Atendido tecnicamente | Vinte consultas, aliases e exclusões clínicas. Vocabulário de 42 sintomas com associações conservadoras, não triagem assinada. |
+| CA-13 — Aviso legal | Atendido tecnicamente | Layout compartilhado S0–S4, aviso de conteúdo informativo e filtros sem risco individual; tradução da interface. |
+| CA-14 — Abertura <2s em 4G | Não verificado | Rotas lazy reduzem entrada JS; não foram executadas três medições Lighthouse/4G. Timeout de oito segundos não é métrica. |
+| CA-15 — Rede por proximidade | Parcial | Algoritmo testado com UBS/UPA/hospital, geo conhecida ou ausente; browser verifica hospitais. Dados reais incompletos impedem ordenar toda a rede por distância. |
+| CA-16 — Compreensão ≥90% | Não verificado | Cinco usuários e pelo menos 36/40 tarefas ainda pendentes. |
 
-## Métricas e testes executados
+## Evidências atuais
 
-- Build de produção do monorepo: `npm run build` — sucesso (TypeScript, site, app, exportação SQLite e assemble existentes).
-- Lint: `npm run lint --prefix app` — zero erros e zero avisos.
-- `node scripts/test-health.mjs` — **32 verificações** aprovadas, incluindo vinte consultas, 44 condições sem perdas/duplicações em nove sistemas, paginação preservando palavras do acervo, distância e contraste dos dois pares.
-- `node scripts/test-health-browser.mjs` — **23 snapshots de árvore acessível** comparados com baseline; seis condições, estados, retry e hospitais. Zero `pageerror` no cenário.
-- Viewport Chromium: **360×800**; localização sintética: latitude −15,78, longitude −47,88. Não foi usado dado de paciente.
-- S0: **sete blocos**, **43 palavras na dobra**. O script registra a contagem da dobra; a conferência do limite de 60 está documentada aqui.
-- Palavras do artigo S2: anemia 82; pressão alta 87; diabetes 89; mioma 82; lúpus 82; doença renal 84. **Incluem placeholders**, não o conteúdo final.
-- Distâncias hospitalares exibidas (km em linha reta): 0,3; 11,5; 11,7; 15,1; 19,9; 24,6; 24,9; 29,1; 30,2; 30,9.
-- S0 com fonte raiz a 200%: sem overflow horizontal no teste. Não cobre automaticamente S1–S4 nem toda configuração de zoom/dispositivo.
-- Contraste calculado: `#06201B/#F7F5F0` **15,67:1**; `#1A5C3A/#F7F5F0` **7,31:1**.
-- Build avisa chunk app >500kB (~601kB JS, ~182kB gzip) e imports dinâmicos que não geram chunk separado. A instalação reportou vulnerabilidades existentes (uma moderada e duas altas); nenhuma dependência de segurança foi atualizada neste escopo.
+- Build completo `npm run build`: aprovado, incluindo exportação/verificação SQLite, site, app e montagem de `dist/`.
+- `npm --prefix app run lint`: **zero erros e zero avisos**.
+- `node scripts/test-health.mjs`: **47 verificações aprovadas**; pré-build executa 46, antes de verificar o bundle final.
+- `node scripts/test-health-browser.mjs`: **15 snapshots comparados sem `--update`**, todos aprovados; zero `pageerror` e nenhuma violação axe séria/crítica nos cenários verificados.
+- Chromium 360×800, consentimento/onboarding sintéticos, localização simulada −15,78/−47,88. Nenhum dado de paciente utilizado.
+- Cenários: S0, S1, urgência, vazio, seis S2, acervo, rede com geo, offline já aberto, espanhol e S0 com fonte a 200% sem overflow horizontal.
+- Browser verifica migração do cache legado, ausência de IDs lidos, lista idêntica com/sem `condicao`, links/fontes, anotações desabilitadas e precedência do alerta.
+- Snapshots versionados: `scripts/health-ui.snap.json`. Capturas e métricas atuais: `.qa-tools/artifacts/`, locais e ignoradas pelo Git. `docs/evidencias-saude/` contém evidência histórica, não prova atual das novas fichas. PNGs não são comparação visual pixel a pixel.
 
-## Capturas e estados
+### Desempenho e dependências
 
-As evidências estão em [`evidencias-saude/`](evidencias-saude/) e `scripts/health-ui.snap.json`. PNGs são capturas, **não testes de regressão visual pixel a pixel**. Os snapshots comparados são da árvore acessível.
+Entrada app após divisão por rotas: aproximadamente **245,42 KB / 79,25 KB gzip**, contra 640,24 KB / 192,66 KB gzip antes da divisão nesta integração. Há chunks adicionais necessários à rota; esses números não são o total inicial, LCP ou TTI. Acervo científico separado: 219,39 KB / 62,09 KB gzip. Catálogo atende ao teste de orçamento de 120 KB gzip. Meta <2s em 4G não comprovada.
 
-- `S0-ready.png`: busca, três intenções e seis destaques; `S0-grayscale.png`: conferência visual sem cor; `S0-font-200.png`: escala de texto.
-- `S1-ready.png`: primeiro sistema aberto e demais fechados.
-- `S2-<id>.png`: cada uma das seis condições com marcador, três sinais e três ações, acordeão fechado.
-- `S3-science.png`: estudo/achado/fontes no aprofundamento, quatro blocos paginados.
-- `S4-location.png`: hospitais com distância crescente e lembrete “Antes de ir”.
-- `S0/S1/S2-loading.png`: skeleton e “Buscando informações…”.
-- `S0/S1/S2-empty.png`: mensagem de ausência, exemplo de nome popular e retorno à lista.
-- `S0/S1/S2-error.png`: alerta legível e “Tentar de novo”; não tela branca.
-- `S0/S1/S2-offline.png`: aviso de conteúdo salvo, condicionado a aberturas anteriores.
-- `metrics.json`: números extraídos pelo teste; `build.txt`: saída do build registrado.
+O site institucional ainda emite aviso de chunk >500 KB. Instalação existente reportou três vulnerabilidades (uma moderada, duas altas); correção de dependências não foi realizada neste escopo.
 
-## Como reproduzir
+## Contratos e privacidade
 
-Na raiz, com dependências do repositório instaladas:
+- Fonte clínica versionada, proposta e em português; interface espanhola não se apresenta como tradução clínica aprovada.
+- Arrays de FAQ fornecidos vazios: ausência informada, sem respostas inventadas. Suporte a futuros arrays preenchidos permanece como evolução.
+- Rede normalizada em `healthServices.ts`, snapshot `servicos.v1.json` conferido pelo teste. Faltas de coleta, precisão, responsável e atualização ficam explícitas. Todos os registros permanecem pendentes de validação.
+- `?condicao=` preservado apenas como contexto, nunca como filtro/encaminhamento.
+- Cache `pulso-health-catalogue-v1.0`: somente catálogo público e versão; cache legado `pulso-health-editorial-v1` apagado. Localização transitória, sem persistência nova de notas, condição lida ou sessão.
+- Sem Service Worker, instalador, promessa de abertura a frio ou novo armazenamento de dados de saúde.
+
+## Reprodução
 
 ```bash
+cd /home/user/webapp
 npm run build
-pm2 start ecosystem.config.cjs   # se o serviço ainda não estiver iniciado
-npm run lint --prefix app
-node scripts/test-health.mjs
-node scripts/test-health-browser.mjs
+pm2 start ecosystem.config.cjs  # se ainda não iniciado; usa wrangler dev, porta 3000
+curl http://localhost:3000/app/saude
+npm --prefix app run lint
+npm run test:health
+npm run test:health:browser
 ```
 
-O navegador de QA requer Playwright instalado **fora dos manifests do produto**. No sandbox usado:
+QA de navegador usa dependências locais, não manifests do produto:
 
 ```bash
-npm install --prefix .qa-tools --no-package-lock --no-save playwright
+npm install --prefix .qa-tools --no-package-lock --no-save playwright @axe-core/playwright
 .qa-tools/node_modules/.bin/playwright install chromium
-# Se faltarem bibliotecas Linux:
+# Somente se faltarem bibliotecas do sistema:
 sudo .qa-tools/node_modules/.bin/playwright install-deps chromium
 ```
 
-Por padrão, o script importa `.qa-tools/node_modules/playwright/index.mjs` e testa `http://localhost:3000`. É possível definir `PLAYWRIGHT_MODULE` (caminho/URL de módulo) e `HEALTH_TEST_URL`. Usar `--update` somente após revisão intencional de baseline. `.qa-tools/` é ferramenta local, não dependência entregue; o teste injeta onboarding/consentimento somente no contexto sintético do navegador, sem editar os fluxos do produto.
+URL padrão `http://localhost:3000`; pode ser substituída por `HEALTH_TEST_URL`. `PLAYWRIGHT_MODULE` permite outro caminho do módulo. Usar `--update` somente para alteração de baseline revisada, nunca para ocultar regressão.
 
-## Riscos e próximos passos
+## Gates restantes e publicação
 
-1. Resolver `PENDENCIAS_CONTEUDO.md` com equipe da saúde, incluindo definição/sinais/ações das seis condições e referências originais.
-2. Concluir mapeamento condição–serviço e cadastro da rede. O parâmetro é preservado, mas não é filtro clínico.
-3. Avaliar governança dos marcadores locais de leitura (IDs de condições abertas), retenção e eventual opção de limpeza. O cache não guarda nova localização nem notas, mas histórico de leitura pode ser sensível.
-4. Concluir auditoria de siglas, tradução dos novos controles e classificação editorial.
-5. Executar acessibilidade humana em leitores reais, medir 4G e teste com cinco usuários.
-6. Homologar antes de declarar aceite. O repositório é web React; não há build iOS/Android instalável nesta entrega.
+Consultar `PENDENCIAS_CONTEUDO.md`: assinatura clínica, validação de equidade/fontes, rede real e geocodificação, revisão bilíngue, siglas do acervo, classificação/sintomas, acessibilidade humana, compreensão e desempenho 4G.
 
-**Deploy:** nenhum deploy manual foi realizado nesta atividade. O README registra automação Workers Builds em `main`; um push pode dispará-la. Isso não comprova que a versão foi publicada nem que está aprovada para uso clínico.
+Nenhum push ou deploy realizado nesta entrega. `main` pode disparar Workers Builds quando enviado ao remoto; commit local não publica nem aprova conteúdo clínico. URL de produção desta revisão não foi verificada.

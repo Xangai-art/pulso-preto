@@ -113,3 +113,14 @@ body {
     .health-intents { @apply grid-cols-1; }
   }
 }
+
+/* Saúde v1: alert precedes actions and never relies on color alone. */
+.health-urgent { border: 2px solid #8F4B21; border-left-width: 6px; border-radius: 12px; padding: 1rem; }
+.health-review { border: 1px solid #1A5C3A; background: #F7F5F0; padding: .75rem; margin-block: 1rem; border-radius: 8px; font-weight: 600; }
+.health-source + .health-source { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #1A5C3A; }
+.health-screen summary { cursor: pointer; min-height: 44px; padding-block: .5rem; }
+.health-screen summary:focus-visible { outline: 2px solid #1A5C3A; outline-offset: 2px; }
+.health-screen abbr { text-decoration: underline dotted; text-underline-offset: 3px; }
+.health-grid > *, .health-intents > * { min-width: 0; }
+.health-screen .health-grid, .health-screen .health-intents { grid-template-columns: repeat(auto-fit, minmax(min(100%, 8rem), 1fr)); }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .health-screen *, .health-screen *::before, .health-screen *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }

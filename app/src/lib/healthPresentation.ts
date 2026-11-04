@@ -1,9 +1,10 @@
 import type { Disease, DiseaseCategory } from '@shared/data/diseases';
+import { getCondition, healthContent } from './healthContent';
+import { symptomMatches } from './healthSymptoms';
 
 // Presentation only: the scientific catalogue and its identifiers stay unchanged.
 export const MVP_IDS = ['anemia-falciforme', 'hipertensao', 'diabetes', 'miomas-uterinos', 'lupus', 'doenca-renal-cronica'] as const;
-export const PENDING = '[CONTEÚDO PENDENTE DE VALIDAÇÃO PELA EQUIPE DA SAÚDE]';
-export const DISCLAIMER = 'O app informa e orienta. Não substitui consulta com profissional de saúde.';
+export const DISCLAIMER = healthContent.avisos_fixos.informativo;
 
 const names: Record<string, [string, string]> = {
   hipertensao: ['Pressão alta', 'Hipertensão arterial'],
@@ -39,7 +40,8 @@ export function citizenText(text: string): string {
 }
 export function conditionNames(disease: Disease) {
   const pair = names[disease.id];
-  return { popular: pair?.[0] ?? citizenText(disease.name), technical: pair?.[1] ?? citizenText(disease.name) };
+  const editorial = getCondition(disease.id);
+  return { popular: editorial?.nome_leigo ?? pair?.[0] ?? citizenText(disease.name), technical: editorial?.nome_oficial ?? pair?.[1] ?? citizenText(disease.name) };
 }
 export function conditionPath(categoryId: string, diseaseId: string) {
   return `/saude/${categoryId}/${diseaseId}`;
@@ -57,49 +59,57 @@ export function editDistance(a: string, b: string): number {
   return row[b.length];
 }
 export function matchesCondition(disease: Disease, query: string) {
+  const q = normalize(query);
+  if (!q) return true;
+  // Aliases are search metadata, never titles. Excluded aliases must not leak
+  // through fuzzy matching (e.g. sickle trait is not sickle cell disease).
+  const excluded: Record<string, string[]> = {
+    'anemia-falciforme': ['traco falciforme', 'anemia'],
+    hipertensao: ['pressao nervosa'], diabetes: ['diabetes tipo 1', 'diabetes infantil'],
+    'miomas-uterinos': ['cancer do utero', 'tumor'], lupus: ['lupus da pele'],
+    'doenca-renal-cronica': ['pedra nos rins', 'infeccao urinaria'],
+  };
+  if (excluded[disease.id]?.includes(q)) return false;
   const { popular, technical } = conditionNames(disease);
-  const haystack = normalize(`${popular} ${technical} ${disease.name}`);
+  const editorial = getCondition(disease.id);
+  const aliases = editorial?.aliases ?? [];
+  const haystack = normalize(`${popular} ${technical} ${editorial ? '' : disease.name} ${aliases.join(' ')}`);
+  if (symptomMatches(disease.id, query)) return true;
   const words = haystack.split(' ');
-  return normalize(query).split(' ').filter(Boolean).every(token =>
-    haystack.includes(token) || (token.length >= 4 && words.some(word => editDistance(word, token) <= (token.length >= 5 ? 2 : 1))));
+  return q.split(' ').every(token => haystack.includes(token) ||
+    (token.length >= 4 && words.some(word => editDistance(word, token) <= (token.length >= 5 ? 2 : 1))));
 }
 
-// Nine sections: the ten requested systems are preserved by grouping lungs with circulation.
-const systems = [
-  ['circulacao-pulmoes', 'Coração, circulação e pulmões', ['cardiovasculares', 'respiratorias']],
-  ['hormonios-sangue', 'Hormônios e sangue', ['metabolicas', 'hematologicas']],
-  ['mulher', 'Saúde da mulher', ['mulher-negra']],
-  ['rins', 'Rins e genética', ['renais-geneticas', 'raras']],
-  ['imunidade', 'Imunidade', ['autoimunes', 'infecciosas']],
-  ['mente', 'Mente e sistema nervoso', ['saude-mental', 'neurologicas']],
-  ['pele', 'Pele, cabelo e unhas', ['dermatologicas']],
-  ['cancer', 'Câncer', ['oncologicas']],
-  ['ossos', 'Ossos e articulações', ['osteomusculares']],
-] as const;
+const categorySystems: Record<string, string> = {
+  cardiovasculares: 'coracao-circulacao-respiracao', respiratorias: 'coracao-circulacao-respiracao',
+  metabolicas: 'hormonios-metabolismo', hematologicas: 'sangue-imunidade', autoimunes: 'sangue-imunidade',
+  'mulher-negra': 'saude-da-mulher', 'saude-mental': 'saude-mental-nervoso', neurologicas: 'saude-mental-nervoso',
+  dermatologicas: 'pele', osteomusculares: 'ossos-musculos-articulacoes',
+};
 export function groupSystems(categories: DiseaseCategory[]) {
   const overrides: Record<string, string> = {
-    'anemia-falciforme': 'hormonios-sangue', lupus: 'imunidade', nmosd: 'mente',
-    'attr-cm': 'circulacao-pulmoes', hepatites: 'imunidade', hiv: 'imunidade',
-    'doencas-pele': 'pele', osteoporose: 'ossos', 'dor-cronica': 'ossos',
+    nmosd: 'saude-mental-nervoso', 'attr-cm': 'coracao-circulacao-respiracao',
+    'doenca-renal-cronica': 'rins-vias-urinarias', 'progressao-doenca-renal': 'rins-vias-urinarias', 'insuficiencia-renal': 'rins-vias-urinarias', hepatites: 'digestao-abdome',
+    'doencas-pele': 'pele', osteoporose: 'ossos-musculos-articulacoes', 'dor-cronica': 'ossos-musculos-articulacoes',
   };
   const entries = categories.flatMap(category => category.diseases.map(disease => {
-    const system = overrides[disease.id] ?? systems.find(([, , ids]) => (ids as readonly string[]).includes(category.id))?.[0];
-    // Never lose an entry when the scientific catalogue adds a category. Unclassified
-    // items remain visible, explicitly marked, rather than silently reclassified.
-    return { category, disease, system: system ?? 'mente', classificationPending: !system };
+    const system = getCondition(disease.id)?.sistema_id ?? overrides[disease.id] ?? categorySystems[category.id];
+    const transversal = /violencia|acidente/.test(normalize(`${category.id} ${disease.id}`));
+    return { category, disease, system: transversal ? 'violencias-acidentes' : system ?? 'sem-classificacao', classificationPending: !system && !transversal };
   }));
-  return systems.map(([id, title]) => ({ id, title, entries: entries.filter(entry => entry.system === id) }));
+  return [...healthContent.sistemas, { id: 'violencias-acidentes', nome: 'Violências e acidentes' }, { id: 'sem-classificacao', nome: 'Classificação em revisão' }]
+    .map(({ id, nome }) => ({ id, title: nome, entries: entries.filter(entry => entry.system === id) }));
 }
-export type RiskFilter = 'Todas' | 'Risco aumentado' | 'Acesso desigual';
-export function matchesRisk(category: DiseaseCategory, filter: RiskFilter) {
-  // Existing thematic metadata, not a new individual clinical risk classification.
-  return filter === 'Todas' || (filter === 'Risco aumentado' ? /risco/i.test(category.subtitle) : /acesso/i.test(category.subtitle));
+export type RiskFilter = 'Todas' | 'Tema prioritário de equidade' | 'Dado local disponível (DF)';
+export function matchesRisk(disease: Disease, filter: RiskFilter) {
+  return filter === 'Todas' || (filter === 'Tema prioritário de equidade'
+    ? !!disease.isPriorityTheme || !!getCondition(disease.id)?.selos.includes(filter) : !!disease.localStudy);
 }
 export function wordPages(paragraphs: string[], limit = 180): string[][] {
   const pages: string[][] = [[]];
   let count = 0;
   for (const paragraph of paragraphs) {
-    const words = citizenText(paragraph).split(/\s+/).filter(Boolean);
+    const words = paragraph.split(/\s+/).filter(Boolean);
     for (let start = 0; start < words.length; start += limit) {
       const chunk = words.slice(start, start + limit);
       if (count + chunk.length > limit) { pages.push([]); count = 0; }
@@ -109,8 +119,8 @@ export function wordPages(paragraphs: string[], limit = 180): string[][] {
   }
   return pages;
 }
-export function orderUnits<T extends { name: string; lat?: number; lng?: number }>(list: T[], location?: { lat: number; lng: number }) {
-  return list.map(unit => ({ ...unit, distance: location && unit.lat != null && unit.lng != null ? distanceKm(location, { lat: unit.lat, lng: unit.lng }) : undefined }))
+export function orderUnits<T extends { name: string; lat?: number | null; lng?: number | null }>(list: T[], location?: { lat: number; lng: number }) {
+  return list.map(unit => ({ ...unit, distance: location && Number.isFinite(unit.lat) && Number.isFinite(unit.lng) ? distanceKm(location, { lat: unit.lat!, lng: unit.lng! }) : undefined }))
     .sort((a, b) => (a.distance ?? Infinity) - (b.distance ?? Infinity) || a.name.localeCompare(b.name, 'pt-BR')).slice(0, 10);
 }
 export function distanceKm(a: { lat: number; lng: number }, b: { lat: number; lng: number }) {
