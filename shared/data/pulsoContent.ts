@@ -303,7 +303,7 @@ const pt: PulsoContent = {
     eyebrow: ['SAÚDE COM RAÍZES.', 'FUTURO COM IGUALDADE.'],
     headline: ['Conhecimento', 'também salva vidas.'],
     paragraph:
-      'O Pulso Preto é uma plataforma de informação, saúde e bem-estar para a população negra, com dados, orientações e caminhos para um cuidado mais justo e acessível.',
+      'Você sabe como está a saúde da população negra do Distrito Federal? O Pulso Preto é uma plataforma de informação, saúde e bem-estar para a população negra, com dados, orientações e caminhos para um cuidado mais justo e acessível.',
     ctaLabel: 'EXPLORAR CONTEÚDOS →',
     cursive: ['Nossa saúde também importa.'],
   },

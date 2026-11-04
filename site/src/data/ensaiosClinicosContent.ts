@@ -24,7 +24,7 @@ export const ensaiosHero = {
 };
 
 export const trialPhases = [
-  { phase: 'Fase 1', tests: 'Segurança e dose', people: '20–80 voluntários saudáveis' },
+  { phase: 'Avaliação inicial de segurança', tests: 'Segurança e dose', people: '20–80 voluntários saudáveis' },
   { phase: 'Fase 2', tests: 'Se funciona', people: '100–300 pacientes com a doença' },
   { phase: 'Fase 3', tests: 'Compara com tratamento atual', people: '1.000–3.000 pacientes' },
   { phase: 'Fase 4', tests: 'Pós-aprovação, uso real', people: 'Milhares de pessoas em uso rotineiro' },

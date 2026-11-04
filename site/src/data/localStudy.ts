@@ -9,7 +9,7 @@
 // Os arquivos do documento e da planilha foram retirados do download.
 
 export const localStudyMeta = {
-  question: 'Você sabe como vive e como está a saúde da população negra aqui no Distrito Federal?',
+  question: 'Você sabe como está a saúde da população negra do Distrito Federal?',
   intro:
     'Reunimos e analisamos dados públicos que já existem — da Secretaria de Saúde do Distrito Federal, do Ministério da Saúde e do Instituto de Pesquisa e Estatística do Distrito Federal (IPEDF) — de 2015 a 2024, separados por raça/cor. O objetivo é entender a realidade e começar a agir.',
 };

@@ -234,7 +234,7 @@ export const baixarFaq = [
 
 export const professionalsSection = {
   title: 'Para profissionais de saúde',
-  text: 'Você é profissional de saúde na rede SUS-DF? O App Sentinela também tem uma versão para profissionais (Beta Fase 1), com: Triagem clínico-social identificável (CPF/CNS); Classificação de risco de enfermagem; Encaminhamentos rastreáveis; Integração futura com e-SUS.',
+  text: 'Você é profissional de saúde na rede SUS-DF? O App Sentinela também tem uma versão para profissionais (Beta), com: Triagem clínico-social identificável (CPF/CNS); Classificação de risco de enfermagem; Encaminhamentos rastreáveis; Integração futura com e-SUS.',
   ctaLabel: 'Sou profissional de saúde — quero saber mais',
 };
 

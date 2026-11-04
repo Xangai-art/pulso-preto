@@ -920,7 +920,7 @@ export const otherHealthServices = [
 
 export const roadmap = [
   {
-    fase: 'Fase 1 — MVP',
+    fase: 'Piloto inicial no Distrito Federal',
     periodo: '0-90 dias',
     objetivo: 'Validar conceito com piloto no DF',
     entregas: [

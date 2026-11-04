@@ -16,7 +16,7 @@ export default function Welcome() {
           App Sentinela
         </h1>
         <p className="text-sm max-w-xs mx-auto mb-1 text-pulso-creme/90">
-          Já foi mal atendido no Sistema Único de Saúde (SUS)? Sentiu que seu problema não foi levado a sério?
+          Você sabe como está a saúde da população negra do Distrito Federal?
         </p>
         <p className="text-xs max-w-xs mx-auto text-pulso-creme/70">
           Entenda sua saúde, encontre a Unidade Básica de Saúde (UBS) mais próxima e ajude sua comunidade — em check-ins de 1 minuto.
