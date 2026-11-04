@@ -59,3 +59,57 @@ body {
 .prose-project p, .prose-project li {
   line-height: 1.6;
 }
+
+/* Health only: existing Pulso tokens and Tailwind spacing, no new UI library. */
+@layer components {
+  .health-screen { @apply text-base leading-relaxed; overflow-wrap: anywhere; }
+  .health-screen h2, .health-screen h3 { @apply font-pulso-display font-bold text-lg mb-2; }
+  .health-screen p + p { @apply mt-2; }
+  .health-screen a, .health-screen button, .health-screen input, .health-screen select {
+    @apply min-h-11;
+  }
+  .health-screen button, .health-screen input, .health-screen select { font: inherit; }
+  .health-screen button { @apply min-w-11; }
+  .health-screen a:not(.health-card) { @apply inline-flex items-center min-w-11; }
+  .health-screen > .sticky :focus-visible { @apply outline-pulso-creme; }
+  .health-screen a:focus-visible, .health-screen button:focus-visible, .health-screen input:focus-visible, .health-screen select:focus-visible {
+    @apply outline outline-2 outline-offset-2 outline-pulso-verde-medio;
+  }
+  .health-screen button:disabled { @apply cursor-not-allowed border-dashed; }
+  .health-screen input, .health-screen select { @apply w-full rounded-lg border border-pulso-verde-medio p-3 bg-pulso-creme text-pulso-verde; }
+  .health-screen input::placeholder { @apply text-pulso-verde-medio; opacity: 1; }
+  .health-stack { @apply flex flex-col gap-4; }
+  .health-grid { @apply grid grid-cols-2 gap-3; }
+  .health-intents { @apply grid grid-cols-3 gap-2; }
+  .health-intents a, .health-intents button { @apply rounded-lg border border-pulso-verde-medio p-2 text-center flex items-center justify-center; }
+  .health-back, .health-action { @apply inline-flex items-center gap-2 py-2 underline underline-offset-4; }
+  .health-card { @apply flex flex-col gap-2 p-4 rounded-xl border border-pulso-verde-medio bg-pulso-creme; }
+  .health-card:hover { @apply bg-pulso-dourado/10; }
+  .health-card-compact { @apply p-3 gap-1; }
+  .health-card-name { @apply font-pulso-display font-bold; }
+  .health-technical { @apply text-base text-pulso-verde-medio; }
+  .health-card-name { @apply text-lg; }
+  .health-badges { @apply flex flex-wrap gap-2; }
+  .health-badge { @apply inline-flex gap-1 items-center rounded border border-pulso-verde-medio px-2 py-1 text-base text-pulso-verde-medio; }
+  .health-system, .health-panel { @apply border border-pulso-verde-medio rounded-xl; }
+  .health-panel { @apply p-4; }
+  .health-system h2, .health-system h3 { @apply m-0; }
+  .health-system h2 > button, .health-system h3 > button { @apply flex w-full items-center justify-between gap-3 p-3 text-left; }
+  .health-filters { @apply flex flex-wrap gap-2 items-center; }
+  .health-filters button, .health-filters a, .health-state button { @apply rounded-lg border border-pulso-verde-medio px-3 py-2; }
+  .health-filters button[aria-pressed='true'] { @apply bg-pulso-verde text-pulso-creme; }
+  .health-state { @apply border border-pulso-verde-medio rounded-xl p-4 flex flex-col gap-3; }
+  .health-offline { @apply border-l-4 border-pulso-verde-medio pl-3; }
+  .health-skeleton { @apply flex flex-col gap-3 rounded-xl border border-pulso-verde-medio p-4; }
+  .health-skeleton > span { @apply block h-4 rounded bg-pulso-verde-medio/20; }
+  .health-disclaimer { @apply text-pulso-verde; font-size: 0.8125rem; line-height: 1.5; }
+  .health-condition-title { @apply uppercase text-2xl !important; }
+  .health-screen ul { @apply list-disc pl-5; }
+  .health-screen ol:not(.health-services) { @apply list-decimal pl-5; }
+  .health-screen li + li { @apply mt-2; }
+  .health-services { @apply list-none p-0; }
+  .health-system nav a { @apply inline-flex items-center py-2 underline; }
+  @media (max-width: 340px) {
+    .health-intents { @apply grid-cols-1; }
+  }
+}

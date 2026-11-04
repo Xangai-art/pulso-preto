@@ -4,6 +4,7 @@ import { priorityThemes } from '@shared/data/diseases';
 import TopBar from '../components/TopBar';
 import { useAppearance } from '@shared/context/AppearanceContext';
 import { getPulsoContent } from '@shared/data/pulsoContent';
+import { conditionNames } from '../lib/healthPresentation';
 
 // Home do App Sentinela — identidade ÚNICA de produção (PP3): card de check-in
 // verde-escuro/dourado, tipografia oficial e o banner do Seminário
@@ -106,11 +107,11 @@ export default function Home() {
               {myConditions.map((c) => (
                 <Link
                   key={c.id}
-                  to={`/saude/${c.category.toLowerCase()}/${c.id}`}
+                  to={`/saude/${c.categoryId}/${c.id}`}
                   className="flex items-center gap-3 rounded-xl border border-pulso-dourado/25 bg-white p-3"
                 >
                   <span className="text-xl">{c.icon}</span>
-                  <span className="text-sm font-medium text-pulso-verde">{c.name}</span>
+                  <span className="text-pulso-verde"><span className="block text-base font-medium">{conditionNames(c).popular}</span><span className="block text-base text-pulso-verde-medio">{conditionNames(c).technical}</span></span>
                 </Link>
               ))}
             </div>

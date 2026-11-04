@@ -2,6 +2,7 @@ import { useState } from 'react';
 import TopBar from '../components/TopBar';
 import { useAppearance } from '@shared/context/AppearanceContext';
 import { faqCategories, faqItems } from '@shared/data/faq';
+import { citizenText } from '../lib/healthPresentation';
 
 // PERGUNTAS FREQUENTES no App (MVP do Produto 2.2, item 4.1) — mesma fonte do
 // site (shared/data/faq.ts). Links do site não são exibidos aqui.
@@ -26,10 +27,10 @@ export default function Faq() {
                       aria-expanded={open === f.id}
                       className="w-full flex items-start justify-between gap-3 p-3 text-left"
                     >
-                      <span className="text-sm font-semibold text-pulso-verde">{f.q[localeId]}</span>
+                      <span className="text-sm font-semibold text-pulso-verde">{citizenText(f.q[localeId])}</span>
                       <span className="text-pulso-dourado leading-none" aria-hidden="true">{open === f.id ? '−' : '+'}</span>
                     </button>
-                    {open === f.id && <p className="px-3 pb-3 text-sm text-pulso-marrom leading-relaxed">{f.a[localeId]}</p>}
+                    {open === f.id && <p className="px-3 pb-3 text-sm text-pulso-marrom leading-relaxed">{citizenText(f.a[localeId])}</p>}
                   </div>
                 ))}
             </div>

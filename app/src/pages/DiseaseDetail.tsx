@@ -1,102 +1,63 @@
-import { useParams, Link, Navigate } from 'react-router-dom';
-import { diseaseCategories, resolveDiseasePath } from '@shared/data/diseases';
-import TopBar from '../components/TopBar';
-import { getDeepContent } from '@shared/data/deepContentRegistry';
-import AudienceContentTabs from '../components/AudienceContentTabs';
+import { useEffect, useState } from 'react';
+import { useParams, Link, Navigate, useSearchParams } from 'react-router-dom';
+import { resolveDiseasePath } from '@shared/data/diseases';
 import { useAppearance } from '@shared/context/AppearanceContext';
+import HealthDeepContent from '../components/HealthDeepContent';
+import { EmptyState, HealthLayout, HealthState, RiskBadge } from '../components/HealthComponents';
+import { conditionNames, conditionPath, PENDING } from '../lib/healthPresentation';
+import { saveOpenedCondition, useHealthCatalogue } from '../lib/useHealthCatalogue';
 
-// Tema único de produção: Pulso Preto (PP3). Tokens `pulso-*` diretos.
 export default function DiseaseDetail() {
   const { categoryId, diseaseId } = useParams();
+  const [params] = useSearchParams();
   const { localeId } = useAppearance();
-  const category = diseaseCategories.find((c) => c.id === categoryId);
-  const disease = category?.diseases.find((d) => d.id === diseaseId);
-  const deepContent = disease?.hasDeepContent ? getDeepContent(disease.id, localeId) : undefined;
-
-  if (!category || !disease) {
-    // Endereço antigo (categoria/condição reclassificada) → redireciona para o atual.
+  const { categories, status, retry } = useHealthCatalogue();
+  const [expanded, setExpanded] = useState(false);
+  const category = categories.find(item => item.id === categoryId);
+  const disease = category?.diseases.find(item => item.id === diseaseId);
+  const deep = params.get('aprofundar') === '1';
+  useEffect(() => { setExpanded(false); }, [diseaseId, deep]);
+  useEffect(() => {
+    if (disease) void saveOpenedCondition(disease.id);
+  }, [disease]);
+  if (status === 'loading' || status === 'error') return <HealthLayout back="/saude"><HealthState status={status} retry={retry} /></HealthLayout>;
+  if (!disease || !category) {
     const current = resolveDiseasePath(diseaseId);
-    if (current) return <Navigate to={current} replace />;
-    return (
-      <div className="min-h-screen bg-pulso-creme font-pulso-body">
-        <TopBar title="Não encontrado" showBack />
-        <div className="px-5 pt-10 text-center text-sm text-pulso-marrom/60">
-          Condição não encontrada.
-        </div>
-      </div>
-    );
+    if (current && current !== `/saude/${categoryId}/${diseaseId}`) return <Navigate to={current} replace />;
+    return <HealthLayout back="/saude"><HealthState status={status} retry={retry} /><EmptyState /></HealthLayout>;
   }
-
-  return (
-    <div className="min-h-screen bg-pulso-creme font-pulso-body">
-      <TopBar title={disease.name} showBack />
-      <div className="px-5 pt-4 pb-8">
-        {deepContent && (
-          <div className="relative w-full overflow-hidden rounded-xl border border-pulso-dourado/25 mb-4 aspect-[16/9]">
-            <img
-              src={deepContent.heroImage.url}
-              alt={deepContent.heroImage.alt}
-              className="absolute inset-0 w-full h-full object-cover"
-              loading="eager"
-            />
-          </div>
-        )}
-
-        <div className="flex gap-2 mb-4 flex-wrap">
-          {disease.isPriorityTheme && (
-            <span className="text-[10px] uppercase font-bold text-pulso-creme bg-pulso-verde px-2 py-1 rounded">
-              Tema prioritário
-            </span>
-          )}
-          {disease.localStudy && (
-            <span className="text-[10px] uppercase font-bold text-pulso-verde-medio bg-pulso-verde-medio/10 border border-pulso-verde-accent/40 px-2 py-1 rounded">
-              Dado Local DF
-            </span>
-          )}
+  const { popular, technical } = conditionNames(disease);
+  const path = conditionPath(category.id, disease.id);
+  return <HealthLayout back={deep ? path : '/saude'}>
+    <HealthState status={status} retry={retry} />
+    {deep ? <>
+      <h2>{popular}: entenda melhor</h2>
+      <HealthDeepContent key={`${disease.id}-${localeId}`} disease={disease} locale={localeId} />
+    </> : <article className="health-stack" data-screen="S2">
+      <header data-detail-block="identity">
+        <h2 className="health-condition-title">{popular}</h2>
+        <p className="health-technical">{technical}</p>
+        <div className="health-badges">
+          {disease.isPriorityTheme && <RiskBadge>Tema prioritário</RiskBadge>}
+          {disease.localStudy && <RiskBadge>Dado do Distrito Federal</RiskBadge>}
         </div>
-
-        {disease.study ? (
-          <div className="space-y-4">
-            <div className="rounded-xl border border-pulso-dourado/25 p-4">
-              <h2 className="text-xs font-bold uppercase mb-1.5 text-pulso-verde font-pulso-display">
-                O que a ciência mostra
-              </h2>
-              <p className="text-sm text-pulso-marrom/85">{disease.study}</p>
-            </div>
-            <div className="rounded-xl border border-pulso-dourado/30 bg-pulso-dourado/10 p-4">
-              <h2 className="text-xs font-bold uppercase mb-1.5 text-pulso-terracota font-pulso-display">
-                Por que isso importa
-              </h2>
-              <p className="text-sm leading-relaxed text-pulso-marrom/90">{disease.finding}</p>
-            </div>
-          </div>
-        ) : (
-          <div className="rounded-xl border border-pulso-dourado/25 p-4 bg-white text-sm text-pulso-marrom/70">
-            Condição incluída na base científica do Guia da Saúde da População Negra. Em caso de dúvida, converse com a equipe da sua Unidade Básica de Saúde.
-          </div>
-        )}
-
-        {/* Dado local do DF — agora disponível no app pelo catálogo único (P16). */}
-        {disease.localStudy && (
-          <div className="mt-4 rounded-xl bg-pulso-verde text-pulso-creme p-4">
-            <h2 className="text-[11px] font-bold uppercase tracking-wide text-pulso-dourado-claro mb-1">
-              Dado local do Distrito Federal
-            </h2>
-            <div className="text-2xl font-bold text-pulso-dourado mb-1">{disease.localStudy.value}</div>
-            <p className="text-sm leading-relaxed text-pulso-creme/95 mb-2">{disease.localStudy.finding}</p>
-            <p className="text-[10px] text-pulso-creme/70">Fonte: {disease.localStudy.source}.</p>
-          </div>
-        )}
-
-        {deepContent && <AudienceContentTabs content={deepContent} />}
-
-        <div className="mt-6 rounded-xl border border-pulso-dourado/25 p-4 text-xs text-pulso-marrom/70">
-          Em caso de sintomas, procure uma UBS.{' '}
-          <Link to="/mapa" className="text-pulso-verde font-medium">
-            Encontrar UBS mais próxima →
-          </Link>
+      </header>
+      <section data-detail-block="definition"><h3>O que é</h3><p>{PENDING}</p></section>
+      <section data-detail-block="signs"><h3>Sinais para ficar atento</h3><ul>{[1, 2, 3].map(item => <li key={item}>{PENDING}</li>)}</ul></section>
+      <section data-detail-block="actions"><h3>O que fazer</h3><ol>{[1, 2, 3].map(item => <li key={item}>{PENDING}</li>)}</ol>
+        <Link className="health-action" to={`/mapa?condicao=${encodeURIComponent(disease.id)}`}>Onde me atender perto de mim</Link>
+      </section>
+      <section data-detail-block="understand" className="health-system">
+        <h3><button type="button" aria-expanded={expanded} aria-controls="condition-understand" onClick={() => setExpanded(value => !value)}><span>Entenda melhor</span><span aria-hidden="true">{expanded ? '−' : '+'}</span></button></h3>
+        <div id="condition-understand" hidden={!expanded}>
+          <nav aria-label="Aprofundar esta condição" className="health-stack p-3">
+            <Link to={`${path}?aprofundar=1`}>Por que afeta mais a população negra?</Link>
+            <Link to={`${path}?aprofundar=1`}>Como é feito o diagnóstico?</Link>
+            <Link to={`${path}?aprofundar=1#science`}>O que diz a ciência? — Ver fonte</Link>
+            <Link to={`${path}?aprofundar=1#source-record`}>Perguntas frequentes e acervo completo</Link>
+          </nav>
         </div>
-      </div>
-    </div>
-  );
+      </section>
+    </article>}
+  </HealthLayout>;
 }
