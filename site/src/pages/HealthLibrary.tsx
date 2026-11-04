@@ -1,7 +1,8 @@
 import { useMemo, useState } from 'react';
 import { Link, Navigate, useLocation, useSearchParams } from 'react-router-dom';
 import { diseaseCategories, orderByRelevance, healthRecortes, LEGACY_CATEGORY_IDS } from '@shared/data/diseases';
-import { metrics } from '@shared/data/metrics';
+import { publicHealthCopy } from '@shared/data/publicHealthCopy';
+import PopulationNotice from '@shared/components/PopulationNotice';
 import CategoryIcon from '../components/CategoryIcons';
 
 
@@ -73,7 +74,7 @@ export default function HealthLibrary() {
       <div className="mb-10 max-w-2xl">
         <h1 className="text-3xl font-bold text-pulso-verde mb-2">Biblioteca de Saúde</h1>
         <p className="text-pulso-marrom">
-          Informação de saúde com comprovação científica, organizada por tema.
+          {publicHealthCopy.pt.overview}
         </p>
       </div>
 
@@ -131,7 +132,7 @@ export default function HealthLibrary() {
 
       {isFiltering && (
         <p className="text-sm text-pulso-marrom/70 mb-6">
-          Mostrando {shownCount} de {metrics.conditions} condições.
+          Resultados encontrados: {shownCount}.
         </p>
       )}
 
@@ -140,6 +141,8 @@ export default function HealthLibrary() {
           Nenhuma condição encontrada com esses filtros. Tente outro termo de busca ou limpe os filtros.
         </div>
       )}
+
+      <PopulationNotice className="text-sm text-pulso-marrom mb-6" />
 
       {/* 3. Cards com as categorias */}
       <div className="space-y-3">
@@ -158,7 +161,7 @@ export default function HealthLibrary() {
                   <span>
                     <span className="block text-lg font-bold text-pulso-verde">{cat.title}</span>
                     <span className="block text-xs text-pulso-marrom/70">
-                      {cat.subtitle} · {cat.diseases.length} condições
+                      {cat.subtitle}
                     </span>
                   </span>
                 </span>

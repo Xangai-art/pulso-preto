@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PopulationNotice from '@shared/components/PopulationNotice';
 import { useAppearance } from '@shared/context/AppearanceContext';
 import type { DiseaseDeepContent } from '@shared/data/anemiaFalciforme';
 
@@ -64,6 +65,7 @@ export default function AudienceContentTabs({ content }: { content: DiseaseDeepC
       <p className="text-xs text-pulso-marrom/60 mb-6 italic">{t(`disease.audience.description.${active}`)}</p>
 
       <div className="rounded-xl border border-pulso-dourado/25 bg-white p-5 sm:p-6">
+        <PopulationNotice className="text-sm text-pulso-marrom mb-4" />
         <p className="text-sm font-semibold text-pulso-verde mb-5">{audience.summary}</p>
         <div className="space-y-6">
           {audience.sections.map((section) => (

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import PopulationNotice from '@shared/components/PopulationNotice';
 import { useAppearance } from '@shared/context/AppearanceContext';
 import { getPulsoContent } from '@shared/data/pulsoContent';
 import { diseaseCategories } from '@shared/data/diseases';
@@ -29,6 +30,7 @@ export default function DataIndicators() {
       {/* 1. Panorama — os mesmos números da Home */}
       <section aria-labelledby="panorama" className="mb-14">
         <h2 id="panorama" className="text-xl font-bold text-pulso-verde mb-4">Panorama</h2>
+        <PopulationNotice className="text-sm text-pulso-marrom mb-4" />
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
           {stats.cards.map((c, i) => (
             <div key={i} className="rounded-xl bg-white border border-pulso-dourado/20 p-5">
@@ -52,6 +54,7 @@ export default function DataIndicators() {
           <p className="text-sm text-pulso-marrom/80 mb-5">
             Condições da Biblioteca de Saúde que já têm dado do Distrito Federal. Clique para ver a condição completa.
           </p>
+          <PopulationNotice className="text-sm text-pulso-marrom mb-4" />
           <div className="grid sm:grid-cols-2 gap-4">
             {localFindings.map((d) => (
               <Link

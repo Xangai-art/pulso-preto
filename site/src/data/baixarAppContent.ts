@@ -2,7 +2,7 @@
 // Fonte: pacote de conteúdo v4.2 (16/08/2026), alinhado à Arquitetura
 // Reconciliada V4.1. Nome do projeto vem do Canon (P18).
 import { getCurrentBrand } from '@shared/data/brand-canon';
-import { metrics } from '@shared/data/metrics';
+import { publicHealthCopy } from '@shared/data/publicHealthCopy';
 
 export const baixarMeta = {
   title: `Baixe o App Sentinela — ${getCurrentBrand().name}`,
@@ -34,7 +34,7 @@ export const statusPanels: StatusPanel[] = [
     status: '🟢 Concluído',
     items: [
       'Arquitetura técnica V4.1 publicada',
-      `Base científica com ${metrics.conditions} condições curada`,
+      publicHealthCopy.pt.overview,
       'Modelo de dados LGPD (3 domínios separados)',
       'Site institucional público',
       'Parceria com 9 instituições formalizada',

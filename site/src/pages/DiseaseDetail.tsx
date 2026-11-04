@@ -1,4 +1,6 @@
 import { Link, Navigate, useParams } from 'react-router-dom';
+import PopulationNotice from '@shared/components/PopulationNotice';
+import { publicHealthCopy } from '@shared/data/publicHealthCopy';
 import { diseaseCategories, resolveDiseasePath } from '@shared/data/diseases';
 import { getDeepContent } from '@shared/data/deepContentRegistry';
 import CategoryIcon from '../components/CategoryIcons';
@@ -60,10 +62,12 @@ export default function DiseaseDetail() {
         )}
       </div>
 
+      <PopulationNotice className="text-sm text-pulso-marrom mb-6" />
+
       {disease.study ? (
         <div className="space-y-6">
           <div className="rounded-xl border border-pulso-dourado/25 p-5">
-            <h2 className="text-sm font-bold text-pulso-verde uppercase tracking-wide mb-2">O que a ciência mostra</h2>
+            <h2 className="text-sm font-bold text-pulso-verde uppercase tracking-wide mb-2">{publicHealthCopy[localeId].scientificBasis}</h2>
             <p className="text-pulso-marrom text-sm">{disease.study}</p>
           </div>
           <div className="rounded-xl border border-pulso-verde-accent/25 bg-pulso-verde-accent/10 p-5">
@@ -74,7 +78,7 @@ export default function DiseaseDetail() {
       ) : (
         <div className="rounded-xl border border-pulso-dourado/25 p-5 bg-pulso-creme">
           <p className="text-pulso-marrom text-sm">
-            Condição incluída na base científica do Guia da Saúde da População Negra. Em caso de dúvida,
+            {publicHealthCopy[localeId].overview} Em caso de dúvida,
             converse com a equipe da sua Unidade Básica de Saúde.
           </p>
         </div>
@@ -87,6 +91,7 @@ export default function DiseaseDetail() {
             <span className="text-2xl font-bold text-pulso-dourado-claro">{disease.localStudy.value}</span>
           </div>
           <p className="text-sm leading-relaxed text-pulso-creme/95 mb-3">{disease.localStudy.finding}</p>
+          <PopulationNotice className="text-sm text-pulso-creme mb-3" />
           <p className="text-[11px] text-pulso-creme/70">
             Fonte: {disease.localStudy.source}. Análise de dados públicos já existentes sobre a população negra
             do Distrito Federal — Instituto APRECIA, com apoio da AECID. Ver{' '}

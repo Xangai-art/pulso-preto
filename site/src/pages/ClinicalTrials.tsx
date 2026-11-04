@@ -1,4 +1,5 @@
 import type React from 'react';
+import PopulationNotice from '@shared/components/PopulationNotice';
 import { Link } from 'react-router-dom';
 import { useAppearance } from '@shared/context/AppearanceContext';
 import {
@@ -25,6 +26,7 @@ export default function ClinicalTrials() {
       <span className="eyebrow text-pulso-verde-accent">{ensaiosHero.kicker}</span>
       <h1 className="text-3xl font-bold text-pulso-verde mt-1 mb-4">{ensaiosHero.title}</h1>
       <p className="text-pulso-marrom mb-6 max-w-2xl">{ensaiosHero.subtitle}</p>
+      <PopulationNotice className="text-sm text-pulso-marrom mb-4" />
       <div className="rounded-xl border border-pulso-dourado/40 bg-pulso-creme p-4 flex gap-3 text-sm text-pulso-marrom mb-14">
         <span className="text-lg leading-none">{ensaiosHero.notice.icon}</span>
         <p>{ensaiosHero.notice.text}</p>
@@ -61,6 +63,7 @@ export default function ClinicalTrials() {
         <div className="rounded-xl bg-pulso-verde text-white p-6 mb-6 text-center">
           <p className="text-3xl font-bold mb-1">{whyItMattersHighlight.statistic}</p>
           <p className="text-sm text-pulso-verde-accent/10">{whyItMattersHighlight.text}</p>
+          <PopulationNotice className="text-sm text-white mt-3" />
         </div>
         <div className="grid sm:grid-cols-3 gap-4">
           {whyItMattersExamples.map((ex) => (

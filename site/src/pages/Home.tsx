@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import PopulationNotice from '@shared/components/PopulationNotice';
 import { useAppearance } from '@shared/context/AppearanceContext';
 import { getPulsoContent } from '@shared/data/pulsoContent';
 import type { PulsoContent, LinkCard } from '../../../shared/data/pulsoContent';
@@ -217,6 +218,7 @@ function PulsoStats({ content }: { content: PulsoContent }) {
               ))}
             </h2>
             {s.paragraph && <p className="text-sm text-pulso-marrom/75 mt-3">{s.paragraph}</p>}
+            <PopulationNotice className="text-sm text-pulso-marrom mt-3" />
           </div>
           <Link
             to={s.ctaTo}

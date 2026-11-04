@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import PopulationNotice from '@shared/components/PopulationNotice';
 import { localStudyMeta, localStudyHighlights, localStudyThemes } from '../data/localStudy';
 import { PalhaLine, LeafMark } from './Ornaments';
 import { PULSO_PALETTE } from '@shared/data/pulsoPalette';
@@ -35,6 +36,7 @@ export default function LocalStudyFeature() {
           </div>
           <h2 className="font-editorial italic text-2xl sm:text-3xl leading-snug mb-3">{localStudyMeta.question}</h2>
           <p className="text-sm sm:text-base text-pulso-creme max-w-3xl">{localStudyMeta.intro}</p>
+          <PopulationNotice className="text-sm text-pulso-creme mt-3" />
         </div>
 
         <div className="mb-2">

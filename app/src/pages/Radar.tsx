@@ -1,5 +1,6 @@
 import { useAppStore } from '../store/useAppStore';
 import TopBar from '../components/TopBar';
+import PopulationNotice from '@shared/components/PopulationNotice';
 
 // Sinais ilustrativos — em produção, calculados via z-score (Statistical Process Control)
 // sobre os check-ins agregados por Região Administrativa.
@@ -70,22 +71,24 @@ export default function Radar() {
           </div>
         ) : (
           <div className="space-y-3">
+            <p className="text-sm text-pulso-marrom">Exemplos ilustrativos — não são dados atuais da sua região.</p>
+            <PopulationNotice className="text-sm text-pulso-marrom" />
             {signals.map((s) => (
               <div key={s.id} className="rounded-xl border border-pulso-dourado/30 bg-pulso-dourado/10 p-4">
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-xs font-bold uppercase text-pulso-terracota">
                     {s.ra}
                   </span>
-                  <span className="text-[10px] text-pulso-marrom/60">z-score {s.zScore}</span>
+                  <span className="text-[10px] text-pulso-marrom/60">Exemplo ilustrativo</span>
                 </div>
                 <p className="text-sm font-medium mb-2 text-pulso-marrom/90">{s.message}</p>
                 <p className="text-xs text-pulso-marrom/70">{s.action}</p>
               </div>
             ))}
             <div className="rounded-xl border border-pulso-dourado/25 p-4 text-xs text-pulso-marrom/70">
-              <strong>Como funciona:</strong> comparamos a contagem atual de relatos com a média histórica da
-              região (desvio padrão via z-score). Acima de 2,5 desvios, o sinal é devolvido à comunidade — nunca
-              fica restrito a um painel administrativo silencioso. Taxa de falso positivo estimada: &lt;5%.
+              <strong>Como funciona:</strong> comparamos os relatos da região com os registros anteriores
+              para identificar mudanças no conjunto da comunidade. Um sinal não indica que uma pessoa tenha
+              uma doença. Os exemplos desta tela mostram como essa informação pode ser apresentada.
             </div>
           </div>
         )}

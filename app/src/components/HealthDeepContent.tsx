@@ -1,4 +1,5 @@
 import { useHealthText } from '../lib/healthI18n';
+import PopulationNotice from '@shared/components/PopulationNotice';
 import { useEffect, useState } from 'react';
 import type { Disease } from '@shared/data/diseases';
 import type { DiseaseDeepContent } from '@shared/data/anemiaFalciforme';
@@ -12,6 +13,7 @@ function PagedBlock({ title, paragraphs, id, lang }: { title: string; paragraphs
   const current = Math.min(page, pages.length - 1);
   return <section id={id} className="health-panel" data-deep-block>
     <h3>{t(title)}</h3>
+    <PopulationNotice />
     <div aria-live="polite" lang={lang}>{pages[current].map((paragraph, i) => <p key={i}><ClinicalText text={paragraph} /></p>)}</div>
     {pages.length > 1 && <nav aria-label={`${t('Páginas')}: ${t(title)}`} className="health-filters">
       <button type="button" disabled={current === 0} onClick={() => setPage(current - 1)}>{t('Anterior')}</button>

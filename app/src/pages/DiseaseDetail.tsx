@@ -1,4 +1,5 @@
 import { useHealthText } from '../lib/healthI18n';
+import PopulationNotice from '@shared/components/PopulationNotice';
 import { useEffect, useState } from 'react';
 import { useParams, Link, Navigate, useSearchParams } from 'react-router-dom';
 import { resolveDiseasePath } from '@shared/data/diseases';
@@ -49,7 +50,7 @@ export default function DiseaseDetail() {
         <section className="health-system" data-detail-block="understand">
           <h3><button type="button" aria-expanded={expanded} aria-controls="condition-understand" onClick={() => setExpanded(value => !value)}>{t('Entenda melhor')}<span aria-hidden="true">{expanded ? '−' : '+'}</span></button></h3>
           <div id="condition-understand" hidden={!expanded} className="p-3 health-stack">
-            <section><h4>{t('Contexto de equidade racial')}</h4><p lang="pt-BR" data-claim-status={content.equidade_claim_status}><ClinicalText text={content.equidade} /></p>
+            <section><h4>{t('Contexto de equidade racial')}</h4><PopulationNotice /><p lang="pt-BR" data-claim-status={content.equidade_claim_status}><ClinicalText text={content.equidade} /></p>
               {content.equidade_claim_status === 'narrativa_sem_dado' && <p>{t('Reflexão sobre barreiras de acesso; não é uma estatística.')}</p>}
             </section>
             <section><h4>{t('Perguntas frequentes')}</h4><p>{t('Não há respostas de perguntas frequentes nesta versão.')}</p></section>
