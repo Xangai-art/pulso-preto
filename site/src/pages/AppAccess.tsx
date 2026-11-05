@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import type React from 'react';
 import { Link } from 'react-router-dom';
 import QRLink from '../components/QRLink';
@@ -10,7 +9,6 @@ import {
   consentLevels,
   lgpdRights,
   technicalSecurity,
-  earlyAccessForm,
   baixarFaq,
   professionalsSection,
   academicSection,
@@ -28,8 +26,6 @@ const panelClasses: Record<string, string> = {
 };
 
 export default function AppAccess() {
-  const [submitted, setSubmitted] = useState(false);
-
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 py-16">
       {/* Hero */}
@@ -46,8 +42,8 @@ export default function AppAccess() {
           <span className="text-xs max-w-md">{baixarHero.statusBadge.detail}</span>
         </div>
         <div className="flex flex-wrap gap-3 justify-center">
-          <a href="#formulario" className="rounded-md bg-pulso-verde text-white px-5 py-3 font-semibold hover:bg-pulso-verde text-sm">
-            📱 Quero acesso antecipado
+          <a href="/app" className="rounded-md bg-pulso-verde text-white px-5 py-3 font-semibold hover:bg-pulso-verde text-sm">
+            Acessar o app
           </a>
           <a href="#como-funciona" className="rounded-md border border-pulso-dourado/40 px-5 py-3 font-semibold text-pulso-verde hover:bg-pulso-creme text-sm">
             📖 Ver como funciona
@@ -146,79 +142,12 @@ export default function AppAccess() {
         </ul>
       </Section>
 
-      {/* Formulário */}
-      <Section title="Formulário de acesso antecipado" id="formulario">
-        <div className="rounded-2xl border border-pulso-dourado/25 bg-pulso-creme p-6">
-          <p className="text-sm text-pulso-marrom mb-6">{earlyAccessForm.header}</p>
-          {submitted ? (
-            <div className="rounded-xl border border-pulso-verde-accent/40 bg-pulso-verde-medio/10 p-6 text-center">
-              <p className="font-bold text-pulso-verde-medio mb-1">Cadastro recebido! 🎉</p>
-              <p className="text-sm text-pulso-marrom">
-                Você entrou na lista de espera do Beta. Fique de olho no seu e-mail a partir de Q4 2026.
-              </p>
-            </div>
-          ) : (
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                setSubmitted(true);
-              }}
-              className="space-y-4"
-            >
-              {earlyAccessForm.fields.map((field) => (
-                <div key={field.name}>
-                  {field.type === 'checkbox' ? (
-                    <label className="flex items-start gap-2 text-sm text-pulso-marrom">
-                      <input type="checkbox" required={field.required} className="mt-1" />
-                      <span>
-                        {field.label}
-                        {field.link && (
-                          <>
-                            {' '}
-                            <Link to={field.link} className="text-pulso-verde-accent hover:underline">
-                              (ver política)
-                            </Link>
-                          </>
-                        )}
-                      </span>
-                    </label>
-                  ) : field.type === 'select' ? (
-                    <div>
-                      <label className="block text-sm font-medium text-pulso-verde mb-1">
-                        {field.label} {field.required && <span className="text-pulso-marrom">*</span>}
-                      </label>
-                      <select required={field.required} className="w-full rounded-md border border-pulso-dourado/40 px-3 py-2 text-sm bg-white">
-                        <option value="">Selecione...</option>
-                        {field.options?.map((opt) => (
-                          <option key={opt} value={opt}>{opt}</option>
-                        ))}
-                      </select>
-                    </div>
-                  ) : (
-                    <div>
-                      <label className="block text-sm font-medium text-pulso-verde mb-1">
-                        {field.label} {field.required && <span className="text-pulso-marrom">*</span>}
-                      </label>
-                      <input
-                        type={field.type}
-                        required={field.required}
-                        className="w-full rounded-md border border-pulso-dourado/40 px-3 py-2 text-sm"
-                      />
-                      {field.help && <p className="text-xs text-pulso-marrom/60 mt-1">{field.help}</p>}
-                    </div>
-                  )}
-                </div>
-              ))}
-              <p className="text-xs text-pulso-marrom/60">{earlyAccessForm.legalNotice}</p>
-              <button
-                type="submit"
-                className="w-full rounded-md bg-pulso-verde text-white px-5 py-3 font-semibold hover:bg-pulso-verde text-sm"
-              >
-                {earlyAccessForm.submitLabel}
-              </button>
-            </form>
-          )}
-        </div>
+      {/* O formulário de acesso antecipado só poderá ser recriado com backend de destino
+          definido e validação do Encarregado (DPO) para coleta de dados pessoais (LGPD). */}
+      <Section title="Acessar o app">
+        <a href="/app" className="rounded-md bg-pulso-verde text-white px-5 py-3 font-semibold hover:bg-pulso-verde text-sm">
+          Acessar o app
+        </a>
       </Section>
 
       {/* FAQ */}
