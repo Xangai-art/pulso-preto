@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import PopulationNotice from '@shared/components/PopulationNotice';
 import { roadmap, partners } from '@shared/data/project';
 import { useAppearance } from '@shared/context/AppearanceContext';
 import VideoEmbed from '../components/VideoEmbed';
@@ -8,7 +7,7 @@ export default function About() {
   const { brand: projectInfo } = useAppearance();
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 py-16 prose-project">
-      <h1 className="text-3xl font-bold text-pulso-verde mb-2">Sobre o Projeto</h1>
+      <h1 className="text-3xl font-bold text-pulso-verde mb-2">Sobre o projeto</h1>
       <p className="text-pulso-marrom/70 mb-10">{projectInfo.name} — {projectInfo.subtitle}</p>
 
       <div className="not-prose mb-10">
@@ -21,20 +20,21 @@ export default function About() {
         </p>
       </div>
 
-      <h2 className="text-xl font-bold text-pulso-verde mt-10 mb-3">Visão estratégica</h2>
+      {/* Substituição provisória apenas no site. Original preservado na branch
+          backup/sobre-visao-estrategica-a77a0fb:site/src/pages/About.tsx (a77a0fb). */}
       <p className="text-pulso-marrom mb-4">
-        No Brasil, estudos sobre a população negra apontam desigualdades em saúde: maior risco de doenças crônicas,
-        subdiagnóstico por racismo institucional, menor acesso a serviços de qualidade no Sistema Único de Saúde (SUS) e invisibilidade
-        epidemiológica — 56% da população brasileira é negra, mas apenas 1,5% das pesquisas em saúde consideram
-        a raça.
+        O Conectando Saúde e Inclusão é um projeto de tecnologia e educação para a equidade em
+        saúde da população negra do Distrito Federal. Aqui você encontra informações de saúde com
+        base científica, dados sobre as condições de vida e saúde da população negra no DF e
+        espaços de participação.
       </p>
-      <PopulationNotice className="text-sm text-pulso-marrom mb-4" />
-      <p className="text-pulso-marrom mb-4">
-        {projectInfo.name} é uma <strong>plataforma de inteligência comunitária</strong> construída sobre uma
-        arquitetura dupla: um <strong>Site Institucional</strong> (este site — conteúdo, transparência e
-        comunidade) e um <strong>App Sentinela</strong> (ferramenta funcional de escuta longitudinal e navegação
-        em saúde), unidos por uma terceira camada de <strong>governança e confiança</strong>.
-      </p>
+      <h2 className="text-xl font-bold text-pulso-verde mt-10 mb-3">Quem faz</h2>
+      <ul className="text-sm text-pulso-marrom space-y-1 list-disc pl-5">
+        <li><strong>Instituto APRECIA</strong> — executor do projeto</li>
+        <li><strong>AECID</strong> — financiador</li>
+        <li><strong>Sejus/DF</strong> — parceiro institucional</li>
+        <li><strong>CASIO STUDIO V2</strong> — desenvolvimento técnico</li>
+      </ul>
 
       <h2 className="text-xl font-bold text-pulso-verde mt-10 mb-3">Como o projeto é organizado</h2>
       <p className="text-pulso-marrom mb-4">
