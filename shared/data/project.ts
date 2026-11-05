@@ -920,26 +920,26 @@ export const otherHealthServices = [
 
 export const roadmap = [
   {
-    fase: 'Piloto inicial no Distrito Federal',
+    fase: 'Início no Distrito Federal',
     periodo: '0-90 dias',
-    objetivo: 'Validar conceito com piloto no DF',
+    objetivo: 'Começar o projeto no DF',
     entregas: [
       'Autenticação e onboarding com consentimento LGPD (4 níveis)',
       'Questionário linha de base (5-10min)',
       'Check-ins recorrentes (1-3min)',
-      'Mapa de 10 UBSs piloto',
+      'Começa em 10 postos de saúde do DF — e vai chegar a mais regiões',
       `Biblioteca de saúde com ${metrics.priorityThemes} temas prioritários`,
       'Radar epidemiológico comunitário, opt-in e transparente',
     ],
   },
   {
-    fase: 'Fase 2 — Piloto Territorial',
+    fase: 'Mais regiões do Distrito Federal',
     periodo: '3-6 meses',
     objetivo: 'Transição de pesquisa para navegação em saúde',
     entregas: [
       'Push notifications inteligentes',
       'Integração com e-SUS',
-      'Expansão para 50 UBSs',
+      'Chegar a 50 postos de saúde',
       'Módulo de Formação/AVA (100 estudantes FEPECS)',
     ],
   },
