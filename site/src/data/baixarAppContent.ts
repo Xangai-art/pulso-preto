@@ -7,7 +7,7 @@ import { publicHealthCopy } from '@shared/data/publicHealthCopy';
 export const baixarMeta = {
   title: `Baixe o App Sentinela — ${getCurrentBrand().name}`,
   description:
-    'App Sentinela — escuta longitudinal, navegação SUS e radar comunitário. Beta em construção com validação ética (CEP/FEPECS). Cadastre-se para acesso antecipado.',
+    'App Sentinela — escuta longitudinal, navegação SUS e radar comunitário. Beta em construção com validação ética (CEP/FEPECS).',
 };
 
 export const baixarHero = {
@@ -20,7 +20,7 @@ export const baixarHero = {
     icon: '🟡',
     text: 'Beta em construção — Piloto DF · Q4 2026',
     detail:
-      'Aguardando aprovação final do Comitê de Ética em Pesquisa (CEP/FEPECS) e onboarding das 10 UBS piloto. Cadastre-se abaixo para receber acesso antecipado.',
+      'Aguardando aprovação final do Comitê de Ética em Pesquisa (CEP/FEPECS) e onboarding das 10 UBS piloto.',
   },
 };
 
@@ -152,54 +152,6 @@ export const technicalSecurity = [
   'Pseudonimização SHA-256 para identificadores de pesquisa',
   'Logs de auditoria imutáveis',
 ];
-
-export interface FormField {
-  type: 'text' | 'email' | 'tel' | 'select' | 'checkbox';
-  name: string;
-  label: string;
-  required: boolean;
-  help?: string;
-  options?: string[];
-  link?: string;
-}
-
-export const earlyAccessForm = {
-  header: 'Cadastre-se para receber acesso antecipado quando o Beta abrir (Q4 2026). Prioridade para moradores das regiões das 10 UBS piloto.',
-  fields: [
-    { type: 'text', name: 'nome', label: 'Nome (opcional — pode usar apelido)', required: false },
-    { type: 'email', name: 'email', label: 'E-mail', required: true, help: 'para envio do convite' },
-    { type: 'tel', name: 'telefone', label: 'Telefone / WhatsApp (opcional)', required: false },
-    {
-      type: 'select',
-      name: 'regiao_df',
-      label: 'Região do DF onde você mora',
-      required: true,
-      options: [
-        'Central', 'Centro-Sul', 'Norte', 'Sul', 'Leste', 'Oeste', 'Sudoeste',
-        'Não moro no DF (fica em lista de espera para expansão)',
-      ],
-    },
-    {
-      type: 'select',
-      name: 'perfil',
-      label: 'Você é',
-      required: true,
-      options: [
-        'Morador da comunidade / paciente do SUS',
-        'Profissional de saúde',
-        'Estudante FEPECS (capacitação AVA)',
-        'Pesquisador / acadêmico',
-        'Representante de organização parceira',
-        'Outro',
-      ],
-    },
-    { type: 'checkbox', name: 'aceita_email', label: 'Receber e-mail de convite quando o Beta abrir', required: true },
-    { type: 'checkbox', name: 'aceita_privacidade', label: 'Li e aceito a Política de Privacidade', required: true, link: '/transparencia' },
-  ] as FormField[],
-  legalNotice:
-    'Este cadastro é apenas para lista de espera. Nenhum dado de saúde é coletado neste formulário. Base legal LGPD: legítimo interesse (comunicação sobre projeto de interesse público).',
-  submitLabel: 'Cadastrar-se para acesso antecipado',
-};
 
 export const baixarFaq = [
   {
