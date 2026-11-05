@@ -944,7 +944,7 @@ export const roadmap = [
     ],
   },
   {
-    fase: 'Fase 3 — Plataforma Nacional',
+    fase: 'Plataforma Nacional',
     periodo: '6-24 meses',
     objetivo: 'Vigilância sentinela nacional para população negra',
     entregas: [

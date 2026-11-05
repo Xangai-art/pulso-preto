@@ -262,7 +262,6 @@ const TO_ENSAIOS = '/ensaios-clinicos';
 const TO_OUVIDORIA = '/ouvidoria';
 // "Encontre um profissional" e "Formação": rotas próprias publicadas "em
 // construção" (20/10/2026) até a base de profissionais (P3) e o AVA (P1).
-const TO_PROFISSIONAIS = '/profissionais';
 const TO_FORMACAO = '/formacao';
 const TO_BAIXAR = '/baixar';
 const TO_COMUNIDADE = '/comunidade';
@@ -290,7 +289,6 @@ const pt: PulsoContent = {
     tagline: 'SAÚDE • CONHECIMENTO • EQUIDADE',
     navItems: [
       { label: 'Rede SUS', to: TO_REDE_SUS },
-      { label: 'Encontre um profissional', to: TO_PROFISSIONAIS },
       { label: 'Ensaios Clínicos', to: TO_ENSAIOS },
       { label: 'Ouvidoria', to: TO_OUVIDORIA },
     ],
@@ -346,7 +344,6 @@ const pt: PulsoContent = {
     heading: 'Para usar agora',
     cards: [
       { id: 'rede-sus', title: 'Rede SUS', description: 'Unidades de saúde do Distrito Federal por região: Unidades Básicas, Unidades de Pronto Atendimento, Hospitais Regionais e Centros de Apoio às Vítimas de Violência.', to: TO_REDE_SUS, ctaLabel: 'Encontrar atendimento →', icon: '/static/brand/elementos/icone-hospital-comunidade.png' },
-      { id: 'profissionais', title: 'Encontre um profissional', description: 'Atendimento humanizado e culturalmente competente na rede pública e privada do Distrito Federal.', to: TO_PROFISSIONAIS, ctaLabel: 'Buscar profissional →', icon: '/static/brand/elementos/icone-coracao-pulsa.png' },
       { id: 'ensaios', title: 'Ensaios Clínicos', description: 'Entenda o que são pesquisas clínicas, seus direitos e onde encontrar estudos com aprovação ética.', to: TO_ENSAIOS, ctaLabel: 'Saber mais →', icon: '/static/brand/elementos/icone-livro-ideias.png' },
       { id: 'ouvidoria', title: 'Ouvidoria', description: 'Sofreu discriminação em um atendimento de saúde? Relate e conheça seus direitos.', to: TO_OUVIDORIA, ctaLabel: 'Relatar agora →', icon: '/static/brand/elementos/icone-mao-balanca.png' },
     ],
@@ -410,7 +407,6 @@ const es: PulsoContent = {
     tagline: 'SALUD • CONOCIMIENTO • EQUIDAD',
     navItems: [
       { label: 'Red SUS', to: TO_REDE_SUS },
-      { label: 'Encuentra un profesional', to: TO_PROFISSIONAIS },
       { label: 'Ensayos Clínicos', to: TO_ENSAIOS },
       { label: 'Defensoría', to: TO_OUVIDORIA },
     ],
@@ -466,7 +462,6 @@ const es: PulsoContent = {
     heading: 'Para usar ahora',
     cards: [
       { id: 'rede-sus', title: 'Red SUS', description: 'Unidades de salud del Distrito Federal por región: Unidades Básicas, Unidades de Atención de Urgencia, Hospitales Regionales y Centros de Apoyo a Víctimas de Violencia.', to: TO_REDE_SUS, ctaLabel: 'Encontrar atención →', icon: '/static/brand/elementos/icone-hospital-comunidade.png' },
-      { id: 'profissionais', title: 'Encuentra un profesional', description: 'Atención humanizada y culturalmente competente en la red pública y privada del Distrito Federal.', to: TO_PROFISSIONAIS, ctaLabel: 'Buscar profesional →', icon: '/static/brand/elementos/icone-coracao-pulsa.png' },
       { id: 'ensaios', title: 'Ensayos Clínicos', description: 'Entiende qué son las investigaciones clínicas, tus derechos y dónde encontrar estudios con aprobación ética.', to: TO_ENSAIOS, ctaLabel: 'Saber más →', icon: '/static/brand/elementos/icone-livro-ideias.png' },
       { id: 'ouvidoria', title: 'Defensoría', description: '¿Sufriste discriminación en una atención de salud? Denuncia y conoce tus derechos.', to: TO_OUVIDORIA, ctaLabel: 'Denunciar ahora →', icon: '/static/brand/elementos/icone-mao-balanca.png' },
     ],
