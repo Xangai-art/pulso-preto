@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import PopulationNotice from '@shared/components/PopulationNotice';
-import { localStudyMeta, localStudyHighlights, localStudyThemes } from '../data/localStudy';
+import { localStudyMeta, localStudyHighlights } from '../data/localStudy';
 import { PalhaLine, LeafMark } from './Ornaments';
 import { PULSO_PALETTE } from '@shared/data/pulsoPalette';
 
@@ -54,15 +54,11 @@ export default function LocalStudyFeature() {
           ))}
         </div>
 
-        <h3 className="text-sm font-bold uppercase tracking-wide text-pulso-dourado-claro mb-3">O que analisamos</h3>
-        <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-2 mb-10">
-          {localStudyThemes.map((t) => (
-            <li key={t} className="flex gap-2 text-sm text-pulso-creme">
-              <span className="text-pulso-dourado-claro" aria-hidden="true">•</span>
-              <span>{t}</span>
-            </li>
-          ))}
-        </ul>
+        {/* Oito eixos despublicados até consolidação da análise e formalização do canal de dados.
+            Restauração: branch backup/analise-nao-consolidada-b9a14a2,
+            site/src/components/LocalStudyFeature.tsx; dados mantidos em site/src/data/localStudy.ts.
+            Downloads, status e nota de Fase 1 anteriores: branch backup/analise-downloads-status-882ab0a,
+            nos mesmos arquivos; DOCX/XLSX preservados em site/public/downloads/ nessa branch. */}
 
         <p className="text-sm text-pulso-creme/90 max-w-3xl border-t border-pulso-creme/15 pt-5">
           Análise de dados oficiais já publicados (Secretaria de Saúde do DF, DATASUS e bases públicas). A pesquisa de campo, com escuta direta da
