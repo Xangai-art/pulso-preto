@@ -268,7 +268,6 @@ const TO_BAIXAR = '/baixar';
 const TO_COMUNIDADE = '/comunidade';
 const TO_MEMORIA = '/memoria';
 const TO_PARCEIROS = '/sobre#parceiros';
-const TO_ARQUITETURA = '/arquitetura';
 // Cards "Conheça sua saúde" abrem a Biblioteca já filtrada (20/10/2026).
 const TO_MULHER = '/saude?categoria=mulher-negra';
 const TO_MENTAL = '/saude?categoria=saude-mental';
@@ -392,7 +391,6 @@ const pt: PulsoContent = {
       { heading: 'Transparência', items: [
         { label: 'Dados e Indicadores', to: TO_DADOS },
         { label: 'Transparência e governança', to: TO_TRANSPARENCIA },
-        { label: 'Relatório de Arquitetura', to: TO_ARQUITETURA },
       ] },
       { heading: 'Comunicação', items: [
         { label: 'Notícias', to: TO_NOTICIAS },
@@ -513,7 +511,6 @@ const es: PulsoContent = {
       { heading: 'Transparencia', items: [
         { label: 'Datos e Indicadores', to: TO_DADOS },
         { label: 'Transparencia y gobernanza', to: TO_TRANSPARENCIA },
-        { label: 'Informe de Arquitectura', to: TO_ARQUITETURA },
       ] },
       { heading: 'Comunicación', items: [
         { label: 'Noticias', to: TO_NOTICIAS },

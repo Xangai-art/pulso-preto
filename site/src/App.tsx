@@ -13,7 +13,6 @@ import Community from './pages/Community';
 import SusNetwork from './pages/SusNetwork';
 import Transparency from './pages/Transparency';
 import AppAccess from './pages/AppAccess';
-import Architecture from './pages/Architecture';
 import NotFound from './pages/NotFound';
 import Ouvidoria from './pages/Ouvidoria';
 import Professionals from './pages/Professionals';
@@ -58,7 +57,7 @@ function App() {
           <Route path="/indicadores" element={<Navigate to="/dados-e-indicadores" replace />} />
           <Route path="/dados" element={<Navigate to="/dados-e-indicadores" replace />} />
           <Route path="/transparencia" element={<Transparency />} />
-          <Route path="/arquitetura" element={<Architecture />} />
+          <Route path="/arquitetura" element={<Navigate to="/transparencia" replace />} />
           <Route path="/acessar-app" element={<AppAccess />} />
           {/* Baixe o App Sentinela — alias canônico do pacote v4.2 */}
           <Route path="/baixar" element={<AppAccess />} />

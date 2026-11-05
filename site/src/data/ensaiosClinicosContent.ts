@@ -172,9 +172,9 @@ export const ensaiosFooterCtas = [
     ctaLabel: 'Submeter estudo',
   },
   {
-    title: 'Ler nosso Relatório de Arquitetura',
+    title: 'Transparência e governança',
     text: 'Entenda como o projeto separa pesquisa de assistência.',
-    ctaLabel: 'Ver /arquitetura',
-    href: '/arquitetura',
+    ctaLabel: 'Ver /transparencia',
+    href: '/transparencia',
   },
 ];

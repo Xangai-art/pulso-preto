@@ -208,9 +208,9 @@ export const baixarFooterCtas = [
     ctaLabel: 'Falar com Coordenação',
   },
   {
-    title: 'Já leu nossa arquitetura?',
-    text: 'Todo o desenho técnico, ético e institucional é público.',
-    ctaLabel: 'Ver /arquitetura',
-    href: '/arquitetura',
+    title: 'Conheça nossa transparência',
+    text: 'Informações públicas sobre governança e uso dos dados.',
+    ctaLabel: 'Ver /transparencia',
+    href: '/transparencia',
   },
 ];

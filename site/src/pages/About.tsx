@@ -39,12 +39,11 @@ export default function About() {
       <h2 className="text-xl font-bold text-pulso-verde mt-10 mb-3">Como o projeto é organizado</h2>
       <p className="text-pulso-marrom mb-4">
         {projectInfo.name} é construído sobre uma arquitetura de governança e confiança, informada por
-        referências internacionais de mídias e plataformas de saúde comunitária consolidadas. Para quem quer
-        entender os bastidores técnicos e institucionais do projeto, publicamos um relatório de arquitetura
-        completo e público.
+        referências internacionais de mídias e plataformas de saúde comunitária consolidadas. As informações
+        públicas sobre governança e uso dos dados estão na página de transparência.
       </p>
-      <a href="/arquitetura" className="inline-block text-pulso-verde-accent font-medium hover:underline mb-8">
-        Ler o relatório de arquitetura completo →
+      <a href="/transparencia" className="inline-block text-pulso-verde-accent font-medium hover:underline mb-8">
+        Ver transparência e governança →
       </a>
 
       {/* Parceiros — migrou da Home para o menu inferior "Quem somos" (D9). */}
