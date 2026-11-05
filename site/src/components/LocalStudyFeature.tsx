@@ -65,7 +65,7 @@ export default function LocalStudyFeature() {
         </ul>
 
         <p className="text-sm text-pulso-creme/90 max-w-3xl border-t border-pulso-creme/15 pt-5">
-          Esta é uma análise de dados públicos que já existem. A pesquisa de campo, com escuta direta da
+          Análise de dados oficiais já publicados (Secretaria de Saúde do DF, DATASUS e bases públicas). A pesquisa de campo, com escuta direta da
           comunidade, é uma etapa futura do projeto. Saiba como usamos os dados em{' '}
           <Link to="/transparencia" className="underline hover:text-pulso-dourado-claro">Transparência</Link>.
         </p>
