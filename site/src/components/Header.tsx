@@ -53,16 +53,17 @@ export default function Header() {
               {item.label}
             </NavLink>
           ))}
-          <button
-            type="button"
+          <Link
+            to="/saude#buscar"
             aria-label={content.header.searchLabel}
+            title={content.header.searchLabel}
             className="ml-1 rounded-md p-2 text-pulso-marrom hover:text-pulso-verde hover:bg-pulso-dourado/10 transition-colors"
           >
             <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
               <circle cx="8" cy="8" r="5.5" fill="none" stroke="currentColor" strokeWidth="1.6" />
               <path d="M12.2 12.2 L17 17" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
             </svg>
-          </button>
+          </Link>
         </nav>
 
         <div className="hidden lg:flex items-center gap-2 shrink-0">
@@ -105,6 +106,13 @@ export default function Header() {
               {item.label}
             </Link>
           ))}
+          <Link
+            to="/saude#buscar"
+            onClick={() => setMobileOpen(false)}
+            className="px-3 py-2 rounded-md text-sm font-medium text-pulso-marrom hover:bg-pulso-dourado/10"
+          >
+            {content.header.searchLabel}
+          </Link>
           <Link
             to={content.header.ctaTo}
             onClick={() => setMobileOpen(false)}
