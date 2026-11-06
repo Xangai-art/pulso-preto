@@ -12,6 +12,9 @@
  * (botões, rótulos, microcopy) que mudam por idioma.
  */
 
+import es from '../i18n/es.json';
+import pt from '../i18n/pt-BR.json';
+
 export type LocaleId = 'pt' | 'es';
 
 export const DEFAULT_LOCALE: LocaleId = 'pt';
@@ -99,8 +102,33 @@ export const TRANSLATIONS: Record<LocaleId, Dictionary> = {
   },
 };
 
+// O Vite elimina o diagnóstico e seu estado dos bundles de produção.
+const reportedMissing = import.meta.env.DEV ? new Set<string>() : undefined;
+
+function reportMissingEs(layer: string, key: string) {
+  if (import.meta.env.DEV) {
+    const id = `${layer}:${key}`;
+    if (!reportedMissing!.has(id)) {
+      reportedMissing!.add(id);
+      console.warn('[i18n:missing-es]', { layer, key, fallback: 'PT/chave/texto original' });
+    }
+  }
+}
+
+/** Dicionários JSON de interface, sem dependência dos dados clínicos do app. */
+export function translateText(locale: string, text: string): string {
+  const dictionary: Dictionary = locale === 'es' ? es : pt;
+  if (import.meta.env.DEV && locale === 'es' && dictionary[text] == null) {
+    reportMissingEs('texto', text);
+  }
+  return dictionary[text] ?? text;
+}
+
 export function translate(locale: LocaleId, key: string, vars?: Record<string, string>): string {
   const dict = TRANSLATIONS[locale] || TRANSLATIONS[DEFAULT_LOCALE];
+  if (import.meta.env.DEV && locale === 'es' && dict[key] == null) {
+    reportMissingEs('chave', key);
+  }
   let text = dict[key] ?? TRANSLATIONS[DEFAULT_LOCALE][key] ?? key;
   if (vars) {
     for (const [k, v] of Object.entries(vars)) {

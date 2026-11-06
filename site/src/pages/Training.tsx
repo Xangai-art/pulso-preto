@@ -1,4 +1,5 @@
 import { useAppearance } from '@shared/context/AppearanceContext';
+import { translateText } from '@shared/data/locales';
 import { getPulsoLinkLabel } from '@shared/data/pulsoContent';
 import UnderConstruction from '../components/UnderConstruction';
 
@@ -19,7 +20,7 @@ export default function Training() {
         'Materiais de apoio para rodas de conversa e ações no território.',
       ]}
       meanwhile={[
-        { label: 'Biblioteca de Saúde', to: '/saude', description: 'Informação de saúde com comprovação científica, com versões para profissionais.' },
+        { label: translateText(localeId, 'Biblioteca de Saúde'), to: '/saude', description: 'Informação de saúde com comprovação científica, com versões para profissionais.' },
         { label: getPulsoLinkLabel(localeId, '/comunidade', 'Comunidade'), to: '/comunidade', description: 'Rodas de conversa, coletivos e parceiros no território.' },
         { label: getPulsoLinkLabel(localeId, '/noticias', 'Notícias'), to: '/noticias', description: 'Acompanhe os ciclos de formação e as novidades do projeto.' },
       ]}

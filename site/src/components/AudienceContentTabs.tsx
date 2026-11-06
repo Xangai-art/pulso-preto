@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import PopulationNotice from '@shared/components/PopulationNotice';
 import { useAppearance } from '@shared/context/AppearanceContext';
+import { translateText } from '@shared/data/locales';
 import type { DiseaseDeepContent } from '@shared/data/anemiaFalciforme';
 
 // Abas de conteúdo segmentado por audiência profissional (médicos/enfermeiros/
@@ -26,7 +27,7 @@ const AUDIENCE_TONE: Record<AudienceKey, string> = {
 };
 
 export default function AudienceContentTabs({ content }: { content: DiseaseDeepContent }) {
-  const { t } = useAppearance();
+  const { t, localeId } = useAppearance();
   const [active, setActive] = useState<AudienceKey>('usuario');
   const audience = content.audiences[active];
 
@@ -35,14 +36,14 @@ export default function AudienceContentTabs({ content }: { content: DiseaseDeepC
       <div className="mb-2 flex items-center gap-2">
         <span className="h-px flex-1 bg-pulso-dourado/25" />
         <span className="text-xs uppercase tracking-wide text-pulso-marrom/60 font-semibold px-2">
-          Conteúdo por audiência
+          {translateText(localeId, 'Conteúdo por audiência')}
         </span>
         <span className="h-px flex-1 bg-pulso-dourado/25" />
       </div>
 
       <div
         role="tablist"
-        aria-label="Selecionar audiência"
+        aria-label={translateText(localeId, 'Selecionar audiência')}
         className="grid grid-cols-3 gap-2 mb-5"
       >
         {AUDIENCE_ORDER.map((key) => (
@@ -86,7 +87,7 @@ export default function AudienceContentTabs({ content }: { content: DiseaseDeepC
       </div>
 
       <div className="mt-6 rounded-xl border border-pulso-dourado/25 bg-pulso-creme p-5">
-        <h3 className="text-xs font-bold text-pulso-marrom uppercase tracking-wide mb-3">Fontes</h3>
+        <h3 className="text-xs font-bold text-pulso-marrom uppercase tracking-wide mb-3">{translateText(localeId, 'Fontes')}</h3>
         <ul className="space-y-2">
           {content.sources.map((s) => (
             <li key={s.label} className="text-xs text-pulso-marrom">

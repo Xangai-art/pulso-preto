@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import Logo from './Logo';
 import { useAppearance } from '@shared/context/AppearanceContext';
+import { translateText } from '@shared/data/locales';
 import { getPulsoContent } from '@shared/data/pulsoContent';
 import LocaleSwitcher from '@shared/components/LocaleSwitcher';
 import { HeartbeatLine } from './PulsoIcons';
@@ -82,7 +83,7 @@ export default function Header() {
             type="button"
             onClick={() => setMobileOpen((v) => !v)}
             aria-expanded={mobileOpen}
-            aria-label="Abrir menu de navegação"
+            aria-label={translateText(localeId, 'Abrir menu de navegação')}
             className="rounded-md border border-pulso-dourado/40 p-2.5 text-pulso-verde flex items-center justify-center"
           >
             <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">

@@ -42,11 +42,27 @@ export function AppearanceProvider({ children }: { children: ReactNode }) {
   const [localeId, setLocaleIdState] = useState<LocaleId>(readStoredLocale);
 
   useEffect(() => {
-    window.localStorage.setItem(STORAGE_KEY_LOCALE, localeId);
     document.documentElement.lang = localeId === 'es' ? 'es-419' : 'pt-BR';
   }, [localeId]);
 
-  const setLocaleId = (id: LocaleId) => setLocaleIdState(id);
+  useEffect(() => {
+    // Inicializa a preferência e não regrava eventos recebidos de outras abas.
+    window.localStorage.setItem(STORAGE_KEY_LOCALE, readStoredLocale());
+    const syncLocale = (event: StorageEvent) => {
+      if (event.storageArea !== window.localStorage || event.key !== STORAGE_KEY_LOCALE) return;
+      // Remoção, clear e valores inválidos não substituem o idioma em uso.
+      if (event.newValue === 'pt' || event.newValue === 'es') {
+        setLocaleIdState(event.newValue);
+      }
+    };
+    window.addEventListener('storage', syncLocale);
+    return () => window.removeEventListener('storage', syncLocale);
+  }, []);
+
+  const setLocaleId = (id: LocaleId) => {
+    window.localStorage.setItem(STORAGE_KEY_LOCALE, id);
+    setLocaleIdState(id);
+  };
 
   const value = useMemo<AppearanceContextValue>(() => {
     return {

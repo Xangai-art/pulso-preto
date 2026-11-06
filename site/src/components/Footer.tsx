@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import Logo from './Logo';
 import { useAppearance } from '@shared/context/AppearanceContext';
+import { translateText } from '@shared/data/locales';
 import { getPulsoContent } from '@shared/data/pulsoContent';
 import { HeartbeatLine } from './PulsoIcons';
 import QRLink from './QRLink';
@@ -70,7 +71,7 @@ export default function Footer() {
             />
             <button
               type="submit"
-              aria-label="Enviar"
+              aria-label={translateText(localeId, 'Enviar')}
               className="rounded-md bg-pulso-dourado text-pulso-verde font-bold px-3 py-2 text-sm hover:bg-pulso-creme transition-colors"
             >
               →
