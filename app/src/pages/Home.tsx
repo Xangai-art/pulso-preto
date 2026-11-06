@@ -5,6 +5,7 @@ import TopBar from '../components/TopBar';
 import { useHealthText } from '../lib/healthI18n';
 import { getPulsoContent } from '@shared/data/pulsoContent';
 import { conditionNames } from '../lib/healthPresentation';
+import { PULSO_PALETTE } from '@shared/data/pulsoPalette';
 
 // Home do App Sentinela — identidade ÚNICA de produção (PP3): card de check-in
 // verde-escuro/dourado, tipografia oficial e o banner do Seminário
@@ -92,7 +93,7 @@ export default function Home() {
             <QuickLink
               to="/perguntas"
               icon="❓"
-              pulsoIcon="/static/brand/elementos/icone-livro-ideias.png"
+              pulsoIcon={`data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10.5" fill="${PULSO_PALETTE.douradoClaro}" stroke="${PULSO_PALETTE.verdeAccent}" stroke-width="1.5"/><path d="M8.75 8.5a3.25 3.25 0 1 1 5.64 2.2C13.1 11.5 12 12 12 14" fill="none" stroke="${PULSO_PALETTE.verdeEscuro}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="17.25" r="1" fill="${PULSO_PALETTE.verdeEscuro}"/></svg>`)}`}
               label={t('Perguntas frequentes')}
             />
           </div>
