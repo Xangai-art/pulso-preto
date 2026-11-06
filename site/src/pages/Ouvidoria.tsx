@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { translateText } from '@shared/data/locales';
 import { useAppearance } from '@shared/context/AppearanceContext';
 import { getPulsoLinkLabel } from '@shared/data/pulsoContent';
 import { APP_URL } from '../config';
@@ -54,25 +55,24 @@ const DIREITOS = [
 
 export default function Ouvidoria() {
   const { localeId } = useAppearance();
+  const t = (text: string) => translateText(localeId, text);
+  const textLang = localeId === 'es' ? 'es-419' : 'pt-BR';
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 py-16">
       <div className="flex items-center gap-3 mb-4">
         <img src="/static/brand/elementos/icone-mao-balanca.png" alt="" aria-hidden="true" className="w-12 h-12 object-contain" />
         <h1 className="text-3xl font-bold text-pulso-verde">{getPulsoLinkLabel(localeId, '/ouvidoria', 'Ouvidoria')}</h1>
       </div>
-      <p className="text-pulso-marrom mb-10 max-w-2xl">
-        Sofreu discriminação em um atendimento de saúde? Você não está sozinha nem sozinho. Aqui você pode relatar o
-        que aconteceu, conhecer seus direitos e encontrar os canais oficiais de denúncia.
+      <p lang={textLang} className="text-pulso-marrom mb-10 max-w-2xl">
+        {t("Sofreu discriminação em um atendimento de saúde? Você não está sozinha nem sozinho. Aqui você pode relatar o que aconteceu, conhecer seus direitos e encontrar os canais oficiais de denúncia.")}
       </p>
 
       {/* 1. Relatar */}
       <section id="relatar" className="rounded-2xl bg-pulso-verde text-pulso-creme p-6 sm:p-8 mb-12 scroll-mt-24">
-        <span className="text-xs font-bold uppercase tracking-wider text-pulso-dourado">Relatar discriminação</span>
-        <h2 className="font-pulso-display text-2xl font-bold mt-1 mb-3">Seu relato ajuda a mudar o atendimento</h2>
-        <p className="text-sm text-pulso-creme/90 mb-5 max-w-2xl">
-          Pelo App Sentinela você informa onde aconteceu e descreve o ocorrido com suas palavras. Você escolhe se quer
-          ser contatada ou contatado para acompanhamento, ou se prefere que o relato fique anônimo e entre apenas nos
-          dados agregados que mostram onde a discriminação se repete.
+        <span className="text-xs font-bold uppercase tracking-wider text-pulso-dourado" lang={textLang}>{t("Relatar discriminação")}</span>
+        <h2 className="font-pulso-display text-2xl font-bold mt-1 mb-3" lang={textLang}>{t("Seu relato ajuda a mudar o atendimento")}</h2>
+        <p lang={textLang} className="text-sm text-pulso-creme/90 mb-5 max-w-2xl">
+          {t("Pelo App Sentinela você informa onde aconteceu e descreve o ocorrido com suas palavras. Você escolhe se quer ser contatada ou contatado para acompanhamento, ou se prefere que o relato fique anônimo e entre apenas nos dados agregados que mostram onde a discriminação se repete.")}
         </p>
         <a
           href={`${APP_URL}/denunciar`}
@@ -80,17 +80,16 @@ export default function Ouvidoria() {
           rel="noopener noreferrer"
           className="inline-block rounded-md bg-pulso-dourado text-pulso-verde px-6 py-3 font-bold uppercase text-sm tracking-wide hover:bg-pulso-creme transition-colors"
         >
-          Relatar no App Sentinela →
+          <span lang={textLang}>{t("Relatar no App Sentinela →")}</span>
         </a>
-        <p className="text-xs text-pulso-creme/70 mt-4">
-          O relato só é encaminhado com o seu consentimento, conforme a Lei Geral de Proteção de Dados (LGPD). Saiba
-          mais em <Link to="/transparencia" className="underline hover:text-pulso-dourado-claro">{getPulsoLinkLabel(localeId, '/transparencia', 'Transparência e governança')}</Link>.
+        <p lang={textLang} className="text-xs text-pulso-creme/70 mt-4">
+          {t("O relato só é encaminhado com o seu consentimento, conforme a Lei Geral de Proteção de Dados (LGPD). Saiba mais em")}{' '}<Link to="/transparencia" className="underline hover:text-pulso-dourado-claro">{getPulsoLinkLabel(localeId, '/transparencia', 'Transparência e governança')}</Link>.
         </p>
       </section>
 
       {/* 2. Canais oficiais */}
       <section id="canais" className="mb-12 scroll-mt-24">
-        <h2 className="text-xl font-bold text-pulso-verde mb-4">Canais oficiais de denúncia</h2>
+        <h2 className="text-xl font-bold text-pulso-verde mb-4" lang={textLang}>{t("Canais oficiais de denúncia")}</h2>
         <div className="grid sm:grid-cols-3 gap-5">
           {CANAIS.map((c) => (
             <a

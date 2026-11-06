@@ -319,7 +319,42 @@ Sem push e sem deploy desta integração. Workers Builds pode publicar ao recebe
 push em `main`; não enviar sem revisão dos bloqueios clínicos. Não foi verificada
 uma URL de produção para esta versão.
 
-## Última atualização
+## Pacote ES das cinco telas — validação local (06/11/2026)
+
+- Escopo: seis rótulos da Home em `/app/`; apresentação e rótulos regionais
+  em `/rede-sus`; blocos editoriais iniciais de `/ensaios-clinicos`;
+  introdução, relato e nota LGPD de `/ouvidoria`; dois parágrafos e dez
+  papéis de parceiros em `/sobre`. Não é tradução integral dessas páginas.
+- 50 novas entradas em cada JSON compartilhado (`pt-BR.json` e `es.json`),
+  totalizando 187 por idioma. PT e entradas anteriores preservados.
+- Exceções autorizadas: “Busca Salud” e “Conectando Salud e Inclusión”.
+  Aviso usa “reguladas”; não foi acrescentado “Odontológicas”. Nomes oficiais
+  restantes, razões sociais, dados regionais, fontes e acervo clínico intactos.
+- Uso: selecionar PT/ES no seletor existente; o idioma acompanha as abas
+  abertas das duas SPAs. Novos fragmentos têm `lang` PT/ES; o título oficial
+  TCLE preservado em português dentro do aviso ES tem `lang="pt-BR"`.
+- Dados e armazenamento: nenhuma alteração de modelo, API, Worker, snapshots,
+  banco ou armazenamento de dados pessoais. O ícone FAQ 28×28 permanece.
+- Testes: TypeScript, builds Vite isolados e lint das duas SPAs; 51 checks
+  de saúde/i18n; 20 estados PT/ES em 390/1440 px comparados ao baseline;
+  536 checks de integridade/sincronização das cinco telas; regressões de
+  150 checks de locale e 196 de links/FAQ. Nenhum formulário enviado.
+- Relatório por chave/arquivo/linha e limites da varredura:
+  `relatorio_pacote_traducao_es_telas.txt`.
+- Status: pacote somente local, sem push/deploy. Produção de referência:
+  https://pulso-preto.fratozsistemas.workers.dev (último publicado: `89bee16`).
+  A publicação futura continua pelo fluxo GitHub → Workers Builds e exige
+  autorização e verificação real posterior, não apenas sucesso do build.
+- Pendências: textos fora do pacote continuam PT-only; recomendações clínicas
+  não foram traduzidas nem aprovadas por este lote. Revisão clínica, testes
+  com leitores de tela e usuários seguem necessários. O aviso PT original usa
+  “Livre e Informado”; o ES preserva o título oficial “Livre e Esclarecido”
+  indicado no pacote, sem modificar o PT.
+- Para QA deste lote, não executar `npm run build` da raiz: ele exporta dados,
+  instala dependências e recria `dist/`. Foram usados `tsc -b` e `vite build
+  --outDir ../.qa-tools/i18n/site` (ou `app`) dentro de cada SPA.
+
+## Última atualização histórica anterior
 04/11/2026 — Integração das seis fichas propostas, UI PT/ES, rede geral,
 privacidade do cache, testes e pendências de homologação. A documentação histórica PP3 acima é preservada; os números atuais
 de conteúdo devem ser obtidos de `shared/data/metrics.ts`/exportação, não das

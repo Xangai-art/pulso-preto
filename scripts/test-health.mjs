@@ -28,6 +28,49 @@ try {
     assert.equal(item.linkLabel.es, `Ir a la ${getPulsoLinkLabel('es', '/ouvidoria', 'Ouvidoria')}`);
     assert.equal(item.linkLabel.es, 'Ir a la Defensoría');
   });
+  const { translateText } = await server.ssrLoadModule('../shared/data/locales.ts');
+  const ptDictionary = JSON.parse(readFileSync(new URL('../shared/i18n/pt-BR.json', import.meta.url), 'utf8'));
+  const esDictionary = JSON.parse(readFileSync(new URL('../shared/i18n/es.json', import.meta.url), 'utf8'));
+  check('locales JSON mantêm paridade, PT original e nenhuma tradução vazia', () => {
+    assert.deepEqual(Object.keys(ptDictionary).sort(), Object.keys(esDictionary).sort());
+    for (const key of Object.keys(ptDictionary)) {
+      assert.equal(ptDictionary[key], key);
+      assert.equal(translateText('pt', key), key);
+      assert.ok(esDictionary[key].trim(), key);
+      assert.equal(translateText('es', key), esDictionary[key]);
+    }
+    assert.equal(esDictionary['Biblioteca de Saúde'], 'Biblioteca de Salud');
+    assert.equal(esDictionary['Biblioteca de saúde'], 'Biblioteca de salud');
+  });
+  check('pacote de telas: seis rótulos Home, sete regiões e dez papéis de parceiros', () => {
+    for (const [pt, es] of [
+      ['Acesso rápido', 'Acceso rápido'],
+      ['Encontrar Unidade de Saúde', 'Encontrar unidad de salud'],
+      ['Radar comunitário', 'Radar comunitario'],
+      ['Biblioteca de saúde', 'Biblioteca de salud'],
+      ['Direito à saúde', 'Derecho a la salud'],
+      ['Suas condições acompanhadas', 'Tus condiciones en seguimiento'],
+    ]) assert.equal(translateText('es', pt), es);
+    const regionNames = ['Región Central', 'Región Centro-Sur', 'Región Norte', 'Región Sur', 'Región Este', 'Región Oeste', 'Región Sudoeste'];
+    const projectSource = readFileSync(new URL('../shared/data/project.ts', import.meta.url), 'utf8');
+    const names = [...projectSource.matchAll(/nome: '(Região [^']+)'/g)].map(match => match[1]);
+    assert.deepEqual(names.map(name => translateText('es', name)), regionNames);
+    const roles = [...projectSource.slice(projectSource.indexOf('export const partners'), projectSource.indexOf('  referencia:')).matchAll(/role: '([^']+)'/g)].map(match => match[1]);
+    assert.equal(roles.length, 10);
+    for (const role of roles) assert.ok(Object.hasOwn(esDictionary, role), role);
+  });
+  check('pacote de telas: exceções autorizadas, marca dinâmica e aviso legal sem híbridos', () => {
+    assert.equal(translateText('es', 'Busca Saúde (SES-DF)'), 'Busca Salud (SES-DF)');
+    const aboutKey = Object.keys(ptDictionary).find(key => key.startsWith('O Conectando Saúde e Inclusão é um projeto'));
+    assert.ok(translateText('es', aboutKey).startsWith('Conectando Salud e Inclusión es un proyecto'));
+    const noticeKey = Object.keys(ptDictionary).find(key => key.startsWith('O {brand} não conduz ensaios clínicos.'));
+    assert.ok(noticeKey.includes('Termo de Consentimento Livre e Informado (TCLE)'));
+    const notice = translateText('es', noticeKey).replace('{brand}', 'Marca de teste');
+    assert.ok(notice.startsWith('Marca de teste no conduce ensayos clínicos.'));
+    assert.ok(notice.includes('fuentes oficiales y reguladas'));
+    assert.ok(notice.includes('Termo de Consentimento Livre e Esclarecido (TCLE)'));
+    assert.ok(!/regulamentadas|Transparência y gobernanza|Termo de Consentimiento|Odontológicas/.test(Object.values(esDictionary).join(' ')));
+  });
   const entries = diseaseCategories.flatMap(category => category.diseases.map(disease => ({ category, disease })));
   check('catálogo preservado em nove sistemas, eixo e não classificados', () => {
     const systems = groupSystems(diseaseCategories);

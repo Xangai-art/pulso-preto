@@ -1,0 +1,758 @@
+PULSO PRETO / APP SENTINELA — PACOTE PT/ES DAS CINCO TELAS
+Data: 06/11/2026
+Base local: 89bee16c074cdcd21659705cc8b5c51fb08e574c, branch main.
+Estado: implementação e validação LOCAL; sem push, build remoto ou publicação.
+Produção de referência: https://pulso-preto.fratozsistemas.workers.dev
+A produção não recebe este pacote nesta etapa. Não se alega validação dele no site publicado.
+
+1. FONTE E AUTORIZAÇÃO
+Fonte: /home/user/uploaded_files/pacote_traducao_es_telas.md (149 linhas).
+https://www.genspark.ai/api/files/s/9AN58uaf
+Exceções confirmadas pelo usuário: Busca Saúde -> Busca Salud; Conectando Saúde e Inclusão -> Conectando Salud e Inclusión; usar reguladas; não acrescentar Odontológicas.
+
+2. ESCOPO IMPLEMENTADO
+- App Home: seis rótulos previstos, incluindo o título condicional de acompanhamento.
+- Rede SUS: título, introdução e dados oficiais com anchors preservados; sete nomes de região; rótulos repetidos de hospitais, UPAs, UBS e CAPS; Abrange, Superintendente e Tel; Outros serviços da rede SES-DF.
+- Ensaios Clínicos: kicker, introdução, aviso legal, título e parágrafo explicativo inicial. São conteúdo editorial, não instruções de tratamento.
+- Ouvidoria: introdução, card de relato, botão, texto editorial da nota LGPD e heading de canais. Link canônico de transparência preservado.
+- Sobre: dois parágrafos e os dez papéis de parceiros previstos. Marca dinâmica, nomes, razões sociais, logos, URLs, vídeo e roadmap preservados.
+- 50 novas entradas por idioma; 187 chaves por JSON, com paridade exata. As 137 entradas anteriores permanecem idênticas. Nenhum pt.json criado.
+- ES exclusivamente nos locales compartilhados; nenhum novo texto ES hardcoded nos componentes.
+
+3. AJUSTES EM RELAÇÃO AO PACOTE
+- Nomes oficiais: Secretaria de Saúde do Distrito Federal (SES-DF) permanece em PT no link, com lang=pt-BR. A autorização de Busca Salud não foi ampliada a outras instituições.
+- Introdução e caixa da Rede SUS foram divididas em fragmentos de locale para preservar os três links, espaços, pontuação e destinos.
+- Rótulos reais diferem da tabela simplificada: preservado o formato UPAs — ... 24h, sem perder 24h; UBS — ...; CAPS traduzido como CAPS (centros de atención psicosocial).
+- O título CEPAV real é “Centros de Especialidades para a Atenção às Pessoas em Situação de Violência (CEPAV) — \"Flores em Rede\"”. Foi preservado integralmente como nome oficial, com lang=pt-BR. Não há card genérico isolado “Centros de Especialidades” nem “Pronto Atendimento” separado a substituir. Não se acrescentou Odontológicas e não se apagou a referência à violência.
+- CEP permanece como sigla brasileira, sem acrescentar código postal. Superintendente permanece igual em ES. Tel: passa a Tel.: somente no idioma ES.
+- Kicker e botões mantêm a caixa original da fonte (capitalização normal), exibida em caixa alta pelo CSS já existente. Nenhum CSS alterado.
+- O aviso PT real usa “Termo de Consentimento Livre e Informado (TCLE)”, diferentemente do PT do pacote (“Esclarecido”). O PT real não foi corrigido/reinterpretado. O ES usa o título oficial completo em português “Termo de Consentimento Livre e Esclarecido (TCLE)”, conforme a abordagem discutida, com lang=pt-BR. “Termo de Consentimiento...” não foi inserido. Trata-se de referência documental preservada em PT, não de frase ES parcialmente traduzida.
+- A marca do aviso continua extraída do texto canônico original de ensaiosHero; o template {brand} evita fixar a marca no locale. Em Sobre, {brand} é substituído por projectInfo.name, preservando a marca dinâmica.
+- Biblioteca de Saúde/Biblioteca de salud na Home: mantidas as duas chaves distintas por capitalização; nenhuma entrada anterior sobrescrita.
+- A nota LGPD PT mantém “Transparência e governança” com a caixa real. O link ES já era “Transparencia y gobernanza”; não foi inventada correção de um literal ausente.
+
+4. IDIOMA E SEGURANÇA CLÍNICA
+Novos fragmentos usam lang=es-419 em ES e pt-BR em PT; html lang e sincronização existentes permanecem intactos. As duas referências oficiais em PT dentro dos novos blocos ES (SES-DF e TCLE), além do título CEPAV preservado, têm lang=pt-BR explícito. Isso não constitui auditoria completa de lang dos textos antigos fora do pacote.
+Nenhuma nova recomendação clínica foi traduzida ou liberada. Perguntas sobre medicamentos/vacinas são exemplos explicativos autorizados, não recomendações. Fases, doses, exemplos de resposta a medicamentos, checklist e direitos clínicos fora dos blocos autorizados não foram traduzidos. Não houve revisão clínica nem alegação de aprovação. As seis fichas propostas, seus bloqueios de aprovação e o acervo aprofundado continuam inalterados.
+
+5. TESTES EXECUTADOS
+- Baseline pré-edição: 10 estados PT, cinco rotas em 390 e 1440 px. Home com baseline sintético contendo hipertensao para exibir o título condicional; sem dados reais de pacientes.
+- Pós-edição: 20 estados PT/ES nas mesmas rotas e larguras. Textos PT normalizados por whitespace, headings, href/target/rel, src/alt/classes de imagens, IDs e estado de overflow comparados ao baseline PT, sem alterações. Em ES, presença dos textos previstos, lang, links, imagens e IDs verificados. Zero pageerror.
+- Integridade: 536 verificações de rótulos condicionais em cada região, valores efetivamente renderizados (RAs, responsáveis, telefones, nomes, endereços, CEPs), dez parceiros, título TCLE, SVG FAQ carregado 28x28, livro original, Home sem condições e troca bidirecional de idioma em cinco abas sem reload.
+- Regressão anterior: 150 checks de seis micro-rótulos, persistência, sincronização real site/site/app/app, eventos inválidos, sessionStorage, remoção/clear e ausência de eco.
+- Regressão anterior: 196 checks de FAQ, transparência e links PT/ES em móvel/desktop.
+- npm run prebuild:app: 51 checks aprovados (48 existentes + três regressões de paridade/pacote). Catálogo, contratos clínicos e bloqueios de aprovação passaram sem mudança.
+- TypeScript tsc -b nas duas SPAs: aprovado.
+- Builds Vite isolados em .qa-tools/i18n/site e app: aprovados. CSS mantém os nomes index-DToTHw5T.css e index-CU0X-duX.css, respectivamente. Aviso preexistente de chunk site >500 kB continua; não é erro de build/lint.
+- Oxlint das duas SPAs: zero avisos/erros.
+- Todos os bundles JS isolados sem [i18n:missing-es]. Imports JSON com atributos e import.meta.env?.DEV não foram alterados.
+- git diff --check: aprovado. Dados shared/data, shared/context, app/src/lib, dist, database, .tables, worker e acervos site/public e app/public sem diff.
+- Somente GET/HEAD nos navegadores de QA; nenhum formulário, check-in, relato ou newsletter enviado.
+- Ajustes no harness local durante o teste de integridade: CAPS só exibe nome (não endereço) na interface original; seletor do livro refinado para não confundir card e bottom nav. Depois das correções de expectativa/seletores, suite integral aprovada. Nenhuma alteração de produto para satisfazer esses dois ajustes.
+
+Comandos (não executar build da raiz para reproduzir este QA):
+cd /home/user/webapp/site && ./node_modules/.bin/tsc -b && ./node_modules/.bin/vite build --outDir ../.qa-tools/i18n/site --emptyOutDir && npm run lint
+cd /home/user/webapp/app && ./node_modules/.bin/tsc -b && ./node_modules/.bin/vite build --outDir ../.qa-tools/i18n/app --emptyOutDir && npm run lint
+cd /home/user/webapp && npm run prebuild:app
+node .qa-tools/i18n/pacote-telas.mjs after
+node .qa-tools/i18n/pacote-integridade.mjs
+node .qa-tools/i18n/micro-lote.mjs
+node .qa-tools/i18n/emenda.mjs
+node .qa-tools/i18n/hybrid-source.cjs
+Scripts/baselines/capturas de QA permanecem em .qa-tools/i18n, ignorados pelo Git; as três regressões duráveis novas estão em scripts/test-health.mjs. O servidor estático QA existente foi usado na porta 3000; ele não valida o runtime Worker/API.
+
+6. VARREDURA DE HIBRIDISMOS E PENDÊNCIAS
+Varredura estática AST de shared, site/src e app/src, mais valores JSON ES: 1.086 literais ES; 140 candidatos pela heurística ampla. Esses candidatos não são 140 erros: diagnóstico, cuidado, próxima e outras formas coincidem nos idiomas. A heurística não reconhece toda frase PT; por isso houve também revisão dos 50 valores novos e inventário renderizado das cinco telas ES.
+Nos 50 valores inseridos: nenhum híbrido novo não intencional identificado. “regulamentadas” foi substituído por “reguladas” antes de inserir; “Termo de Consentimiento...” não foi inserido. “Conectando Salud e Inclusión” é a exceção autorizada; o e antes de Inclusión é também a conjunção correta em espanhol. O título TCLE PT é intencional, demarcado por lang.
+
+Ocorrências remanescentes fora dos blocos autorizados, SOMENTE REPORTADAS:
+- site/src/pages/Faq.tsx:25 — “No se encontraron preguntas. Pruebe otra palabra o hable con la Ouvidoria.” Editorial com nome genérico PT, fora deste pacote.
+- site/src/pages/Faq.tsx:26 — “¿No encontró su duda? Busque su Unidad Básica de Salud o la Ouvidoria.” Editorial com nome genérico PT, fora deste pacote.
+- shared/data/doencaRenalCronica.ts:328 — final “si eso no ocurre, busque la Ouvidoria.” Conteúdo editorial do acervo clínico, não alterado.
+- shared/data/faq.ts:130 — “Ouvidoria del SUS”, “Ouvidoria-Geral del Distrito Federal”, “Disque Direitos Humanos”. Há mistura na adaptação de nomes de canais em editorial. Preservados para revisão de nomenclatura; não são novos rótulos deste lote.
+Referências PT intencionais, não classificadas como bugs:
+- shared/data/faq.ts:74 — “teste do pezinho” entre aspas após “prueba del talón”.
+- shared/data/faq.ts:102 — Centro de Valorização da Vida (CVV), nome institucional.
+- shared/data/faq.ts:240 — Cartão SUS, nome local entre parênteses.
+- shared/data/miomasUterinos.ts:259 e 369 — São Paulo, topônimo preservado.
+- shared/i18n/es.json — Português, autônimo no seletor de idioma.
+- Rede SUS — nomes de unidades, RAs, endereços, superintendentes, SES-DF e CEPAV mantidos por regra; Sobre — instituições e razões sociais mantidas.
+Não foram encontradas novas ocorrências de “Transparência y gobernanza” nos valores ES ou nos estados das cinco telas. O label canônico existente permanece correto.
+Nenhuma correção fora das cinco telas foi necessária/aplicada. Rótulos e links antigos já corrigidos nos lotes anteriores permaneceram, conforme as regressões de 196 checks.
+
+PT-only ainda visível em ES, preservado por falta de autorização neste pacote:
+- Home: card de check-in, estatística final e nomes das condições acompanhadas.
+- Rede SUS: Ver rota no mapa, Fonte oficial, cards e descrições de outros serviços, blocos Encontre um profissional e Direito à saúde e seus CTAs.
+- Ensaios: fases, direitos, exemplos, história, plataformas e descrições, checklist, instrumentos e CTAs fora dos blocos iniciais autorizados.
+- Ouvidoria: descrições de canais, seção Direitos, cards e CTA final.
+- Sobre: título/subtítulo de marca, legenda do vídeo, Quem faz, demais headings/links e roadmap.
+Não se promete tradução integral dessas páginas, nem correção editorial global. Um inventário local dos elementos renderizados está em .qa-tools/i18n/pacote-inventario-es.json.
+
+7. PRESERVAÇÃO E LIMITES
+Sem novos pacotes, mudança de framework, Hono, Worker, API, dados clínicos, regras de negócio ou fontes científicas. Não se restauraram documentos de backups. O SVG FAQ e os assets originais permanecem intactos. Nenhum comando build/export/assemble da raiz foi executado. Dist rastreado não foi recriado.
+Sem operação remota GitHub; logo, sem push e sem gatilho Workers Builds. O arquivo herdado alteracoes_necessarias_i18n_pt_es.txt continua untracked e não integra este commit.
+Testes locais Chromium não substituem revisão clínica, linguística profissional, VoiceOver/TalkBack, testes com usuários ou verificação da publicação real futura. Vídeo externo não foi homologado neste QA.
+
+8. MAPA ARQUIVO/LINHA
+As linhas abaixo referem-se às fontes deste lote. Cada nova chave terá a linha em ambos os JSONs e a conexão no componente; depois segue o diff unificado sem contexto das inserções, incluindo testes e README.
+
+01. PT/chave: Acesso rápido
+ES: Acceso rápido
+Locales: shared/i18n/pt-BR.json:139; shared/i18n/es.json:139
+Conexão: app/src/pages/Home.tsx:66
+
+02. PT/chave: Encontrar Unidade de Saúde
+ES: Encontrar unidad de salud
+Locales: shared/i18n/pt-BR.json:140; shared/i18n/es.json:140
+Conexão: app/src/pages/Home.tsx:74
+
+03. PT/chave: Radar comunitário
+ES: Radar comunitario
+Locales: shared/i18n/pt-BR.json:141; shared/i18n/es.json:141
+Conexão: app/src/pages/Home.tsx:81
+
+04. PT/chave: Biblioteca de saúde
+ES: Biblioteca de salud
+Locales: shared/i18n/pt-BR.json:142; shared/i18n/es.json:142
+Conexão: app/src/pages/Home.tsx:88
+
+05. PT/chave: Direito à saúde
+ES: Derecho a la salud
+Locales: shared/i18n/pt-BR.json:143; shared/i18n/es.json:143
+Conexão: app/src/pages/Home.tsx:95
+
+06. PT/chave: Suas condições acompanhadas
+ES: Tus condiciones en seguimiento
+Locales: shared/i18n/pt-BR.json:144; shared/i18n/es.json:144
+Conexão: app/src/pages/Home.tsx:109
+
+07. PT/chave: Rede do Sistema Único de Saúde (Rede SUS): onde encontrar especialistas
+ES: Red del Sistema Único de Salud (Red SUS): dónde encontrar especialistas
+Locales: shared/i18n/pt-BR.json:145; shared/i18n/es.json:145
+Conexão: site/src/pages/SusNetwork.tsx:21
+
+08. PT/chave: Encontre unidades de saúde do Distrito Federal (DF) por região, com plano de expansão para rede privada e busca por atendimento humanizado/culturalmente competente. A navegação completa, com mapa interativo e georreferenciamento em tempo real, está disponível no
+ES: Encuentra unidades de salud del Distrito Federal (DF) por región, con plan de expansión para la red privada y búsqueda por atención humanizada y culturalmente competente. La navegación completa, con mapa interactivo y georreferenciación en tiempo real, está disponible en la
+Locales: shared/i18n/pt-BR.json:146; shared/i18n/es.json:146
+Conexão: site/src/pages/SusNetwork.tsx:23
+
+09. PT/chave: Dados oficiais da
+ES: Datos oficiales de la
+Locales: shared/i18n/pt-BR.json:147; shared/i18n/es.json:147
+Conexão: site/src/pages/SusNetwork.tsx:30
+
+10. PT/chave: , organizados pelas 7 Regiões de Saúde. A cobertura de Unidades Básicas de Saúde (UBS) é completa para as Regiões Oeste e Sul e representativa para as demais — a rede SES-DF soma mais de 170 UBS, com novas unidades sendo abertas continuamente. Em caso de divergência, consulte sempre
+ES: , organizados por las 7 Regiones de Salud. La cobertura de Unidades Básicas de Salud (UBS) es completa para las Regiones Oeste y Sur y representativa para las demás — la red SES-DF suma más de 170 UBS, con nuevas unidades abriéndose continuamente. En caso de divergencia, consulta siempre
+Locales: shared/i18n/pt-BR.json:148; shared/i18n/es.json:148
+Conexão: site/src/pages/SusNetwork.tsx:33
+
+11. PT/chave: Busca Saúde (SES-DF)
+ES: Busca Salud (SES-DF)
+Locales: shared/i18n/pt-BR.json:149; shared/i18n/es.json:149
+Conexão: site/src/pages/SusNetwork.tsx:35
+
+12. PT/chave: Região Central
+ES: Región Central
+Locales: shared/i18n/pt-BR.json:150; shared/i18n/es.json:150
+Conexão: site/src/pages/SusNetwork.tsx:49
+
+13. PT/chave: Região Centro-Sul
+ES: Región Centro-Sur
+Locales: shared/i18n/pt-BR.json:151; shared/i18n/es.json:151
+Conexão: site/src/pages/SusNetwork.tsx:49
+
+14. PT/chave: Região Norte
+ES: Región Norte
+Locales: shared/i18n/pt-BR.json:152; shared/i18n/es.json:152
+Conexão: site/src/pages/SusNetwork.tsx:49
+
+15. PT/chave: Região Sul
+ES: Región Sur
+Locales: shared/i18n/pt-BR.json:153; shared/i18n/es.json:153
+Conexão: site/src/pages/SusNetwork.tsx:49
+
+16. PT/chave: Região Leste
+ES: Región Este
+Locales: shared/i18n/pt-BR.json:154; shared/i18n/es.json:154
+Conexão: site/src/pages/SusNetwork.tsx:49
+
+17. PT/chave: Região Oeste
+ES: Región Oeste
+Locales: shared/i18n/pt-BR.json:155; shared/i18n/es.json:155
+Conexão: site/src/pages/SusNetwork.tsx:49
+
+18. PT/chave: Região Sudoeste
+ES: Región Sudoeste
+Locales: shared/i18n/pt-BR.json:156; shared/i18n/es.json:156
+Conexão: site/src/pages/SusNetwork.tsx:49
+
+19. PT/chave: Abrange:
+ES: Abarca:
+Locales: shared/i18n/pt-BR.json:157; shared/i18n/es.json:157
+Conexão: site/src/pages/SusNetwork.tsx:53
+
+20. PT/chave: Superintendente:
+ES: Superintendente:
+Locales: shared/i18n/pt-BR.json:158; shared/i18n/es.json:158
+Conexão: site/src/pages/SusNetwork.tsx:53
+
+21. PT/chave: Tel:
+ES: Tel.:
+Locales: shared/i18n/pt-BR.json:159; shared/i18n/es.json:159
+Conexão: site/src/pages/SusNetwork.tsx:53; site/src/pages/SusNetwork.tsx:67; site/src/pages/SusNetwork.tsx:139
+
+22. PT/chave: Hospitais Regionais
+ES: Hospitales Regionales
+Locales: shared/i18n/pt-BR.json:160; shared/i18n/es.json:160
+Conexão: site/src/pages/SusNetwork.tsx:58
+
+23. PT/chave: UPAs — Unidades de Pronto Atendimento 24h
+ES: UPAs — unidades de atención de urgencia 24h
+Locales: shared/i18n/pt-BR.json:161; shared/i18n/es.json:161
+Conexão: site/src/pages/SusNetwork.tsx:84
+
+24. PT/chave: UBS — Unidades Básicas de Saúde
+ES: UBS — unidades básicas de salud
+Locales: shared/i18n/pt-BR.json:162; shared/i18n/es.json:162
+Conexão: site/src/pages/SusNetwork.tsx:101
+
+25. PT/chave: Centros de Atenção Psicossocial (CAPS)
+ES: CAPS (centros de atención psicosocial)
+Locales: shared/i18n/pt-BR.json:163; shared/i18n/es.json:163
+Conexão: site/src/pages/SusNetwork.tsx:118
+
+26. PT/chave: Outros serviços da rede SES-DF
+ES: Otros servicios de la red SES-DF
+Locales: shared/i18n/pt-BR.json:164; shared/i18n/es.json:164
+Conexão: site/src/pages/SusNetwork.tsx:149
+
+27. PT/chave: Equidade também na pesquisa
+ES: Equidad también en la investigación
+Locales: shared/i18n/pt-BR.json:165; shared/i18n/es.json:165
+Conexão: site/src/pages/ClinicalTrials.tsx:34
+
+28. PT/chave: Apenas 1,5% das pesquisas em saúde no Brasil incluem recorte racial. Isso significa que os medicamentos, doses e protocolos que chegam ao SUS foram testados majoritariamente em populações que não representam quem hoje é atendido nas UBS do Distrito Federal. Direito à pesquisa é direito à saúde. Esta página existe para explicar, informar e conectar — nunca para intermediar recrutamento sem consentimento.
+ES: Apenas el 1,5% de las investigaciones en salud en Brasil incluyen recorte racial. Esto significa que los medicamentos, las dosis y los protocolos que llegan al SUS fueron probados mayoritariamente en poblaciones que no representan a quienes hoy son atendidos en las UBS del Distrito Federal. El derecho a la investigación es derecho a la salud. Esta página existe para explicar, informar y conectar — nunca para intermediar el reclutamiento sin consentimiento.
+Locales: shared/i18n/pt-BR.json:166; shared/i18n/es.json:166
+Conexão: site/src/pages/ClinicalTrials.tsx:36
+
+29. PT/chave: O {brand} não conduz ensaios clínicos. Somos uma plataforma informativa que direciona a fontes oficiais e regulamentadas (ReBEC, ClinicalTrials.gov, Plataforma Brasil). Qualquer participação em pesquisa exige aprovação de Comitê de Ética (CEP/CONEP), Termo de Consentimento Livre e Informado (TCLE) e é sempre voluntária, com direito a desistir a qualquer tempo.
+ES: {brand} no conduce ensayos clínicos. Somos una plataforma informativa que dirige a fuentes oficiales y reguladas (ReBEC, ClinicalTrials.gov, Plataforma Brasil). Toda participación en investigación exige aprobación de Comité de Ética (CEP/CONEP), Termo de Consentimento Livre e Esclarecido (TCLE) y es siempre voluntaria, con derecho a retirarse en cualquier momento.
+Locales: shared/i18n/pt-BR.json:167; shared/i18n/es.json:167
+Conexão: site/src/pages/ClinicalTrials.tsx:27; site/src/pages/ClinicalTrials.tsx:29; site/src/pages/ClinicalTrials.tsx:40
+
+30. PT/chave: O que é um ensaio clínico?
+ES: ¿Qué es un ensayo clínico?
+Locales: shared/i18n/pt-BR.json:168; shared/i18n/es.json:168
+Conexão: site/src/pages/ClinicalTrials.tsx:44
+
+31. PT/chave: Ensaio clínico é uma pesquisa organizada para responder uma pergunta específica sobre saúde: Este remédio funciona melhor que o atual? Esta vacina protege contra esta doença? Este tratamento tem efeito colateral em quem tem hipertensão?
+ES: Un ensayo clínico es una investigación organizada para responder una pregunta específica sobre salud: ¿Este medicamento funciona mejor que el actual? ¿Esta vacuna protege contra esta enfermedad? ¿Este tratamiento tiene efectos secundarios en quien tiene hipertensión?
+Locales: shared/i18n/pt-BR.json:169; shared/i18n/es.json:169
+Conexão: site/src/pages/ClinicalTrials.tsx:46
+
+32. PT/chave: Sofreu discriminação em um atendimento de saúde? Você não está sozinha nem sozinho. Aqui você pode relatar o que aconteceu, conhecer seus direitos e encontrar os canais oficiais de denúncia.
+ES: ¿Sufrió discriminación en una atención de salud? No está sola ni solo. Aquí puede relatar lo que ocurrió, conocer sus derechos y encontrar los canales oficiales de denuncia.
+Locales: shared/i18n/pt-BR.json:170; shared/i18n/es.json:170
+Conexão: site/src/pages/Ouvidoria.tsx:67
+
+33. PT/chave: Relatar discriminação
+ES: Relatar discriminación
+Locales: shared/i18n/pt-BR.json:171; shared/i18n/es.json:171
+Conexão: site/src/pages/Ouvidoria.tsx:72
+
+34. PT/chave: Seu relato ajuda a mudar o atendimento
+ES: Tu relato ayuda a cambiar la atención
+Locales: shared/i18n/pt-BR.json:172; shared/i18n/es.json:172
+Conexão: site/src/pages/Ouvidoria.tsx:73
+
+35. PT/chave: Canais oficiais de denúncia
+ES: Canales oficiales de denuncia
+Locales: shared/i18n/pt-BR.json:173; shared/i18n/es.json:173
+Conexão: site/src/pages/Ouvidoria.tsx:92
+
+36. PT/chave: Pelo App Sentinela você informa onde aconteceu e descreve o ocorrido com suas palavras. Você escolhe se quer ser contatada ou contatado para acompanhamento, ou se prefere que o relato fique anônimo e entre apenas nos dados agregados que mostram onde a discriminação se repete.
+ES: Por la App Sentinela informas dónde ocurrió y describes lo sucedido con tus palabras. Tú eliges si quieres ser contactada o contactado para el seguimiento, o si prefieres que el relato sea anónimo y entre solo en los datos agregados que muestran dónde se repite la discriminación.
+Locales: shared/i18n/pt-BR.json:174; shared/i18n/es.json:174
+Conexão: site/src/pages/Ouvidoria.tsx:75
+
+37. PT/chave: Relatar no App Sentinela →
+ES: Relatar en la App Sentinela →
+Locales: shared/i18n/pt-BR.json:175; shared/i18n/es.json:175
+Conexão: site/src/pages/Ouvidoria.tsx:83
+
+38. PT/chave: O relato só é encaminhado com o seu consentimento, conforme a Lei Geral de Proteção de Dados (LGPD). Saiba mais em
+ES: El relato solo se envía con tu consentimiento, conforme la Ley General de Protección de Datos (LGPD). Conoce más en
+Locales: shared/i18n/pt-BR.json:176; shared/i18n/es.json:176
+Conexão: site/src/pages/Ouvidoria.tsx:86
+
+39. PT/chave: O Conectando Saúde e Inclusão é um projeto de tecnologia e educação para a equidade em saúde da população negra do Distrito Federal. Aqui você encontra informações de saúde com base científica, dados sobre as condições de vida e saúde da população negra no DF e espaços de participação.
+ES: Conectando Salud e Inclusión es un proyecto de tecnología y educación para la equidad en salud de la población negra del Distrito Federal. Aquí encuentras información de salud con base científica, datos sobre las condiciones de vida y salud de la población negra en el DF y espacios de participación.
+Locales: shared/i18n/pt-BR.json:177; shared/i18n/es.json:177
+Conexão: site/src/pages/About.tsx:29
+
+40. PT/chave: {brand} é construído sobre uma arquitetura de governança e confiança, informada por referências internacionais de mídias e plataformas de saúde comunitária consolidadas. As informações públicas sobre governança e uso dos dados estão na página de transparência.
+ES: {brand} se construye sobre una arquitectura de gobernanza y confianza, informada por referencias internacionales de medios y plataformas de salud comunitaria consolidadas. La información pública sobre gobernanza y uso de los datos está en la página de transparencia.
+Locales: shared/i18n/pt-BR.json:178; shared/i18n/es.json:178
+Conexão: site/src/pages/About.tsx:41
+
+41. PT/chave: Financiador principal (24 meses)
+ES: Financiador principal (24 meses)
+Locales: shared/i18n/pt-BR.json:179; shared/i18n/es.json:179
+Conexão: site/src/pages/About.tsx:63
+
+42. PT/chave: Governo parceiro
+ES: Gobierno asociado
+Locales: shared/i18n/pt-BR.json:180; shared/i18n/es.json:180
+Conexão: site/src/pages/About.tsx:63
+
+43. PT/chave: Parceiro institucional / contrapartida
+ES: Socio institucional / contrapartida
+Locales: shared/i18n/pt-BR.json:181; shared/i18n/es.json:181
+Conexão: site/src/pages/About.tsx:63
+
+44. PT/chave: Execução do projeto
+ES: Ejecución del proyecto
+Locales: shared/i18n/pt-BR.json:182; shared/i18n/es.json:182
+Conexão: site/src/pages/About.tsx:63
+
+45. PT/chave: Coordenação técnica e desenvolvimento
+ES: Coordinación técnica y desarrollo
+Locales: shared/i18n/pt-BR.json:183; shared/i18n/es.json:183
+Conexão: site/src/pages/About.tsx:63
+
+46. PT/chave: Capacitação de 100 estudantes (AVA)
+ES: Capacitación de 100 estudiantes (AVA)
+Locales: shared/i18n/pt-BR.json:184; shared/i18n/es.json:184
+Conexão: site/src/pages/About.tsx:63
+
+47. PT/chave: Apoio acadêmico e conselho consultivo
+ES: Apoyo académico y consejo consultivo
+Locales: shared/i18n/pt-BR.json:185; shared/i18n/es.json:185
+Conexão: site/src/pages/About.tsx:63
+
+48. PT/chave: Base científica e vigilância epidemiológica
+ES: Base científica y vigilancia epidemiológica
+Locales: shared/i18n/pt-BR.json:186; shared/i18n/es.json:186
+Conexão: site/src/pages/About.tsx:63
+
+49. PT/chave: Mobilização comunitária e confiança territorial
+ES: Movilización comunitaria y confianza territorial
+Locales: shared/i18n/pt-BR.json:187; shared/i18n/es.json:187
+Conexão: site/src/pages/About.tsx:63
+
+50. PT/chave: Parceria técnica — Condições Genéticas/Raras
+ES: Alianza técnica — Condiciones Genéticas/Raras
+Locales: shared/i18n/pt-BR.json:188; shared/i18n/es.json:188
+Conexão: site/src/pages/About.tsx:63
+
+9. DIFF DE INSERÇÕES/CONEXÕES (SEM CONTEXTO)
+diff --git a/README.md b/README.md
+index d722541..816cbcf 100644
+--- a/README.md
++++ b/README.md
+@@ -322 +322,36 @@ uma URL de produção para esta versão.
+-## Última atualização
++## Pacote ES das cinco telas — validação local (06/11/2026)
++
++- Escopo: seis rótulos da Home em `/app/`; apresentação e rótulos regionais
++  em `/rede-sus`; blocos editoriais iniciais de `/ensaios-clinicos`;
++  introdução, relato e nota LGPD de `/ouvidoria`; dois parágrafos e dez
++  papéis de parceiros em `/sobre`. Não é tradução integral dessas páginas.
++- 50 novas entradas em cada JSON compartilhado (`pt-BR.json` e `es.json`),
++  totalizando 187 por idioma. PT e entradas anteriores preservados.
++- Exceções autorizadas: “Busca Salud” e “Conectando Salud e Inclusión”.
++  Aviso usa “reguladas”; não foi acrescentado “Odontológicas”. Nomes oficiais
++  restantes, razões sociais, dados regionais, fontes e acervo clínico intactos.
++- Uso: selecionar PT/ES no seletor existente; o idioma acompanha as abas
++  abertas das duas SPAs. Novos fragmentos têm `lang` PT/ES; o título oficial
++  TCLE preservado em português dentro do aviso ES tem `lang="pt-BR"`.
++- Dados e armazenamento: nenhuma alteração de modelo, API, Worker, snapshots,
++  banco ou armazenamento de dados pessoais. O ícone FAQ 28×28 permanece.
++- Testes: TypeScript, builds Vite isolados e lint das duas SPAs; 51 checks
++  de saúde/i18n; 20 estados PT/ES em 390/1440 px comparados ao baseline;
++  536 checks de integridade/sincronização das cinco telas; regressões de
++  150 checks de locale e 196 de links/FAQ. Nenhum formulário enviado.
++- Relatório por chave/arquivo/linha e limites da varredura:
++  `relatorio_pacote_traducao_es_telas.txt`.
++- Status: pacote somente local, sem push/deploy. Produção de referência:
++  https://pulso-preto.fratozsistemas.workers.dev (último publicado: `89bee16`).
++  A publicação futura continua pelo fluxo GitHub → Workers Builds e exige
++  autorização e verificação real posterior, não apenas sucesso do build.
++- Pendências: textos fora do pacote continuam PT-only; recomendações clínicas
++  não foram traduzidas nem aprovadas por este lote. Revisão clínica, testes
++  com leitores de tela e usuários seguem necessários. O aviso PT original usa
++  “Livre e Informado”; o ES preserva o título oficial “Livre e Esclarecido”
++  indicado no pacote, sem modificar o PT.
++- Para QA deste lote, não executar `npm run build` da raiz: ele exporta dados,
++  instala dependências e recria `dist/`. Foram usados `tsc -b` e `vite build
++  --outDir ../.qa-tools/i18n/site` (ou `app`) dentro de cada SPA.
++
++## Última atualização histórica anterior
+diff --git a/app/src/pages/Home.tsx b/app/src/pages/Home.tsx
+index 3b6635d..be4a882 100644
+--- a/app/src/pages/Home.tsx
++++ b/app/src/pages/Home.tsx
+@@ -66 +66 @@ export default function Home() {
+-            Acesso rápido
++            <span lang={localeId === 'es' ? 'es-419' : 'pt-BR'}>{t("Acesso rápido")}</span>
+@@ -73 +73,2 @@ export default function Home() {
+-              label="Encontrar Unidade de Saúde"
++              lang={localeId === 'es' ? 'es-419' : 'pt-BR'}
++              label={t("Encontrar Unidade de Saúde")}
+@@ -79 +80,2 @@ export default function Home() {
+-              label="Radar comunitário"
++              lang={localeId === 'es' ? 'es-419' : 'pt-BR'}
++              label={t("Radar comunitário")}
+@@ -85 +87,2 @@ export default function Home() {
+-              label="Biblioteca de saúde"
++              lang={localeId === 'es' ? 'es-419' : 'pt-BR'}
++              label={t("Biblioteca de saúde")}
+@@ -91 +94,2 @@ export default function Home() {
+-              label="Direito à saúde"
++              lang={localeId === 'es' ? 'es-419' : 'pt-BR'}
++              label={t("Direito à saúde")}
+@@ -105 +109 @@ export default function Home() {
+-              Suas condições acompanhadas
++              <span lang={localeId === 'es' ? 'es-419' : 'pt-BR'}>{t("Suas condições acompanhadas")}</span>
+@@ -138,0 +143 @@ function QuickLink({
++  lang,
+@@ -143,0 +149 @@ function QuickLink({
++  lang?: string;
+@@ -155 +161 @@ function QuickLink({
+-      <span className="text-xs font-semibold text-pulso-verde">{label}</span>
++      <span lang={lang} className="text-xs font-semibold text-pulso-verde">{label}</span>
+diff --git a/scripts/test-health.mjs b/scripts/test-health.mjs
+index 549b082..5940834 100644
+--- a/scripts/test-health.mjs
++++ b/scripts/test-health.mjs
+@@ -30,0 +31,43 @@ try {
++  const { translateText } = await server.ssrLoadModule('../shared/data/locales.ts');
++  const ptDictionary = JSON.parse(readFileSync(new URL('../shared/i18n/pt-BR.json', import.meta.url), 'utf8'));
++  const esDictionary = JSON.parse(readFileSync(new URL('../shared/i18n/es.json', import.meta.url), 'utf8'));
++  check('locales JSON mantêm paridade, PT original e nenhuma tradução vazia', () => {
++    assert.deepEqual(Object.keys(ptDictionary).sort(), Object.keys(esDictionary).sort());
++    for (const key of Object.keys(ptDictionary)) {
++      assert.equal(ptDictionary[key], key);
++      assert.equal(translateText('pt', key), key);
++      assert.ok(esDictionary[key].trim(), key);
++      assert.equal(translateText('es', key), esDictionary[key]);
++    }
++    assert.equal(esDictionary['Biblioteca de Saúde'], 'Biblioteca de Salud');
++    assert.equal(esDictionary['Biblioteca de saúde'], 'Biblioteca de salud');
++  });
++  check('pacote de telas: seis rótulos Home, sete regiões e dez papéis de parceiros', () => {
++    for (const [pt, es] of [
++      ['Acesso rápido', 'Acceso rápido'],
++      ['Encontrar Unidade de Saúde', 'Encontrar unidad de salud'],
++      ['Radar comunitário', 'Radar comunitario'],
++      ['Biblioteca de saúde', 'Biblioteca de salud'],
++      ['Direito à saúde', 'Derecho a la salud'],
++      ['Suas condições acompanhadas', 'Tus condiciones en seguimiento'],
++    ]) assert.equal(translateText('es', pt), es);
++    const regionNames = ['Región Central', 'Región Centro-Sur', 'Región Norte', 'Región Sur', 'Región Este', 'Región Oeste', 'Región Sudoeste'];
++    const projectSource = readFileSync(new URL('../shared/data/project.ts', import.meta.url), 'utf8');
++    const names = [...projectSource.matchAll(/nome: '(Região [^']+)'/g)].map(match => match[1]);
++    assert.deepEqual(names.map(name => translateText('es', name)), regionNames);
++    const roles = [...projectSource.slice(projectSource.indexOf('export const partners'), projectSource.indexOf('  referencia:')).matchAll(/role: '([^']+)'/g)].map(match => match[1]);
++    assert.equal(roles.length, 10);
++    for (const role of roles) assert.ok(Object.hasOwn(esDictionary, role), role);
++  });
++  check('pacote de telas: exceções autorizadas, marca dinâmica e aviso legal sem híbridos', () => {
++    assert.equal(translateText('es', 'Busca Saúde (SES-DF)'), 'Busca Salud (SES-DF)');
++    const aboutKey = Object.keys(ptDictionary).find(key => key.startsWith('O Conectando Saúde e Inclusão é um projeto'));
++    assert.ok(translateText('es', aboutKey).startsWith('Conectando Salud e Inclusión es un proyecto'));
++    const noticeKey = Object.keys(ptDictionary).find(key => key.startsWith('O {brand} não conduz ensaios clínicos.'));
++    assert.ok(noticeKey.includes('Termo de Consentimento Livre e Informado (TCLE)'));
++    const notice = translateText('es', noticeKey).replace('{brand}', 'Marca de teste');
++    assert.ok(notice.startsWith('Marca de teste no conduce ensayos clínicos.'));
++    assert.ok(notice.includes('fuentes oficiales y reguladas'));
++    assert.ok(notice.includes('Termo de Consentimento Livre e Esclarecido (TCLE)'));
++    assert.ok(!/regulamentadas|Transparência y gobernanza|Termo de Consentimiento|Odontológicas/.test(Object.values(esDictionary).join(' ')));
++  });
+diff --git a/shared/i18n/es.json b/shared/i18n/es.json
+index b8442cd..b74d866 100644
+--- a/shared/i18n/es.json
++++ b/shared/i18n/es.json
+@@ -138 +138,51 @@
+-  "Reflexão sobre barreiras de acesso; não é uma estatística.": "Reflexión sobre barreras de acceso; no es una estadística."
++  "Reflexão sobre barreiras de acesso; não é uma estatística.": "Reflexión sobre barreras de acceso; no es una estadística.",
++  "Acesso rápido": "Acceso rápido",
++  "Encontrar Unidade de Saúde": "Encontrar unidad de salud",
++  "Radar comunitário": "Radar comunitario",
++  "Biblioteca de saúde": "Biblioteca de salud",
++  "Direito à saúde": "Derecho a la salud",
++  "Suas condições acompanhadas": "Tus condiciones en seguimiento",
++  "Rede do Sistema Único de Saúde (Rede SUS): onde encontrar especialistas": "Red del Sistema Único de Salud (Red SUS): dónde encontrar especialistas",
++  "Encontre unidades de saúde do Distrito Federal (DF) por região, com plano de expansão para rede privada e busca por atendimento humanizado/culturalmente competente. A navegação completa, com mapa interativo e georreferenciamento em tempo real, está disponível no": "Encuentra unidades de salud del Distrito Federal (DF) por región, con plan de expansión para la red privada y búsqueda por atención humanizada y culturalmente competente. La navegación completa, con mapa interactivo y georreferenciación en tiempo real, está disponible en la",
++  "Dados oficiais da": "Datos oficiales de la",
++  ", organizados pelas 7 Regiões de Saúde. A cobertura de Unidades Básicas de Saúde (UBS) é completa para as Regiões Oeste e Sul e representativa para as demais — a rede SES-DF soma mais de 170 UBS, com novas unidades sendo abertas continuamente. Em caso de divergência, consulte sempre": ", organizados por las 7 Regiones de Salud. La cobertura de Unidades Básicas de Salud (UBS) es completa para las Regiones Oeste y Sur y representativa para las demás — la red SES-DF suma más de 170 UBS, con nuevas unidades abriéndose continuamente. En caso de divergencia, consulta siempre",
++  "Busca Saúde (SES-DF)": "Busca Salud (SES-DF)",
++  "Região Central": "Región Central",
++  "Região Centro-Sul": "Región Centro-Sur",
++  "Região Norte": "Región Norte",
++  "Região Sul": "Región Sur",
++  "Região Leste": "Región Este",
++  "Região Oeste": "Región Oeste",
++  "Região Sudoeste": "Región Sudoeste",
++  "Abrange:": "Abarca:",
++  "Superintendente:": "Superintendente:",
++  "Tel:": "Tel.:",
++  "Hospitais Regionais": "Hospitales Regionales",
++  "UPAs — Unidades de Pronto Atendimento 24h": "UPAs — unidades de atención de urgencia 24h",
++  "UBS — Unidades Básicas de Saúde": "UBS — unidades básicas de salud",
++  "Centros de Atenção Psicossocial (CAPS)": "CAPS (centros de atención psicosocial)",
++  "Outros serviços da rede SES-DF": "Otros servicios de la red SES-DF",
++  "Equidade também na pesquisa": "Equidad también en la investigación",
++  "Apenas 1,5% das pesquisas em saúde no Brasil incluem recorte racial. Isso significa que os medicamentos, doses e protocolos que chegam ao SUS foram testados majoritariamente em populações que não representam quem hoje é atendido nas UBS do Distrito Federal. Direito à pesquisa é direito à saúde. Esta página existe para explicar, informar e conectar — nunca para intermediar recrutamento sem consentimento.": "Apenas el 1,5% de las investigaciones en salud en Brasil incluyen recorte racial. Esto significa que los medicamentos, las dosis y los protocolos que llegan al SUS fueron probados mayoritariamente en poblaciones que no representan a quienes hoy son atendidos en las UBS del Distrito Federal. El derecho a la investigación es derecho a la salud. Esta página existe para explicar, informar y conectar — nunca para intermediar el reclutamiento sin consentimiento.",
++  "O {brand} não conduz ensaios clínicos. Somos uma plataforma informativa que direciona a fontes oficiais e regulamentadas (ReBEC, ClinicalTrials.gov, Plataforma Brasil). Qualquer participação em pesquisa exige aprovação de Comitê de Ética (CEP/CONEP), Termo de Consentimento Livre e Informado (TCLE) e é sempre voluntária, com direito a desistir a qualquer tempo.": "{brand} no conduce ensayos clínicos. Somos una plataforma informativa que dirige a fuentes oficiales y reguladas (ReBEC, ClinicalTrials.gov, Plataforma Brasil). Toda participación en investigación exige aprobación de Comité de Ética (CEP/CONEP), Termo de Consentimento Livre e Esclarecido (TCLE) y es siempre voluntaria, con derecho a retirarse en cualquier momento.",
++  "O que é um ensaio clínico?": "¿Qué es un ensayo clínico?",
++  "Ensaio clínico é uma pesquisa organizada para responder uma pergunta específica sobre saúde: Este remédio funciona melhor que o atual? Esta vacina protege contra esta doença? Este tratamento tem efeito colateral em quem tem hipertensão?": "Un ensayo clínico es una investigación organizada para responder una pregunta específica sobre salud: ¿Este medicamento funciona mejor que el actual? ¿Esta vacuna protege contra esta enfermedad? ¿Este tratamiento tiene efectos secundarios en quien tiene hipertensión?",
++  "Sofreu discriminação em um atendimento de saúde? Você não está sozinha nem sozinho. Aqui você pode relatar o que aconteceu, conhecer seus direitos e encontrar os canais oficiais de denúncia.": "¿Sufrió discriminación en una atención de salud? No está sola ni solo. Aquí puede relatar lo que ocurrió, conocer sus derechos y encontrar los canales oficiales de denuncia.",
++  "Relatar discriminação": "Relatar discriminación",
++  "Seu relato ajuda a mudar o atendimento": "Tu relato ayuda a cambiar la atención",
++  "Canais oficiais de denúncia": "Canales oficiales de denuncia",
++  "Pelo App Sentinela você informa onde aconteceu e descreve o ocorrido com suas palavras. Você escolhe se quer ser contatada ou contatado para acompanhamento, ou se prefere que o relato fique anônimo e entre apenas nos dados agregados que mostram onde a discriminação se repete.": "Por la App Sentinela informas dónde ocurrió y describes lo sucedido con tus palabras. Tú eliges si quieres ser contactada o contactado para el seguimiento, o si prefieres que el relato sea anónimo y entre solo en los datos agregados que muestran dónde se repite la discriminación.",
++  "Relatar no App Sentinela →": "Relatar en la App Sentinela →",
++  "O relato só é encaminhado com o seu consentimento, conforme a Lei Geral de Proteção de Dados (LGPD). Saiba mais em": "El relato solo se envía con tu consentimiento, conforme la Ley General de Protección de Datos (LGPD). Conoce más en",
++  "O Conectando Saúde e Inclusão é um projeto de tecnologia e educação para a equidade em saúde da população negra do Distrito Federal. Aqui você encontra informações de saúde com base científica, dados sobre as condições de vida e saúde da população negra no DF e espaços de participação.": "Conectando Salud e Inclusión es un proyecto de tecnología y educación para la equidad en salud de la población negra del Distrito Federal. Aquí encuentras información de salud con base científica, datos sobre las condiciones de vida y salud de la población negra en el DF y espacios de participación.",
++  "{brand} é construído sobre uma arquitetura de governança e confiança, informada por referências internacionais de mídias e plataformas de saúde comunitária consolidadas. As informações públicas sobre governança e uso dos dados estão na página de transparência.": "{brand} se construye sobre una arquitectura de gobernanza y confianza, informada por referencias internacionales de medios y plataformas de salud comunitaria consolidadas. La información pública sobre gobernanza y uso de los datos está en la página de transparencia.",
++  "Financiador principal (24 meses)": "Financiador principal (24 meses)",
++  "Governo parceiro": "Gobierno asociado",
++  "Parceiro institucional / contrapartida": "Socio institucional / contrapartida",
++  "Execução do projeto": "Ejecución del proyecto",
++  "Coordenação técnica e desenvolvimento": "Coordinación técnica y desarrollo",
++  "Capacitação de 100 estudantes (AVA)": "Capacitación de 100 estudiantes (AVA)",
++  "Apoio acadêmico e conselho consultivo": "Apoyo académico y consejo consultivo",
++  "Base científica e vigilância epidemiológica": "Base científica y vigilancia epidemiológica",
++  "Mobilização comunitária e confiança territorial": "Movilización comunitaria y confianza territorial",
++  "Parceria técnica — Condições Genéticas/Raras": "Alianza técnica — Condiciones Genéticas/Raras"
+diff --git a/shared/i18n/pt-BR.json b/shared/i18n/pt-BR.json
+index 12bbb6e..a1149ad 100644
+--- a/shared/i18n/pt-BR.json
++++ b/shared/i18n/pt-BR.json
+@@ -138 +138,51 @@
+-  "Reflexão sobre barreiras de acesso; não é uma estatística.": "Reflexão sobre barreiras de acesso; não é uma estatística."
++  "Reflexão sobre barreiras de acesso; não é uma estatística.": "Reflexão sobre barreiras de acesso; não é uma estatística.",
++  "Acesso rápido": "Acesso rápido",
++  "Encontrar Unidade de Saúde": "Encontrar Unidade de Saúde",
++  "Radar comunitário": "Radar comunitário",
++  "Biblioteca de saúde": "Biblioteca de saúde",
++  "Direito à saúde": "Direito à saúde",
++  "Suas condições acompanhadas": "Suas condições acompanhadas",
++  "Rede do Sistema Único de Saúde (Rede SUS): onde encontrar especialistas": "Rede do Sistema Único de Saúde (Rede SUS): onde encontrar especialistas",
++  "Encontre unidades de saúde do Distrito Federal (DF) por região, com plano de expansão para rede privada e busca por atendimento humanizado/culturalmente competente. A navegação completa, com mapa interativo e georreferenciamento em tempo real, está disponível no": "Encontre unidades de saúde do Distrito Federal (DF) por região, com plano de expansão para rede privada e busca por atendimento humanizado/culturalmente competente. A navegação completa, com mapa interativo e georreferenciamento em tempo real, está disponível no",
++  "Dados oficiais da": "Dados oficiais da",
++  ", organizados pelas 7 Regiões de Saúde. A cobertura de Unidades Básicas de Saúde (UBS) é completa para as Regiões Oeste e Sul e representativa para as demais — a rede SES-DF soma mais de 170 UBS, com novas unidades sendo abertas continuamente. Em caso de divergência, consulte sempre": ", organizados pelas 7 Regiões de Saúde. A cobertura de Unidades Básicas de Saúde (UBS) é completa para as Regiões Oeste e Sul e representativa para as demais — a rede SES-DF soma mais de 170 UBS, com novas unidades sendo abertas continuamente. Em caso de divergência, consulte sempre",
++  "Busca Saúde (SES-DF)": "Busca Saúde (SES-DF)",
++  "Região Central": "Região Central",
++  "Região Centro-Sul": "Região Centro-Sul",
++  "Região Norte": "Região Norte",
++  "Região Sul": "Região Sul",
++  "Região Leste": "Região Leste",
++  "Região Oeste": "Região Oeste",
++  "Região Sudoeste": "Região Sudoeste",
++  "Abrange:": "Abrange:",
++  "Superintendente:": "Superintendente:",
++  "Tel:": "Tel:",
++  "Hospitais Regionais": "Hospitais Regionais",
++  "UPAs — Unidades de Pronto Atendimento 24h": "UPAs — Unidades de Pronto Atendimento 24h",
++  "UBS — Unidades Básicas de Saúde": "UBS — Unidades Básicas de Saúde",
++  "Centros de Atenção Psicossocial (CAPS)": "Centros de Atenção Psicossocial (CAPS)",
++  "Outros serviços da rede SES-DF": "Outros serviços da rede SES-DF",
++  "Equidade também na pesquisa": "Equidade também na pesquisa",
++  "Apenas 1,5% das pesquisas em saúde no Brasil incluem recorte racial. Isso significa que os medicamentos, doses e protocolos que chegam ao SUS foram testados majoritariamente em populações que não representam quem hoje é atendido nas UBS do Distrito Federal. Direito à pesquisa é direito à saúde. Esta página existe para explicar, informar e conectar — nunca para intermediar recrutamento sem consentimento.": "Apenas 1,5% das pesquisas em saúde no Brasil incluem recorte racial. Isso significa que os medicamentos, doses e protocolos que chegam ao SUS foram testados majoritariamente em populações que não representam quem hoje é atendido nas UBS do Distrito Federal. Direito à pesquisa é direito à saúde. Esta página existe para explicar, informar e conectar — nunca para intermediar recrutamento sem consentimento.",
++  "O {brand} não conduz ensaios clínicos. Somos uma plataforma informativa que direciona a fontes oficiais e regulamentadas (ReBEC, ClinicalTrials.gov, Plataforma Brasil). Qualquer participação em pesquisa exige aprovação de Comitê de Ética (CEP/CONEP), Termo de Consentimento Livre e Informado (TCLE) e é sempre voluntária, com direito a desistir a qualquer tempo.": "O {brand} não conduz ensaios clínicos. Somos uma plataforma informativa que direciona a fontes oficiais e regulamentadas (ReBEC, ClinicalTrials.gov, Plataforma Brasil). Qualquer participação em pesquisa exige aprovação de Comitê de Ética (CEP/CONEP), Termo de Consentimento Livre e Informado (TCLE) e é sempre voluntária, com direito a desistir a qualquer tempo.",
++  "O que é um ensaio clínico?": "O que é um ensaio clínico?",
++  "Ensaio clínico é uma pesquisa organizada para responder uma pergunta específica sobre saúde: Este remédio funciona melhor que o atual? Esta vacina protege contra esta doença? Este tratamento tem efeito colateral em quem tem hipertensão?": "Ensaio clínico é uma pesquisa organizada para responder uma pergunta específica sobre saúde: Este remédio funciona melhor que o atual? Esta vacina protege contra esta doença? Este tratamento tem efeito colateral em quem tem hipertensão?",
++  "Sofreu discriminação em um atendimento de saúde? Você não está sozinha nem sozinho. Aqui você pode relatar o que aconteceu, conhecer seus direitos e encontrar os canais oficiais de denúncia.": "Sofreu discriminação em um atendimento de saúde? Você não está sozinha nem sozinho. Aqui você pode relatar o que aconteceu, conhecer seus direitos e encontrar os canais oficiais de denúncia.",
++  "Relatar discriminação": "Relatar discriminação",
++  "Seu relato ajuda a mudar o atendimento": "Seu relato ajuda a mudar o atendimento",
++  "Canais oficiais de denúncia": "Canais oficiais de denúncia",
++  "Pelo App Sentinela você informa onde aconteceu e descreve o ocorrido com suas palavras. Você escolhe se quer ser contatada ou contatado para acompanhamento, ou se prefere que o relato fique anônimo e entre apenas nos dados agregados que mostram onde a discriminação se repete.": "Pelo App Sentinela você informa onde aconteceu e descreve o ocorrido com suas palavras. Você escolhe se quer ser contatada ou contatado para acompanhamento, ou se prefere que o relato fique anônimo e entre apenas nos dados agregados que mostram onde a discriminação se repete.",
++  "Relatar no App Sentinela →": "Relatar no App Sentinela →",
++  "O relato só é encaminhado com o seu consentimento, conforme a Lei Geral de Proteção de Dados (LGPD). Saiba mais em": "O relato só é encaminhado com o seu consentimento, conforme a Lei Geral de Proteção de Dados (LGPD). Saiba mais em",
++  "O Conectando Saúde e Inclusão é um projeto de tecnologia e educação para a equidade em saúde da população negra do Distrito Federal. Aqui você encontra informações de saúde com base científica, dados sobre as condições de vida e saúde da população negra no DF e espaços de participação.": "O Conectando Saúde e Inclusão é um projeto de tecnologia e educação para a equidade em saúde da população negra do Distrito Federal. Aqui você encontra informações de saúde com base científica, dados sobre as condições de vida e saúde da população negra no DF e espaços de participação.",
++  "{brand} é construído sobre uma arquitetura de governança e confiança, informada por referências internacionais de mídias e plataformas de saúde comunitária consolidadas. As informações públicas sobre governança e uso dos dados estão na página de transparência.": "{brand} é construído sobre uma arquitetura de governança e confiança, informada por referências internacionais de mídias e plataformas de saúde comunitária consolidadas. As informações públicas sobre governança e uso dos dados estão na página de transparência.",
++  "Financiador principal (24 meses)": "Financiador principal (24 meses)",
++  "Governo parceiro": "Governo parceiro",
++  "Parceiro institucional / contrapartida": "Parceiro institucional / contrapartida",
++  "Execução do projeto": "Execução do projeto",
++  "Coordenação técnica e desenvolvimento": "Coordenação técnica e desenvolvimento",
++  "Capacitação de 100 estudantes (AVA)": "Capacitação de 100 estudantes (AVA)",
++  "Apoio acadêmico e conselho consultivo": "Apoio acadêmico e conselho consultivo",
++  "Base científica e vigilância epidemiológica": "Base científica e vigilância epidemiológica",
++  "Mobilização comunitária e confiança territorial": "Mobilização comunitária e confiança territorial",
++  "Parceria técnica — Condições Genéticas/Raras": "Parceria técnica — Condições Genéticas/Raras"
+diff --git a/site/src/pages/About.tsx b/site/src/pages/About.tsx
+index f7ba25f..64ad712 100644
+--- a/site/src/pages/About.tsx
++++ b/site/src/pages/About.tsx
+@@ -1,0 +2 @@ import { Link } from 'react-router-dom';
++import { translateText } from '@shared/data/locales';
+@@ -7 +8,3 @@ export default function About() {
+-  const { brand: projectInfo } = useAppearance();
++  const { brand: projectInfo, localeId } = useAppearance();
++  const t = (text: string) => translateText(localeId, text);
++  const textLang = localeId === 'es' ? 'es-419' : 'pt-BR';
+@@ -25,5 +28,2 @@ export default function About() {
+-      <p className="text-pulso-marrom mb-4">
+-        O Conectando Saúde e Inclusão é um projeto de tecnologia e educação para a equidade em
+-        saúde da população negra do Distrito Federal. Aqui você encontra informações de saúde com
+-        base científica, dados sobre as condições de vida e saúde da população negra no DF e
+-        espaços de participação.
++      <p lang={textLang} className="text-pulso-marrom mb-4">
++        {t("O Conectando Saúde e Inclusão é um projeto de tecnologia e educação para a equidade em saúde da população negra do Distrito Federal. Aqui você encontra informações de saúde com base científica, dados sobre as condições de vida e saúde da população negra no DF e espaços de participação.")}
+@@ -40,4 +40,2 @@ export default function About() {
+-      <p className="text-pulso-marrom mb-4">
+-        {projectInfo.name} é construído sobre uma arquitetura de governança e confiança, informada por
+-        referências internacionais de mídias e plataformas de saúde comunitária consolidadas. As informações
+-        públicas sobre governança e uso dos dados estão na página de transparência.
++      <p lang={textLang} className="text-pulso-marrom mb-4">
++        {t("{brand} é construído sobre uma arquitetura de governança e confiança, informada por referências internacionais de mídias e plataformas de saúde comunitária consolidadas. As informações públicas sobre governança e uso dos dados estão na página de transparência.").replace('{brand}', projectInfo.name)}
+@@ -65 +63 @@ export default function About() {
+-              <div className="text-pulso-marrom/50 text-xs">{p.role}</div>
++              <div lang={textLang} className="text-pulso-marrom/50 text-xs">{t(p.role)}</div>
+diff --git a/site/src/pages/ClinicalTrials.tsx b/site/src/pages/ClinicalTrials.tsx
+index b286b31..3f6809e 100644
+--- a/site/src/pages/ClinicalTrials.tsx
++++ b/site/src/pages/ClinicalTrials.tsx
+@@ -1,0 +2 @@ import type React from 'react';
++import { translateText } from '@shared/data/locales';
+@@ -23,0 +25,6 @@ export default function ClinicalTrials() {
++  const t = (text: string) => translateText(localeId, text);
++  const textLang = localeId === 'es' ? 'es-419' : 'pt-BR';
++  const noticeTemplate = ensaiosHero.notice.text.replace(/^O (.*?) não conduz/, 'O {brand} não conduz');
++  const noticeBrand = ensaiosHero.notice.text.match(/^O (.*?) não conduz/)?.[1] ?? brand.name;
++  const noticeParts = t(noticeTemplate).replace('{brand}', noticeBrand)
++    .split(/(Termo de Consentimento Livre e (?:Informado|Esclarecido) \(TCLE\))/);
+@@ -27 +34 @@ export default function ClinicalTrials() {
+-      <span className="eyebrow text-pulso-verde-accent">{ensaiosHero.kicker}</span>
++      <span lang={textLang} className="eyebrow text-pulso-verde-accent">{t(ensaiosHero.kicker)}</span>
+@@ -29 +36 @@ export default function ClinicalTrials() {
+-      <p className="text-pulso-marrom mb-6 max-w-2xl">{ensaiosHero.subtitle}</p>
++      <p lang={textLang} className="text-pulso-marrom mb-6 max-w-2xl">{t(ensaiosHero.subtitle)}</p>
+@@ -33 +40 @@ export default function ClinicalTrials() {
+-        <p>{ensaiosHero.notice.text}</p>
++        <p lang={textLang}>{noticeParts.map((part, index) => index === 1 ? <span lang="pt-BR" key={index}>{part}</span> : part)}</p>
+@@ -37,5 +44,3 @@ export default function ClinicalTrials() {
+-      <Section title="O que é um ensaio clínico?">
+-        <p className="text-sm text-pulso-marrom mb-6">
+-          Ensaio clínico é uma pesquisa organizada para responder uma pergunta específica sobre saúde: Este remédio
+-          funciona melhor que o atual? Esta vacina protege contra esta doença? Este tratamento tem efeito colateral
+-          em quem tem hipertensão?
++      <Section title={t("O que é um ensaio clínico?")} titleLang={textLang}>
++        <p lang={textLang} className="text-sm text-pulso-marrom mb-6">
++          {t("Ensaio clínico é uma pesquisa organizada para responder uma pergunta específica sobre saúde: Este remédio funciona melhor que o atual? Esta vacina protege contra esta doença? Este tratamento tem efeito colateral em quem tem hipertensão?")}
+@@ -195 +200 @@ export default function ClinicalTrials() {
+-function Section({ title, children }: { title: string; children: React.ReactNode }) {
++function Section({ title, titleLang, children }: { title: string; titleLang?: string; children: React.ReactNode }) {
+@@ -198 +203 @@ function Section({ title, children }: { title: string; children: React.ReactNode
+-      <h2 className="text-xl font-bold text-pulso-verde mb-5">{title}</h2>
++      <h2 lang={titleLang} className="text-xl font-bold text-pulso-verde mb-5">{title}</h2>
+diff --git a/site/src/pages/Ouvidoria.tsx b/site/src/pages/Ouvidoria.tsx
+index 2ec6099..eed0ea7 100644
+--- a/site/src/pages/Ouvidoria.tsx
++++ b/site/src/pages/Ouvidoria.tsx
+@@ -1,0 +2 @@ import { Link } from 'react-router-dom';
++import { translateText } from '@shared/data/locales';
+@@ -56,0 +58,2 @@ export default function Ouvidoria() {
++  const t = (text: string) => translateText(localeId, text);
++  const textLang = localeId === 'es' ? 'es-419' : 'pt-BR';
+@@ -63,3 +66,2 @@ export default function Ouvidoria() {
+-      <p className="text-pulso-marrom mb-10 max-w-2xl">
+-        Sofreu discriminação em um atendimento de saúde? Você não está sozinha nem sozinho. Aqui você pode relatar o
+-        que aconteceu, conhecer seus direitos e encontrar os canais oficiais de denúncia.
++      <p lang={textLang} className="text-pulso-marrom mb-10 max-w-2xl">
++        {t("Sofreu discriminação em um atendimento de saúde? Você não está sozinha nem sozinho. Aqui você pode relatar o que aconteceu, conhecer seus direitos e encontrar os canais oficiais de denúncia.")}
+@@ -70,6 +72,4 @@ export default function Ouvidoria() {
+-        <span className="text-xs font-bold uppercase tracking-wider text-pulso-dourado">Relatar discriminação</span>
+-        <h2 className="font-pulso-display text-2xl font-bold mt-1 mb-3">Seu relato ajuda a mudar o atendimento</h2>
+-        <p className="text-sm text-pulso-creme/90 mb-5 max-w-2xl">
+-          Pelo App Sentinela você informa onde aconteceu e descreve o ocorrido com suas palavras. Você escolhe se quer
+-          ser contatada ou contatado para acompanhamento, ou se prefere que o relato fique anônimo e entre apenas nos
+-          dados agregados que mostram onde a discriminação se repete.
++        <span className="text-xs font-bold uppercase tracking-wider text-pulso-dourado" lang={textLang}>{t("Relatar discriminação")}</span>
++        <h2 className="font-pulso-display text-2xl font-bold mt-1 mb-3" lang={textLang}>{t("Seu relato ajuda a mudar o atendimento")}</h2>
++        <p lang={textLang} className="text-sm text-pulso-creme/90 mb-5 max-w-2xl">
++          {t("Pelo App Sentinela você informa onde aconteceu e descreve o ocorrido com suas palavras. Você escolhe se quer ser contatada ou contatado para acompanhamento, ou se prefere que o relato fique anônimo e entre apenas nos dados agregados que mostram onde a discriminação se repete.")}
+@@ -83 +83 @@ export default function Ouvidoria() {
+-          Relatar no App Sentinela →
++          <span lang={textLang}>{t("Relatar no App Sentinela →")}</span>
+@@ -85,3 +85,2 @@ export default function Ouvidoria() {
+-        <p className="text-xs text-pulso-creme/70 mt-4">
+-          O relato só é encaminhado com o seu consentimento, conforme a Lei Geral de Proteção de Dados (LGPD). Saiba
+-          mais em <Link to="/transparencia" className="underline hover:text-pulso-dourado-claro">{getPulsoLinkLabel(localeId, '/transparencia', 'Transparência e governança')}</Link>.
++        <p lang={textLang} className="text-xs text-pulso-creme/70 mt-4">
++          {t("O relato só é encaminhado com o seu consentimento, conforme a Lei Geral de Proteção de Dados (LGPD). Saiba mais em")}{' '}<Link to="/transparencia" className="underline hover:text-pulso-dourado-claro">{getPulsoLinkLabel(localeId, '/transparencia', 'Transparência e governança')}</Link>.
+@@ -93 +92 @@ export default function Ouvidoria() {
+-        <h2 className="text-xl font-bold text-pulso-verde mb-4">Canais oficiais de denúncia</h2>
++        <h2 className="text-xl font-bold text-pulso-verde mb-4" lang={textLang}>{t("Canais oficiais de denúncia")}</h2>
+diff --git a/site/src/pages/SusNetwork.tsx b/site/src/pages/SusNetwork.tsx
+index 6f37d4d..8c00b33 100644
+--- a/site/src/pages/SusNetwork.tsx
++++ b/site/src/pages/SusNetwork.tsx
+@@ -1,0 +2,2 @@ import { Link } from 'react-router-dom';
++import { translateText } from '@shared/data/locales';
++import { useAppearance } from '@shared/context/AppearanceContext';
+@@ -13,0 +16,3 @@ export default function SusNetwork() {
++  const { localeId } = useAppearance();
++  const t = (text: string) => translateText(localeId, text);
++  const textLang = localeId === 'es' ? 'es-419' : 'pt-BR';
+@@ -16,5 +21,3 @@ export default function SusNetwork() {
+-      <h1 className="text-3xl font-bold text-pulso-verde mb-4">Rede do Sistema Único de Saúde (Rede SUS): onde encontrar especialistas</h1>
+-      <p className="text-pulso-marrom mb-8 max-w-2xl">
+-        Encontre unidades de saúde do Distrito Federal (DF) por região, com plano de expansão para rede privada e busca por
+-        atendimento humanizado/culturalmente competente. A navegação completa, com mapa interativo e
+-        georreferenciamento em tempo real, está disponível no{' '}
++      <h1 className="text-3xl font-bold text-pulso-verde mb-4" lang={textLang}>{t("Rede do Sistema Único de Saúde (Rede SUS): onde encontrar especialistas")}</h1>
++      <p lang={textLang} className="text-pulso-marrom mb-8 max-w-2xl">
++        {t("Encontre unidades de saúde do Distrito Federal (DF) por região, com plano de expansão para rede privada e busca por atendimento humanizado/culturalmente competente. A navegação completa, com mapa interativo e georreferenciamento em tempo real, está disponível no")}{' '}
+@@ -26,3 +29,3 @@ export default function SusNetwork() {
+-      <p className="text-xs text-pulso-marrom/70 mb-10 max-w-2xl bg-pulso-creme border border-pulso-dourado/25 rounded-lg p-3">
+-        Dados oficiais da{' '}
+-        <a href="https://www.saude.df.gov.br/regioes-de-saude" target="_blank" rel="noopener noreferrer" className="text-pulso-verde-accent hover:underline">
++      <p lang={textLang} className="text-xs text-pulso-marrom/70 mb-10 max-w-2xl bg-pulso-creme border border-pulso-dourado/25 rounded-lg p-3">
++        {t("Dados oficiais da")}{' '}
++        <a lang="pt-BR" href="https://www.saude.df.gov.br/regioes-de-saude" target="_blank" rel="noopener noreferrer" className="text-pulso-verde-accent hover:underline">
+@@ -30,3 +33 @@ export default function SusNetwork() {
+-        </a>, organizados pelas 7 Regiões de Saúde. A cobertura de Unidades Básicas de Saúde (UBS) é completa para as Regiões Oeste e Sul e
+-        representativa para as demais — a rede SES-DF soma mais de 170 UBS, com novas unidades sendo abertas
+-        continuamente. Em caso de divergência, consulte sempre{' '}
++        </a>{t(", organizados pelas 7 Regiões de Saúde. A cobertura de Unidades Básicas de Saúde (UBS) é completa para as Regiões Oeste e Sul e representativa para as demais — a rede SES-DF soma mais de 170 UBS, com novas unidades sendo abertas continuamente. Em caso de divergência, consulte sempre")}{' '}
+@@ -34 +35 @@ export default function SusNetwork() {
+-          Busca Saúde (SES-DF)
++          {t("Busca Saúde (SES-DF)")}
+@@ -48 +49 @@ export default function SusNetwork() {
+-              <h2 className="text-lg font-bold text-pulso-verde">{region.nome}</h2>
++              <h2 className="text-lg font-bold text-pulso-verde" lang={textLang}>{t(region.nome)}</h2>
+@@ -52 +53 @@ export default function SusNetwork() {
+-              Abrange: {region.ras.join(', ')} · Superintendente: {region.superintendente} · Tel: {region.telefone}
++              <span lang={textLang}>{t('Abrange:')}</span> {region.ras.join(', ')} · <span lang={textLang}>{t('Superintendente:')}</span> {region.superintendente} · <span lang={textLang}>{t('Tel:')}</span> {region.telefone}
+@@ -57 +58 @@ export default function SusNetwork() {
+-                <h3 className="text-sm font-semibold text-pulso-marrom mb-2">Hospitais Regionais</h3>
++                <h3 className="text-sm font-semibold text-pulso-marrom mb-2" lang={textLang}>{t("Hospitais Regionais")}</h3>
+@@ -66 +67 @@ export default function SusNetwork() {
+-                      <p className="text-xs text-pulso-marrom mb-2">Tel: {h.telefone}</p>
++                      <p className="text-xs text-pulso-marrom mb-2"><span lang={textLang}>{t('Tel:')}</span> {h.telefone}</p>
+@@ -83 +84 @@ export default function SusNetwork() {
+-                <h3 className="text-sm font-semibold text-pulso-marrom mb-2">UPAs — Unidades de Pronto Atendimento 24h</h3>
++                <h3 className="text-sm font-semibold text-pulso-marrom mb-2" lang={textLang}>{t("UPAs — Unidades de Pronto Atendimento 24h")}</h3>
+@@ -100 +101 @@ export default function SusNetwork() {
+-                <h3 className="text-sm font-semibold text-pulso-marrom mb-2">UBS — Unidades Básicas de Saúde</h3>
++                <h3 className="text-sm font-semibold text-pulso-marrom mb-2" lang={textLang}>{t("UBS — Unidades Básicas de Saúde")}</h3>
+@@ -117 +118 @@ export default function SusNetwork() {
+-                <h3 className="text-sm font-semibold text-pulso-marrom mb-2">Centros de Atenção Psicossocial (CAPS)</h3>
++                <h3 className="text-sm font-semibold text-pulso-marrom mb-2" lang={textLang}>{t("Centros de Atenção Psicossocial (CAPS)")}</h3>
+@@ -130 +131 @@ export default function SusNetwork() {
+-                <h3 className="text-sm font-semibold text-pulso-marrom mb-2">
++                <h3 lang="pt-BR" className="text-sm font-semibold text-pulso-marrom mb-2">
+@@ -138 +139 @@ export default function SusNetwork() {
+-                      {c.telefone && <p className="text-xs text-pulso-marrom/70">Tel: {c.telefone}</p>}
++                      {c.telefone && <p className="text-xs text-pulso-marrom/70"><span lang={textLang}>{t('Tel:')}</span> {c.telefone}</p>}
+@@ -148 +149 @@ export default function SusNetwork() {
+-      <h2 className="text-xl font-bold text-pulso-verde mb-4">Outros serviços da rede SES-DF</h2>
++      <h2 className="text-xl font-bold text-pulso-verde mb-4" lang={textLang}>{t("Outros serviços da rede SES-DF")}</h2>
+
+10. REFERÊNCIA DO COMMIT
+Este relatório integra o commit local feat(i18n): traduzir pacote autorizado de cinco telas. O hash é fornecido na entrega, para evitar referência circular ao próprio conteúdo. Sem push/deploy.

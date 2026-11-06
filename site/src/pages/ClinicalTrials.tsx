@@ -1,4 +1,5 @@
 import type React from 'react';
+import { translateText } from '@shared/data/locales';
 import { getPulsoLinkLabel } from '@shared/data/pulsoContent';
 import PopulationNotice from '@shared/components/PopulationNotice';
 import { Link } from 'react-router-dom';
@@ -21,24 +22,28 @@ import {
 
 export default function ClinicalTrials() {
   const { brand, localeId } = useAppearance();
+  const t = (text: string) => translateText(localeId, text);
+  const textLang = localeId === 'es' ? 'es-419' : 'pt-BR';
+  const noticeTemplate = ensaiosHero.notice.text.replace(/^O (.*?) não conduz/, 'O {brand} não conduz');
+  const noticeBrand = ensaiosHero.notice.text.match(/^O (.*?) não conduz/)?.[1] ?? brand.name;
+  const noticeParts = t(noticeTemplate).replace('{brand}', noticeBrand)
+    .split(/(Termo de Consentimento Livre e (?:Informado|Esclarecido) \(TCLE\))/);
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 py-16">
       {/* Hero */}
-      <span className="eyebrow text-pulso-verde-accent">{ensaiosHero.kicker}</span>
+      <span lang={textLang} className="eyebrow text-pulso-verde-accent">{t(ensaiosHero.kicker)}</span>
       <h1 className="text-3xl font-bold text-pulso-verde mt-1 mb-4">{getPulsoLinkLabel(localeId, '/ensaios-clinicos', ensaiosHero.title)}</h1>
-      <p className="text-pulso-marrom mb-6 max-w-2xl">{ensaiosHero.subtitle}</p>
+      <p lang={textLang} className="text-pulso-marrom mb-6 max-w-2xl">{t(ensaiosHero.subtitle)}</p>
       <PopulationNotice className="text-sm text-pulso-marrom mb-4" />
       <div className="rounded-xl border border-pulso-dourado/40 bg-pulso-creme p-4 flex gap-3 text-sm text-pulso-marrom mb-14">
         <span className="text-lg leading-none">{ensaiosHero.notice.icon}</span>
-        <p>{ensaiosHero.notice.text}</p>
+        <p lang={textLang}>{noticeParts.map((part, index) => index === 1 ? <span lang="pt-BR" key={index}>{part}</span> : part)}</p>
       </div>
 
       {/* O que é um ensaio clínico */}
-      <Section title="O que é um ensaio clínico?">
-        <p className="text-sm text-pulso-marrom mb-6">
-          Ensaio clínico é uma pesquisa organizada para responder uma pergunta específica sobre saúde: Este remédio
-          funciona melhor que o atual? Esta vacina protege contra esta doença? Este tratamento tem efeito colateral
-          em quem tem hipertensão?
+      <Section title={t("O que é um ensaio clínico?")} titleLang={textLang}>
+        <p lang={textLang} className="text-sm text-pulso-marrom mb-6">
+          {t("Ensaio clínico é uma pesquisa organizada para responder uma pergunta específica sobre saúde: Este remédio funciona melhor que o atual? Esta vacina protege contra esta doença? Este tratamento tem efeito colateral em quem tem hipertensão?")}
         </p>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-8">
           {trialPhases.map((p) => (
@@ -192,10 +197,10 @@ export default function ClinicalTrials() {
   );
 }
 
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
+function Section({ title, titleLang, children }: { title: string; titleLang?: string; children: React.ReactNode }) {
   return (
     <section className="mb-14">
-      <h2 className="text-xl font-bold text-pulso-verde mb-5">{title}</h2>
+      <h2 lang={titleLang} className="text-xl font-bold text-pulso-verde mb-5">{title}</h2>
       {children}
     </section>
   );

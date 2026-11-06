@@ -63,32 +63,36 @@ export default function Home() {
 
         <div>
           <h3 className="font-bold mb-3 text-sm text-pulso-verde font-pulso-display">
-            Acesso rápido
+            <span lang={localeId === 'es' ? 'es-419' : 'pt-BR'}>{t("Acesso rápido")}</span>
           </h3>
           <div className="grid grid-cols-2 gap-3">
             <QuickLink
               to="/mapa"
               icon="📍"
               pulsoIcon="/static/brand/elementos/icone-hospital-comunidade.png"
-              label="Encontrar Unidade de Saúde"
+              lang={localeId === 'es' ? 'es-419' : 'pt-BR'}
+              label={t("Encontrar Unidade de Saúde")}
             />
             <QuickLink
               to="/radar"
               icon="📡"
               pulsoIcon="/static/brand/elementos/icone-coracao-pulsa.png"
-              label="Radar comunitário"
+              lang={localeId === 'es' ? 'es-419' : 'pt-BR'}
+              label={t("Radar comunitário")}
             />
             <QuickLink
               to="/saude"
               icon="📚"
               pulsoIcon="/static/brand/elementos/icone-livro-ideias.png"
-              label="Biblioteca de saúde"
+              lang={localeId === 'es' ? 'es-419' : 'pt-BR'}
+              label={t("Biblioteca de saúde")}
             />
             <QuickLink
               to="/denunciar"
               icon="⚖️"
               pulsoIcon="/static/brand/elementos/icone-mao-balanca.png"
-              label="Direito à saúde"
+              lang={localeId === 'es' ? 'es-419' : 'pt-BR'}
+              label={t("Direito à saúde")}
             />
             <QuickLink
               to="/perguntas"
@@ -102,7 +106,7 @@ export default function Home() {
         {myConditions.length > 0 && (
           <div>
             <h3 className="font-bold mb-3 text-sm text-pulso-verde font-pulso-display">
-              Suas condições acompanhadas
+              <span lang={localeId === 'es' ? 'es-419' : 'pt-BR'}>{t("Suas condições acompanhadas")}</span>
             </h3>
             <div className="space-y-2">
               {myConditions.map((c) => (
@@ -136,11 +140,13 @@ function QuickLink({
   icon,
   pulsoIcon,
   label,
+  lang,
 }: {
   to: string;
   icon: string;
   pulsoIcon?: string;
   label: string;
+  lang?: string;
 }) {
   return (
     <Link
@@ -152,7 +158,7 @@ function QuickLink({
       ) : (
         <span className="text-2xl">{icon}</span>
       )}
-      <span className="text-xs font-semibold text-pulso-verde">{label}</span>
+      <span lang={lang} className="text-xs font-semibold text-pulso-verde">{label}</span>
     </Link>
   );
 }
