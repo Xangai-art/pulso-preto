@@ -86,7 +86,7 @@ export default function DataIndicators() {
           dados e a governança do projeto estão descritas em Transparência.
         </p>
         <Link to="/transparencia" className="text-pulso-verde-accent hover:underline font-medium text-sm">
-          Ir para {getPulsoLinkLabel(localeId, '/transparencia', 'Transparência e governança')} →
+          {localeId === 'es' ? 'Ir a' : 'Ir para'} {getPulsoLinkLabel(localeId, '/transparencia', 'Transparência e governança')} →
         </Link>
       </section>
     </div>

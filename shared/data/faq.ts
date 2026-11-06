@@ -130,7 +130,7 @@ export const faqItems: FaqItem[] = [
       es: 'No tiene que aceptarlo. El racismo es delito (Ley nº 7.716/1989) y, desde 2023, la injuria racial también se trata como racismo (Ley nº 14.532/2023). Anote fecha, lugar, nombres y testigos, si los hay. Puede reportarlo en la App Sentinela y buscar la Ouvidoria del SUS (136), la Ouvidoria-Geral del Distrito Federal (162) o el Disque Direitos Humanos (100). En casos graves, haga la denuncia policial.',
     },
     to: '/ouvidoria',
-    linkLabel: { pt: 'Ir para a Ouvidoria', es: 'Ir a la Ouvidoria' },
+    linkLabel: { pt: 'Ir para a Ouvidoria', es: 'Ir a la Defensoría' },
   },
   {
     id: 'pnsipn',

@@ -24,7 +24,7 @@ const UI = {
     placeholder: 'Ej.: presión alta, racismo, acompañante, UPA...',
     none: 'No se encontraron preguntas. Pruebe otra palabra o hable con la Ouvidoria.',
     footer: '¿No encontró su duda? Busque su Unidad Básica de Salud o la Ouvidoria.',
-    ouvidoria: 'Ir a la Ouvidoria →',
+    ouvidoria: 'Ir a la Defensoría →',
   },
 } as const;
 

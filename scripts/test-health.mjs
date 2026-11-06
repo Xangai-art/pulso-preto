@@ -12,6 +12,22 @@ try {
   const { MVP_IDS, conditionNames, matchesCondition, groupSystems, citizenText, distanceKm, wordPages, orderUnits, matchesRisk } = await server.ssrLoadModule('/src/lib/healthPresentation.ts');
   const { diseaseCategories } = await server.ssrLoadModule('../shared/data/diseases.ts');
   const { getDeepContent } = await server.ssrLoadModule('../shared/data/deepContentRegistry.ts');
+  const { getPulsoContent, getPulsoLinkLabel } = await server.ssrLoadModule('../shared/data/pulsoContent.ts');
+  const { faqItems } = await server.ssrLoadModule('../shared/data/faq.ts');
+  check('rótulo canônico de transparência sem hibridismo PT/ES', () => {
+    const fallback = 'Transparência e governança';
+    assert.equal(getPulsoLinkLabel('pt', '/transparencia', fallback), fallback);
+    assert.equal(getPulsoLinkLabel('es', '/transparencia', fallback), 'Transparencia y gobernanza');
+    const footerLabel = getPulsoContent('es').footer.columns.flatMap(column => column.items).find(item => item.to === '/transparencia')?.label;
+    assert.equal(footerLabel, 'Transparencia y gobernanza');
+  });
+  check('link genérico da FAQ usa a nomenclatura ES da navegação', () => {
+    const item = faqItems.find(item => item.id === 'racismo-no-atendimento');
+    assert.equal(item.to, '/ouvidoria');
+    assert.equal(item.linkLabel.pt, 'Ir para a Ouvidoria');
+    assert.equal(item.linkLabel.es, `Ir a la ${getPulsoLinkLabel('es', '/ouvidoria', 'Ouvidoria')}`);
+    assert.equal(item.linkLabel.es, 'Ir a la Defensoría');
+  });
   const entries = diseaseCategories.flatMap(category => category.diseases.map(disease => ({ category, disease })));
   check('catálogo preservado em nove sistemas, eixo e não classificados', () => {
     const systems = groupSystems(diseaseCategories);
