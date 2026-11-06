@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppStore } from '../store/useAppStore';
 import TopBar from '../components/TopBar';
+import { useHealthText } from '../lib/healthI18n';
 
 const symptomOptions = [
   'Tosse', 'Febre', 'Falta de ar', 'Dor de cabeça', 'Fadiga', 'Dor no corpo', 'Ansiedade', 'Nenhum sintoma',
@@ -17,6 +18,8 @@ const rotatingQuestions = [
 // Tema único de produção: Pulso Preto (PP3). Tokens `pulso-*` diretos.
 export default function CheckIn() {
   const navigate = useNavigate();
+  const { localeId, t } = useHealthText();
+  const textLang = localeId === 'es' ? 'es' : 'pt-BR';
   const addCheckIn = useAppStore((s) => s.addCheckIn);
   const [symptoms, setSymptoms] = useState<string[]>([]);
   const [medicationAdherence, setMedicationAdherence] = useState<'sim' | 'parcial' | 'nao' | 'na'>('na');
@@ -67,12 +70,12 @@ export default function CheckIn() {
   }
 
   return (
-    <div className="min-h-screen bg-pulso-creme font-pulso-body">
-      <TopBar title="Check-in rápido" showBack />
+    <div lang={textLang} className="min-h-screen bg-pulso-creme font-pulso-body">
+      <TopBar title={t('Check-in rápido')} showBack />
       <div className="px-5 pt-4 pb-8 space-y-6">
         <div>
           <h2 className="font-bold text-sm mb-3 text-pulso-verde font-pulso-display">
-            Você sentiu algum destes sintomas hoje?
+            {t("Você sentiu algum destes sintomas hoje?")}
           </h2>
           <div className="flex flex-wrap gap-2">
             {symptomOptions.map((s) => (
@@ -83,7 +86,7 @@ export default function CheckIn() {
                   symptoms.includes(s) ? 'bg-pulso-verde text-pulso-creme border-pulso-verde' : 'bg-white border-pulso-dourado/30 text-pulso-marrom'
                 }`}
               >
-                {s}
+                {t(s)}
               </button>
             ))}
           </div>
@@ -91,7 +94,7 @@ export default function CheckIn() {
 
         <div>
           <h2 className="font-bold text-sm mb-3 text-pulso-verde font-pulso-display">
-            Você tomou sua medicação conforme prescrito?
+            {t("Você tomou sua medicação conforme prescrito?")}
           </h2>
           <div className="grid grid-cols-4 gap-2">
             {(['sim', 'parcial', 'nao', 'na'] as const).map((v) => (
@@ -102,7 +105,7 @@ export default function CheckIn() {
                   medicationAdherence === v ? 'bg-pulso-verde text-pulso-creme border-pulso-verde' : 'bg-white border-pulso-dourado/30 text-pulso-marrom'
                 }`}
               >
-                {v === 'na' ? 'N/A' : v}
+                {v === 'na' ? 'N/A' : t(v)}
               </button>
             ))}
           </div>
@@ -110,7 +113,7 @@ export default function CheckIn() {
 
         <div>
           <h2 className="font-bold text-sm mb-3 text-pulso-verde font-pulso-display">
-            Teve dificuldade de acesso a atendimento hoje?
+            {t("Teve dificuldade de acesso a atendimento hoje?")}
           </h2>
           <div className="grid grid-cols-2 gap-2 mb-3">
             <button
@@ -119,7 +122,7 @@ export default function CheckIn() {
                 accessDifficulty === true ? 'bg-pulso-verde text-pulso-creme border-pulso-verde' : 'bg-white border-pulso-dourado/30 text-pulso-marrom'
               }`}
             >
-              Sim
+              {t("Sim")}
             </button>
             <button
               onClick={() => setAccessDifficulty(false)}
@@ -127,7 +130,7 @@ export default function CheckIn() {
                 accessDifficulty === false ? 'bg-pulso-verde text-pulso-creme border-pulso-verde' : 'bg-white border-pulso-dourado/30 text-pulso-marrom'
               }`}
             >
-              Não
+              {t("Não")}
             </button>
           </div>
           {accessDifficulty && (
@@ -135,6 +138,7 @@ export default function CheckIn() {
               value={accessDetails}
               onChange={(e) => setAccessDetails(e.target.value)}
               rows={2}
+              lang="pt-BR"
               placeholder="Descreva brevemente (opcional)..."
               className="w-full rounded-lg border border-pulso-dourado/30 p-3 text-sm"
             />
@@ -142,14 +146,14 @@ export default function CheckIn() {
         </div>
 
         <div>
-          <h2 className="font-bold text-sm mb-2 text-pulso-verde font-pulso-display">
-            {question}
+          <h2 lang={question === 'Como você avalia seu bem-estar emocional hoje?' ? textLang : 'pt-BR'} className="font-bold text-sm mb-2 text-pulso-verde font-pulso-display">
+            {question === 'Como você avalia seu bem-estar emocional hoje?' ? t(question) : question}
           </h2>
           <textarea
             value={rotatingAnswer}
             onChange={(e) => setRotatingAnswer(e.target.value)}
             rows={2}
-            placeholder="Sua resposta (opcional)..."
+            placeholder={t('Sua resposta (opcional)...')}
             className="w-full rounded-lg border border-pulso-dourado/30 p-3 text-sm"
           />
         </div>
@@ -158,7 +162,7 @@ export default function CheckIn() {
           onClick={submit}
           className="w-full rounded-xl bg-pulso-dourado text-pulso-verde font-bold py-3.5"
         >
-          Enviar check-in
+          {t("Enviar check-in")}
         </button>
       </div>
     </div>

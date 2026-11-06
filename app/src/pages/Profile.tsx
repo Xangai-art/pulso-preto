@@ -3,10 +3,13 @@ import { useAppStore } from '../store/useAppStore';
 import { lgpdConsentLevels } from '@shared/data/project';
 import { useAppearance } from '@shared/context/AppearanceContext';
 import TopBar from '../components/TopBar';
+import { useHealthText } from '../lib/healthI18n';
 
 // Tema único de produção: Pulso Preto (PP3). Tokens `pulso-*` diretos.
 export default function Profile() {
   const { brand: projectInfo } = useAppearance();
+  const { localeId, t } = useHealthText();
+  const textLang = localeId === 'es' ? 'es' : 'pt-BR';
   const consent = useAppStore((s) => s.consent);
   const setConsent = useAppStore((s) => s.setConsent);
   const baseline = useAppStore((s) => s.baseline);
@@ -35,23 +38,23 @@ export default function Profile() {
   const cardClass = 'rounded-xl border border-pulso-dourado/25 bg-white p-4';
 
   return (
-    <div className="min-h-screen bg-pulso-creme font-pulso-body">
-      <TopBar title="Meu Perfil" />
+    <div lang={textLang} className="min-h-screen bg-pulso-creme font-pulso-body">
+      <TopBar title={t('Meu Perfil')} />
       <div className="px-5 pt-3 pb-10 space-y-6">
         <div className={cardClass}>
           <h2 className="font-bold text-sm mb-3 text-pulso-verde font-pulso-display">
-            Resumo
+            {t("Resumo")}
           </h2>
           <div className="grid grid-cols-3 gap-2 text-center">
-            <Stat label="Check-ins" value={checkIns.length} />
-            <Stat label="Relatos" value={reports.length} />
-            <Stat label="Condições" value={baseline?.conditions.length ?? 0} />
+            <Stat label={t("Check-ins")} value={checkIns.length} />
+            <Stat label={t("Relatos")} value={reports.length} />
+            <Stat label={t("Condições")} value={baseline?.conditions.length ?? 0} />
           </div>
         </div>
 
         <div>
           <h2 className="font-bold text-sm mb-3 text-pulso-verde font-pulso-display">
-            Consentimentos (Lei Geral de Proteção de Dados)
+            {t("Consentimentos (Lei Geral de Proteção de Dados)")}
           </h2>
           <div className="space-y-2">
             {lgpdConsentLevels.map((l) => {
@@ -68,7 +71,7 @@ export default function Profile() {
                   key={l.level}
                   className="flex items-center justify-between rounded-xl border border-pulso-dourado/25 bg-white p-3"
                 >
-                  <span className="text-sm text-pulso-marrom/90">{l.name}</span>
+                  <span className="text-sm text-pulso-marrom/90">{t(l.name)}</span>
                   <input
                     type="checkbox"
                     checked={checked}
@@ -84,13 +87,13 @@ export default function Profile() {
 
         <div>
           <h2 className="font-bold text-sm mb-3 text-pulso-verde font-pulso-display">
-            Meus dados
+            {t("Meus dados")}
           </h2>
           <button
             onClick={exportData}
             className="w-full rounded-xl border border-pulso-dourado/40 text-pulso-marrom font-semibold py-3 mb-3"
           >
-            Exportar meus dados (JSON)
+            {t("Exportar meus dados (JSON)")}
           </button>
 
           {!confirmDelete ? (
@@ -98,10 +101,10 @@ export default function Profile() {
               onClick={() => setConfirmDelete(true)}
               className="w-full rounded-xl border border-red-300 text-red-600 font-semibold py-3"
             >
-              Apagar meus dados
+              {t("Apagar meus dados")}
             </button>
           ) : (
-            <div className="rounded-xl border border-red-300 bg-red-50 p-4">
+            <div lang="pt-BR" className="rounded-xl border border-red-300 bg-red-50 p-4">
               <p className="text-xs text-red-700 mb-3">
                 Isso vai anonimizar e apagar todos os seus dados locais deste dispositivo. Deseja continuar?
               </p>
@@ -123,7 +126,7 @@ export default function Profile() {
           )}
         </div>
 
-        <p className="text-[11px] text-center pt-4 text-pulso-marrom/50">
+        <p lang="pt-BR" className="text-[11px] text-center pt-4 text-pulso-marrom/50">
           App Sentinela — {projectInfo.name}
         </p>
       </div>

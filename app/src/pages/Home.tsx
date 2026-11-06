@@ -16,6 +16,10 @@ export default function Home() {
   const baseline = useAppStore((s) => s.baseline);
   const { localeId, t } = useHealthText();
   const content = getPulsoContent(localeId);
+  const textLang = localeId === 'es' ? 'es' : 'pt-BR';
+  const counterParts = t('Você já fez {{n}} check-in(s) desde que se juntou ao Sentinela. Obrigado por fazer parte da vigilância comunitária.').split('{{n}}');
+  const displayConditionName = (name: string) =>
+    name === 'Depressão' || name === 'Asma' ? t(name) : name;
 
   const lastCheckIn = checkIns[0];
   const daysSinceLastCheckIn = lastCheckIn
@@ -116,7 +120,7 @@ export default function Home() {
                   className="flex items-center gap-3 rounded-xl border border-pulso-dourado/25 bg-white p-3"
                 >
                   <span className="text-xl">{c.icon}</span>
-                  <span className="text-pulso-verde"><span className="block text-base font-medium">{conditionNames(c).popular}</span><span className="block text-base text-pulso-verde-medio">{conditionNames(c).technical}</span></span>
+                  <span lang={c.id === 'depressao' || c.id === 'asma' ? textLang : 'pt-BR'} className="text-pulso-verde"><span className="block text-base font-medium">{displayConditionName(conditionNames(c).popular)}</span><span className="block text-base text-pulso-verde-medio">{displayConditionName(conditionNames(c).technical)}</span></span>
                 </Link>
               ))}
             </div>
@@ -124,10 +128,8 @@ export default function Home() {
         )}
 
         <div className="rounded-xl border border-pulso-dourado/25 bg-white p-4">
-          <p className="text-xs text-pulso-marrom/70">
-            Você já fez{' '}
-            <strong className="text-pulso-verde">{checkIns.length}</strong> check-in(s) desde
-            que se juntou ao Sentinela. Obrigado por fazer parte da vigilância comunitária.
+          <p lang={textLang} className="text-xs text-pulso-marrom/70">
+            {counterParts[0]}<strong className="text-pulso-verde">{checkIns.length}</strong>{counterParts[1]}
           </p>
         </div>
       </div>

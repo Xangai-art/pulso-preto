@@ -1,0 +1,747 @@
+RELATÓRIO — PACOTE ES v3: HOME, CHECK-IN, RADAR E PERFIL
+Data: 06/11/2026
+Workspace: /home/user/webapp | Branch: main
+Base: 73c31d596e3913fcbdc9d5a65e1513b45a415f84
+Fonte: /home/user/uploaded_files/pacote_traducao_es_telas (1).md, seções 7–10 (145–224).
+URL da fonte: https://www.genspark.ai/api/files/s/kEv0i6RT
+Status: implementação e validação LOCAL; commit separado solicitado; sem push/deploy.
+Produção de referência: https://pulso-preto.fratozsistemas.workers.dev
+O commit anterior 73c31d5 está publicado/verificado; este relatório não afirma publicação do v3.
+
+1. RESUMO E ESCOPO
+47 entradas novas em es.json e 47 em pt-BR.json: 234/234 chaves.
+As 187 entradas anteriores de cada idioma permanecem idênticas.
+46 entradas conectadas à apresentação das quatro telas; uma tradução de recomendação
+clínica inserida como texto de locale, mas deliberadamente NÃO conectada à exibição ES.
+A recomendação “Procure a UBS...” continua exatamente em PT, lang="pt-BR", até revisão
+clínica da tradução. A inserção no dicionário não representa aprovação clínica.
+Não há hardcode de traduções ES nos componentes. Não houve tradução fora das seções 7–10.
+O diff de produto contém somente quatro componentes e os dois JSONs de locale.
+Suporte documental: README.md (seção v3) e este relatório solicitado.
+QA local ignorado pelo Git em .qa-tools/i18n/; sem dependência nova no produto.
+
+2. GUARDAS: RÓTULO EXIBIDO × VALOR ARMAZENADO
+CheckIn.tsx / useAppStore.ts: os dados abaixo já eram persistidos antes deste lote.
+Nenhum nome de campo, enum, tipo, valor de seleção ou handler foi traduzido.
+
+Medicação:
+  Valor salvo sim     | rótulo PT sim     | rótulo ES sí
+  Valor salvo parcial | rótulo PT parcial | rótulo ES parcial
+  Valor salvo nao     | rótulo PT nao     | rótulo ES no
+  Valor salvo na      | rótulo PT N/A     | rótulo ES N/A
+  O enum permanece 'sim' | 'parcial' | 'nao' | 'na'; padrão 'na'.
+  A comparação de seleção e setMedicationAdherence(v) continuam usando v original.
+
+Acesso a atendimento:
+  Valor salvo true  (booleano) | rótulo PT Sim | rótulo ES Sí
+  Valor salvo false (booleano) | rótulo PT Não | rótulo ES No
+  Estado inicial null preservado; submissão ainda usa accessDifficulty ?? false.
+
+Sintomas (os próprios textos PT já eram os valores salvos):
+  Valor salvo Tosse          | rótulo ES Tos
+  Valor salvo Febre          | rótulo ES Fiebre
+  Valor salvo Falta de ar    | rótulo ES Falta de aire
+  Valor salvo Dor de cabeça | rótulo ES Dolor de cabeza
+  Valor salvo Fadiga         | rótulo ES Fatiga
+  Valor salvo Dor no corpo  | rótulo ES Dolor en el cuerpo
+  Valor salvo Ansiedade     | rótulo ES Ansiedad
+  Valor salvo Nenhum sintoma | rótulo ES Ningún síntoma
+  symptomOptions e toggleSymptom(s) intactos: somente o conteúdo do botão vira t(s).
+  Nenhuma nova exclusividade/validação para “Nenhum sintoma” foi introduzida.
+
+Campos livres accessDetails e rotatingAnswer não são traduzidos nem transformados.
+Placeholder é somente apresentação. addCheckIn, IDs, data e schema intactos.
+
+Consentimentos no Perfil:
+  level 1: level1_appUsage — Uso do app / Uso de la app — obrigatório/desabilitado intacto.
+  level 2: level2_research — Participação em pesquisas / Participación en investigaciones.
+  level 3: level3_aggregation — Dados agregados para políticas públicas / Datos agregados para políticas públicas.
+  level 4: level4_geolocation — Geolocalização precisa / Geolocalización precisa.
+Somente t(l.name) na renderização. lgpdConsentLevels, required, checked, toggleLevel,
+setConsent e consentedAt não foram modificados. Exportação, confirmação de exclusão,
+resetAll e formato do arquivo JSON permanecem os mesmos.
+Radar: radarOptIn, checked, onChange e setRadarOptIn intactos.
+
+3. CONTADOR, NOMES E FONTE COMPLETA
+A fonte real não tinha um template textual {{n}}: usava interpolação JSX com
+checkIns.length em <strong>. Foi criado o template PT/ES com {{n}}, dividido nesse
+marcador para inserir o MESMO checkIns.length e preservar a ênfase visual.
+Nenhum número 1 foi hardcoded. Testados 0, 1 e 3 registros sintéticos em PT e ES.
+Nomes Depressão/Asma mapeados no limite de apresentação da Home, via t(name).
+Demais condições continuam PT; IDs/rotas/catálogo diseases.ts não foram modificados.
+Não foi traduzido o catálogo completo nem o helper global conditionNames.
+Radar usa a fonte completa de “Como funciona”, incluindo a frase final:
+  PT: Os exemplos desta tela mostram como essa informação pode ser apresentada.
+  ES: Los ejemplos de esta pantalla muestran cómo se puede presentar esta información.
+O destaque <strong>Como funciona:</strong> foi preservado e traduzido separadamente.
+Ceilândia e Samambaia mantêm a grafia da fonte (não a grafia truncada da nota do pacote).
+Números 34, 21, 24–48h e 48h mantêm o significado; ES só ajusta espaço antes de h.
+
+4. IDIOMA DOS FRAGMENTOS E LIMITES
+Novos fragmentos usam lang="es" (explícito ou herdado da raiz da tela) com PT pt-BR.
+O html global e sincronização existentes (es-419 / pt-BR) não foram alterados.
+Idioma explícito PT para regiões, recomendação clínica, outras perguntas rotativas,
+placeholder de detalhes de acesso, estado inativo do Radar e confirmação de exclusão.
+Apenas a pergunta rotativa de bem-estar emocional está autorizada no pacote: as
+outras três, seu array e a seleção por getDate() % length permanecem PT/inalterados.
+Não se mudou comportamento para forçar uma pergunta autorizada a aparecer diariamente.
+Permanecem fora do pacote: card superior de check-in da Home; estado de sucesso e
+retorno do Check-in; placeholder de detalhes de acesso; demais perguntas rotativas;
+estado inativo do Radar; confirmação/cancelar/confirmar exclusão no Perfil.
+Não foram traduzidas essas strings novas por extrapolação de escopo.
+
+5. TESTES EXECUTADOS E RESULTADOS
+Antes das edições: 16 baselines PT capturados para quatro rotas em 390/1440 px e
+Radar ativo/inativo. Arquivo local: .qa-tools/i18n/v3-baseline.json.
+
+Teste v3: node .qa-tools/i18n/v3-app.mjs
+  PASS 32 estados PT/ES (quatro rotas, duas larguras, Radar ativo/inativo).
+  PASS 1.239 verificações (inclui paridade, preservação e apresentação).
+  Percurso real por links: Home -> Check-in -> Radar -> Perfil em cada combinação.
+  PT: texto integral normalizado, links/targets, imagens/classes e controles/
+      placeholders iguais ao baseline anterior, inclusive estados de consentimento.
+  ES Home: Depresión, Asma e frase do contador com {{n}} preenchido.
+  ES Check-in: título, perguntas autorizadas, oito sintomas, sí/parcial/no, Sí/No,
+      pergunta emocional, placeholder e botão de envio. N/A permanece igual.
+  ES Radar: título/participação/opt-in, aviso e badges ilustrativos, mensagens dos
+      dois exemplos, CTA de direito à saúde e “Cómo funciona” completo. Nomes locais
+      intactos; recomendação clínica PT e ausência do texto “Acude a la Unidad...”
+      na interface ES confirmadas. Estado inativo continua PT conforme escopo.
+  ES Perfil: título, resumo/estatísticas, heading LGPD, quatro rótulos de
+      consentimento, meus dados, exportar e apagar. Níveis/estados preservados.
+  Idioma dos textos ES/trechos PT confirmado e sem overflow nos cenários.
+  Contador 0/1/3 em ambos os idiomas, preservando strong no número.
+  Quatro dias sintéticos cobrem toda a rotação: somente a pergunta autorizada é ES.
+  Quatro submissões SINTÉTICAS somente no localStorage descartável do QA estático
+      local testaram sim/parcial/nao/na, Tosse/Febre PT e acesso true/false.
+  Toggles LGPD testados localmente: só a chave selecionada muda; obrigatório
+      permanece desabilitado. Troca PT/ES não altera qualquer dado do store.
+  Opt-in do Radar testado nas duas direções com os mesmos booleanos.
+  Zero pageerror após corrigir o harness; nenhuma chamada API/escrita remota.
+  Todo tráfego externo bloqueado; só GET/HEAD para http://localhost:3000 permitido.
+  Não foram usados dados pessoais reais. Nenhum formulário de produção enviado.
+
+Contratos AST: declarações/arrays/funções comparadas ao commit base e idênticas:
+  CheckIn: symptomOptions, rotatingQuestions, estados, question, toggleSymptom, submit.
+  Profile: exportData, toggleLevel, checked e confirmDelete.
+  Radar: signals (inteiro, inclusive dados e ações), radarOptIn e setRadarOptIn.
+Store, catálogo, project.ts (LGPD), Worker, database, dist e assets sem diff.
+
+Outros testes:
+  TypeScript + build Vite isolado + lint app: sucesso, zero erros/avisos de lint.
+  TypeScript + build Vite isolado + lint site: sucesso, zero erros/avisos de lint.
+  Aviso preexistente de chunk do site >500kB continua; sem ajuste fora do escopo.
+  npm run prebuild:app: 51 checks aprovados (modo content-only, sem exportação).
+  micro-lote.mjs: 150 checks aprovados.
+  emenda.mjs: 196 checks aprovados.
+  pacote-integridade.mjs: 536 checks aprovados; ícone FAQ 28x28/livro preservados.
+  Diagnóstico [i18n:missing-es] ausente dos JS de produção isolados das duas SPAs.
+  git diff --check: aprovado antes do commit.
+Não foi executado npm run build da raiz, exportador de dados, install ou assemble.
+
+Comandos seguros de build usados:
+  cd /home/user/webapp/app && ./node_modules/.bin/tsc -b && ./node_modules/.bin/vite build --outDir ../.qa-tools/i18n/app --emptyOutDir && npm run lint
+  cd /home/user/webapp/site && ./node_modules/.bin/tsc -b && ./node_modules/.bin/vite build --outDir ../.qa-tools/i18n/site --emptyOutDir && npm run lint
+
+Ajustes no harness (não no produto) antes do PASS final:
+  a) checked de textarea: undefined no navegador é serializado como null em JSON.
+     Normalizado no snapshot para comparar semanticamente o mesmo baseline.
+  b) initScript acessava localStorage em documentos sem origem durante criação de
+     contexto/iframe. Limitado à origem do QA, sem filtrar erros da aplicação.
+Limites: Chromium local; sem validação clínica, usuários, VoiceOver/TalkBack ou
+homologação WCAG completa. QA ignorado pelo Git, não dependência de runtime.
+
+6. VARREDURA DE HIBRIDISMOS
+Scanner AST/JSON: 1.133 literais ES, 140 candidatos heurísticos; 140 NÃO são 140 bugs.
+As 47 entradas novas não geraram candidato novo segundo essa heurística. Leitura
+manual das novas entradas: nenhum híbrido PT/ES novo não intencional identificado.
+Check-in/Opt-in, Asma, Check-ins e Relatos são formas/termos adotados no pacote;
+Samambaia, Ceilândia e siglas oficiais não são defeitos de tradução.
+Recomendação PT do Radar é fallback deliberado por revisão clínica, marcado PT;
+textos PT fora do escopo são pendências conhecidas, não novas frases híbridas.
+
+Remanescentes editoriais PT dentro de frases ES (fora das quatro telas; não alterados):
+  site/src/pages/Faq.tsx:25 — No se encontraron preguntas. Pruebe otra palabra o hable con la Ouvidoria.
+  site/src/pages/Faq.tsx:26 — ¿No encontró su duda? Busque su Unidad Básica de Salud o la Ouvidoria.
+  shared/data/doencaRenalCronica.ts:328 — ... si eso no ocurre, busque la Ouvidoria.
+Caso de nomenclatura oficial/local a revisar editorialmente, não corrigido por
+extrapolação: shared/data/faq.ts:130 — Ouvidoria del SUS / Ouvidoria-Geral del Distrito Federal.
+Rótulos/links canônicos já corrigidos nos lotes anteriores continuam passando nos
+checks: Transparencia y gobernanza e Ir a la Defensoría. Nenhum rótulo/link híbrido
+novo identificado nas quatro telas autorizadas; portanto nenhum ajuste extra.
+
+Ocorrências intencionais que não devem ser traduzidas automaticamente:
+  shared/data/faq.ts:74 — “teste do pezinho” entre aspas, após tradução explicativa.
+  shared/data/faq.ts:240 — Cartão SUS como nome de documento brasileiro.
+  shared/data/miomasUterinos.ts:259,369 — São Paulo em referência institucional.
+  Autônimo Português, instituições, nomes oficiais, endereços e referências preservados.
+Scanner local e inventário completo: .qa-tools/i18n/hybrid-source-all.json e
+hybrid-source-candidates.json. Heurística tem cognatos/falsos positivos e não prova
+que todos os textos da aplicação estejam traduzidos.
+
+7. PRESERVAÇÃO, COMMIT E PRÓXIMOS PASSOS
+Código de produto restrito aos seis arquivos abaixo. Nenhum catálogo/ID, regra de
+negócio, consentimento, dados clínicos/científicos, fonte, imagem, documento/PDF,
+rota, URL de produção, modelo de persistência ou dependência foi alterado.
+Não se converteram as SPAs para Hono. Não se restauraram DOCX/XLSX de backup.
+Arquivo herdado alteracoes_necessarias_i18n_pt_es.txt continua fora do commit.
+Commit separado em pt-BR: feat(i18n): traduzir pacote v3 das quatro telas do app
+Sem operação remota GitHub, push ou deploy nesta etapa. Nenhum teste local é
+apresentado como verificação de uma publicação deste v3.
+Próximos passos: revisão clínica da orientação ES; catálogo completo no Lote 2;
+autorização de publicação, depois Workers Builds e verificação real do site.
+
+8. MAPA DE CADA ENTRADA — ARQUIVO/LINHA E CONEXÃO
+Linhas referem-se ao código após a implementação deste v3.
+
+01. PT/chave: Depressão
+    ES: Depresión
+    Locale ES: shared/i18n/es.json:189
+    Paridade PT: shared/i18n/pt-BR.json:189
+    Fonte/conexão: app/src/pages/Home.tsx:22; app/src/pages/Home.tsx:123
+
+02. PT/chave: Asma
+    ES: Asma
+    Locale ES: shared/i18n/es.json:190
+    Paridade PT: shared/i18n/pt-BR.json:190
+    Fonte/conexão: app/src/pages/Home.tsx:22; app/src/pages/Home.tsx:123
+
+03. PT/chave: Você já fez {{n}} check-in(s) desde que se juntou ao Sentinela. Obrigado por fazer parte da vigilância comunitária.
+    ES: Ya realizaste {{n}} check-in(s) desde que te uniste a Sentinela. Gracias por formar parte de la vigilancia comunitaria.
+    Locale ES: shared/i18n/es.json:191
+    Paridade PT: shared/i18n/pt-BR.json:191
+    Fonte/conexão: app/src/pages/Home.tsx:20; app/src/pages/Home.tsx:132
+
+04. PT/chave: Meu Perfil
+    ES: Mi Perfil
+    Locale ES: shared/i18n/es.json:192
+    Paridade PT: shared/i18n/pt-BR.json:192
+    Fonte/conexão: app/src/pages/Profile.tsx:42
+
+05. PT/chave: Resumo
+    ES: Resumen
+    Locale ES: shared/i18n/es.json:193
+    Paridade PT: shared/i18n/pt-BR.json:193
+    Fonte/conexão: app/src/pages/Profile.tsx:46
+
+06. PT/chave: Check-ins
+    ES: Check-ins
+    Locale ES: shared/i18n/es.json:194
+    Paridade PT: shared/i18n/pt-BR.json:194
+    Fonte/conexão: app/src/pages/Profile.tsx:49
+
+07. PT/chave: Relatos
+    ES: Relatos
+    Locale ES: shared/i18n/es.json:195
+    Paridade PT: shared/i18n/pt-BR.json:195
+    Fonte/conexão: app/src/pages/Profile.tsx:50
+
+08. PT/chave: Condições
+    ES: Condiciones
+    Locale ES: shared/i18n/es.json:196
+    Paridade PT: shared/i18n/pt-BR.json:196
+    Fonte/conexão: app/src/pages/Profile.tsx:51
+
+09. PT/chave: Consentimentos (Lei Geral de Proteção de Dados)
+    ES: Consentimientos (Ley General de Protección de Datos)
+    Locale ES: shared/i18n/es.json:197
+    Paridade PT: shared/i18n/pt-BR.json:197
+    Fonte/conexão: app/src/pages/Profile.tsx:57
+
+10. PT/chave: Uso do app
+    ES: Uso de la app
+    Locale ES: shared/i18n/es.json:198
+    Paridade PT: shared/i18n/pt-BR.json:198
+    Fonte/conexão: app/src/pages/Profile.tsx:74; shared/data/project.ts:142 (fonte preservada)
+
+11. PT/chave: Participação em pesquisas
+    ES: Participación en investigaciones
+    Locale ES: shared/i18n/es.json:199
+    Paridade PT: shared/i18n/pt-BR.json:199
+    Fonte/conexão: app/src/pages/Profile.tsx:74; shared/data/project.ts:143 (fonte preservada)
+
+12. PT/chave: Dados agregados para políticas públicas
+    ES: Datos agregados para políticas públicas
+    Locale ES: shared/i18n/es.json:200
+    Paridade PT: shared/i18n/pt-BR.json:200
+    Fonte/conexão: app/src/pages/Profile.tsx:74; shared/data/project.ts:144 (fonte preservada)
+
+13. PT/chave: Geolocalização precisa
+    ES: Geolocalización precisa
+    Locale ES: shared/i18n/es.json:201
+    Paridade PT: shared/i18n/pt-BR.json:201
+    Fonte/conexão: app/src/pages/Profile.tsx:74; shared/data/project.ts:145 (fonte preservada)
+
+14. PT/chave: Meus dados
+    ES: Mis datos
+    Locale ES: shared/i18n/es.json:202
+    Paridade PT: shared/i18n/pt-BR.json:202
+    Fonte/conexão: app/src/pages/Profile.tsx:90
+
+15. PT/chave: Exportar meus dados (JSON)
+    ES: Exportar mis datos (JSON)
+    Locale ES: shared/i18n/es.json:203
+    Paridade PT: shared/i18n/pt-BR.json:203
+    Fonte/conexão: app/src/pages/Profile.tsx:96
+
+16. PT/chave: Apagar meus dados
+    ES: Borrar mis datos
+    Locale ES: shared/i18n/es.json:204
+    Paridade PT: shared/i18n/pt-BR.json:204
+    Fonte/conexão: app/src/pages/Profile.tsx:104
+
+17. PT/chave: Radar Comunitário
+    ES: Radar Comunitario
+    Locale ES: shared/i18n/es.json:205
+    Paridade PT: shared/i18n/pt-BR.json:205
+    Fonte/conexão: app/src/pages/Radar.tsx:38, app/src/pages/Radar.tsx:71
+
+18. PT/chave: Participar do Radar
+    ES: Participar del Radar
+    Locale ES: shared/i18n/es.json:206
+    Paridade PT: shared/i18n/pt-BR.json:206
+    Fonte/conexão: app/src/pages/Radar.tsx:44
+
+19. PT/chave: Opt-in, transparente: seus check-ins ajudam a detectar padrões de saúde na sua região em 24-48h. Você pode desativar quando quiser.
+    ES: Opt-in, transparente: tus check-ins ayudan a detectar patrones de salud en tu región en 24-48 h. Puedes desactivarlo cuando quieras.
+    Locale ES: shared/i18n/es.json:207
+    Paridade PT: shared/i18n/pt-BR.json:207
+    Fonte/conexão: app/src/pages/Radar.tsx:47
+
+20. PT/chave: Exemplos ilustrativos — não são dados atuais da sua região.
+    ES: Ejemplos ilustrativos — no son datos actuales de tu región.
+    Locale ES: shared/i18n/es.json:208
+    Paridade PT: shared/i18n/pt-BR.json:208
+    Fonte/conexão: app/src/pages/Radar.tsx:76
+
+21. PT/chave: Exemplo ilustrativo
+    ES: Ejemplo ilustrativo
+    Locale ES: shared/i18n/es.json:209
+    Paridade PT: shared/i18n/pt-BR.json:209
+    Fonte/conexão: app/src/pages/Radar.tsx:84
+
+22. PT/chave: 34 pessoas na sua região relataram sintomas respiratórios nas últimas 48h — acima do padrão esperado.
+    ES: 34 personas de tu región reportaron síntomas respiratorios en las últimas 48 h — por encima del patrón esperado.
+    Locale ES: shared/i18n/es.json:210
+    Paridade PT: shared/i18n/pt-BR.json:210
+    Fonte/conexão: app/src/pages/Radar.tsx:15; app/src/pages/Radar.tsx:86
+
+23. PT/chave: Procure a Unidade Básica de Saúde (UBS) mais próxima se tiver tosse, febre ou falta de ar.
+    ES: Acude a la Unidad Básica de Salud (UBS) más cercana si tienes tos, fiebre o falta de aire.
+    Locale ES: shared/i18n/es.json:211
+    Paridade PT: shared/i18n/pt-BR.json:211
+    Fonte/conexão: app/src/pages/Radar.tsx:16; app/src/pages/Radar.tsx:88 — ES NÃO EXIBIDO, aguardando revisão clínica
+
+24. PT/chave: 21 pessoas relataram dificuldade de atendimento em Samambaia nas últimas 48h.
+    ES: 21 personas reportaron dificultad de atención en Samambaia en las últimas 48 h.
+    Locale ES: shared/i18n/es.json:212
+    Paridade PT: shared/i18n/pt-BR.json:212
+    Fonte/conexão: app/src/pages/Radar.tsx:24; app/src/pages/Radar.tsx:86
+
+25. PT/chave: Se você também enfrentou isso, registre em "Direito à Saúde".
+    ES: Si tú también lo enfrentaste, regístralo en "Derecho a la salud".
+    Locale ES: shared/i18n/es.json:213
+    Paridade PT: shared/i18n/pt-BR.json:213
+    Fonte/conexão: app/src/pages/Radar.tsx:25; app/src/pages/Radar.tsx:88
+
+26. PT/chave: Como funciona:
+    ES: Cómo funciona:
+    Locale ES: shared/i18n/es.json:214
+    Paridade PT: shared/i18n/pt-BR.json:214
+    Fonte/conexão: app/src/pages/Radar.tsx:92
+
+27. PT/chave: comparamos os relatos da região com os registros anteriores para identificar mudanças no conjunto da comunidade. Um sinal não indica que uma pessoa tenha uma doença. Os exemplos desta tela mostram como essa informação pode ser apresentada.
+    ES: comparamos los relatos de la región con los registros anteriores para identificar cambios en el conjunto de la comunidad. Una señal no indica que una persona tenga una enfermedad. Los ejemplos de esta pantalla muestran cómo se puede presentar esta información.
+    Locale ES: shared/i18n/es.json:215
+    Paridade PT: shared/i18n/pt-BR.json:215
+    Fonte/conexão: app/src/pages/Radar.tsx:92
+
+28. PT/chave: Check-in rápido
+    ES: Check-in rápido
+    Locale ES: shared/i18n/es.json:216
+    Paridade PT: shared/i18n/pt-BR.json:216
+    Fonte/conexão: app/src/pages/CheckIn.tsx:74
+
+29. PT/chave: Você sentiu algum destes sintomas hoje?
+    ES: ¿Sentiste alguno de estos síntomas hoy?
+    Locale ES: shared/i18n/es.json:217
+    Paridade PT: shared/i18n/pt-BR.json:217
+    Fonte/conexão: app/src/pages/CheckIn.tsx:78
+
+30. PT/chave: Tosse
+    ES: Tos
+    Locale ES: shared/i18n/es.json:218
+    Paridade PT: shared/i18n/pt-BR.json:218
+    Fonte/conexão: app/src/pages/CheckIn.tsx:8; app/src/pages/CheckIn.tsx:89
+
+31. PT/chave: Febre
+    ES: Fiebre
+    Locale ES: shared/i18n/es.json:219
+    Paridade PT: shared/i18n/pt-BR.json:219
+    Fonte/conexão: app/src/pages/CheckIn.tsx:8; app/src/pages/CheckIn.tsx:89
+
+32. PT/chave: Falta de ar
+    ES: Falta de aire
+    Locale ES: shared/i18n/es.json:220
+    Paridade PT: shared/i18n/pt-BR.json:220
+    Fonte/conexão: app/src/pages/CheckIn.tsx:8; app/src/pages/CheckIn.tsx:89
+
+33. PT/chave: Dor de cabeça
+    ES: Dolor de cabeza
+    Locale ES: shared/i18n/es.json:221
+    Paridade PT: shared/i18n/pt-BR.json:221
+    Fonte/conexão: app/src/pages/CheckIn.tsx:8; app/src/pages/CheckIn.tsx:89
+
+34. PT/chave: Fadiga
+    ES: Fatiga
+    Locale ES: shared/i18n/es.json:222
+    Paridade PT: shared/i18n/pt-BR.json:222
+    Fonte/conexão: app/src/pages/CheckIn.tsx:8; app/src/pages/CheckIn.tsx:89
+
+35. PT/chave: Dor no corpo
+    ES: Dolor en el cuerpo
+    Locale ES: shared/i18n/es.json:223
+    Paridade PT: shared/i18n/pt-BR.json:223
+    Fonte/conexão: app/src/pages/CheckIn.tsx:8; app/src/pages/CheckIn.tsx:89
+
+36. PT/chave: Ansiedade
+    ES: Ansiedad
+    Locale ES: shared/i18n/es.json:224
+    Paridade PT: shared/i18n/pt-BR.json:224
+    Fonte/conexão: app/src/pages/CheckIn.tsx:8; app/src/pages/CheckIn.tsx:89
+
+37. PT/chave: Nenhum sintoma
+    ES: Ningún síntoma
+    Locale ES: shared/i18n/es.json:225
+    Paridade PT: shared/i18n/pt-BR.json:225
+    Fonte/conexão: app/src/pages/CheckIn.tsx:8; app/src/pages/CheckIn.tsx:89
+
+38. PT/chave: Você tomou sua medicação conforme prescrito?
+    ES: ¿Tomaste tu medicación según lo prescrito?
+    Locale ES: shared/i18n/es.json:226
+    Paridade PT: shared/i18n/pt-BR.json:226
+    Fonte/conexão: app/src/pages/CheckIn.tsx:97
+
+39. PT/chave: sim
+    ES: sí
+    Locale ES: shared/i18n/es.json:227
+    Paridade PT: shared/i18n/pt-BR.json:227
+    Fonte/conexão: app/src/pages/CheckIn.tsx:25, app/src/pages/CheckIn.tsx:100; app/src/pages/CheckIn.tsx:108
+
+40. PT/chave: parcial
+    ES: parcial
+    Locale ES: shared/i18n/es.json:228
+    Paridade PT: shared/i18n/pt-BR.json:228
+    Fonte/conexão: app/src/pages/CheckIn.tsx:25, app/src/pages/CheckIn.tsx:100; app/src/pages/CheckIn.tsx:108
+
+41. PT/chave: nao
+    ES: no
+    Locale ES: shared/i18n/es.json:229
+    Paridade PT: shared/i18n/pt-BR.json:229
+    Fonte/conexão: app/src/pages/CheckIn.tsx:25, app/src/pages/CheckIn.tsx:100; app/src/pages/CheckIn.tsx:108
+
+42. PT/chave: Teve dificuldade de acesso a atendimento hoje?
+    ES: ¿Tuviste dificultad de acceso a la atención hoy?
+    Locale ES: shared/i18n/es.json:230
+    Paridade PT: shared/i18n/pt-BR.json:230
+    Fonte/conexão: app/src/pages/CheckIn.tsx:116
+
+43. PT/chave: Sim
+    ES: Sí
+    Locale ES: shared/i18n/es.json:231
+    Paridade PT: shared/i18n/pt-BR.json:231
+    Fonte/conexão: app/src/pages/CheckIn.tsx:125
+
+44. PT/chave: Não
+    ES: No
+    Locale ES: shared/i18n/es.json:232
+    Paridade PT: shared/i18n/pt-BR.json:232
+    Fonte/conexão: app/src/pages/CheckIn.tsx:133
+
+45. PT/chave: Como você avalia seu bem-estar emocional hoje?
+    ES: ¿Cómo evalúas tu bienestar emocional hoy?
+    Locale ES: shared/i18n/es.json:233
+    Paridade PT: shared/i18n/pt-BR.json:233
+    Fonte/conexão: app/src/pages/CheckIn.tsx:14, app/src/pages/CheckIn.tsx:149, app/src/pages/CheckIn.tsx:150
+
+46. PT/chave: Sua resposta (opcional)...
+    ES: Tu respuesta (opcional)...
+    Locale ES: shared/i18n/es.json:234
+    Paridade PT: shared/i18n/pt-BR.json:234
+    Fonte/conexão: app/src/pages/CheckIn.tsx:156
+
+47. PT/chave: Enviar check-in
+    ES: Enviar check-in
+    Locale ES: shared/i18n/es.json:235
+    Paridade PT: shared/i18n/pt-BR.json:235
+    Fonte/conexão: app/src/pages/CheckIn.tsx:165
+
+9. INSERÇÕES DE SUPORTE, LANG E IMPORTS — DIFF EXATO DO PRODUTO
+diff --git a/app/src/pages/CheckIn.tsx b/app/src/pages/CheckIn.tsx
+index 7ddabb7..948aac4 100644
+--- a/app/src/pages/CheckIn.tsx
++++ b/app/src/pages/CheckIn.tsx
+@@ -4,0 +5 @@ import TopBar from '../components/TopBar';
++import { useHealthText } from '../lib/healthI18n';
+@@ -19,0 +21,2 @@ export default function CheckIn() {
++  const { localeId, t } = useHealthText();
++  const textLang = localeId === 'es' ? 'es' : 'pt-BR';
+@@ -70,2 +73,2 @@ export default function CheckIn() {
+-    <div className="min-h-screen bg-pulso-creme font-pulso-body">
+-      <TopBar title="Check-in rápido" showBack />
++    <div lang={textLang} className="min-h-screen bg-pulso-creme font-pulso-body">
++      <TopBar title={t('Check-in rápido')} showBack />
+@@ -75 +78 @@ export default function CheckIn() {
+-            Você sentiu algum destes sintomas hoje?
++            {t("Você sentiu algum destes sintomas hoje?")}
+@@ -86 +89 @@ export default function CheckIn() {
+-                {s}
++                {t(s)}
+@@ -94 +97 @@ export default function CheckIn() {
+-            Você tomou sua medicação conforme prescrito?
++            {t("Você tomou sua medicação conforme prescrito?")}
+@@ -105 +108 @@ export default function CheckIn() {
+-                {v === 'na' ? 'N/A' : v}
++                {v === 'na' ? 'N/A' : t(v)}
+@@ -113 +116 @@ export default function CheckIn() {
+-            Teve dificuldade de acesso a atendimento hoje?
++            {t("Teve dificuldade de acesso a atendimento hoje?")}
+@@ -122 +125 @@ export default function CheckIn() {
+-              Sim
++              {t("Sim")}
+@@ -130 +133 @@ export default function CheckIn() {
+-              Não
++              {t("Não")}
+@@ -137,0 +141 @@ export default function CheckIn() {
++              lang="pt-BR"
+@@ -145,2 +149,2 @@ export default function CheckIn() {
+-          <h2 className="font-bold text-sm mb-2 text-pulso-verde font-pulso-display">
+-            {question}
++          <h2 lang={question === 'Como você avalia seu bem-estar emocional hoje?' ? textLang : 'pt-BR'} className="font-bold text-sm mb-2 text-pulso-verde font-pulso-display">
++            {question === 'Como você avalia seu bem-estar emocional hoje?' ? t(question) : question}
+@@ -152 +156 @@ export default function CheckIn() {
+-            placeholder="Sua resposta (opcional)..."
++            placeholder={t('Sua resposta (opcional)...')}
+@@ -161 +165 @@ export default function CheckIn() {
+-          Enviar check-in
++          {t("Enviar check-in")}
+diff --git a/app/src/pages/Home.tsx b/app/src/pages/Home.tsx
+index be4a882..b0b51e4 100644
+--- a/app/src/pages/Home.tsx
++++ b/app/src/pages/Home.tsx
+@@ -18,0 +19,4 @@ export default function Home() {
++  const textLang = localeId === 'es' ? 'es' : 'pt-BR';
++  const counterParts = t('Você já fez {{n}} check-in(s) desde que se juntou ao Sentinela. Obrigado por fazer parte da vigilância comunitária.').split('{{n}}');
++  const displayConditionName = (name: string) =>
++    name === 'Depressão' || name === 'Asma' ? t(name) : name;
+@@ -119 +123 @@ export default function Home() {
+-                  <span className="text-pulso-verde"><span className="block text-base font-medium">{conditionNames(c).popular}</span><span className="block text-base text-pulso-verde-medio">{conditionNames(c).technical}</span></span>
++                  <span lang={c.id === 'depressao' || c.id === 'asma' ? textLang : 'pt-BR'} className="text-pulso-verde"><span className="block text-base font-medium">{displayConditionName(conditionNames(c).popular)}</span><span className="block text-base text-pulso-verde-medio">{displayConditionName(conditionNames(c).technical)}</span></span>
+@@ -127,4 +131,2 @@ export default function Home() {
+-          <p className="text-xs text-pulso-marrom/70">
+-            Você já fez{' '}
+-            <strong className="text-pulso-verde">{checkIns.length}</strong> check-in(s) desde
+-            que se juntou ao Sentinela. Obrigado por fazer parte da vigilância comunitária.
++          <p lang={textLang} className="text-xs text-pulso-marrom/70">
++            {counterParts[0]}<strong className="text-pulso-verde">{checkIns.length}</strong>{counterParts[1]}
+diff --git a/app/src/pages/Profile.tsx b/app/src/pages/Profile.tsx
+index f21727f..e56edf3 100644
+--- a/app/src/pages/Profile.tsx
++++ b/app/src/pages/Profile.tsx
+@@ -5,0 +6 @@ import TopBar from '../components/TopBar';
++import { useHealthText } from '../lib/healthI18n';
+@@ -9,0 +11,2 @@ export default function Profile() {
++  const { localeId, t } = useHealthText();
++  const textLang = localeId === 'es' ? 'es' : 'pt-BR';
+@@ -38,2 +41,2 @@ export default function Profile() {
+-    <div className="min-h-screen bg-pulso-creme font-pulso-body">
+-      <TopBar title="Meu Perfil" />
++    <div lang={textLang} className="min-h-screen bg-pulso-creme font-pulso-body">
++      <TopBar title={t('Meu Perfil')} />
+@@ -43 +46 @@ export default function Profile() {
+-            Resumo
++            {t("Resumo")}
+@@ -46,3 +49,3 @@ export default function Profile() {
+-            <Stat label="Check-ins" value={checkIns.length} />
+-            <Stat label="Relatos" value={reports.length} />
+-            <Stat label="Condições" value={baseline?.conditions.length ?? 0} />
++            <Stat label={t("Check-ins")} value={checkIns.length} />
++            <Stat label={t("Relatos")} value={reports.length} />
++            <Stat label={t("Condições")} value={baseline?.conditions.length ?? 0} />
+@@ -54 +57 @@ export default function Profile() {
+-            Consentimentos (Lei Geral de Proteção de Dados)
++            {t("Consentimentos (Lei Geral de Proteção de Dados)")}
+@@ -71 +74 @@ export default function Profile() {
+-                  <span className="text-sm text-pulso-marrom/90">{l.name}</span>
++                  <span className="text-sm text-pulso-marrom/90">{t(l.name)}</span>
+@@ -87 +90 @@ export default function Profile() {
+-            Meus dados
++            {t("Meus dados")}
+@@ -93 +96 @@ export default function Profile() {
+-            Exportar meus dados (JSON)
++            {t("Exportar meus dados (JSON)")}
+@@ -101 +104 @@ export default function Profile() {
+-              Apagar meus dados
++              {t("Apagar meus dados")}
+@@ -104 +107 @@ export default function Profile() {
+-            <div className="rounded-xl border border-red-300 bg-red-50 p-4">
++            <div lang="pt-BR" className="rounded-xl border border-red-300 bg-red-50 p-4">
+@@ -126 +129 @@ export default function Profile() {
+-        <p className="text-[11px] text-center pt-4 text-pulso-marrom/50">
++        <p lang="pt-BR" className="text-[11px] text-center pt-4 text-pulso-marrom/50">
+diff --git a/app/src/pages/Radar.tsx b/app/src/pages/Radar.tsx
+index fde1c56..abe3dc0 100644
+--- a/app/src/pages/Radar.tsx
++++ b/app/src/pages/Radar.tsx
+@@ -2,0 +3 @@ import TopBar from '../components/TopBar';
++import { useHealthText } from '../lib/healthI18n';
+@@ -29,0 +31,2 @@ export default function Radar() {
++  const { localeId, t } = useHealthText();
++  const textLang = localeId === 'es' ? 'es' : 'pt-BR';
+@@ -34,2 +37,2 @@ export default function Radar() {
+-    <div className="min-h-screen bg-pulso-creme font-pulso-body">
+-      <TopBar title="Radar Comunitário" />
++    <div lang={textLang} className="min-h-screen bg-pulso-creme font-pulso-body">
++      <TopBar title={t('Radar Comunitário')} />
+@@ -41 +44 @@ export default function Radar() {
+-                Participar do Radar
++                {t('Participar do Radar')}
+@@ -44,2 +47 @@ export default function Radar() {
+-                Opt-in, transparente: seus check-ins ajudam a detectar padrões de saúde na sua região em 24-48h.
+-                Você pode desativar quando quiser.
++                {t('Opt-in, transparente: seus check-ins ajudam a detectar padrões de saúde na sua região em 24-48h. Você pode desativar quando quiser.')}
+@@ -68 +70 @@ export default function Radar() {
+-            <p className="text-sm max-w-xs mx-auto text-pulso-marrom/60">
++            <p lang="pt-BR" className="text-sm max-w-xs mx-auto text-pulso-marrom/60">
+@@ -74 +76 @@ export default function Radar() {
+-            <p className="text-sm text-pulso-marrom">Exemplos ilustrativos — não são dados atuais da sua região.</p>
++            <p className="text-sm text-pulso-marrom">{t('Exemplos ilustrativos — não são dados atuais da sua região.')}</p>
+@@ -79 +81 @@ export default function Radar() {
+-                  <span className="text-xs font-bold uppercase text-pulso-terracota">
++                  <span lang="pt-BR" className="text-xs font-bold uppercase text-pulso-terracota">
+@@ -82 +84 @@ export default function Radar() {
+-                  <span className="text-[10px] text-pulso-marrom/60">Exemplo ilustrativo</span>
++                  <span className="text-[10px] text-pulso-marrom/60">{t('Exemplo ilustrativo')}</span>
+@@ -84,2 +86,3 @@ export default function Radar() {
+-                <p className="text-sm font-medium mb-2 text-pulso-marrom/90">{s.message}</p>
+-                <p className="text-xs text-pulso-marrom/70">{s.action}</p>
++                <p className="text-sm font-medium mb-2 text-pulso-marrom/90">{t(s.message)}</p>
++                {/* Recomendação clínica preservada em PT até revisão clínica da versão ES. */}
++                <p lang={s.id === 'sig-1' ? 'pt-BR' : textLang} className="text-xs text-pulso-marrom/70">{s.id === 'sig-1' ? s.action : t(s.action)}</p>
+@@ -89,3 +92 @@ export default function Radar() {
+-              <strong>Como funciona:</strong> comparamos os relatos da região com os registros anteriores
+-              para identificar mudanças no conjunto da comunidade. Um sinal não indica que uma pessoa tenha
+-              uma doença. Os exemplos desta tela mostram como essa informação pode ser apresentada.
++              <strong>{t('Como funciona:')}</strong>{' '}{t('comparamos os relatos da região com os registros anteriores para identificar mudanças no conjunto da comunidade. Um sinal não indica que uma pessoa tenha uma doença. Os exemplos desta tela mostram como essa informação pode ser apresentada.')}
+diff --git a/shared/i18n/es.json b/shared/i18n/es.json
+index b74d866..3125bfb 100644
+--- a/shared/i18n/es.json
++++ b/shared/i18n/es.json
+@@ -188 +188,48 @@
+-  "Parceria técnica — Condições Genéticas/Raras": "Alianza técnica — Condiciones Genéticas/Raras"
++  "Parceria técnica — Condições Genéticas/Raras": "Alianza técnica — Condiciones Genéticas/Raras",
++  "Depressão": "Depresión",
++  "Asma": "Asma",
++  "Você já fez {{n}} check-in(s) desde que se juntou ao Sentinela. Obrigado por fazer parte da vigilância comunitária.": "Ya realizaste {{n}} check-in(s) desde que te uniste a Sentinela. Gracias por formar parte de la vigilancia comunitaria.",
++  "Meu Perfil": "Mi Perfil",
++  "Resumo": "Resumen",
++  "Check-ins": "Check-ins",
++  "Relatos": "Relatos",
++  "Condições": "Condiciones",
++  "Consentimentos (Lei Geral de Proteção de Dados)": "Consentimientos (Ley General de Protección de Datos)",
++  "Uso do app": "Uso de la app",
++  "Participação em pesquisas": "Participación en investigaciones",
++  "Dados agregados para políticas públicas": "Datos agregados para políticas públicas",
++  "Geolocalização precisa": "Geolocalización precisa",
++  "Meus dados": "Mis datos",
++  "Exportar meus dados (JSON)": "Exportar mis datos (JSON)",
++  "Apagar meus dados": "Borrar mis datos",
++  "Radar Comunitário": "Radar Comunitario",
++  "Participar do Radar": "Participar del Radar",
++  "Opt-in, transparente: seus check-ins ajudam a detectar padrões de saúde na sua região em 24-48h. Você pode desativar quando quiser.": "Opt-in, transparente: tus check-ins ayudan a detectar patrones de salud en tu región en 24-48 h. Puedes desactivarlo cuando quieras.",
++  "Exemplos ilustrativos — não são dados atuais da sua região.": "Ejemplos ilustrativos — no son datos actuales de tu región.",
++  "Exemplo ilustrativo": "Ejemplo ilustrativo",
++  "34 pessoas na sua região relataram sintomas respiratórios nas últimas 48h — acima do padrão esperado.": "34 personas de tu región reportaron síntomas respiratorios en las últimas 48 h — por encima del patrón esperado.",
++  "Procure a Unidade Básica de Saúde (UBS) mais próxima se tiver tosse, febre ou falta de ar.": "Acude a la Unidad Básica de Salud (UBS) más cercana si tienes tos, fiebre o falta de aire.",
++  "21 pessoas relataram dificuldade de atendimento em Samambaia nas últimas 48h.": "21 personas reportaron dificultad de atención en Samambaia en las últimas 48 h.",
++  "Se você também enfrentou isso, registre em \"Direito à Saúde\".": "Si tú también lo enfrentaste, regístralo en \"Derecho a la salud\".",
++  "Como funciona:": "Cómo funciona:",
++  "comparamos os relatos da região com os registros anteriores para identificar mudanças no conjunto da comunidade. Um sinal não indica que uma pessoa tenha uma doença. Os exemplos desta tela mostram como essa informação pode ser apresentada.": "comparamos los relatos de la región con los registros anteriores para identificar cambios en el conjunto de la comunidad. Una señal no indica que una persona tenga una enfermedad. Los ejemplos de esta pantalla muestran cómo se puede presentar esta información.",
++  "Check-in rápido": "Check-in rápido",
++  "Você sentiu algum destes sintomas hoje?": "¿Sentiste alguno de estos síntomas hoy?",
++  "Tosse": "Tos",
++  "Febre": "Fiebre",
++  "Falta de ar": "Falta de aire",
++  "Dor de cabeça": "Dolor de cabeza",
++  "Fadiga": "Fatiga",
++  "Dor no corpo": "Dolor en el cuerpo",
++  "Ansiedade": "Ansiedad",
++  "Nenhum sintoma": "Ningún síntoma",
++  "Você tomou sua medicação conforme prescrito?": "¿Tomaste tu medicación según lo prescrito?",
++  "sim": "sí",
++  "parcial": "parcial",
++  "nao": "no",
++  "Teve dificuldade de acesso a atendimento hoje?": "¿Tuviste dificultad de acceso a la atención hoy?",
++  "Sim": "Sí",
++  "Não": "No",
++  "Como você avalia seu bem-estar emocional hoje?": "¿Cómo evalúas tu bienestar emocional hoy?",
++  "Sua resposta (opcional)...": "Tu respuesta (opcional)...",
++  "Enviar check-in": "Enviar check-in"
+diff --git a/shared/i18n/pt-BR.json b/shared/i18n/pt-BR.json
+index a1149ad..d374d3c 100644
+--- a/shared/i18n/pt-BR.json
++++ b/shared/i18n/pt-BR.json
+@@ -188 +188,48 @@
+-  "Parceria técnica — Condições Genéticas/Raras": "Parceria técnica — Condições Genéticas/Raras"
++  "Parceria técnica — Condições Genéticas/Raras": "Parceria técnica — Condições Genéticas/Raras",
++  "Depressão": "Depressão",
++  "Asma": "Asma",
++  "Você já fez {{n}} check-in(s) desde que se juntou ao Sentinela. Obrigado por fazer parte da vigilância comunitária.": "Você já fez {{n}} check-in(s) desde que se juntou ao Sentinela. Obrigado por fazer parte da vigilância comunitária.",
++  "Meu Perfil": "Meu Perfil",
++  "Resumo": "Resumo",
++  "Check-ins": "Check-ins",
++  "Relatos": "Relatos",
++  "Condições": "Condições",
++  "Consentimentos (Lei Geral de Proteção de Dados)": "Consentimentos (Lei Geral de Proteção de Dados)",
++  "Uso do app": "Uso do app",
++  "Participação em pesquisas": "Participação em pesquisas",
++  "Dados agregados para políticas públicas": "Dados agregados para políticas públicas",
++  "Geolocalização precisa": "Geolocalização precisa",
++  "Meus dados": "Meus dados",
++  "Exportar meus dados (JSON)": "Exportar meus dados (JSON)",
++  "Apagar meus dados": "Apagar meus dados",
++  "Radar Comunitário": "Radar Comunitário",
++  "Participar do Radar": "Participar do Radar",
++  "Opt-in, transparente: seus check-ins ajudam a detectar padrões de saúde na sua região em 24-48h. Você pode desativar quando quiser.": "Opt-in, transparente: seus check-ins ajudam a detectar padrões de saúde na sua região em 24-48h. Você pode desativar quando quiser.",
++  "Exemplos ilustrativos — não são dados atuais da sua região.": "Exemplos ilustrativos — não são dados atuais da sua região.",
++  "Exemplo ilustrativo": "Exemplo ilustrativo",
++  "34 pessoas na sua região relataram sintomas respiratórios nas últimas 48h — acima do padrão esperado.": "34 pessoas na sua região relataram sintomas respiratórios nas últimas 48h — acima do padrão esperado.",
++  "Procure a Unidade Básica de Saúde (UBS) mais próxima se tiver tosse, febre ou falta de ar.": "Procure a Unidade Básica de Saúde (UBS) mais próxima se tiver tosse, febre ou falta de ar.",
++  "21 pessoas relataram dificuldade de atendimento em Samambaia nas últimas 48h.": "21 pessoas relataram dificuldade de atendimento em Samambaia nas últimas 48h.",
++  "Se você também enfrentou isso, registre em \"Direito à Saúde\".": "Se você também enfrentou isso, registre em \"Direito à Saúde\".",
++  "Como funciona:": "Como funciona:",
++  "comparamos os relatos da região com os registros anteriores para identificar mudanças no conjunto da comunidade. Um sinal não indica que uma pessoa tenha uma doença. Os exemplos desta tela mostram como essa informação pode ser apresentada.": "comparamos os relatos da região com os registros anteriores para identificar mudanças no conjunto da comunidade. Um sinal não indica que uma pessoa tenha uma doença. Os exemplos desta tela mostram como essa informação pode ser apresentada.",
++  "Check-in rápido": "Check-in rápido",
++  "Você sentiu algum destes sintomas hoje?": "Você sentiu algum destes sintomas hoje?",
++  "Tosse": "Tosse",
++  "Febre": "Febre",
++  "Falta de ar": "Falta de ar",
++  "Dor de cabeça": "Dor de cabeça",
++  "Fadiga": "Fadiga",
++  "Dor no corpo": "Dor no corpo",
++  "Ansiedade": "Ansiedade",
++  "Nenhum sintoma": "Nenhum sintoma",
++  "Você tomou sua medicação conforme prescrito?": "Você tomou sua medicação conforme prescrito?",
++  "sim": "sim",
++  "parcial": "parcial",
++  "nao": "nao",
++  "Teve dificuldade de acesso a atendimento hoje?": "Teve dificuldade de acesso a atendimento hoje?",
++  "Sim": "Sim",
++  "Não": "Não",
++  "Como você avalia seu bem-estar emocional hoje?": "Como você avalia seu bem-estar emocional hoje?",
++  "Sua resposta (opcional)...": "Sua resposta (opcional)...",
++  "Enviar check-in": "Enviar check-in"
+
+10. DOCUMENTAÇÃO DE SUPORTE
+README.md:357 — resumo, testes, guardas, estado local e próximos passos.
+Este relatório é a documentação solicitada; não contém chaves de acesso ou dados pessoais.

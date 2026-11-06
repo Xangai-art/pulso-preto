@@ -1,5 +1,6 @@
 import { useAppStore } from '../store/useAppStore';
 import TopBar from '../components/TopBar';
+import { useHealthText } from '../lib/healthI18n';
 import PopulationNotice from '@shared/components/PopulationNotice';
 
 // Sinais ilustrativos — em produção, calculados via z-score (Statistical Process Control)
@@ -27,22 +28,23 @@ const signals = [
 
 // Tema único de produção: Pulso Preto (PP3). Tokens `pulso-*` diretos.
 export default function Radar() {
+  const { localeId, t } = useHealthText();
+  const textLang = localeId === 'es' ? 'es' : 'pt-BR';
   const radarOptIn = useAppStore((s) => s.radarOptIn);
   const setRadarOptIn = useAppStore((s) => s.setRadarOptIn);
 
   return (
-    <div className="min-h-screen bg-pulso-creme font-pulso-body">
-      <TopBar title="Radar Comunitário" />
+    <div lang={textLang} className="min-h-screen bg-pulso-creme font-pulso-body">
+      <TopBar title={t('Radar Comunitário')} />
       <div className="px-5 pt-3 pb-8">
         <div className="rounded-xl border border-pulso-dourado/25 bg-white p-4 mb-4">
           <div className="flex items-start justify-between gap-3">
             <div>
               <h2 className="font-semibold text-sm mb-1 text-pulso-verde font-pulso-display">
-                Participar do Radar
+                {t('Participar do Radar')}
               </h2>
               <p className="text-xs text-pulso-marrom/70">
-                Opt-in, transparente: seus check-ins ajudam a detectar padrões de saúde na sua região em 24-48h.
-                Você pode desativar quando quiser.
+                {t('Opt-in, transparente: seus check-ins ajudam a detectar padrões de saúde na sua região em 24-48h. Você pode desativar quando quiser.')}
               </p>
             </div>
             <label className="relative inline-flex items-center cursor-pointer shrink-0 mt-1">
@@ -65,30 +67,29 @@ export default function Radar() {
               alt=""
               className="w-14 h-14 object-contain mx-auto mb-3"
             />
-            <p className="text-sm max-w-xs mx-auto text-pulso-marrom/60">
+            <p lang="pt-BR" className="text-sm max-w-xs mx-auto text-pulso-marrom/60">
               Ative o Radar Comunitário acima para ver sinais transparentes da sua região.
             </p>
           </div>
         ) : (
           <div className="space-y-3">
-            <p className="text-sm text-pulso-marrom">Exemplos ilustrativos — não são dados atuais da sua região.</p>
+            <p className="text-sm text-pulso-marrom">{t('Exemplos ilustrativos — não são dados atuais da sua região.')}</p>
             <PopulationNotice className="text-sm text-pulso-marrom" />
             {signals.map((s) => (
               <div key={s.id} className="rounded-xl border border-pulso-dourado/30 bg-pulso-dourado/10 p-4">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-xs font-bold uppercase text-pulso-terracota">
+                  <span lang="pt-BR" className="text-xs font-bold uppercase text-pulso-terracota">
                     {s.ra}
                   </span>
-                  <span className="text-[10px] text-pulso-marrom/60">Exemplo ilustrativo</span>
+                  <span className="text-[10px] text-pulso-marrom/60">{t('Exemplo ilustrativo')}</span>
                 </div>
-                <p className="text-sm font-medium mb-2 text-pulso-marrom/90">{s.message}</p>
-                <p className="text-xs text-pulso-marrom/70">{s.action}</p>
+                <p className="text-sm font-medium mb-2 text-pulso-marrom/90">{t(s.message)}</p>
+                {/* Recomendação clínica preservada em PT até revisão clínica da versão ES. */}
+                <p lang={s.id === 'sig-1' ? 'pt-BR' : textLang} className="text-xs text-pulso-marrom/70">{s.id === 'sig-1' ? s.action : t(s.action)}</p>
               </div>
             ))}
             <div className="rounded-xl border border-pulso-dourado/25 p-4 text-xs text-pulso-marrom/70">
-              <strong>Como funciona:</strong> comparamos os relatos da região com os registros anteriores
-              para identificar mudanças no conjunto da comunidade. Um sinal não indica que uma pessoa tenha
-              uma doença. Os exemplos desta tela mostram como essa informação pode ser apresentada.
+              <strong>{t('Como funciona:')}</strong>{' '}{t('comparamos os relatos da região com os registros anteriores para identificar mudanças no conjunto da comunidade. Um sinal não indica que uma pessoa tenha uma doença. Os exemplos desta tela mostram como essa informação pode ser apresentada.')}
             </div>
           </div>
         )}

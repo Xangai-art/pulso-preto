@@ -354,6 +354,38 @@ uma URL de produção para esta versão.
   instala dependências e recria `dist/`. Foram usados `tsc -b` e `vite build
   --outDir ../.qa-tools/i18n/site` (ou `app`) dentro de cada SPA.
 
+## Pacote ES v3 — quatro telas do app (06/11/2026)
+
+- Rotas: `/app/` (nomes Depressão/Asma e contador), `/app/checkin`,
+  `/app/radar` e `/app/perfil`. Selecionar ES e percorrer essas abas; PT
+  mantém os textos anteriores. Não é tradução integral das quatro telas.
+- 47 entradas novas por idioma, total 234/234, sem alterar as 187 anteriores.
+  Fragmentos novos usam `lang="es"`; trechos PT preservados têm idioma explícito.
+- O contador usa `{{n}}` e `checkIns.length`, mantendo a ênfase no número.
+  A fonte anterior tinha interpolação JSX, não um template textual `{{n}}`.
+- Rótulos de sintomas, adesão e acesso traduzidos somente na apresentação.
+  Valores `sim/parcial/nao/na`, sintomas PT, booleanos e campos persistidos
+  continuam iguais. Níveis, chaves e regras dos consentimentos não mudaram.
+- Radar: texto completo de “Como funciona” traduzido, inclusive a frase
+  ausente da captura. A orientação “Procure a UBS...” continua em PT até
+  revisão clínica; a versão ES está no dicionário, sem conexão de exibição.
+- Preservados catálogo/IDs, regiões, assets, PDF, dados científicos, Worker,
+  API, banco, store e `dist/`. Nenhuma dependência nova ou migração.
+- QA local: 16 baselines PT anteriores, 32 estados PT/ES em 390/1440 px,
+  1.239 verificações no teste v3, 51 checks existentes de saúde/i18n e
+  regressões de 150 + 196 + 536 checks. TypeScript/build isolado/lint das
+  duas SPAs aprovados. Escritas de teste somente em localStorage descartável
+  do servidor estático local, nunca em produção ou em APIs.
+- Relatório por chave/arquivo/linha, classificação rótulo/valor, comandos,
+  pendências e diff: `relatorio_pacote_traducao_es_v3.txt`.
+- Status deste v3: somente local, sem push/deploy. Referência de produção:
+  https://pulso-preto.fratozsistemas.workers.dev — pacote anterior `73c31d5`
+  publicado e verificado via GitHub → Workers Builds. As seções históricas
+  acima são snapshots anteriores à publicação daquele pacote.
+- Próximos passos: revisão clínica da orientação ES do Radar, catálogo
+  completo no Lote 2, demais textos fora das seções 7–10, leitores de tela
+  e teste com usuários. Publicação futura exige autorização e validação real.
+
 ## Última atualização histórica anterior
 04/11/2026 — Integração das seis fichas propostas, UI PT/ES, rede geral,
 privacidade do cache, testes e pendências de homologação. A documentação histórica PP3 acima é preservada; os números atuais
