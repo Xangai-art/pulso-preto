@@ -1,3 +1,4 @@
+import { useHealthText } from '../lib/healthI18n';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppStore } from '../store/useAppStore';
@@ -13,6 +14,7 @@ const STEPS = ['perfil', 'saude', 'acesso', 'discriminacao'] as const;
 // GroupedSelect) usam diretamente os tokens `pulso-*` — não há mais ramificação
 // por variante (GP0/PP1/PP2 saíram da UI).
 export default function Baseline() {
+  const { t } = useHealthText();
   const navigate = useNavigate();
   const saveBaseline = useAppStore((s) => s.saveBaseline);
   const completeOnboarding = useAppStore((s) => s.completeOnboarding);
@@ -246,7 +248,7 @@ export default function Baseline() {
             onClick={back}
             className="flex-1 rounded-xl border border-pulso-dourado/40 text-pulso-marrom font-semibold py-3"
           >
-            Voltar
+            {t('Voltar')}
           </button>
           <button
             onClick={next}

@@ -1,4 +1,7 @@
 import type React from 'react';
+import { useAppearance } from '@shared/context/AppearanceContext';
+import { getPulsoLinkLabel } from '@shared/data/pulsoContent';
+import { publicHealthCopy } from '@shared/data/publicHealthCopy';
 import { Link } from 'react-router-dom';
 import QRLink from '../components/QRLink';
 import {
@@ -26,6 +29,7 @@ const panelClasses: Record<string, string> = {
 };
 
 export default function AppAccess() {
+  const { localeId } = useAppearance();
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 py-16">
       {/* Hero */}
@@ -66,7 +70,7 @@ export default function AppAccess() {
               <h3 className="font-bold text-pulso-verde text-sm mb-3">{panel.status}</h3>
               <ul className="space-y-1.5">
                 {panel.items.map((item) => (
-                  <li key={item} className="text-xs text-pulso-marrom">• {item}</li>
+                  <li key={item} className="text-xs text-pulso-marrom">• {item === publicHealthCopy.pt.overview ? publicHealthCopy[localeId].overview : item}</li>
                 ))}
               </ul>
             </div>
@@ -151,7 +155,7 @@ export default function AppAccess() {
       </Section>
 
       {/* FAQ */}
-      <Section title="Perguntas frequentes">
+      <Section title={getPulsoLinkLabel(localeId, '/perguntas-frequentes', 'Perguntas frequentes')}>
         <div className="space-y-3">
           {baixarFaq.map((f) => (
             <details key={f.q} className="rounded-xl border border-pulso-dourado/25 p-4 group">

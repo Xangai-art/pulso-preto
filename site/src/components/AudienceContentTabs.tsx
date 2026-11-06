@@ -6,9 +6,9 @@ import type { DiseaseDeepContent } from '@shared/data/anemiaFalciforme';
 // Abas de conteúdo segmentado por audiência profissional (médicos/enfermeiros/
 // usuários) — usado em DiseaseDetail.tsx quando a condição tem `hasDeepContent`.
 // Rótulos/descrições das abas vêm do dicionário i18n (shared/data/locales.ts),
-// já preparado para PT/ES; o conteúdo clínico em si (anemiaFalciforme.ts)
-// permanece em português nesta primeira versão — tradução de conteúdo clínico
-// extenso é um passo futuro, fora do escopo do teste mínimo de arquitetura.
+// preparados para PT/ES. O acervo aprofundado recebido já foi selecionado por
+// locale em DiseaseDetail.tsx, via deepContentRegistry (oito condições bilíngues).
+// Este acervo não corresponde às seis fichas clínicas resumidas do app.
 type AudienceKey = 'medico' | 'enfermeiro' | 'usuario';
 
 const AUDIENCE_ORDER: AudienceKey[] = ['usuario', 'enfermeiro', 'medico'];

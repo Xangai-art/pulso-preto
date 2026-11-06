@@ -6,15 +6,19 @@ import type { DiseaseDeepContent } from '@shared/data/anemiaFalciforme';
 import { wordPages } from '../lib/healthPresentation';
 import { ClinicalText } from './HealthComponents';
 
-function PagedBlock({ title, paragraphs, id, lang }: { title: string; paragraphs: string[]; id?: string; lang: string }) {
+function PagedBlock({ title, paragraphs, id, lang, paragraphLangs }: { title: string; paragraphs: string[]; id?: string; lang: string; paragraphLangs?: string[] }) {
   const { t } = useHealthText();
   const pages = wordPages(paragraphs.length ? paragraphs : [t('Conteúdo em preparação.')]);
   const [page, setPage] = useState(0);
   const current = Math.min(page, pages.length - 1);
+  // Mantém os mesmos cortes/páginas; cada fragmento herda o idioma da sua origem.
+  const chunkLangs = paragraphs.flatMap((paragraph, index) =>
+    wordPages([paragraph]).flat().map(() => paragraphLangs?.[index] ?? lang));
+  const offset = pages.slice(0, current).reduce((total, paragraphs) => total + paragraphs.length, 0);
   return <section id={id} className="health-panel" data-deep-block>
     <h3>{t(title)}</h3>
     <PopulationNotice />
-    <div aria-live="polite" lang={lang}>{pages[current].map((paragraph, i) => <p key={i}><ClinicalText text={paragraph} /></p>)}</div>
+    <div aria-live="polite" lang={lang}>{pages[current].map((paragraph, i) => <p key={i} lang={chunkLangs[offset + i] ?? lang}><ClinicalText text={paragraph} /></p>)}</div>
     {pages.length > 1 && <nav aria-label={`${t('Páginas')}: ${t(title)}`} className="health-filters">
       <button type="button" disabled={current === 0} onClick={() => setPage(current - 1)}>{t('Anterior')}</button>
       <span>{t('Página')} {current + 1} {t('de')} {pages.length}</span>
@@ -43,15 +47,18 @@ export default function HealthDeepContent({ disease, locale }: { disease: Diseas
   }, [content]);
   // Canonical archive stays intact and bilingual. Scientific claims are shown as
   // archive records, never relabelled as approved clinical answers or referrals.
-  const scientific = [disease.study, disease.finding, disease.localStudy?.value, disease.localStudy?.finding, disease.localStudy?.source,
+  const archiveLang = locale === 'es' ? 'es-419' : 'pt-BR';
+  const catalogueScientific = [disease.study, disease.finding, disease.localStudy?.value, disease.localStudy?.finding, disease.localStudy?.source]
+    .filter((text): text is string => !!text);
+  const scientific = [...catalogueScientific,
     ...(content?.sources.flatMap(source => [source.label, source.detail]) ?? [])].filter((text): text is string => !!text);
   return <div className="health-stack" data-screen="S3">
     <p>{t('Conteúdo científico original, preservado para consulta. Não representa aprovação clínica desta versão.')}</p>
     {failed && <p role="alert">{t('Não foi possível carregar agora.')} <button type="button" onClick={() => setAttempt(value => value + 1)}>{t('Tentar de novo')}</button></p>}
-    <PagedBlock id="science" title="O que diz a ciência?" paragraphs={scientific} lang="pt-BR" />
+    <PagedBlock id="science" title="O que diz a ciência?" paragraphs={scientific} lang={archiveLang} paragraphLangs={scientific.map((_, index) => index < catalogueScientific.length ? 'pt-BR' : archiveLang)} />
     {content && (['usuario', 'enfermeiro', 'medico'] as const).map(key => <PagedBlock key={key}
       title={key === 'usuario' ? 'Acervo para a população' : key === 'enfermeiro' ? 'Acervo para enfermagem' : 'Acervo para profissionais de medicina'}
-      paragraphs={[content.audiences[key].summary, ...content.audiences[key].sections.flatMap(section => [section.heading, ...section.body])]} lang={locale === 'es' ? 'es-419' : 'pt-BR'} />)}
-    {content && <PagedBlock id="source-record" title="Acervo completo e fontes" paragraphs={[disease.name, content.heroImage.alt, content.heroImage.credit, ...content.sources.flatMap(source => [source.label, source.detail])]} lang="pt-BR" />}
+      paragraphs={[content.audiences[key].summary, ...content.audiences[key].sections.flatMap(section => [section.heading, ...section.body])]} lang={archiveLang} />)}
+    {content && <PagedBlock id="source-record" title="Acervo completo e fontes" paragraphs={[disease.name, content.heroImage.alt, content.heroImage.credit, ...content.sources.flatMap(source => [source.label, source.detail])]} lang={archiveLang} paragraphLangs={['pt-BR']} />}
   </div>;
 }

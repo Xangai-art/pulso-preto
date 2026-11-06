@@ -1,4 +1,5 @@
 import type React from 'react';
+import { getPulsoLinkLabel } from '@shared/data/pulsoContent';
 import PopulationNotice from '@shared/components/PopulationNotice';
 import { Link } from 'react-router-dom';
 import { useAppearance } from '@shared/context/AppearanceContext';
@@ -19,12 +20,12 @@ import {
 } from '../data/ensaiosClinicosContent';
 
 export default function ClinicalTrials() {
-  const { brand } = useAppearance();
+  const { brand, localeId } = useAppearance();
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 py-16">
       {/* Hero */}
       <span className="eyebrow text-pulso-verde-accent">{ensaiosHero.kicker}</span>
-      <h1 className="text-3xl font-bold text-pulso-verde mt-1 mb-4">{ensaiosHero.title}</h1>
+      <h1 className="text-3xl font-bold text-pulso-verde mt-1 mb-4">{getPulsoLinkLabel(localeId, '/ensaios-clinicos', ensaiosHero.title)}</h1>
       <p className="text-pulso-marrom mb-6 max-w-2xl">{ensaiosHero.subtitle}</p>
       <PopulationNotice className="text-sm text-pulso-marrom mb-4" />
       <div className="rounded-xl border border-pulso-dourado/40 bg-pulso-creme p-4 flex gap-3 text-sm text-pulso-marrom mb-14">

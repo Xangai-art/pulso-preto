@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom';
+import { useAppearance } from '@shared/context/AppearanceContext';
+import { getPulsoLinkLabel } from '@shared/data/pulsoContent';
 import { APP_URL } from '../config';
 
 // OUVIDORIA — hard service promovido a rota própria (D7, Parte 5.5-E do
@@ -51,11 +53,12 @@ const DIREITOS = [
 ];
 
 export default function Ouvidoria() {
+  const { localeId } = useAppearance();
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 py-16">
       <div className="flex items-center gap-3 mb-4">
         <img src="/static/brand/elementos/icone-mao-balanca.png" alt="" aria-hidden="true" className="w-12 h-12 object-contain" />
-        <h1 className="text-3xl font-bold text-pulso-verde">Ouvidoria</h1>
+        <h1 className="text-3xl font-bold text-pulso-verde">{getPulsoLinkLabel(localeId, '/ouvidoria', 'Ouvidoria')}</h1>
       </div>
       <p className="text-pulso-marrom mb-10 max-w-2xl">
         Sofreu discriminação em um atendimento de saúde? Você não está sozinha nem sozinho. Aqui você pode relatar o
@@ -81,7 +84,7 @@ export default function Ouvidoria() {
         </a>
         <p className="text-xs text-pulso-creme/70 mt-4">
           O relato só é encaminhado com o seu consentimento, conforme a Lei Geral de Proteção de Dados (LGPD). Saiba
-          mais em <Link to="/transparencia" className="underline hover:text-pulso-dourado-claro">Transparência e governança</Link>.
+          mais em <Link to="/transparencia" className="underline hover:text-pulso-dourado-claro">{getPulsoLinkLabel(localeId, '/transparencia', 'Transparência e governança')}</Link>.
         </p>
       </section>
 
@@ -118,7 +121,7 @@ export default function Ouvidoria() {
         </div>
         <p className="text-sm text-pulso-marrom/80 mt-8">
           Precisa de atendimento? Encontre a unidade de saúde mais próxima na{' '}
-          <Link to="/rede-sus" className="text-pulso-verde-accent font-medium hover:underline">Rede SUS</Link>.
+          <Link to="/rede-sus" className="text-pulso-verde-accent font-medium hover:underline">{getPulsoLinkLabel(localeId, '/rede-sus', 'Rede SUS')}</Link>.
         </p>
       </section>
       <div className="mt-10 rounded-xl border border-pulso-dourado/25 bg-pulso-creme p-6">

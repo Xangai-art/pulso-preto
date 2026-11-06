@@ -2,6 +2,7 @@ import { Link, Navigate, useParams } from 'react-router-dom';
 import PopulationNotice from '@shared/components/PopulationNotice';
 import { publicHealthCopy } from '@shared/data/publicHealthCopy';
 import { diseaseCategories, resolveDiseasePath } from '@shared/data/diseases';
+import { getPulsoThemeTitle } from '@shared/data/pulsoContent';
 import { getDeepContent } from '@shared/data/deepContentRegistry';
 import CategoryIcon from '../components/CategoryIcons';
 import AudienceContentTabs from '../components/AudienceContentTabs';
@@ -26,10 +27,12 @@ export default function DiseaseDetail() {
     );
   }
 
+  const categoryTitle = getPulsoThemeTitle(localeId, `/saude?categoria=${category.id}`, category.title);
+
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-16">
       <Link to="/saude" className="text-pulso-verde-accent hover:underline text-sm mb-6 inline-block">
-        ← Voltar para {category.title}
+        ← Voltar para {categoryTitle}
       </Link>
 
       {deepContent && (
@@ -46,7 +49,7 @@ export default function DiseaseDetail() {
       <div className="flex items-center gap-3 mb-4">
         <CategoryIcon id={category.id} size={44} />
         <div>
-          <p className="text-xs uppercase tracking-wide text-pulso-marrom/70 font-semibold">{category.title} · {category.subtitle}</p>
+          <p className="text-xs uppercase tracking-wide text-pulso-marrom/70 font-semibold">{categoryTitle} · {category.subtitle}</p>
           <h1 className="text-2xl sm:text-3xl font-bold text-pulso-verde">{disease.name}</h1>
         </div>
       </div>

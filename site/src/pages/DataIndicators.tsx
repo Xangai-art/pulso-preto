@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import PopulationNotice from '@shared/components/PopulationNotice';
 import { useAppearance } from '@shared/context/AppearanceContext';
-import { getPulsoContent } from '@shared/data/pulsoContent';
+import { getPulsoContent, getPulsoLinkLabel } from '@shared/data/pulsoContent';
 import { diseaseCategories } from '@shared/data/diseases';
 import LocalStudyFeature from '../components/LocalStudyFeature';
 
@@ -23,7 +23,7 @@ export default function DataIndicators() {
     <div className="max-w-5xl mx-auto px-4 sm:px-6 py-16">
       <div className="mb-10 max-w-2xl">
         <span className="text-xs font-bold uppercase tracking-wider text-pulso-terracota block mb-2">{stats.eyebrow}</span>
-        <h1 className="text-3xl font-bold text-pulso-verde mb-3">Dados e Indicadores</h1>
+        <h1 className="text-3xl font-bold text-pulso-verde mb-3">{getPulsoLinkLabel(localeId, '/dados-e-indicadores', 'Dados e Indicadores')}</h1>
         <p className="text-pulso-marrom">{stats.paragraph}</p>
       </div>
 
@@ -86,7 +86,7 @@ export default function DataIndicators() {
           dados e a governança do projeto estão descritas em Transparência.
         </p>
         <Link to="/transparencia" className="text-pulso-verde-accent hover:underline font-medium text-sm">
-          Ir para Transparência e governança →
+          Ir para {getPulsoLinkLabel(localeId, '/transparencia', 'Transparência e governança')} →
         </Link>
       </section>
     </div>

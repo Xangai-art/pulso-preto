@@ -1,3 +1,5 @@
+import { useAppearance } from '@shared/context/AppearanceContext';
+import { getPulsoContent } from '@shared/data/pulsoContent';
 import { Link } from 'react-router-dom';
 import PopulationNotice from '@shared/components/PopulationNotice';
 import { localStudyMeta, localStudyHighlights } from '../data/localStudy';
@@ -17,6 +19,8 @@ const highlightTypeClasses: Record<string, string> = {
 // Texto para leitura leiga (áudios de 10/10/2026): é uma ANÁLISE DE DADOS JÁ
 // EXISTENTES, não pesquisa nem estudo novo. Sem downloads (retirados em 20/10/2026).
 export default function LocalStudyFeature() {
+  const { localeId } = useAppearance();
+  const transparencyLabel = getPulsoContent(localeId).footer.columns.find(column => column.items.some(item => item.to === '/transparencia'))?.heading;
   return (
     <section
       id="estudo-df"
@@ -63,7 +67,7 @@ export default function LocalStudyFeature() {
         <p className="text-sm text-pulso-creme/90 max-w-3xl border-t border-pulso-creme/15 pt-5">
           Análise de dados oficiais já publicados (Secretaria de Saúde do DF, DATASUS e bases públicas). A pesquisa de campo, com escuta direta da
           comunidade, é uma etapa futura do projeto. Saiba como usamos os dados em{' '}
-          <Link to="/transparencia" className="underline hover:text-pulso-dourado-claro">Transparência</Link>.
+          <Link to="/transparencia" className="underline hover:text-pulso-dourado-claro">{transparencyLabel ?? 'Transparência'}</Link>.
         </p>
       </div>
     </section>

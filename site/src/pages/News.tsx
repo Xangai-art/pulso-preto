@@ -1,6 +1,6 @@
 import { newsItems, formatNewsDate } from '@shared/data/news';
 import { useAppearance } from '@shared/context/AppearanceContext';
-import { getPulsoContent } from '@shared/data/pulsoContent';
+import { getPulsoContent, getPulsoLinkLabel } from '@shared/data/pulsoContent';
 
 // Página dedicada de Notícias — identidade ÚNICA de produção (PP3).
 // Lê a fonte única de notícias (shared/data/news.ts — P19) e injeta o Seminário
@@ -14,7 +14,7 @@ export default function News() {
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-16 font-pulso-body">
       <span className="text-xs font-bold uppercase tracking-wider text-pulso-terracota">Atualizações —</span>
-      <h1 className="font-pulso-display text-3xl font-bold text-pulso-verde mt-1 mb-2">Notícias</h1>
+      <h1 className="font-pulso-display text-3xl font-bold text-pulso-verde mt-1 mb-2">{getPulsoLinkLabel(localeId, '/noticias', 'Notícias')}</h1>
       <p className="text-pulso-marrom/75 mb-10 max-w-2xl">
         Atualizações institucionais, marcos do projeto e o calendário de eventos.
       </p>

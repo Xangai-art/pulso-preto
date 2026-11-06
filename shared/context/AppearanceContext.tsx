@@ -43,6 +43,7 @@ export function AppearanceProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     window.localStorage.setItem(STORAGE_KEY_LOCALE, localeId);
+    document.documentElement.lang = localeId === 'es' ? 'es-419' : 'pt-BR';
   }, [localeId]);
 
   const setLocaleId = (id: LocaleId) => setLocaleIdState(id);

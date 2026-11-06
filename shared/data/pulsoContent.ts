@@ -525,3 +525,19 @@ export const PULSO_CONTENT: ContentByLocale = { pt, es };
 export function getPulsoContent(localeId: LocaleId): PulsoContent {
   return PULSO_CONTENT[localeId] ?? PULSO_CONTENT.pt;
 }
+
+/** Reutiliza rótulos editoriais existentes, preservando o texto PT de cada tela. */
+export function getPulsoLinkLabel(localeId: LocaleId, to: string, fallback: string): string {
+  if (localeId !== 'es') return fallback;
+  const content = getPulsoContent(localeId);
+  return content.header.navItems.find(item => item.to === to)?.label
+    ?? content.footer.columns.flatMap(column => column.items).find(item => item.to === to)?.label
+    ?? [...content.gente.cards, ...content.training.cards].find(card => card.to === to)?.title
+    ?? fallback;
+}
+
+/** Só temas com cartão bilíngue equivalente; não traduz o catálogo. */
+export function getPulsoThemeTitle(localeId: LocaleId, to: string, fallback: string): string {
+  if (localeId !== 'es') return fallback;
+  return getPulsoContent(localeId).themes.cards.find(card => card.to === to)?.title.join(' ') ?? fallback;
+}

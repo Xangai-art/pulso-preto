@@ -1,12 +1,16 @@
 import { useMemo, useState } from 'react';
 import { Link, Navigate, useLocation, useSearchParams } from 'react-router-dom';
 import { diseaseCategories, orderByRelevance, healthRecortes, LEGACY_CATEGORY_IDS } from '@shared/data/diseases';
+import { useAppearance } from '@shared/context/AppearanceContext';
+import { getPulsoThemeTitle } from '@shared/data/pulsoContent';
 import { publicHealthCopy } from '@shared/data/publicHealthCopy';
 import PopulationNotice from '@shared/components/PopulationNotice';
 import CategoryIcon from '../components/CategoryIcons';
 
 
 export default function HealthLibrary() {
+  const { localeId } = useAppearance();
+  const categoryTitle = (id: string, title: string) => getPulsoThemeTitle(localeId, `/saude?categoria=${id}`, title);
   const [query, setQuery] = useState('');
   const { hash } = useLocation();
   // Filtros vêm da URL (?categoria= / ?recorte=) para que os cards da Home abram
@@ -74,7 +78,7 @@ export default function HealthLibrary() {
       <div className="mb-10 max-w-2xl">
         <h1 className="text-3xl font-bold text-pulso-verde mb-2">Biblioteca de Saúde</h1>
         <p className="text-pulso-marrom">
-          {publicHealthCopy.pt.overview}
+          {publicHealthCopy[localeId].overview}
         </p>
       </div>
 
@@ -109,7 +113,7 @@ export default function HealthLibrary() {
               key={cat.id}
               active={activeCategory === cat.id}
               onClick={() => setActiveCategory(activeCategory === cat.id ? null : cat.id)}
-              label={cat.title}
+              label={categoryTitle(cat.id, cat.title)}
             />
           ))}
         </div>
@@ -118,7 +122,7 @@ export default function HealthLibrary() {
       {recorte && (
         <div className="mb-4 flex flex-wrap items-center gap-3 rounded-xl border border-pulso-verde-accent/40 bg-pulso-verde-medio/10 px-4 py-3">
           <span className="text-sm text-pulso-verde">
-            Recorte: <strong>{recorte.label}</strong>
+            Recorte: <strong>{getPulsoThemeTitle(localeId, `/saude?recorte=${recorte.id}`, recorte.label)}</strong>
           </span>
           <button
             type="button"
@@ -159,7 +163,7 @@ export default function HealthLibrary() {
                 <span className="flex items-center gap-3">
                   <CategoryIcon id={cat.id} size={32} />
                   <span>
-                    <span className="block text-lg font-bold text-pulso-verde">{cat.title}</span>
+                    <span className="block text-lg font-bold text-pulso-verde">{categoryTitle(cat.id, cat.title)}</span>
                     <span className="block text-xs text-pulso-marrom/70">
                       {cat.subtitle}
                     </span>

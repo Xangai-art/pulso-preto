@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useAppStore } from '../store/useAppStore';
 import { priorityThemes } from '@shared/data/diseases';
 import TopBar from '../components/TopBar';
-import { useAppearance } from '@shared/context/AppearanceContext';
+import { useHealthText } from '../lib/healthI18n';
 import { getPulsoContent } from '@shared/data/pulsoContent';
 import { conditionNames } from '../lib/healthPresentation';
 
@@ -13,7 +13,7 @@ import { conditionNames } from '../lib/healthPresentation';
 export default function Home() {
   const checkIns = useAppStore((s) => s.checkIns);
   const baseline = useAppStore((s) => s.baseline);
-  const { localeId } = useAppearance();
+  const { localeId, t } = useHealthText();
   const content = getPulsoContent(localeId);
 
   const lastCheckIn = checkIns[0];
@@ -93,7 +93,7 @@ export default function Home() {
               to="/perguntas"
               icon="❓"
               pulsoIcon="/static/brand/elementos/icone-livro-ideias.png"
-              label="Perguntas frequentes"
+              label={t('Perguntas frequentes')}
             />
           </div>
         </div>
